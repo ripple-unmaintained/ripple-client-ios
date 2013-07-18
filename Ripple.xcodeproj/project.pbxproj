@@ -34,6 +34,7 @@
 		2B5861411797806E00200D0C /* RPAccountData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861401797806E00200D0C /* RPAccountData.m */; };
 		2B5861451797813000200D0C /* NSObject+KJSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861441797813000200D0C /* NSObject+KJSerializer.m */; };
 		2B5861481797879700200D0C /* RPLedgerClosed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861471797879700200D0C /* RPLedgerClosed.m */; };
+		2B58614D1797B83400200D0C /* RPError.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58614C1797B83400200D0C /* RPError.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,8 @@
 		2B5861441797813000200D0C /* NSObject+KJSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KJSerializer.m"; sourceTree = "<group>"; };
 		2B5861461797879700200D0C /* RPLedgerClosed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPLedgerClosed.h; path = Objects/RPLedgerClosed.h; sourceTree = "<group>"; };
 		2B5861471797879700200D0C /* RPLedgerClosed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPLedgerClosed.m; path = Objects/RPLedgerClosed.m; sourceTree = "<group>"; };
+		2B58614B1797B83300200D0C /* RPError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPError.h; path = Objects/RPError.h; sourceTree = "<group>"; };
+		2B58614C1797B83400200D0C /* RPError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPError.m; path = Objects/RPError.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +237,8 @@
 				2B5861401797806E00200D0C /* RPAccountData.m */,
 				2B5861461797879700200D0C /* RPLedgerClosed.h */,
 				2B5861471797879700200D0C /* RPLedgerClosed.m */,
+				2B58614B1797B83300200D0C /* RPError.h */,
+				2B58614C1797B83400200D0C /* RPError.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				2B5861411797806E00200D0C /* RPAccountData.m in Sources */,
 				2B5861451797813000200D0C /* NSObject+KJSerializer.m in Sources */,
 				2B5861481797879700200D0C /* RPLedgerClosed.m in Sources */,
+				2B58614D1797B83400200D0C /* RPError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

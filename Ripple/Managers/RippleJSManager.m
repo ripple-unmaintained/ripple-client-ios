@@ -11,6 +11,7 @@
 #import "NSObject+KJSerializer.h"
 #import "RPAccountData.h"
 #import "RPLedgerClosed.h"
+#import "RPError.h"
 
 #define HTML_BEGIN @"<!DOCTYPE html>\
 <html lang=\"en\">\
@@ -68,7 +69,7 @@
 
 -(void)log:(id)data
 {
-    
+    _log.text = [NSString stringWithFormat:@"%@\n%@",data,_log.text];
 }
 
 -(void)setupJavascriptBridge
@@ -78,33 +79,32 @@
     _bridge = [WebViewJavascriptBridge bridgeForWebView:_webView webViewDelegate:self handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"ObjC received message from JS: %@", data);
         responseCallback(@"Response for message from ObjC");
-        
-#warning Testing purposes only
+//#warning Testing purposes only
         raise(1);
     }];
     
-    [_bridge registerHandler:@"rippleRemoteConnectedCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"rippleConnectedCallback called: %@", data);
+    // Connected to Ripple network
+    [_bridge registerHandler:@"connected" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"connected called: %@", data);
+        isConnected = YES;
+        [self log:@"Connected"];
+    }];
+    
+    // Disconnected from Ripple network
+    [_bridge registerHandler:@"disconnected" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"disconnected called: %@", data);
+        isConnected = NO;
+        [self log:@"Disconnected"];
         
-        NSDictionary * accountDataDic = [data objectForKey:@"account_data"];
-        if (accountDataDic) {
-            RPAccountData * obj = [RPAccountData new];
-            [obj setDictionary:accountDataDic];
-            
-            // Check for valid?
-            accountData = obj;
-        }
-        
-        //responseCallback(@"Response from testObjcCallback");
-        
-        //[_log insertText:data];
-        //_log.text = [NSString stringWithFormat:@"%@\n%@",data,_log.text];
+        // Try to connect again
+        //[self connect];
     }];
     
     
-    
-    [_bridge registerHandler:@"rippleRemoteLedgerClosedCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"rippleRemoteLedgerClosed called: %@", data);
+    // Testing purposes
+    [_bridge registerHandler:@"ledger_closed" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"ledger_closed called: %@", data);
+        [self log:data];
         
         RPLedgerClosed * obj = [RPLedgerClosed new];
         [obj setDictionary:data];
@@ -113,16 +113,6 @@
         //responseCallback(@"Response from testObjcCallback");
     }];
     
-    
-    [_bridge registerHandler:@"account_information_success" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"rippleRemoteGenericCallback called: %@", data);
-        //responseCallback(@"Response from testObjcCallback");
-    }];
-    
-    [_bridge registerHandler:@"account_information_error" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"rippleRemoteGenericCallback called: %@", data);
-        //responseCallback(@"Response from testObjcCallback");
-    }];
     
     
     
@@ -151,10 +141,51 @@
     //}];
 }
 
+-(RPError*)checkForError:(NSDictionary*)response
+{
+    RPError * error;
+    if ([response isKindOfClass:[NSDictionary class]] && [response objectForKey:@"error"]) {
+        error = [RPError new];
+        [error setDictionary:response];
+    }
+    return error;
+}
+
+
 -(void)accountInformation
 {
-    [_bridge callHandler:@"account_information" data:[NSDictionary dictionaryWithObject:@"rK2KG1KCL5Nidneu6mKd9tav3hBPQ8deVb" forKey:@"ripple_address"] responseCallback:^(id responseData) {
+    [_bridge callHandler:@"account_information" data:[NSDictionary dictionaryWithObject:@"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96" forKey:@"ripple_address"] responseCallback:^(id responseData) {
         NSLog(@"accountInformation response: %@", responseData);
+        
+        RPError * error = [self checkForError:responseData];
+        if (!error) {
+            NSDictionary * accountDataDic = [responseData objectForKey:@"account_data"];
+            if (accountDataDic) {
+                RPAccountData * obj = [RPAccountData new];
+                [obj setDictionary:accountDataDic];
+                
+                // Check for valid?
+                accountData = obj;
+                
+                
+                [self log:[NSString stringWithFormat:@"Balance: %@", accountData.Balance]];
+            }
+            else {
+                // Unknown object
+                raise(1);
+            }
+        }
+        else {
+            // Error
+            NSString * error_message = [error.remote objectForKey:@"error_message"];
+            [self log:error_message];
+        }
+    }];
+}
+
+-(void)connect
+{
+    [_bridge callHandler:@"connect" data:@"" responseCallback:^(id responseData) {
     }];
 }
 
@@ -208,6 +239,8 @@
         NSString * html = [self rippleHTML];
         [_webView loadHTMLString:html baseURL:[NSBundle mainBundle].bundleURL];
         [self setupJavascriptBridge];
+        
+        [self connect];
     }
     return self;
 }
