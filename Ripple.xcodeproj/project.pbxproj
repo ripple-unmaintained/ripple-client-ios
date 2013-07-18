@@ -24,6 +24,46 @@
 		2B5860E8179764A300200D0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5860C0179764A300200D0C /* Foundation.framework */; };
 		2B5860F0179764A300200D0C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2B5860EE179764A300200D0C /* InfoPlist.strings */; };
 		2B5860F3179764A300200D0C /* RippleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5860F2179764A300200D0C /* RippleTests.m */; };
+		2B5860FF1797672E00200D0C /* RippleJSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5860FE1797672E00200D0C /* RippleJSManager.m */; };
+		2B5861051797678C00200D0C /* WebViewJavascriptBridge.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861031797678C00200D0C /* WebViewJavascriptBridge.js.txt */; };
+		2B5861061797678C00200D0C /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861041797678C00200D0C /* WebViewJavascriptBridge.m */; };
+		2B5861171797681B00200D0C /* keypair.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861081797681B00200D0C /* keypair.js */; };
+		2B5861181797681B00200D0C /* meta.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861091797681B00200D0C /* meta.js */; };
+		2B5861191797681B00200D0C /* network.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B58610A1797681B00200D0C /* network.js */; };
+		2B58611A1797681B00200D0C /* orderbook.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B58610B1797681B00200D0C /* orderbook.js */; };
+		2B58611B1797681B00200D0C /* remote.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B58610C1797681B00200D0C /* remote.js */; };
+		2B58611C1797681B00200D0C /* seed.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B58610D1797681B00200D0C /* seed.js */; };
+		2B58611D1797681B00200D0C /* serializedobject.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B58610E1797681B00200D0C /* serializedobject.js */; };
+		2B58611E1797681B00200D0C /* serializedtypes.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B58610F1797681B00200D0C /* serializedtypes.js */; };
+		2B58611F1797681B00200D0C /* server.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861101797681B00200D0C /* server.js */; };
+		2B5861201797681B00200D0C /* transaction.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861111797681B00200D0C /* transaction.js */; };
+		2B5861211797681B00200D0C /* uint.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861121797681B00200D0C /* uint.js */; };
+		2B5861221797681B00200D0C /* uint160.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861131797681B00200D0C /* uint160.js */; };
+		2B5861231797681B00200D0C /* uint256.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861141797681B00200D0C /* uint256.js */; };
+		2B5861241797681B00200D0C /* utils.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861151797681B00200D0C /* utils.js */; };
+		2B5861251797681B00200D0C /* utils.web.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861161797681B00200D0C /* utils.web.js */; };
+		2B586127179769C500200D0C /* ripple-lib-wrapper.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B586126179769C500200D0C /* ripple-lib-wrapper.js */; };
+		2B58612A17976D3400200D0C /* keypair.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861081797681B00200D0C /* keypair.js */; };
+		2B58612B17976D3400200D0C /* meta.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861091797681B00200D0C /* meta.js */; };
+		2B58612C17976D3400200D0C /* network.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B58610A1797681B00200D0C /* network.js */; };
+		2B58612D17976D3400200D0C /* orderbook.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B58610B1797681B00200D0C /* orderbook.js */; };
+		2B58612E17976D3400200D0C /* remote.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B58610C1797681B00200D0C /* remote.js */; };
+		2B58612F17976D3400200D0C /* seed.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B58610D1797681B00200D0C /* seed.js */; };
+		2B58613017976D3400200D0C /* serializedobject.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B58610E1797681B00200D0C /* serializedobject.js */; };
+		2B58613117976D3400200D0C /* serializedtypes.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B58610F1797681B00200D0C /* serializedtypes.js */; };
+		2B58613217976D3400200D0C /* server.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861101797681B00200D0C /* server.js */; };
+		2B58613317976D3400200D0C /* transaction.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861111797681B00200D0C /* transaction.js */; };
+		2B58613417976D3400200D0C /* uint.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861121797681B00200D0C /* uint.js */; };
+		2B58613517976D3400200D0C /* uint160.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861131797681B00200D0C /* uint160.js */; };
+		2B58613617976D3400200D0C /* uint256.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861141797681B00200D0C /* uint256.js */; };
+		2B58613717976D3400200D0C /* utils.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861151797681B00200D0C /* utils.js */; };
+		2B58613817976D3400200D0C /* utils.web.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861161797681B00200D0C /* utils.web.js */; };
+		2B58613917976D3400200D0C /* ripple-lib-wrapper.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B586126179769C500200D0C /* ripple-lib-wrapper.js */; };
+		2B58613C17976DE700200D0C /* ripple.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B58613B17976DE700200D0C /* ripple.js */; };
+		2B58613D17976DFC00200D0C /* ripple.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B58613B17976DE700200D0C /* ripple.js */; };
+		2B5861411797806E00200D0C /* RPAccountData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861401797806E00200D0C /* RPAccountData.m */; };
+		2B5861451797813000200D0C /* NSObject+KJSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861441797813000200D0C /* NSObject+KJSerializer.m */; };
+		2B5861481797879700200D0C /* RPLedgerClosed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861471797879700200D0C /* RPLedgerClosed.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +100,34 @@
 		2B5860EF179764A300200D0C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2B5860F1179764A300200D0C /* RippleTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RippleTests.h; sourceTree = "<group>"; };
 		2B5860F2179764A300200D0C /* RippleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RippleTests.m; sourceTree = "<group>"; };
+		2B5860FD1797672E00200D0C /* RippleJSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RippleJSManager.h; path = Managers/RippleJSManager.h; sourceTree = "<group>"; };
+		2B5860FE1797672E00200D0C /* RippleJSManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RippleJSManager.m; path = Managers/RippleJSManager.m; sourceTree = "<group>"; };
+		2B5861021797678C00200D0C /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		2B5861031797678C00200D0C /* WebViewJavascriptBridge.js.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebViewJavascriptBridge.js.txt; sourceTree = "<group>"; };
+		2B5861041797678C00200D0C /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		2B5861081797681B00200D0C /* keypair.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = keypair.js; path = "ripple-lib/src/js/ripple/keypair.js"; sourceTree = "<group>"; };
+		2B5861091797681B00200D0C /* meta.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = meta.js; path = "ripple-lib/src/js/ripple/meta.js"; sourceTree = "<group>"; };
+		2B58610A1797681B00200D0C /* network.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = network.js; path = "ripple-lib/src/js/ripple/network.js"; sourceTree = "<group>"; };
+		2B58610B1797681B00200D0C /* orderbook.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = orderbook.js; path = "ripple-lib/src/js/ripple/orderbook.js"; sourceTree = "<group>"; };
+		2B58610C1797681B00200D0C /* remote.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = remote.js; path = "ripple-lib/src/js/ripple/remote.js"; sourceTree = "<group>"; };
+		2B58610D1797681B00200D0C /* seed.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = seed.js; path = "ripple-lib/src/js/ripple/seed.js"; sourceTree = "<group>"; };
+		2B58610E1797681B00200D0C /* serializedobject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = serializedobject.js; path = "ripple-lib/src/js/ripple/serializedobject.js"; sourceTree = "<group>"; };
+		2B58610F1797681B00200D0C /* serializedtypes.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = serializedtypes.js; path = "ripple-lib/src/js/ripple/serializedtypes.js"; sourceTree = "<group>"; };
+		2B5861101797681B00200D0C /* server.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = server.js; path = "ripple-lib/src/js/ripple/server.js"; sourceTree = "<group>"; };
+		2B5861111797681B00200D0C /* transaction.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = transaction.js; path = "ripple-lib/src/js/ripple/transaction.js"; sourceTree = "<group>"; };
+		2B5861121797681B00200D0C /* uint.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = uint.js; path = "ripple-lib/src/js/ripple/uint.js"; sourceTree = "<group>"; };
+		2B5861131797681B00200D0C /* uint160.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = uint160.js; path = "ripple-lib/src/js/ripple/uint160.js"; sourceTree = "<group>"; };
+		2B5861141797681B00200D0C /* uint256.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = uint256.js; path = "ripple-lib/src/js/ripple/uint256.js"; sourceTree = "<group>"; };
+		2B5861151797681B00200D0C /* utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = utils.js; path = "ripple-lib/src/js/ripple/utils.js"; sourceTree = "<group>"; };
+		2B5861161797681B00200D0C /* utils.web.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = utils.web.js; path = "ripple-lib/src/js/ripple/utils.web.js"; sourceTree = "<group>"; };
+		2B586126179769C500200D0C /* ripple-lib-wrapper.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ripple-lib-wrapper.js"; sourceTree = "<group>"; };
+		2B58613B17976DE700200D0C /* ripple.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ripple.js; sourceTree = "<group>"; };
+		2B58613F1797806E00200D0C /* RPAccountData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPAccountData.h; path = Objects/RPAccountData.h; sourceTree = "<group>"; };
+		2B5861401797806E00200D0C /* RPAccountData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPAccountData.m; path = Objects/RPAccountData.m; sourceTree = "<group>"; };
+		2B5861431797813000200D0C /* NSObject+KJSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KJSerializer.h"; sourceTree = "<group>"; };
+		2B5861441797813000200D0C /* NSObject+KJSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KJSerializer.m"; sourceTree = "<group>"; };
+		2B5861461797879700200D0C /* RPLedgerClosed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPLedgerClosed.h; path = Objects/RPLedgerClosed.h; sourceTree = "<group>"; };
+		2B5861471797879700200D0C /* RPLedgerClosed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPLedgerClosed.m; path = Objects/RPLedgerClosed.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +187,9 @@
 		2B5860C4179764A300200D0C /* Ripple */ = {
 			isa = PBXGroup;
 			children = (
+				2B58613E1797804400200D0C /* Objects */,
+				2B5861001797678C00200D0C /* Libraries */,
+				2B5860FC1797670700200D0C /* Managers */,
 				2B5860CD179764A300200D0C /* AppDelegate.h */,
 				2B5860CE179764A300200D0C /* AppDelegate.m */,
 				2B5860D6179764A300200D0C /* MainStoryboard_iPhone.storyboard */,
@@ -161,6 +232,87 @@
 				2B5860EE179764A300200D0C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2B5860FC1797670700200D0C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2B5860FD1797672E00200D0C /* RippleJSManager.h */,
+				2B5860FE1797672E00200D0C /* RippleJSManager.m */,
+				2B586126179769C500200D0C /* ripple-lib-wrapper.js */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		2B5861001797678C00200D0C /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				2B5861421797813000200D0C /* KJObjectSerialize */,
+				2B58613A17976DE700200D0C /* ripple-lib-demo */,
+				2B5861071797680000200D0C /* ripple-lib */,
+				2B5861011797678C00200D0C /* WebViewJavascriptBridge */,
+			);
+			path = Libraries;
+			sourceTree = SOURCE_ROOT;
+		};
+		2B5861011797678C00200D0C /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				2B5861021797678C00200D0C /* WebViewJavascriptBridge.h */,
+				2B5861031797678C00200D0C /* WebViewJavascriptBridge.js.txt */,
+				2B5861041797678C00200D0C /* WebViewJavascriptBridge.m */,
+			);
+			path = WebViewJavascriptBridge;
+			sourceTree = "<group>";
+		};
+		2B5861071797680000200D0C /* ripple-lib */ = {
+			isa = PBXGroup;
+			children = (
+				2B5861081797681B00200D0C /* keypair.js */,
+				2B5861091797681B00200D0C /* meta.js */,
+				2B58610A1797681B00200D0C /* network.js */,
+				2B58610B1797681B00200D0C /* orderbook.js */,
+				2B58610C1797681B00200D0C /* remote.js */,
+				2B58610D1797681B00200D0C /* seed.js */,
+				2B58610E1797681B00200D0C /* serializedobject.js */,
+				2B58610F1797681B00200D0C /* serializedtypes.js */,
+				2B5861101797681B00200D0C /* server.js */,
+				2B5861111797681B00200D0C /* transaction.js */,
+				2B5861121797681B00200D0C /* uint.js */,
+				2B5861131797681B00200D0C /* uint160.js */,
+				2B5861141797681B00200D0C /* uint256.js */,
+				2B5861151797681B00200D0C /* utils.js */,
+				2B5861161797681B00200D0C /* utils.web.js */,
+			);
+			name = "ripple-lib";
+			sourceTree = "<group>";
+		};
+		2B58613A17976DE700200D0C /* ripple-lib-demo */ = {
+			isa = PBXGroup;
+			children = (
+				2B58613B17976DE700200D0C /* ripple.js */,
+			);
+			path = "ripple-lib-demo";
+			sourceTree = "<group>";
+		};
+		2B58613E1797804400200D0C /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				2B58613F1797806E00200D0C /* RPAccountData.h */,
+				2B5861401797806E00200D0C /* RPAccountData.m */,
+				2B5861461797879700200D0C /* RPLedgerClosed.h */,
+				2B5861471797879700200D0C /* RPLedgerClosed.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		2B5861421797813000200D0C /* KJObjectSerialize */ = {
+			isa = PBXGroup;
+			children = (
+				2B5861431797813000200D0C /* NSObject+KJSerializer.h */,
+				2B5861441797813000200D0C /* NSObject+KJSerializer.m */,
+			);
+			path = KJObjectSerialize;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,12 +386,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B58613D17976DFC00200D0C /* ripple.js in Resources */,
+				2B58612A17976D3400200D0C /* keypair.js in Resources */,
+				2B58612B17976D3400200D0C /* meta.js in Resources */,
+				2B58612C17976D3400200D0C /* network.js in Resources */,
+				2B58612D17976D3400200D0C /* orderbook.js in Resources */,
+				2B58612E17976D3400200D0C /* remote.js in Resources */,
+				2B58612F17976D3400200D0C /* seed.js in Resources */,
+				2B58613017976D3400200D0C /* serializedobject.js in Resources */,
+				2B58613117976D3400200D0C /* serializedtypes.js in Resources */,
+				2B58613217976D3400200D0C /* server.js in Resources */,
+				2B58613317976D3400200D0C /* transaction.js in Resources */,
+				2B58613417976D3400200D0C /* uint.js in Resources */,
+				2B58613517976D3400200D0C /* uint160.js in Resources */,
+				2B58613617976D3400200D0C /* uint256.js in Resources */,
+				2B58613717976D3400200D0C /* utils.js in Resources */,
+				2B58613817976D3400200D0C /* utils.web.js in Resources */,
+				2B58613917976D3400200D0C /* ripple-lib-wrapper.js in Resources */,
 				2B5860C9179764A300200D0C /* InfoPlist.strings in Resources */,
 				2B5860D1179764A300200D0C /* Default.png in Resources */,
 				2B5860D3179764A300200D0C /* Default@2x.png in Resources */,
 				2B5860D5179764A300200D0C /* Default-568h@2x.png in Resources */,
 				2B5860D8179764A300200D0C /* MainStoryboard_iPhone.storyboard in Resources */,
 				2B5860DB179764A300200D0C /* MainStoryboard_iPad.storyboard in Resources */,
+				2B5861051797678C00200D0C /* WebViewJavascriptBridge.js.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +447,28 @@
 				2B5860CB179764A300200D0C /* main.m in Sources */,
 				2B5860CF179764A300200D0C /* AppDelegate.m in Sources */,
 				2B5860DE179764A300200D0C /* ViewController.m in Sources */,
+				2B5860FF1797672E00200D0C /* RippleJSManager.m in Sources */,
+				2B5861061797678C00200D0C /* WebViewJavascriptBridge.m in Sources */,
+				2B5861171797681B00200D0C /* keypair.js in Sources */,
+				2B5861181797681B00200D0C /* meta.js in Sources */,
+				2B5861191797681B00200D0C /* network.js in Sources */,
+				2B58611A1797681B00200D0C /* orderbook.js in Sources */,
+				2B58611B1797681B00200D0C /* remote.js in Sources */,
+				2B58611C1797681B00200D0C /* seed.js in Sources */,
+				2B58611D1797681B00200D0C /* serializedobject.js in Sources */,
+				2B58611E1797681B00200D0C /* serializedtypes.js in Sources */,
+				2B58611F1797681B00200D0C /* server.js in Sources */,
+				2B5861201797681B00200D0C /* transaction.js in Sources */,
+				2B5861211797681B00200D0C /* uint.js in Sources */,
+				2B5861221797681B00200D0C /* uint160.js in Sources */,
+				2B5861231797681B00200D0C /* uint256.js in Sources */,
+				2B5861241797681B00200D0C /* utils.js in Sources */,
+				2B5861251797681B00200D0C /* utils.web.js in Sources */,
+				2B586127179769C500200D0C /* ripple-lib-wrapper.js in Sources */,
+				2B58613C17976DE700200D0C /* ripple.js in Sources */,
+				2B5861411797806E00200D0C /* RPAccountData.m in Sources */,
+				2B5861451797813000200D0C /* NSObject+KJSerializer.m in Sources */,
+				2B5861481797879700200D0C /* RPLedgerClosed.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +591,7 @@
 				GCC_PREFIX_HEADER = "Ripple/Ripple-Prefix.pch";
 				INFOPLIST_FILE = "Ripple/Ripple-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -410,6 +603,7 @@
 				GCC_PREFIX_HEADER = "Ripple/Ripple-Prefix.pch";
 				INFOPLIST_FILE = "Ripple/Ripple-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "RippleJSManager.h"
 
 @interface ViewController ()
+
+//@property (weak, nonatomic) IBOutlet UIWebView * webView;
+@property (weak, nonatomic) IBOutlet UITextView * textViewLog;
 
 @end
 
@@ -18,6 +22,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+//    NSString * html = [[RippleJSManager shared] rippleHTML];
+//    [self.webView loadHTMLString:html baseURL:nil];
+//    
+//    [[RippleJSManager shared] setWebView:self.webView];
+    [[RippleJSManager shared] setLog:self.textViewLog];
 }
 
 - (void)didReceiveMemoryWarning
