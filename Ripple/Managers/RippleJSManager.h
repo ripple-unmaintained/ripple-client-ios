@@ -14,6 +14,7 @@
 
 -(void)setLog:(UITextView*)textView;
 
--(void)accountInformation;
+-(void)accountInfo;
+-(void)login;
 
 @end

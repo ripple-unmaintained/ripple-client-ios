@@ -19,7 +19,7 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfA-LV-Fz8">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Account Info">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -30,14 +30,29 @@
                                     <action selector="buttonPressed:" destination="2" eventType="touchUpInside" id="yq6-Pl-z2j"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbG-nJ-8uN">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonLogin:" destination="2" eventType="touchUpInside" id="yBo-iM-UD7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QJM-Lz-bay" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="9sh-ID-L4S"/>
                             <constraint firstItem="dfA-LV-Fz8" firstAttribute="top" secondItem="3" secondAttribute="top" constant="185" id="HGG-d2-ZOV"/>
+                            <constraint firstItem="nbG-nJ-8uN" firstAttribute="top" secondItem="3" secondAttribute="top" constant="265" id="Nlu-nG-5Qr"/>
                             <constraint firstItem="QJM-Lz-bay" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="T6f-fh-LU1"/>
                             <constraint firstItem="dfA-LV-Fz8" firstAttribute="centerX" secondItem="QJM-Lz-bay" secondAttribute="centerX" type="default" id="ZcC-ET-0yq"/>
                             <constraint firstItem="QJM-Lz-bay" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="ayv-tA-XXR"/>
+                            <constraint firstItem="nbG-nJ-8uN" firstAttribute="centerX" secondItem="dfA-LV-Fz8" secondAttribute="centerX" type="default" id="oDI-XG-e7r"/>
                             <constraint firstItem="QJM-Lz-bay" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="qho-ez-aXw"/>
                         </constraints>
                     </view>
@@ -56,6 +71,7 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
+                <relationship kind="action" name="buttonLogin:"/>
                 <relationship kind="action" name="buttonPressed:"/>
                 <relationship kind="outlet" name="textViewLog" candidateClass="UITextView"/>
             </relationships>

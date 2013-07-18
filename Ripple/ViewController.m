@@ -20,7 +20,12 @@
 
 -(IBAction)buttonPressed:(id)sender
 {
-    [[RippleJSManager shared] accountInformation];
+    [[RippleJSManager shared] accountInfo];
+}
+
+-(IBAction)buttonLogin:(id)sender
+{
+    [[RippleJSManager shared] login];
 }
 
 - (void)viewDidLoad

@@ -116,6 +116,34 @@
     
     
     
+    
+    // Subscribe
+    [_bridge registerHandler:@"subscribe_ledger" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"rippleRemoteGenericCallback called: %@", data);
+        //responseCallback(@"Response from testObjcCallback");
+    }];
+    
+    [_bridge registerHandler:@"subscribe_ledger_error" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
+        //responseCallback(@"Response from testObjcCallback");
+    }];
+    
+    [_bridge registerHandler:@"subscribe_server" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"rippleRemoteGenericCallback called: %@", data);
+        //responseCallback(@"Response from testObjcCallback");
+    }];
+    
+    [_bridge registerHandler:@"subscribe_server_error" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
+        //responseCallback(@"Response from testObjcCallback");
+    }];
+    
+    
+    
+    
+    
+    
+    
     [_bridge registerHandler:@"rippleRemoteGenericCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"rippleRemoteGenericCallback called: %@", data);
         //responseCallback(@"Response from testObjcCallback");
@@ -152,9 +180,35 @@
 }
 
 
--(void)accountInformation
+-(void)login
 {
-    [_bridge callHandler:@"account_information" data:[NSDictionary dictionaryWithObject:@"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96" forKey:@"ripple_address"] responseCallback:^(id responseData) {
+    [self requestWalletAccounts];
+    //[self subscribeWalletAddress];
+    [self accountInfo];
+    [self accountLines];
+    [self accountOffers];
+    //[self accountTx];
+}
+
+
+-(void)requestWalletAccounts
+{
+    [_bridge callHandler:@"request_wallet_accounts" data:[NSDictionary dictionaryWithObject:@"snShK2SuSqw7VjAzGKzT5xc1Qyp4K" forKey:@"seed"] responseCallback:^(id responseData) {
+        NSLog(@"request_wallet_accounts response: %@", responseData);
+    }];
+}
+
+-(void)subscribeWalletAddress
+{
+    [_bridge callHandler:@"subscribe_ripple_address" data:[NSDictionary dictionaryWithObject:@"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96" forKey:@"ripple_address"] responseCallback:^(id responseData) {
+        NSLog(@"subscribe_ripple_address response: %@", responseData);
+    }];
+}
+
+
+-(void)accountInfo
+{
+    [_bridge callHandler:@"account_info" data:[NSDictionary dictionaryWithObject:@"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96" forKey:@"ripple_address"] responseCallback:^(id responseData) {
         NSLog(@"accountInformation response: %@", responseData);
         
         RPError * error = [self checkForError:responseData];
@@ -182,6 +236,29 @@
         }
     }];
 }
+
+-(void)accountLines
+{
+    [_bridge callHandler:@"account_lines" data:[NSDictionary dictionaryWithObject:@"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96" forKey:@"ripple_address"] responseCallback:^(id responseData) {
+        NSLog(@"accountLines response: %@", responseData);
+    }];
+}
+
+
+-(void)accountTx
+{
+    [_bridge callHandler:@"account_tx" data:[NSDictionary dictionaryWithObject:@"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96" forKey:@"ripple_address"] responseCallback:^(id responseData) {
+        NSLog(@"accountTx response: %@", responseData);
+    }];
+}
+
+-(void)accountOffers
+{
+    [_bridge callHandler:@"account_offers" data:[NSDictionary dictionaryWithObject:@"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96" forKey:@"ripple_address"] responseCallback:^(id responseData) {
+        NSLog(@"accountOffers response: %@", responseData);
+    }];
+}
+
 
 -(void)connect
 {
