@@ -1,6 +1,6 @@
-//window.onerror = function(err) {
-//    log('window.onerror: ' + err)
-//}
+window.onerror = function(err) {
+    log('window.onerror: ' + err)
+}
 document.addEventListener('WebViewJavascriptBridgeReady', onBridgeReady, false)
 function onBridgeReady(event) {
     var bridge = event.bridge
