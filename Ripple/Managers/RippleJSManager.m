@@ -62,6 +62,7 @@
     
     //NSLog(@"%@: Ripple HTML:\n%@", self.class.description, html);
     
+    
     return html;
 }
 
@@ -112,6 +113,31 @@
         //responseCallback(@"Response from testObjcCallback");
     }];
     
+    
+    [_bridge registerHandler:@"account_information_success" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"rippleRemoteGenericCallback called: %@", data);
+        //responseCallback(@"Response from testObjcCallback");
+    }];
+    
+    [_bridge registerHandler:@"account_information_error" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"rippleRemoteGenericCallback called: %@", data);
+        //responseCallback(@"Response from testObjcCallback");
+    }];
+    
+    
+    
+    [_bridge registerHandler:@"rippleRemoteGenericCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"rippleRemoteGenericCallback called: %@", data);
+        //responseCallback(@"Response from testObjcCallback");
+    }];
+    
+    [_bridge registerHandler:@"rippleRemoteGenericErrorCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
+        //responseCallback(@"Response from testObjcCallback");
+    }];
+    
+    
+    
     //[_bridge send:@"A string sent from ObjC before Webview has loaded." responseCallback:^(id responseData) {
     //    NSLog(@"objc got response! %@", responseData);
     //}];
@@ -123,6 +149,13 @@
     //[_bridge send:@"A string sent from ObjC to JS" responseCallback:^(id response) {
     //    NSLog(@"sendMessage got response: %@", response);
     //}];
+}
+
+-(void)accountInformation
+{
+    [_bridge callHandler:@"account_information" data:[NSDictionary dictionaryWithObject:@"rK2KG1KCL5Nidneu6mKd9tav3hBPQ8deVb" forKey:@"ripple_address"] responseCallback:^(id responseData) {
+        NSLog(@"accountInformation response: %@", responseData);
+    }];
 }
 
 //-(void)setWebView:(UIWebView*)webView
@@ -173,7 +206,7 @@
         _webView = [[UIWebView alloc] initWithFrame:CGRectZero];
         _webView.delegate = self;
         NSString * html = [self rippleHTML];
-        [_webView loadHTMLString:html baseURL:nil];
+        [_webView loadHTMLString:html baseURL:[NSBundle mainBundle].bundleURL];
         [self setupJavascriptBridge];
     }
     return self;

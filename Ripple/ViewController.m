@@ -18,6 +18,11 @@
 
 @implementation ViewController
 
+-(IBAction)buttonPressed:(id)sender
+{
+    [[RippleJSManager shared] accountInformation];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -28,6 +33,8 @@
 //    
 //    [[RippleJSManager shared] setWebView:self.webView];
     [[RippleJSManager shared] setLog:self.textViewLog];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

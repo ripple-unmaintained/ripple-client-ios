@@ -11,12 +11,27 @@ function onBridgeReady(event) {
                 responseCallback(data)
                 })
 
-   bridge.registerHandler('rippleRemoteConnect', function(data, responseCallback) {
+   bridge.registerHandler('account_information', function(data, responseCallback) {
                           //log('ObjC called testJavascriptHandler with', data)
-                          var responseData = { 'Javascript Says':'Right back atcha!' }
+                          //var responseData = { 'Javascript Says':'Right back atcha!' }
                           //log('JS responding with', responseData)
-                          responseCallback(responseData)
+                          //responseCallback(responseData)
+
+                          remote.request_account_info(data['ripple_address'])
+                          .on('success', function (result) {
+                            responseCallback(result)
+
+                              // bridge.callHandler('rippleRemoteConnectedCallback', result, function(response) {
+                              //                    //document.write("Connected response: " + response + "<br>");
+                              //                    })
                           })
+                          .on('error', function (result) {
+                              console.error(result)
+                              responseCallback(result)
+                              })
+                          .request();
+                          })
+
 
     var remote = ripple.Remote.from_config({
                                            "trace" : true,
@@ -27,22 +42,10 @@ function onBridgeReady(event) {
     remote.connect();
 
     remote.once('connected', function () {
-                remote.request_account_info("r9kiSEUEw6iSCNksDVKf9k3AyxjW3r1qPf")
-                .on('success', function (result) {
-                    //document.write("Balance " + result.account_data.Balance + "<br>");
 
-                    bridge.callHandler('rippleRemoteConnectedCallback', result, function(response) {
-                                       //document.write("Connected response: " + response + "<br>");
-                                       })
-                    })
-                .on('error', function (result) {
-                    console.error(result);
-                    })
-                .request();
-
-                remote.on('ledger_closed', function (ledger) {
-                              bridge.callHandler('rippleRemoteLedgerClosedCallback', ledger, function(response) {
-                                                 })
-                              });
-                    });
+                // remote.on('ledger_closed', function (ledger) {
+                //               bridge.callHandler('rippleRemoteLedgerClosedCallback', ledger, function(response) {
+                //               })
+                // });
+    });
 }

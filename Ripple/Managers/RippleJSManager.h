@@ -12,8 +12,8 @@
 
 +(RippleJSManager*)shared;
 
--(NSString*)rippleHTML;
-
 -(void)setLog:(UITextView*)textView;
+
+-(void)accountInformation;
 
 @end
