@@ -25,7 +25,17 @@
 
 -(IBAction)buttonLogin:(id)sender
 {
-    [[RippleJSManager shared] login];
+    [[RippleJSManager shared] login:@"ripplelibtest" andPassword:@"TbEz3Rg6qKkNr72r" withBlock:^(NSError *error) {
+        if (error) {
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: @"Could not login"
+                                  message: error.localizedDescription
+                                  delegate: nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }];
 }
 
 - (void)viewDidLoad

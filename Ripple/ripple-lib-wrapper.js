@@ -32,8 +32,6 @@ function onBridgeReady(event) {
 		.request();
 	})
 
-
-
 	bridge.registerHandler('request_wallet_accounts', function(data, responseCallback) {
 		remote.request_wallet_accounts(data['seed'])
 		.on('success', function (result) {
@@ -98,7 +96,14 @@ function onBridgeReady(event) {
 	})
 
 
-
+	bridge.registerHandler('sjcl_decrypt', function(data, responseCallback) {
+		try {
+			responseCallback(JSON.parse(sjcl.decrypt(data.key, data.decrypt)))
+		}
+		catch (e) {
+			responseCallback(null);
+		}
+	})
 
 	remote.on('connected', function () {
 		bridge.callHandler('connected', null, function(response) {

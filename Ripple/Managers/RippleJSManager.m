@@ -12,6 +12,10 @@
 #import "RPAccountData.h"
 #import "RPLedgerClosed.h"
 #import "RPError.h"
+#import "RPVaultClient.h"
+#import "NSString+Hashes.h"
+#import "Base64.h"
+#import "AESCrypt.h"
 
 #define HTML_BEGIN @"<!DOCTYPE html>\
 <html lang=\"en\">\
@@ -48,7 +52,12 @@
     
     path = [[NSBundle mainBundle] pathForResource:@"ripple" ofType:@"js"];
     contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    [html appendFormat:@"<script>%@</script>", contents];
+    path = nil;
+    contents = nil;
     
+    path = [[NSBundle mainBundle] pathForResource:@"sjcl" ofType:@"js"];
+    contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     [html appendFormat:@"<script>%@</script>", contents];
     path = nil;
     contents = nil;
@@ -179,17 +188,64 @@
     return error;
 }
 
-
--(void)login
+-(void)login:(NSString*)username andPassword:(NSString*)password withBlock:(void(^)(NSError* error))block
 {
-    [self requestWalletAccounts];
+    // Normalize
+    username = [username lowercaseString];
+    
+    NSString * beforeHash = [NSString stringWithFormat:@"%@%@",username,password];
+    NSString * afterHash = [beforeHash sha256];
+    
+    NSString * path = [NSString stringWithFormat:@"/%@", afterHash];
+    
+    [[RPVaultClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (responseObject && ![responseObject isKindOfClass:[NSNull class]]) {
+            // Login correct
+            NSString * response = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+            NSString * decodedResponse = [response base64DecodedString];
+            NSLog(@"%@: login success: %@", self.class.description, decodedResponse);
+            
+            NSString * key = [NSString stringWithFormat:@"%d|%@%@",username.length, username,password];
+            //NSLog(@"%@: key: %@", self.class.description, key);
+            
+            // Decrypt
+            [_bridge callHandler:@"sjcl_decrypt" data:@{@"key": key,@"decrypt": decodedResponse} responseCallback:^(id responseData) {
+                NSLog(@"decrypt_blob response: %@", responseData);
+                if (responseData && ![responseData isKindOfClass:[NSNull class]]) {
+                    // Success
+                    block(nil);
+                }
+                else {
+                    // Failed
+                    NSError * error = [NSError errorWithDomain:@"login" code:1 userInfo:@{NSLocalizedDescriptionKey: @"Invalid username or password"}];
+                    block(error);
+                }
+            }];
+        }
+        else {
+            // Login blobvault failed
+            NSLog(@"%@: login failed. Invalid username or password", self.class.description);
+            NSError * error = [NSError errorWithDomain:@"login" code:1 userInfo:@{NSLocalizedDescriptionKey: @"Invalid username or password"}];
+            block(error);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@: login failed: %@",self.class.description, error.localizedDescription);
+        block(error);
+    }];
+    
+    //[self requestWalletAccounts];
     //[self subscribeWalletAddress];
-    [self accountInfo];
-    [self accountLines];
-    [self accountOffers];
+    //[self accountInfo];
+    //[self accountLines];
+    //[self accountOffers];
     //[self accountTx];
 }
 
+
+-(void)decryptBlob:(NSString*)blobg withUsername:(NSString*)username andPassword:(NSString*)password
+{
+    
+}
 
 -(void)requestWalletAccounts
 {
@@ -280,19 +336,20 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    NSLog(@"%@: webView: shouldStartLoadWithRequest", self.class.description);
     return YES;
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    
+    NSLog(@"%@: webViewDidStartLoad", self.class.description);
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    
+    NSLog(@"%@: webViewDidStartLoad", self.class.description);
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    
+    NSLog(@"%@: webView: didFailLoadWithError", self.class.description);
 }
 
 
