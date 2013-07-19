@@ -109,30 +109,30 @@ function onBridgeReady(event) {
 		bridge.callHandler('connected', null, function(response) {
 		})
 
-		// Subscribe
-		remote.request_subscribe(["ledger"])
-		.on('success', function (result) {
-			bridge.callHandler('subscribe_ledger', result, function(response) {
-			})
-		})
-		.on('error', function (result) {
-			console.error(result)
-			bridge.callHandler('subscribe_ledger_error', result, function(response) {
-			})
-		})
-		.request();
+		// // Subscribe
+		// remote.request_subscribe(["ledger"])
+		// .on('success', function (result) {
+		// 	bridge.callHandler('subscribe_ledger', result, function(response) {
+		// 	})
+		// })
+		// .on('error', function (result) {
+		// 	console.error(result)
+		// 	bridge.callHandler('subscribe_ledger_error', result, function(response) {
+		// 	})
+		// })
+		// .request();
 
-		remote.request_subscribe(["server"])
-		.on('success', function (result) {
-			bridge.callHandler('subscribe_server', result, function(response) {
-			})
-		})
-		.on('error', function (result) {
-			console.error(result)
-			bridge.callHandler('subscribe_server_error', result, function(response) {
-			})
-		})
-		.request();
+		// remote.request_subscribe(["server"])
+		// .on('success', function (result) {
+		// 	bridge.callHandler('subscribe_server', result, function(response) {
+		// 	})
+		// })
+		// .on('error', function (result) {
+		// 	console.error(result)
+		// 	bridge.callHandler('subscribe_server_error', result, function(response) {
+		// 	})
+		// })
+		// .request();
 	})
 
 	bridge.registerHandler('connect', function(data, responseCallback) {
@@ -145,10 +145,10 @@ function onBridgeReady(event) {
 	//   })
 	// });
 
-  // remote.on('disconnected', function () {
-  //   bridge.callHandler('disconnected', null, function(response) {
-  //   })
-  // })
+	remote.on('disconnected', function () {
+		bridge.callHandler('disconnected', null, function(response) {
+		})
+	})
 
 
 

@@ -37,6 +37,8 @@
     
     RPAccountData * accountData;
     BOOL isConnected;
+    
+    NSDictionary * blobData;
 }
 
 @end
@@ -210,13 +212,15 @@
             
             // Decrypt
             [_bridge callHandler:@"sjcl_decrypt" data:@{@"key": key,@"decrypt": decodedResponse} responseCallback:^(id responseData) {
-                NSLog(@"decrypt_blob response: %@", responseData);
                 if (responseData && ![responseData isKindOfClass:[NSNull class]]) {
                     // Success
+                    blobData = responseData;
+                    NSLog(@"Blob: %@", blobData);
                     block(nil);
                 }
                 else {
                     // Failed
+                    NSLog(@"decrypt_blob failed response: %@", responseData);
                     NSError * error = [NSError errorWithDomain:@"login" code:1 userInfo:@{NSLocalizedDescriptionKey: @"Invalid username or password"}];
                     block(error);
                 }
