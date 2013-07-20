@@ -8,7 +8,6 @@
 
 #import "RPVaultClient.h"
 #import "AFJSONRequestOperation.h"
-#import "RPGlobals.h"
 
 @implementation RPVaultClient
 
