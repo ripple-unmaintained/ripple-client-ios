@@ -88,6 +88,22 @@ function onBridgeReady(event) {
 	})
 
 
+
+	// Sending payment
+	// Find payment path
+	bridge.registerHandler('request_ripple_find_path', function(data, responseCallback) {
+		remote.request_ripple_path_find(data.src_account, data.dst_account, data.dst_amount)
+		.on('success', function (result) {
+			responseCallback(result)
+		})
+		.on('error', function (result) {
+			console.error(result)
+			responseCallback(result)
+		})
+		.request();
+	})
+
+
 	// Not yet needed for iOS app
 	// bridge.registerHandler('account_offers', function(data, responseCallback) {
 	// 	remote.set_secret(data.account, data.secret);

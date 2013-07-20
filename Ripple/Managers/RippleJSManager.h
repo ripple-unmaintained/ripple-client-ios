@@ -17,4 +17,6 @@
 
 -(void)login:(NSString*)username andPassword:(NSString*)password withBlock:(void(^)(NSError* error))block;
 
+-(void)rippleFindPath:(NSDictionary*)params;
+
 @end

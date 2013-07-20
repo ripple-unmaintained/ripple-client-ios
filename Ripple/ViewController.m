@@ -21,6 +21,12 @@
 -(IBAction)buttonPressed:(id)sender
 {
     //[[RippleJSManager shared] accountInfo];
+    NSDictionary * params = @{@"src_account": @"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96",
+                              @"dst_account": @"rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx",
+                              @"dst_amount": @"5000000",
+                              }; //@"src_currencies": @""
+    
+    [[RippleJSManager shared] rippleFindPath:params];
 }
 
 -(IBAction)buttonLogin:(id)sender
