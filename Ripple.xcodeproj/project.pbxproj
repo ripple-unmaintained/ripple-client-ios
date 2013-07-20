@@ -58,6 +58,7 @@
 		2B5861921799EA1E00200D0C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2B58618B1799EA1E00200D0C /* README.md */; };
 		2B5861951799EC7000200D0C /* sjcl.js in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861941799EC7000200D0C /* sjcl.js */; };
 		2B5861961799EC7B00200D0C /* sjcl.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861941799EC7000200D0C /* sjcl.js */; };
+		2B586199179A0A8500200D0C /* RPAccountLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B586198179A0A8400200D0C /* RPAccountLine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,8 @@
 		2B58618A1799EA1E00200D0C /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		2B58618B1799EA1E00200D0C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		2B5861941799EC7000200D0C /* sjcl.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjcl.js; sourceTree = "<group>"; };
+		2B586197179A0A8400200D0C /* RPAccountLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPAccountLine.h; path = Objects/RPAccountLine.h; sourceTree = "<group>"; };
+		2B586198179A0A8400200D0C /* RPAccountLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPAccountLine.m; path = Objects/RPAccountLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +313,8 @@
 				2B5861471797879700200D0C /* RPLedgerClosed.m */,
 				2B58614B1797B83300200D0C /* RPError.h */,
 				2B58614C1797B83400200D0C /* RPError.m */,
+				2B586197179A0A8400200D0C /* RPAccountLine.h */,
+				2B586198179A0A8400200D0C /* RPAccountLine.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -567,6 +572,7 @@
 				2B5861901799EA1E00200D0C /* NSData+CommonCrypto.m in Sources */,
 				2B5861911799EA1E00200D0C /* NSString+Base64.m in Sources */,
 				2B5861951799EC7000200D0C /* sjcl.js in Sources */,
+				2B586199179A0A8500200D0C /* RPAccountLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

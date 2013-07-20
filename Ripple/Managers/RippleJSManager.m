@@ -12,6 +12,7 @@
 #import "RPAccountData.h"
 #import "RPLedgerClosed.h"
 #import "RPError.h"
+#import "RPAccountLine.h"
 #import "RPVaultClient.h"
 #import "NSString+Hashes.h"
 #import "Base64.h"
@@ -35,10 +36,13 @@
     
     UITextView * _log;
     
-    RPAccountData * accountData;
+    
     BOOL isConnected;
+    BOOL isLoggedIn;
     
     NSDictionary * blobData;
+    RPAccountData * accountData;
+    NSMutableArray * accountLines;
 }
 
 @end
@@ -214,9 +218,25 @@
             [_bridge callHandler:@"sjcl_decrypt" data:@{@"key": key,@"decrypt": decodedResponse} responseCallback:^(id responseData) {
                 if (responseData && ![responseData isKindOfClass:[NSNull class]]) {
                     // Success
+                    NSLog(@"New Blob: %@", blobData);
                     blobData = responseData;
-                    NSLog(@"Blob: %@", blobData);
                     block(nil);
+                    
+                    [self loggedIn];
+                    
+                    /*
+                     Example blob
+                    {
+                        "account_id" = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+                        contacts =     (
+                        );
+                        "master_seed" = snShK2SuSqw7VjAzGKzT5xc1Qyp4K;
+                        "preferred_issuer" =     {
+                        };
+                        "preferred_second_issuer" =     {
+                        };
+                    }
+                    */
                 }
                 else {
                     // Failed
@@ -245,11 +265,16 @@
     //[self accountTx];
 }
 
-
--(void)decryptBlob:(NSString*)blobg withUsername:(NSString*)username andPassword:(NSString*)password
+-(void)loggedIn
 {
+    isLoggedIn = YES;
+    NSDictionary * params = @{@"account": [blobData objectForKey:@"account_id"],
+                              @"secret": [blobData objectForKey:@"master_seed"]};
     
+    [self accountLines:params];
+    [self accountInfo:params];
 }
+
 
 -(void)requestWalletAccounts
 {
@@ -266,9 +291,9 @@
 }
 
 
--(void)accountInfo
+-(void)accountInfo:(NSDictionary*)params
 {
-    [_bridge callHandler:@"account_info" data:[NSDictionary dictionaryWithObject:@"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96" forKey:@"ripple_address"] responseCallback:^(id responseData) {
+    [_bridge callHandler:@"account_info" data:params responseCallback:^(id responseData) {
         NSLog(@"accountInformation response: %@", responseData);
         
         RPError * error = [self checkForError:responseData];
@@ -297,25 +322,35 @@
     }];
 }
 
--(void)accountLines
+-(void)accountLines:(NSDictionary*)params
 {
-    [_bridge callHandler:@"account_lines" data:[NSDictionary dictionaryWithObject:@"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96" forKey:@"ripple_address"] responseCallback:^(id responseData) {
+    [_bridge callHandler:@"account_lines" data:params responseCallback:^(id responseData) {
         NSLog(@"accountLines response: %@", responseData);
+        if (responseData && [responseData isKindOfClass:[NSDictionary class]]) {
+            NSArray * lines = [responseData objectForKey:@"lines"];
+            if (lines && [lines isKindOfClass:[NSArray class]]) {
+                accountLines = [NSMutableArray arrayWithCapacity:lines.count];
+                for (NSDictionary * line in lines) {
+                    RPAccountLine * obj = [RPAccountLine new];
+                    [obj setDictionary:line];
+                    [accountLines addObject:obj];
+                }
+            }
+        }
+        // TODO: Handle errors
     }];
 }
 
-
--(void)accountTx
+-(void)accountTx:(NSDictionary*)params
 {
-    [_bridge callHandler:@"account_tx" data:[NSDictionary dictionaryWithObject:@"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96" forKey:@"ripple_address"] responseCallback:^(id responseData) {
-        NSLog(@"accountTx response: %@", responseData);
-    }];
-}
+    [_bridge callHandler:@"account_tx" data:params responseCallback:^(id responseData) {
+        NSLog(@"account_tx response: %@", responseData);
+    }];}
 
--(void)accountOffers
+-(void)accountOffers:(NSDictionary*)params
 {
-    [_bridge callHandler:@"account_offers" data:[NSDictionary dictionaryWithObject:@"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96" forKey:@"ripple_address"] responseCallback:^(id responseData) {
-        NSLog(@"accountOffers response: %@", responseData);
+    [_bridge callHandler:@"account_offers" data:params responseCallback:^(id responseData) {
+        NSLog(@"account_offers response: %@", responseData);
     }];
 }
 
@@ -326,11 +361,6 @@
     }];
 }
 
-//-(void)setWebView:(UIWebView*)webView
-//{
-//    _webView = webView;
-//    [self setupJavascriptBridge];
-//}
 
 -(void)setLog:(UITextView*)textView
 {
@@ -371,6 +401,7 @@
     self = [super init];
     if (self) {
         isConnected = NO;
+        isLoggedIn = NO;
         
         _webView = [[UIWebView alloc] initWithFrame:CGRectZero];
         _webView.delegate = self;

@@ -14,7 +14,7 @@
 
 -(void)setLog:(UITextView*)textView;
 
--(void)accountInfo;
+
 -(void)login:(NSString*)username andPassword:(NSString*)password withBlock:(void(^)(NSError* error))block;
 
 @end

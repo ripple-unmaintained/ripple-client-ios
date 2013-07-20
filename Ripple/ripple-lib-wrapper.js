@@ -47,7 +47,8 @@ function onBridgeReady(event) {
 
 
 	bridge.registerHandler('account_info', function(data, responseCallback) {
-		remote.request_account_info(data['ripple_address'])
+		remote.set_secret(data.account, data.secret);
+		remote.request_account_info(data.account)
 		.on('success', function (result) {
 			responseCallback(result)
 		})
@@ -59,7 +60,8 @@ function onBridgeReady(event) {
 	})
 
 	bridge.registerHandler('account_lines', function(data, responseCallback) {
-		remote.request_account_lines(data['ripple_address'])
+		remote.set_secret(data.account, data.secret);
+		remote.request_account_lines(data.account)
 		.on('success', function (result) {
 			responseCallback(result)
 		})
@@ -71,7 +73,8 @@ function onBridgeReady(event) {
 	})
 
 	bridge.registerHandler('account_tx', function(data, responseCallback) {
-		remote.request_account_tx(data['ripple_address'])
+		remote.set_secret(data.account, data.secret);
+		remote.request_account_tx(data.account)
 		.on('success', function (result) {
 			responseCallback(result)
 		})
@@ -84,7 +87,22 @@ function onBridgeReady(event) {
 
 
 	bridge.registerHandler('account_offers', function(data, responseCallback) {
-		remote.request_account_offers(data['ripple_address'])
+		remote.set_secret(data.account, data.secret);
+		remote.request_account_offers(data.account)
+		.on('success', function (result) {
+			responseCallback(result)
+		})
+		.on('error', function (result) {
+			console.error(result)
+			responseCallback(result)
+		})
+		.request();
+	})
+
+	bridge.registerHandler('subscribe_logged_in', function(data, responseCallback) {
+		remote.set_secret(data.account, data.secret);
+		// Subscribe
+		remote.request_subscribe(["ledger","server"])
 		.on('success', function (result) {
 			responseCallback(result)
 		})
@@ -108,31 +126,6 @@ function onBridgeReady(event) {
 	remote.on('connected', function () {
 		bridge.callHandler('connected', null, function(response) {
 		})
-
-		// // Subscribe
-		// remote.request_subscribe(["ledger"])
-		// .on('success', function (result) {
-		// 	bridge.callHandler('subscribe_ledger', result, function(response) {
-		// 	})
-		// })
-		// .on('error', function (result) {
-		// 	console.error(result)
-		// 	bridge.callHandler('subscribe_ledger_error', result, function(response) {
-		// 	})
-		// })
-		// .request();
-
-		// remote.request_subscribe(["server"])
-		// .on('success', function (result) {
-		// 	bridge.callHandler('subscribe_server', result, function(response) {
-		// 	})
-		// })
-		// .on('error', function (result) {
-		// 	console.error(result)
-		// 	bridge.callHandler('subscribe_server_error', result, function(response) {
-		// 	})
-		// })
-		// .request();
 	})
 
 	bridge.registerHandler('connect', function(data, responseCallback) {
