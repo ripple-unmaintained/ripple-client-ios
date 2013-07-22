@@ -30,14 +30,14 @@
 //    [[RippleJSManager shared] rippleFindPath:params];
     
 
-    NSDictionary * params = @{@"account": @"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96",
-                              @"recipient_address": @"rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx",
-                              @"currency": @"XRP",
-                              @"amount": @"1",
-                              @"secret": @"snShK2SuSqw7VjAzGKzT5xc1Qyp4K"
-                              };
-    
-    [[RippleJSManager shared] rippleSendTransaction:params];
+//    NSDictionary * params = @{@"account": @"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96",
+//                              @"recipient_address": @"rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx",
+//                              @"currency": @"XRP",
+//                              @"amount": @"1",
+//                              @"secret": @"snShK2SuSqw7VjAzGKzT5xc1Qyp4K"
+//                              };
+//    
+    //[[RippleJSManager shared] rippleSendTransaction:params];
 }
 
 -(IBAction)buttonLogin:(id)sender

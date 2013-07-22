@@ -39,22 +39,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
-    NSNumber * ammount = [balances objectForKey:key];
+    NSNumber * amount = [balances objectForKey:key];
+    
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+    [formatter setMaximumFractionDigits:2]; // Set this if you need 2 digits
     
     UITableViewCell * cell;
     cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", key, ammount.stringValue];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:amount], key];
     return cell;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
+    if ([key isEqualToString:@"XRP"]) {
+        // Send XRP only
+        [self performSegueWithIdentifier:@"Send" sender:nil];
     }
-    return self;
 }
+
 
 - (void)viewDidLoad
 {

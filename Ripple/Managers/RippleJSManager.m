@@ -18,6 +18,7 @@
 #import "Base64.h"
 #import "AESCrypt.h"
 #import "SSKeychain.h"
+#import "RPBlobData.h"
 
 #define HTML_BEGIN @"<!DOCTYPE html>\
 <html lang=\"en\">\
@@ -41,7 +42,7 @@
     BOOL isConnected;
     BOOL isLoggedIn;
     
-    NSDictionary * blobData;
+    RPBlobData * blobData;
     RPAccountData * accountData;
     NSMutableArray * accountLines;
 }
@@ -223,8 +224,10 @@
             [_bridge callHandler:@"sjcl_decrypt" data:@{@"key": key,@"decrypt": decodedResponse} responseCallback:^(id responseData) {
                 if (responseData && ![responseData isKindOfClass:[NSNull class]]) {
                     // Success
-                    NSLog(@"New Blob: %@", blobData);
-                    blobData = responseData;
+                    NSLog(@"New Blob: %@", responseData);
+                    RPBlobData * blob = [RPBlobData new];
+                    [blob setDictionary:responseData];
+                    blobData = blob;
                     block(nil);
                     
                     [self loggedIn];
@@ -314,11 +317,11 @@
     // TODO: Check for connected?
     
     isLoggedIn = YES;
-    NSDictionary * params = @{@"account": [blobData objectForKey:@"account_id"],
-                              @"secret": [blobData objectForKey:@"master_seed"],
+    NSDictionary * params = @{@"account": blobData.account_id,
+                              @"secret": blobData.master_seed,
                               
                               // accountTx
-                              @"params": @{@"account": [blobData objectForKey:@"account_id"],
+                              @"params": @{@"account": blobData.account_id,
                                           @"ledger_index_min": [NSNumber numberWithInt:-1],
                                           @"descending": @YES,
                                           @"limit": [NSNumber numberWithInt:MAX_TRANSACTIONS],
@@ -864,7 +867,7 @@
 }
 
 
--(void)rippleSendTransaction:(NSDictionary*)params
+-(void)rippleSendTransactionAmount:(NSNumber*)amount toRecipient:(NSString*)recipient withBlock:(void(^)(NSError* error))block
 {
     /*
     {
@@ -908,9 +911,26 @@
     }
     */
     
+    if (!amount || !recipient || !blobData) {
+        return;
+    }
+    
+    NSDictionary * params = @{@"account": blobData.account_id,
+                              @"recipient_address": recipient,
+                              @"currency": @"XRP",
+                              @"amount": amount.stringValue,
+                              @"secret": blobData.master_seed
+                              };
     
     [_bridge callHandler:@"send_transaction" data:params responseCallback:^(id responseData) {
         NSLog(@"send_transaction response: %@", responseData);
+        NSError * error;
+        NSNumber * returnCode = [responseData objectForKey:@"engine_result_code"];
+        if (returnCode.integerValue != 0) {
+            NSString * errorMessage = [responseData objectForKey:@"engine_result_message"];
+            error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+        }
+        block(error);
     }];
 }
 

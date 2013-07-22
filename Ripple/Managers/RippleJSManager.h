@@ -28,7 +28,8 @@
 -(void)logout;
 
 -(void)rippleFindPath:(NSDictionary*)params;
--(void)rippleSendTransaction:(NSDictionary*)params;
+-(void)rippleSendTransactionAmount:(NSNumber*)amount toRecipient:(NSString*)recipient withBlock:(void(^)(NSError* error))block;
+
 -(BOOL)isLoggedIn;
 
 @end

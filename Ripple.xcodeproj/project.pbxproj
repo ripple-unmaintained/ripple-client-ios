@@ -19,6 +19,8 @@
 		2B201DC4179D27C400B52E90 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DC1179D27C400B52E90 /* SSKeychainQuery.m */; };
 		2B201DC6179D29D000B52E90 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B201DC5179D29D000B52E90 /* Security.framework */; };
 		2B201DC9179D2B9F00B52E90 /* BalancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DC8179D2B9F00B52E90 /* BalancesViewController.m */; };
+		2B201DCC179D36E600B52E90 /* SendTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DCB179D36E600B52E90 /* SendTransactionViewController.m */; };
+		2B201DCF179D3C1500B52E90 /* RPBlobData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DCE179D3C1500B52E90 /* RPBlobData.m */; };
 		2B5860BF179764A300200D0C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5860BE179764A300200D0C /* UIKit.framework */; };
 		2B5860C1179764A300200D0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5860C0179764A300200D0C /* Foundation.framework */; };
 		2B5860C3179764A300200D0C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5860C2179764A300200D0C /* CoreGraphics.framework */; };
@@ -99,6 +101,10 @@
 		2B201DC5179D29D000B52E90 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2B201DC7179D2B9F00B52E90 /* BalancesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BalancesViewController.h; path = iPhoneViewControllers/BalancesViewController.h; sourceTree = "<group>"; };
 		2B201DC8179D2B9F00B52E90 /* BalancesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BalancesViewController.m; path = iPhoneViewControllers/BalancesViewController.m; sourceTree = "<group>"; };
+		2B201DCA179D36E600B52E90 /* SendTransactionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendTransactionViewController.h; path = iPhoneViewControllers/SendTransactionViewController.h; sourceTree = "<group>"; };
+		2B201DCB179D36E600B52E90 /* SendTransactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendTransactionViewController.m; path = iPhoneViewControllers/SendTransactionViewController.m; sourceTree = "<group>"; };
+		2B201DCD179D3C1500B52E90 /* RPBlobData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPBlobData.h; path = Objects/RPBlobData.h; sourceTree = "<group>"; };
+		2B201DCE179D3C1500B52E90 /* RPBlobData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPBlobData.m; path = Objects/RPBlobData.m; sourceTree = "<group>"; };
 		2B5860BB179764A300200D0C /* Ripple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ripple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5860BE179764A300200D0C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2B5860C0179764A300200D0C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -227,6 +233,8 @@
 				2B201D11179D236F00B52E90 /* LoginViewController.m */,
 				2B201DC7179D2B9F00B52E90 /* BalancesViewController.h */,
 				2B201DC8179D2B9F00B52E90 /* BalancesViewController.m */,
+				2B201DCA179D36E600B52E90 /* SendTransactionViewController.h */,
+				2B201DCB179D36E600B52E90 /* SendTransactionViewController.m */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -258,7 +266,6 @@
 		2B5860B2179764A300200D0C = {
 			isa = PBXGroup;
 			children = (
-				2B201DC5179D29D000B52E90 /* Security.framework */,
 				2B201D0A179D22AE00B52E90 /* Images */,
 				2B5861001797678C00200D0C /* Libraries */,
 				2B5860C4179764A300200D0C /* Ripple */,
@@ -280,6 +287,7 @@
 		2B5860BD179764A300200D0C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B201DC5179D29D000B52E90 /* Security.framework */,
 				2B201D1B179D265A00B52E90 /* QuartzCore.framework */,
 				2B58619C179A193000200D0C /* MobileCoreServices.framework */,
 				2B58619A179A192A00200D0C /* SystemConfiguration.framework */,
@@ -400,6 +408,8 @@
 				2B58614C1797B83400200D0C /* RPError.m */,
 				2B586197179A0A8400200D0C /* RPAccountLine.h */,
 				2B586198179A0A8400200D0C /* RPAccountLine.m */,
+				2B201DCD179D3C1500B52E90 /* RPBlobData.h */,
+				2B201DCE179D3C1500B52E90 /* RPBlobData.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -664,6 +674,8 @@
 				2B201DC3179D27C400B52E90 /* SSKeychain.m in Sources */,
 				2B201DC4179D27C400B52E90 /* SSKeychainQuery.m in Sources */,
 				2B201DC9179D2B9F00B52E90 /* BalancesViewController.m in Sources */,
+				2B201DCC179D36E600B52E90 /* SendTransactionViewController.m in Sources */,
+				2B201DCF179D3C1500B52E90 /* RPBlobData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
