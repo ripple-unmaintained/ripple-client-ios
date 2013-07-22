@@ -4,7 +4,7 @@ window.onerror = function(err) {
 document.addEventListener('WebViewJavascriptBridgeReady', onBridgeReady, false)
 function onBridgeReady(event) {
 	var bridge = event.bridge
-	var account
+	//var account
 	bridge.init(function(message, responseCallback) {
                 //log('JS got a message', message)
                 var data = { 'Javascript Responds':'Wee!' }
@@ -92,6 +92,7 @@ function onBridgeReady(event) {
 	// Sending payment
 	// Find payment path
 	bridge.registerHandler('request_ripple_find_path', function(data, responseCallback) {
+		remote.set_secret(data.account, data.secret);
 		remote.request_ripple_path_find(data.src_account, data.dst_account, data.dst_amount)
 		.on('success', function (result) {
 			responseCallback(result)
@@ -101,6 +102,71 @@ function onBridgeReady(event) {
 			responseCallback(result)
 		})
 		.request();
+	})
+
+	// Submit payment
+	// {"currency":"XRP","amount":1000000,"recipient_address":"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B","account":"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96"}
+	bridge.registerHandler('send_transaction', function(data, responseCallback) {
+		//var currency = $scope.send.currency.slice(0, 3).toUpperCase();
+		//var amount = Amount.from_human(""+$scope.send.amount+" "+currency);
+		//var addr = $scope.send.recipient_address;
+		//var dt = $scope.send.dt ? $scope.send.dt : webutil.getDestTagFromAddress($scope.send.recipient);
+
+		remote.set_secret(data.account, data.secret);
+
+
+		var currency = data.currency.slice(0, 3).toUpperCase();
+		var amount = ripple.Amount.from_human(""+data.amount+" "+currency)
+		var addr = data.recipient_address
+		//var dt =
+
+		//responseCallback(amount.to_json())
+
+		//amount.set_issuer(addr);
+
+		var tx = remote.transaction()
+		// What is a source tag?
+		// what is a destination tag?
+
+		tx.payment(data.account, addr, amount.to_json())
+
+		//responseCallback("AFTER")
+
+		//tx.source_tag(TODO)
+		//tx.destination_tag(TODO)
+		tx.payment(data.account, addr, amount.to_json())
+		tx.build_path(true);
+
+		//responseCallback("AFTER")
+
+	    // if ($scope.send.alt) {
+	    // 	tx.send_max($scope.send.alt.send_max);
+	    // 	tx.paths($scope.send.alt.paths);
+	    // } else {
+	    // 	if (!amount.is_native()) {
+	    // 		tx.build_path(true);
+	    // 	}
+	    // }
+	    tx.on('success', function (res) {
+	    	responseCallback(res)
+	    });
+	    tx.on('error', function (res) {
+	    	responseCallback(res)
+	    });
+	    tx.submit();
+
+
+
+
+	    // remote.request_submit()
+	    // .on('success', function (result) {
+	    // 	responseCallback(result)
+	    // })
+	    // .on('error', function (result) {
+	    // 	console.error(result)
+	    // 	responseCallback(result)
+	    // })
+	    // .request();
 	})
 
 

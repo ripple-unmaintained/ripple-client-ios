@@ -20,13 +20,24 @@
 
 -(IBAction)buttonPressed:(id)sender
 {
-    //[[RippleJSManager shared] accountInfo];
-    NSDictionary * params = @{@"src_account": @"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96",
-                              @"dst_account": @"rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx",
-                              @"dst_amount": @"5000000",
-                              }; //@"src_currencies": @""
+//    //[[RippleJSManager shared] accountInfo];
+//    NSDictionary * params = @{@"src_account": @"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96",
+//                              @"dst_account": @"rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx",
+//                              @"dst_amount": @"5000000",
+//                              @"secret": @"snShK2SuSqw7VjAzGKzT5xc1Qyp4K"
+//                              }; //@"src_currencies": @""
+//    
+//    [[RippleJSManager shared] rippleFindPath:params];
     
-    [[RippleJSManager shared] rippleFindPath:params];
+
+    NSDictionary * params = @{@"account": @"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96",
+                              @"recipient_address": @"rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx",
+                              @"currency": @"XRP",
+                              @"amount": @"1",
+                              @"secret": @"snShK2SuSqw7VjAzGKzT5xc1Qyp4K"
+                              };
+    
+    [[RippleJSManager shared] rippleSendTransaction:params];
 }
 
 -(IBAction)buttonLogin:(id)sender
