@@ -1,0 +1,89 @@
+//
+//  LoginViewController.m
+//  Ripple
+//
+//  Created by Kevin Johnson on 7/22/13.
+//  Copyright (c) 2013 OpenCoin Inc. All rights reserved.
+//
+
+#import "LoginViewController.h"
+#import "RippleJSManager.h"
+#import "SVProgressHUD.h"
+
+@interface LoginViewController () <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField * textFieldUsername;
+@property (weak, nonatomic) IBOutlet UITextField * textFieldPassword;
+
+@end
+
+@implementation LoginViewController
+
+-(void)login
+{
+    [SVProgressHUD showWithStatus:@"Logging in..." maskType:SVProgressHUDMaskTypeGradient];
+    [[RippleJSManager shared] login:self.textFieldUsername.text andPassword:self.textFieldPassword.text withBlock:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        if (!error) {
+            [self performSegueWithIdentifier:@"Next" sender:nil];
+        }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: @"Could not login"
+                                  message: error.localizedDescription
+                                  delegate: nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    if (textField == self.textFieldUsername) {
+        [self.textFieldPassword becomeFirstResponder];
+    }
+    else if (textField == self.textFieldPassword) {
+        [self login];
+    }
+    return YES;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([[RippleJSManager shared] isLoggedIn]) {
+        [self performSegueWithIdentifier:@"Next" sender:nil];
+    }
+    else {
+        [self.textFieldUsername becomeFirstResponder];
+    }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    
+    self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

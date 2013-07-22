@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B201D0D179D22AE00B52E90 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D0B179D22AE00B52E90 /* Splash.png */; };
+		2B201D0E179D22AE00B52E90 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D0C179D22AE00B52E90 /* Splash@2x.png */; };
+		2B201D12179D236F00B52E90 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201D11179D236F00B52E90 /* LoginViewController.m */; };
+		2B201D18179D25C300B52E90 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D14179D25C300B52E90 /* .gitignore */; };
+		2B201D19179D25C300B52E90 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D15179D25C300B52E90 /* SVProgressHUD.bundle */; };
+		2B201D1A179D25C300B52E90 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201D17179D25C300B52E90 /* SVProgressHUD.m */; };
+		2B201D1C179D265A00B52E90 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B201D1B179D265A00B52E90 /* QuartzCore.framework */; };
+		2B201DC2179D27C400B52E90 /* SSKeychain.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2B201DBC179D27C400B52E90 /* SSKeychain.strings */; };
+		2B201DC3179D27C400B52E90 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DBF179D27C400B52E90 /* SSKeychain.m */; };
+		2B201DC4179D27C400B52E90 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DC1179D27C400B52E90 /* SSKeychainQuery.m */; };
+		2B201DC6179D29D000B52E90 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B201DC5179D29D000B52E90 /* Security.framework */; };
+		2B201DC9179D2B9F00B52E90 /* BalancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DC8179D2B9F00B52E90 /* BalancesViewController.m */; };
 		2B5860BF179764A300200D0C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5860BE179764A300200D0C /* UIKit.framework */; };
 		2B5860C1179764A300200D0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5860C0179764A300200D0C /* Foundation.framework */; };
 		2B5860C3179764A300200D0C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5860C2179764A300200D0C /* CoreGraphics.framework */; };
@@ -70,6 +82,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B201D0B179D22AE00B52E90 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
+		2B201D0C179D22AE00B52E90 /* Splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Splash@2x.png"; sourceTree = "<group>"; };
+		2B201D10179D236F00B52E90 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = iPhoneViewControllers/LoginViewController.h; sourceTree = "<group>"; };
+		2B201D11179D236F00B52E90 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = iPhoneViewControllers/LoginViewController.m; sourceTree = "<group>"; };
+		2B201D14179D25C300B52E90 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2B201D15179D25C300B52E90 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		2B201D16179D25C300B52E90 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		2B201D17179D25C300B52E90 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		2B201D1B179D265A00B52E90 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2B201DBD179D27C400B52E90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
+		2B201DBE179D27C400B52E90 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		2B201DBF179D27C400B52E90 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		2B201DC0179D27C400B52E90 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
+		2B201DC1179D27C400B52E90 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
+		2B201DC5179D29D000B52E90 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		2B201DC7179D2B9F00B52E90 /* BalancesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BalancesViewController.h; path = iPhoneViewControllers/BalancesViewController.h; sourceTree = "<group>"; };
+		2B201DC8179D2B9F00B52E90 /* BalancesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BalancesViewController.m; path = iPhoneViewControllers/BalancesViewController.m; sourceTree = "<group>"; };
 		2B5860BB179764A300200D0C /* Ripple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ripple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5860BE179764A300200D0C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2B5860C0179764A300200D0C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -159,6 +188,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B201DC6179D29D000B52E90 /* Security.framework in Frameworks */,
+				2B201D1C179D265A00B52E90 /* QuartzCore.framework in Frameworks */,
 				2B58619D179A193000200D0C /* MobileCoreServices.framework in Frameworks */,
 				2B58619B179A192A00200D0C /* SystemConfiguration.framework in Frameworks */,
 				2B5860BF179764A300200D0C /* UIKit.framework in Frameworks */,
@@ -180,9 +211,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B201D0A179D22AE00B52E90 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2B201D0B179D22AE00B52E90 /* Splash.png */,
+				2B201D0C179D22AE00B52E90 /* Splash@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		2B201D0F179D235300B52E90 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				2B201D10179D236F00B52E90 /* LoginViewController.h */,
+				2B201D11179D236F00B52E90 /* LoginViewController.m */,
+				2B201DC7179D2B9F00B52E90 /* BalancesViewController.h */,
+				2B201DC8179D2B9F00B52E90 /* BalancesViewController.m */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		2B201D13179D25C300B52E90 /* SVProgressHUD-master */ = {
+			isa = PBXGroup;
+			children = (
+				2B201D14179D25C300B52E90 /* .gitignore */,
+				2B201D15179D25C300B52E90 /* SVProgressHUD.bundle */,
+				2B201D16179D25C300B52E90 /* SVProgressHUD.h */,
+				2B201D17179D25C300B52E90 /* SVProgressHUD.m */,
+			);
+			path = "SVProgressHUD-master";
+			sourceTree = "<group>";
+		};
+		2B201DBB179D27C400B52E90 /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				2B201DBC179D27C400B52E90 /* SSKeychain.strings */,
+				2B201DBE179D27C400B52E90 /* SSKeychain.h */,
+				2B201DBF179D27C400B52E90 /* SSKeychain.m */,
+				2B201DC0179D27C400B52E90 /* SSKeychainQuery.h */,
+				2B201DC1179D27C400B52E90 /* SSKeychainQuery.m */,
+			);
+			name = SSKeychain;
+			path = SSKeyChain/SSKeychain;
+			sourceTree = "<group>";
+		};
 		2B5860B2179764A300200D0C = {
 			isa = PBXGroup;
 			children = (
+				2B201DC5179D29D000B52E90 /* Security.framework */,
+				2B201D0A179D22AE00B52E90 /* Images */,
 				2B5861001797678C00200D0C /* Libraries */,
 				2B5860C4179764A300200D0C /* Ripple */,
 				2B5860EB179764A300200D0C /* RippleTests */,
@@ -203,6 +280,7 @@
 		2B5860BD179764A300200D0C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B201D1B179D265A00B52E90 /* QuartzCore.framework */,
 				2B58619C179A193000200D0C /* MobileCoreServices.framework */,
 				2B58619A179A192A00200D0C /* SystemConfiguration.framework */,
 				2B5860BE179764A300200D0C /* UIKit.framework */,
@@ -216,6 +294,7 @@
 		2B5860C4179764A300200D0C /* Ripple */ = {
 			isa = PBXGroup;
 			children = (
+				2B201D0F179D235300B52E90 /* iPhone */,
 				2B5861791799E44C00200D0C /* Globals */,
 				2B5861711798AB6700200D0C /* HTTP */,
 				2B58613E1797804400200D0C /* Objects */,
@@ -277,6 +356,8 @@
 		2B5861001797678C00200D0C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2B201DBB179D27C400B52E90 /* SSKeychain */,
+				2B201D13179D25C300B52E90 /* SVProgressHUD-master */,
 				2B5861931799EC6F00200D0C /* SJCL */,
 				2B5861801799EA1E00200D0C /* AESCrypt-ObjC-master */,
 				2B58617C1799E5DC00200D0C /* Base64 */,
@@ -512,6 +593,11 @@
 				2B58618C1799EA1E00200D0C /* .gitignore in Resources */,
 				2B58618E1799EA1E00200D0C /* LICENSE in Resources */,
 				2B5861921799EA1E00200D0C /* README.md in Resources */,
+				2B201D0D179D22AE00B52E90 /* Splash.png in Resources */,
+				2B201D0E179D22AE00B52E90 /* Splash@2x.png in Resources */,
+				2B201D18179D25C300B52E90 /* .gitignore in Resources */,
+				2B201D19179D25C300B52E90 /* SVProgressHUD.bundle in Resources */,
+				2B201DC2179D27C400B52E90 /* SSKeychain.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +659,11 @@
 				2B5861901799EA1E00200D0C /* NSData+CommonCrypto.m in Sources */,
 				2B5861911799EA1E00200D0C /* NSString+Base64.m in Sources */,
 				2B586199179A0A8500200D0C /* RPAccountLine.m in Sources */,
+				2B201D12179D236F00B52E90 /* LoginViewController.m in Sources */,
+				2B201D1A179D25C300B52E90 /* SVProgressHUD.m in Sources */,
+				2B201DC3179D27C400B52E90 /* SSKeychain.m in Sources */,
+				2B201DC4179D27C400B52E90 /* SSKeychainQuery.m in Sources */,
+				2B201DC9179D2B9F00B52E90 /* BalancesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,6 +686,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2B201DBC179D27C400B52E90 /* SSKeychain.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B201DBD179D27C400B52E90 /* en */,
+			);
+			name = SSKeychain.strings;
+			sourceTree = "<group>";
+		};
 		2B5860C7179764A300200D0C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -765,6 +864,7 @@
 				2B5860F8179764A300200D0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2B5860F9179764A300200D0C /* Build configuration list for PBXNativeTarget "RippleTests" */ = {
 			isa = XCConfigurationList;
@@ -773,6 +873,7 @@
 				2B5860FB179764A300200D0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

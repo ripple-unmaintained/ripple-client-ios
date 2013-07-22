@@ -8,7 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol RippleJSManagerBalanceDelegate <NSObject>
+
+@required
+-(void)RippleJSManagerBalances:(NSDictionary*)balances;
+
+@end
+
 @interface RippleJSManager : NSObject
+
+@property (weak ,nonatomic) id<RippleJSManagerBalanceDelegate> delegate_balances;
 
 +(RippleJSManager*)shared;
 
@@ -16,8 +25,10 @@
 
 
 -(void)login:(NSString*)username andPassword:(NSString*)password withBlock:(void(^)(NSError* error))block;
+-(void)logout;
 
 -(void)rippleFindPath:(NSDictionary*)params;
 -(void)rippleSendTransaction:(NSDictionary*)params;
+-(BOOL)isLoggedIn;
 
 @end

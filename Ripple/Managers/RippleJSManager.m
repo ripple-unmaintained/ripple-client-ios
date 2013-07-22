@@ -17,6 +17,7 @@
 #import "NSString+Hashes.h"
 #import "Base64.h"
 #import "AESCrypt.h"
+#import "SSKeychain.h"
 
 #define HTML_BEGIN @"<!DOCTYPE html>\
 <html lang=\"en\">\
@@ -194,10 +195,14 @@
     return error;
 }
 
+#define SSKEYCHAIN_SERVICE @"ripple"
+
 -(void)login:(NSString*)username andPassword:(NSString*)password withBlock:(void(^)(NSError* error))block
 {
     // Normalize
     username = [username lowercaseString];
+    
+    [SSKeychain setPassword:password forService:SSKEYCHAIN_SERVICE account:username];
     
     NSString * beforeHash = [NSString stringWithFormat:@"%@%@",username,password];
     NSString * afterHash = [beforeHash sha256];
@@ -242,6 +247,7 @@
                     // Failed
                     NSLog(@"decrypt_blob failed response: %@", responseData);
                     NSError * error = [NSError errorWithDomain:@"login" code:1 userInfo:@{NSLocalizedDescriptionKey: @"Invalid username or password"}];
+                    [self logout];
                     block(error);
                 }
             }];
@@ -250,12 +256,40 @@
             // Login blobvault failed
             NSLog(@"%@: login failed. Invalid username or password", self.class.description);
             NSError * error = [NSError errorWithDomain:@"login" code:1 userInfo:@{NSLocalizedDescriptionKey: @"Invalid username or password"}];
+            [self logout];
             block(error);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@: login failed: %@",self.class.description, error.localizedDescription);
+        [self logout];
         block(error);
     }];
+}
+
+-(void)checkForLogin
+{
+    NSArray * accounts = [SSKeychain allAccounts];
+    if (accounts.count > 0) {
+        NSDictionary * account = [accounts objectAtIndex:0];
+        NSString * username = [account objectForKey:@"acct"];
+        NSString * password = [SSKeychain passwordForService:SSKEYCHAIN_SERVICE account:username];
+        if (username && password && username.length > 0 && password.length > 0) {
+            [self login:username andPassword:password withBlock:^(NSError *error) {
+                
+            }];
+        }
+    }
+}
+
+-(BOOL)isLoggedIn
+{
+    NSArray * accounts = [SSKeychain allAccounts];
+    if (accounts.count > 0) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
 }
 
 -(void)logout
@@ -264,6 +298,12 @@
     blobData = nil;
     accountLines = nil;
     accountData = nil;
+    
+    NSArray * accounts = [SSKeychain allAccounts];
+    for (NSDictionary * dic in accounts) {
+        NSString * username = [dic objectForKey:@"acct"];
+        [SSKeychain deletePasswordForService:SSKEYCHAIN_SERVICE account:username];
+    }
 }
 
 #define MAX_TRANSACTIONS 10
@@ -287,7 +327,7 @@
     
     [self accountLines:params]; // IOU balances
     [self accountInfo:params];  // Ripple balance
-    [self accountTx:params];    // Last transactions
+    //[self accountTx:params];    // Last transactions
 }
 
 
@@ -304,6 +344,38 @@
 //        NSLog(@"subscribe_ripple_address response: %@", responseData);
 //    }];
 //}
+
+#define XRP_FACTOR 1000000
+
+-(void)processBalances
+{
+    NSMutableDictionary * balances = [NSMutableDictionary dictionary];
+    if (accountData) {
+        NSNumber * balance = [NSNumber numberWithUnsignedLongLong:(accountData.Balance.unsignedLongLongValue / XRP_FACTOR)];
+        [balances setObject:balance forKey:@"XRP"];
+    }
+    for (RPAccountLine * line in accountLines) {
+        NSNumber * balance = [balances objectForKey:line.currency];
+        if (balance) {
+            balance = [NSNumber numberWithDouble:(balance.doubleValue + line.balance.doubleValue)];
+        }
+        else {
+            balance = line.balance;
+        }
+        
+        [balances setObject:balance forKey:line.currency];
+    }
+    
+    if (self.delegate_balances && [self.delegate_balances respondsToSelector:@selector(RippleJSManagerBalances:)]) {
+        [self.delegate_balances RippleJSManagerBalances:balances];
+    }
+}
+
+-(void)setDelegate_balances:(id<RippleJSManagerBalanceDelegate>)delegate_balances
+{
+    _delegate_balances = delegate_balances;
+    [self processBalances];
+}
 
 
 -(void)accountInfo:(NSDictionary*)params
@@ -340,6 +412,8 @@
                 
                 
                 [self log:[NSString stringWithFormat:@"Balance XRP: %@", accountData.Balance]];
+                
+                [self processBalances];
             }
             else {
                 // Unknown object
@@ -387,6 +461,7 @@
                     
                     [self log:[NSString stringWithFormat:@"Balance %@: %@", obj.currency, obj.balance]];
                 }
+                [self processBalances];
             }
         }
         // TODO: Handle errors
@@ -888,6 +963,10 @@
         [self setupJavascriptBridge];
         
         [self connect];
+        
+        
+        // Check if loggedin
+        [self checkForLogin];
     }
     return self;
 }

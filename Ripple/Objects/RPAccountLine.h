@@ -11,7 +11,7 @@
 @interface RPAccountLine : NSObject
 
 @property (strong, nonatomic) NSString * account;
-@property (strong, nonatomic) NSString * balance;
+@property (strong, nonatomic) NSNumber * balance;
 @property (strong, nonatomic) NSString * currency;
 @property (strong, nonatomic) NSNumber * limit;
 @property (strong, nonatomic) NSNumber * limit_peer;
