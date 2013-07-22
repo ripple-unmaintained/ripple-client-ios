@@ -89,6 +89,20 @@
     _log.text = [NSString stringWithFormat:@"%@\n%@",data,_log.text];
 }
 
+-(void)updateNetworkStatus
+{
+    if (isConnected) {
+        if (self.delegate_network_status && [self.delegate_network_status respondsToSelector:@selector(RippleJSManagerConnected)]) {
+            [self.delegate_network_status RippleJSManagerConnected];
+        }
+    }
+    else {
+        if (self.delegate_network_status && [self.delegate_network_status respondsToSelector:@selector(RippleJSManagerDisconnected)]) {
+            [self.delegate_network_status RippleJSManagerDisconnected];
+        }
+    }
+}
+
 -(void)setupJavascriptBridge
 {
     [WebViewJavascriptBridge enableLogging];
@@ -105,6 +119,8 @@
         NSLog(@"connected called: %@", data);
         isConnected = YES;
         [self log:@"Connected"];
+        
+        [self updateNetworkStatus];
     }];
     
     // Disconnected from Ripple network
@@ -115,6 +131,8 @@
         
         // Try to connect again
         //[self connect];
+        
+        [self updateNetworkStatus];
     }];
     
     
@@ -131,29 +149,23 @@
     }];
     
     
-    
+
+    [_bridge registerHandler:@"transaction_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"transaction_callback called: %@", data);
+        //responseCallback(@"Response from testObjcCallback");
+    }];
     
     
     // Subscribe
-    [_bridge registerHandler:@"subscribe_ledger" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"rippleRemoteGenericCallback called: %@", data);
-        //responseCallback(@"Response from testObjcCallback");
-    }];
-    
-    [_bridge registerHandler:@"subscribe_ledger_error" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
-        //responseCallback(@"Response from testObjcCallback");
-    }];
-    
-    [_bridge registerHandler:@"subscribe_server" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"rippleRemoteGenericCallback called: %@", data);
-        //responseCallback(@"Response from testObjcCallback");
-    }];
-    
-    [_bridge registerHandler:@"subscribe_server_error" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
-        //responseCallback(@"Response from testObjcCallback");
-    }];
+//    [_bridge registerHandler:@"subscribe_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
+//        NSLog(@"rippleRemoteGenericCallback called: %@", data);
+//        //responseCallback(@"Response from testObjcCallback");
+//    }];
+//    
+//    [_bridge registerHandler:@"subscribe_error_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
+//        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
+//        //responseCallback(@"Response from testObjcCallback");
+//    }];
     
     
     
@@ -161,15 +173,15 @@
     
     
     
-    [_bridge registerHandler:@"rippleRemoteGenericCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"rippleRemoteGenericCallback called: %@", data);
-        //responseCallback(@"Response from testObjcCallback");
-    }];
-    
-    [_bridge registerHandler:@"rippleRemoteGenericErrorCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
-        //responseCallback(@"Response from testObjcCallback");
-    }];
+//    [_bridge registerHandler:@"rippleRemoteGenericCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
+//        NSLog(@"rippleRemoteGenericCallback called: %@", data);
+//        //responseCallback(@"Response from testObjcCallback");
+//    }];
+//    
+//    [_bridge registerHandler:@"rippleRemoteGenericErrorCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
+//        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
+//        //responseCallback(@"Response from testObjcCallback");
+//    }];
     
     
     
@@ -331,6 +343,8 @@
     [self accountLines:params]; // IOU balances
     [self accountInfo:params];  // Ripple balance
     //[self accountTx:params];    // Last transactions
+    [self subscribeLedger:params];
+    
 }
 
 
@@ -347,6 +361,16 @@
 //        NSLog(@"subscribe_ripple_address response: %@", responseData);
 //    }];
 //}
+
+
+-(void)subscribeLedger:(NSDictionary*)params
+{
+    [_bridge callHandler:@"subscribe_ledger" data:params responseCallback:^(id responseData) {
+        NSLog(@"subscribe_ledger response: %@", responseData);
+    }];
+}
+
+
 
 #define XRP_FACTOR 1000000
 
@@ -380,6 +404,11 @@
     [self processBalances];
 }
 
+-(void)setDelegate_network_status:(id<RippleJSManagerNetworkStatus>)delegate_network_status
+{
+    _delegate_network_status = delegate_network_status;
+    [self updateNetworkStatus];
+}
 
 -(void)accountInfo:(NSDictionary*)params
 {
@@ -912,6 +941,8 @@
     */
     
     if (!amount || !recipient || !blobData) {
+        NSError * error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: @"Invalid amount"}];
+        block(error);
         return;
     }
     
@@ -927,6 +958,7 @@
         NSError * error;
         NSNumber * returnCode = [responseData objectForKey:@"engine_result_code"];
         if (returnCode.integerValue != 0) {
+            // Could not send transaction
             NSString * errorMessage = [responseData objectForKey:@"engine_result_message"];
             error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
         }

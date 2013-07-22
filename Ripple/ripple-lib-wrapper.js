@@ -20,18 +20,6 @@ function onBridgeReady(event) {
 		"websocket_ssl" : true
 	});
 
-	// bridge.registerHandler('subscribe_ripple_address', function(data, responseCallback) {
-	// 	remote.accounts.request_subscribe([data['ripple_address']])
-	// 	.on('success', function (result) {
-	// 		responseCallback(result)
-	// 	})
-	// 	.on('error', function (result) {
-	// 		console.error(result)
-	// 		responseCallback(result)
-	// 	})
-	// 	.request();
-	// })
-
 	// bridge.registerHandler('request_wallet_accounts', function(data, responseCallback) {
 	// 	remote.request_wallet_accounts(data['seed'])
 	// 	.on('success', function (result) {
@@ -185,7 +173,7 @@ function onBridgeReady(event) {
 	// })
 
 	// Subscribe to ledger and server after logged in
-	bridge.registerHandler('subscribe_logged_in', function(data, responseCallback) {
+	bridge.registerHandler('subscribe_ledger', function(data, responseCallback) {
 		remote.set_secret(data.account, data.secret);
 		// Subscribe
 		remote.request_subscribe(["ledger","server"])
@@ -228,6 +216,11 @@ function onBridgeReady(event) {
 
 	remote.on('disconnected', function () {
 		bridge.callHandler('disconnected', null, function(response) {
+		})
+	})
+
+	remote.on('transaction', function () {
+		bridge.callHandler('transaction_callback', null, function(response) {
 		})
 	})
 
