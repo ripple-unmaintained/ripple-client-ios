@@ -20,6 +20,8 @@
 #import "SSKeychain.h"
 #import "RPBlobData.h"
 #import "RPContact.h"
+#import "RPTransaction.h"
+#import "RPTransactionSubscription.h"
 
 #define HTML_BEGIN @"<!DOCTYPE html>\
 <html lang=\"en\">\
@@ -124,6 +126,8 @@
         [self log:@"Connected"];
         
         [self updateNetworkStatus];
+        
+        [self afterConnectedSubscribe];
     }];
     
     // Disconnected from Ripple network
@@ -156,6 +160,13 @@
     [_bridge registerHandler:@"transaction_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"transaction_callback called: %@", data);
         //responseCallback(@"Response from testObjcCallback");
+        
+        // Process transaction
+        //RPTransactionSubscription * obj = [RPTransactionSubscription new];
+        //[obj setValuesForKeysWithDictionary:data];
+        
+        [self loggedIn];
+        
     }];
     
     
@@ -334,6 +345,14 @@
     }
 }
 
+
+-(void)afterConnectedSubscribe
+{
+    NSDictionary * params = @{@"account": blobData.account_id};
+    
+    [self subscribe:params];
+}
+
 #define MAX_TRANSACTIONS 10
 
 -(void)loggedIn
@@ -357,7 +376,7 @@
     [self accountInfo:params];  // Ripple balance
     //[self accountTx:params];    // Last transactions
     //[self subscribeLedger:params];
-    [self subscribe:params];
+    
     
 }
 
@@ -386,6 +405,132 @@
 
 -(void)subscribe:(NSDictionary*)params
 {
+    /*
+     Future callback example:
+     
+    {
+        "engine_result" = tesSUCCESS;
+        "engine_result_code" = 0;
+        "engine_result_message" = "The transaction was applied.";
+        "ledger_hash" = 25844FC8BFA0BDD4B9F901FAD803EDCBE57D35AD1373330F9F691D5857F65C8C;
+        "ledger_index" = 1408938;
+        meta =     {
+            AffectedNodes =         (
+                                     {
+                                         ModifiedNode =                 {
+                                             FinalFields =                     {
+                                                 Account = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+                                                 Balance = 173315610;
+                                                 Flags = 0;
+                                                 OwnerCount = 1;
+                                                 Sequence = 40;
+                                             };
+                                             LedgerEntryType = AccountRoot;
+                                             LedgerIndex = 1866E369D94B8144C2A7596E1610D560D3A4A50F835812A55A6EEB53D92663B1;
+                                             PreviousFields =                     {
+                                                 Balance = 123315610;
+                                             };
+                                             PreviousTxnID = ED43BF5E2305261C12641F75E8EED5A973FBF943CC85E3582C1844AA760F4F9B;
+                                             PreviousTxnLgrSeq = 1408362;
+                                         };
+                                     },
+                                     {
+                                         ModifiedNode =                 {
+                                             FinalFields =                     {
+                                                 Account = rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx;
+                                                 Balance = 151499970;
+                                                 Flags = 0;
+                                                 OwnerCount = 1;
+                                                 Sequence = 4;
+                                             };
+                                             LedgerEntryType = AccountRoot;
+                                             LedgerIndex = C42FD18190EEBAFA83EDCBF6556A1F25045E06DB37D725857D09A8B3B3EEBCA1;
+                                             PreviousFields =                     {
+                                                 Balance = 201499980;
+                                                 Sequence = 3;
+                                             };
+                                             PreviousTxnID = ED43BF5E2305261C12641F75E8EED5A973FBF943CC85E3582C1844AA760F4F9B;
+                                             PreviousTxnLgrSeq = 1408362;
+                                         };
+                                     }
+                                     );
+            TransactionIndex = 0;
+            TransactionResult = tesSUCCESS;
+        };
+        mmeta =     {
+            nodes =         (
+                             {
+                                 diffType = ModifiedNode;
+                                 entryType = AccountRoot;
+                                 fields =                 {
+                                     Account = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+                                     Balance = 173315610;
+                                     Flags = 0;
+                                     OwnerCount = 1;
+                                     Sequence = 40;
+                                 };
+                                 fieldsFinal =                 {
+                                     Account = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+                                     Balance = 173315610;
+                                     Flags = 0;
+                                     OwnerCount = 1;
+                                     Sequence = 40;
+                                 };
+                                 fieldsNew =                 {
+                                 };
+                                 fieldsPrev =                 {
+                                     Balance = 123315610;
+                                 };
+                                 ledgerIndex = 1866E369D94B8144C2A7596E1610D560D3A4A50F835812A55A6EEB53D92663B1;
+                             },
+                             {
+                                 diffType = ModifiedNode;
+                                 entryType = AccountRoot;
+                                 fields =                 {
+                                     Account = rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx;
+                                     Balance = 151499970;
+                                     Flags = 0;
+                                     OwnerCount = 1;
+                                     Sequence = 4;
+                                 };
+                                 fieldsFinal =                 {
+                                     Account = rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx;
+                                     Balance = 151499970;
+                                     Flags = 0;
+                                     OwnerCount = 1;
+                                     Sequence = 4;
+                                 };
+                                 fieldsNew =                 {
+                                 };
+                                 fieldsPrev =                 {
+                                     Balance = 201499980;
+                                     Sequence = 3;
+                                 };
+                                 ledgerIndex = C42FD18190EEBAFA83EDCBF6556A1F25045E06DB37D725857D09A8B3B3EEBCA1;
+                             }
+                             );
+        };
+        status = closed;
+        transaction =     {
+            Account = rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx;
+            Amount = 50000000;
+            Destination = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+            Fee = 10;
+            Flags = 0;
+            Sequence = 3;
+            SigningPubKey = 02AD591A74E2DCDB3AEEE8AF8A7FACD70719FEA9F3DCD275E5CDAD01813A185AEA;
+            TransactionType = Payment;
+            TxnSignature = 3045022100B3AAB65B0B4FA90F3586F28A072F3596F8C7A6503DDF2FB409DDBA9A33A45BA4022059C5AB7ACF4837F25E390EE99FFFE57B31DF169865037AC69DDBC40D8FBF84E0;
+            date = 427868340;
+            hash = 489E970A6FD4AC584FB321FDC0ACFB2CAA20717503D1007038DA4093A1E687ED;
+        };
+        type = transaction;
+        validated = 1;
+    }
+    */
+    
+    
+    
     [_bridge callHandler:@"subscribe_transactions" data:params responseCallback:^(id responseData) {
         NSLog(@"subscribe_transactions response: %@", responseData);
     }];

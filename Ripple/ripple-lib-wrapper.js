@@ -190,16 +190,16 @@ function onBridgeReady(event) {
 
 	// Subscribe
 	bridge.registerHandler('subscribe_transactions', function(data, responseCallback) {
-		remote.set_secret(data.account, data.secret);
+		//remote.set_secret(data.account, data.secret);
 		// Subscribe
-		remote.request_subscribe().accounts(data.account)
-		.on('success', function (result) {
-			responseCallback(result)
-		})
-		.on('error', function (result) {
-			console.error(result)
-			responseCallback(result)
-		})
+		remote.request_subscribe().accounts(data.account,false)
+		// .on('success', function (result) {
+		// 	responseCallback(result)
+		// })
+		// .on('error', function (result) {
+		// 	console.error(result)
+		// 	responseCallback(result)
+		// })
 		.request();
 		//responseCallback("test")
 	})

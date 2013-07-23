@@ -22,6 +22,8 @@
 		2B201DCC179D36E600B52E90 /* SendTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DCB179D36E600B52E90 /* SendTransactionViewController.m */; };
 		2B201DCF179D3C1500B52E90 /* RPBlobData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DCE179D3C1500B52E90 /* RPBlobData.m */; };
 		2B201DDA179E03AD00B52E90 /* RPContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DD9179E03AD00B52E90 /* RPContact.m */; };
+		2B201DDD179E483F00B52E90 /* RPTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DDC179E483F00B52E90 /* RPTransaction.m */; };
+		2B201DE0179E497C00B52E90 /* RPTransactionSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DDF179E497C00B52E90 /* RPTransactionSubscription.m */; };
 		2B5860BF179764A300200D0C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5860BE179764A300200D0C /* UIKit.framework */; };
 		2B5860C1179764A300200D0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5860C0179764A300200D0C /* Foundation.framework */; };
 		2B5860C3179764A300200D0C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5860C2179764A300200D0C /* CoreGraphics.framework */; };
@@ -108,6 +110,10 @@
 		2B201DCE179D3C1500B52E90 /* RPBlobData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPBlobData.m; path = Objects/RPBlobData.m; sourceTree = "<group>"; };
 		2B201DD8179E03AD00B52E90 /* RPContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPContact.h; path = Objects/RPContact.h; sourceTree = "<group>"; };
 		2B201DD9179E03AD00B52E90 /* RPContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPContact.m; path = Objects/RPContact.m; sourceTree = "<group>"; };
+		2B201DDB179E483F00B52E90 /* RPTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPTransaction.h; path = Objects/RPTransaction.h; sourceTree = "<group>"; };
+		2B201DDC179E483F00B52E90 /* RPTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPTransaction.m; path = Objects/RPTransaction.m; sourceTree = "<group>"; };
+		2B201DDE179E497C00B52E90 /* RPTransactionSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPTransactionSubscription.h; path = Objects/RPTransactionSubscription.h; sourceTree = "<group>"; };
+		2B201DDF179E497C00B52E90 /* RPTransactionSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPTransactionSubscription.m; path = Objects/RPTransactionSubscription.m; sourceTree = "<group>"; };
 		2B5860BB179764A300200D0C /* Ripple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ripple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5860BE179764A300200D0C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2B5860C0179764A300200D0C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -415,6 +421,10 @@
 				2B201DCE179D3C1500B52E90 /* RPBlobData.m */,
 				2B201DD8179E03AD00B52E90 /* RPContact.h */,
 				2B201DD9179E03AD00B52E90 /* RPContact.m */,
+				2B201DDB179E483F00B52E90 /* RPTransaction.h */,
+				2B201DDC179E483F00B52E90 /* RPTransaction.m */,
+				2B201DDE179E497C00B52E90 /* RPTransactionSubscription.h */,
+				2B201DDF179E497C00B52E90 /* RPTransactionSubscription.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -682,6 +692,8 @@
 				2B201DCC179D36E600B52E90 /* SendTransactionViewController.m in Sources */,
 				2B201DCF179D3C1500B52E90 /* RPBlobData.m in Sources */,
 				2B201DDA179E03AD00B52E90 /* RPContact.m in Sources */,
+				2B201DDD179E483F00B52E90 /* RPTransaction.m in Sources */,
+				2B201DE0179E497C00B52E90 /* RPTransactionSubscription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
