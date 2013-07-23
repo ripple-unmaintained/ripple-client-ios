@@ -84,15 +84,15 @@ static const char * getPropertyType(objc_property_t property) {
                 objc_property_t property = class_getProperty(klass, [key UTF8String]);
                 const char *propType = getPropertyType(property);
                 NSString *properyType = [NSString stringWithUTF8String:propType];
-                if ([properyType isEqualToString:@"NSNumber"]) {
-                    
+                if ([properyType isEqualToString:@"NSNumber"] && [obj isKindOfClass:[NSString class]]) {
+                    // Force NSNumber mapping if value is NSString
                     static NSNumberFormatter * f;
                     if (!f) {
                         f = [[NSNumberFormatter alloc] init];
                         [f setNumberStyle:NSNumberFormatterDecimalStyle];
                     }
-                    NSNumber * myNumber = [f numberFromString:obj];
-                    [self setValue:myNumber forKey:(NSString *)key];
+                    NSNumber * num = [f numberFromString:obj];
+                    [self setValue:num forKey:(NSString *)key];
                 }
                 else {
                     [self setValue:obj forKey:(NSString *)key];

@@ -19,6 +19,7 @@
 #import "AESCrypt.h"
 #import "SSKeychain.h"
 #import "RPBlobData.h"
+#import "RPContact.h"
 
 #define HTML_BEGIN @"<!DOCTYPE html>\
 <html lang=\"en\">\
@@ -45,6 +46,8 @@
     RPBlobData * blobData;
     RPAccountData * accountData;
     NSMutableArray * accountLines;
+    
+    NSMutableArray * _contacts;
 }
 
 @end
@@ -105,7 +108,7 @@
 
 -(void)setupJavascriptBridge
 {
-    [WebViewJavascriptBridge enableLogging];
+    //[WebViewJavascriptBridge enableLogging];
     
     _bridge = [WebViewJavascriptBridge bridgeForWebView:_webView webViewDelegate:self handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"ObjC received message from JS: %@", data);
@@ -173,11 +176,11 @@
     
     
     
-//    [_bridge registerHandler:@"rippleRemoteGenericCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
-//        NSLog(@"rippleRemoteGenericCallback called: %@", data);
-//        //responseCallback(@"Response from testObjcCallback");
-//    }];
-//    
+    [_bridge registerHandler:@"generic_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"generic_callback called: %@", data);
+        //responseCallback(@"Response from testObjcCallback");
+    }];
+//
 //    [_bridge registerHandler:@"rippleRemoteGenericErrorCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
 //        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
 //        //responseCallback(@"Response from testObjcCallback");
@@ -227,7 +230,7 @@
             // Login correct
             NSString * response = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSString * decodedResponse = [response base64DecodedString];
-            NSLog(@"%@: login success: %@", self.class.description, decodedResponse);
+            NSLog(@"%@: login success", self.class.description);
             
             NSString * key = [NSString stringWithFormat:@"%d|%@%@",username.length, username,password];
             //NSLog(@"%@: key: %@", self.class.description, key);
@@ -240,6 +243,16 @@
                     RPBlobData * blob = [RPBlobData new];
                     [blob setDictionary:responseData];
                     blobData = blob;
+                    
+                    // Collect contacts
+                    NSArray * contacts = [responseData objectForKey:@"contacts"];
+                    contacts = [NSMutableArray arrayWithCapacity:contacts.count];
+                    for (NSDictionary * contactDic in contacts) {
+                        RPContact * contact = [RPContact new];
+                        [contact setDictionary:contactDic];
+                        [_contacts  addObject:contact];
+                    }
+                    
                     block(nil);
                     
                     [self loggedIn];
@@ -343,7 +356,8 @@
     [self accountLines:params]; // IOU balances
     [self accountInfo:params];  // Ripple balance
     //[self accountTx:params];    // Last transactions
-    [self subscribeLedger:params];
+    //[self subscribeLedger:params];
+    [self subscribe:params];
     
 }
 
@@ -367,6 +381,13 @@
 {
     [_bridge callHandler:@"subscribe_ledger" data:params responseCallback:^(id responseData) {
         NSLog(@"subscribe_ledger response: %@", responseData);
+    }];
+}
+
+-(void)subscribe:(NSDictionary*)params
+{
+    [_bridge callHandler:@"subscribe_transactions" data:params responseCallback:^(id responseData) {
+        NSLog(@"subscribe_transactions response: %@", responseData);
     }];
 }
 
@@ -846,6 +867,13 @@
 -(void)connect
 {
     [_bridge callHandler:@"connect" data:@"" responseCallback:^(id responseData) {
+    }];
+}
+
+-(void)disconnect
+{
+    // Disconnect from Ripple server
+    [_bridge callHandler:@"disconnect" data:@"" responseCallback:^(id responseData) {
     }];
 }
 

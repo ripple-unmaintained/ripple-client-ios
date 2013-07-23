@@ -176,7 +176,7 @@ function onBridgeReady(event) {
 	bridge.registerHandler('subscribe_ledger', function(data, responseCallback) {
 		remote.set_secret(data.account, data.secret);
 		// Subscribe
-		remote.request_subscribe(["ledger","server"])
+		remote.root_.request_subscribe(["ledger","server"])
 		.on('success', function (result) {
 			responseCallback(result)
 		})
@@ -186,6 +186,24 @@ function onBridgeReady(event) {
 		})
 		.request();
 	})
+
+
+	// Subscribe
+	bridge.registerHandler('subscribe_transactions', function(data, responseCallback) {
+		remote.set_secret(data.account, data.secret);
+		// Subscribe
+		remote.request_subscribe().accounts(data.account)
+		.on('success', function (result) {
+			responseCallback(result)
+		})
+		.on('error', function (result) {
+			console.error(result)
+			responseCallback(result)
+		})
+		.request();
+		//responseCallback("test")
+	})
+
 
 	// Decrypts with sjcl library
 	bridge.registerHandler('sjcl_decrypt', function(data, responseCallback) {
@@ -202,6 +220,11 @@ function onBridgeReady(event) {
 		remote.connect();
 	})
 
+	// Disconnect to ripple network
+	bridge.registerHandler('disconnect', function(data, responseCallback) {
+		remote.disconnect();
+	})
+
 
 	// remote.on('ledger_closed', function (ledger) {
 	//   bridge.callHandler('ledger_closed', ledger, function(response) {
@@ -209,20 +232,36 @@ function onBridgeReady(event) {
 	// });
 
 	// Connected to ripple network
-	remote.on('connected', function () {
+	remote.on('connect', function () {
 		bridge.callHandler('connected', null, function(response) {
 		})
 	})
 
-	remote.on('disconnected', function () {
+	remote.on('disconnect', function () {
 		bridge.callHandler('disconnected', null, function(response) {
 		})
 	})
 
-	remote.on('transaction', function () {
-		bridge.callHandler('transaction_callback', null, function(response) {
+	remote.on('transaction', function (result) {
+		bridge.callHandler('transaction_callback', result, function(response) {
 		})
 	})
+
+
+	// remote.on('state', function (result) {
+	// 	bridge.callHandler('generic_callback', result, function(response) {
+	// 	})
+	// })
+
+	// remote.on('online', function (result) {
+	// 	bridge.callHandler('connected', result, function(response) {
+	// 	})
+	// })
+
+	// remote.on('offline', function (result) {
+	// 	bridge.callHandler('disconnected', result, function(response) {
+	// 	})
+	// })
 
 
 
