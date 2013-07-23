@@ -70,29 +70,42 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return balances.count;
+    return balances.count + 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
-    NSNumber * amount = [balances objectForKey:key];
-    
-    NSNumberFormatter *formatter = [NSNumberFormatter new];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
-    [formatter setMaximumFractionDigits:2]; // Set this if you need 2 digits
-    
     UITableViewCell * cell;
     
-    if ([key isEqualToString:@"XRP"]) {
+    if (indexPath.row == 0) {
+        // Receive cell
+        
         NSString *address = [[RippleJSManager shared] rippleWalletAddress];
         cell = [tableView dequeueReusableCellWithIdentifier:@"xrp"];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:amount], key];
+        cell.textLabel.text = @"Receive";
         cell.detailTextLabel.text = address;
     }
     else {
+        // Currencies
+        NSString * key = [[balances allKeys] objectAtIndex:indexPath.row - 1];
+        NSNumber * amount = [balances objectForKey:key];
+        
+        NSNumberFormatter *formatter = [NSNumberFormatter new];
+        [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+        [formatter setMaximumFractionDigits:2]; // Set this if you need 2 digits
+        
+        //        if ([key isEqualToString:@"XRP"]) {
+        //            NSString *address = [[RippleJSManager shared] rippleWalletAddress];
+        //            cell = [tableView dequeueReusableCellWithIdentifier:@"xrp"];
+        //            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:amount], key];
+        //            cell.detailTextLabel.text = address;
+        //        }
+        //        else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:amount], key];
+        //        }
     }
+    
+    
     
     return cell;
 }
@@ -101,10 +114,27 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
-    if ([key isEqualToString:@"XRP"]) {
-        // Send XRP only
-        [self performSegueWithIdentifier:@"Send" sender:key];
+    if (indexPath.row == 0) {
+        NSString *address = [[RippleJSManager shared] rippleWalletAddress];
+        if (address) {
+            UIPasteboard *pb = [UIPasteboard generalPasteboard];
+            [pb setString:address];
+            
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: @"Copied to clipboard"
+                                  message: address
+                                  delegate: nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }
+    else {
+        NSString * key = [[balances allKeys] objectAtIndex:indexPath.row - 1];
+        if ([key isEqualToString:@"XRP"]) {
+            // Send XRP only
+            [self performSegueWithIdentifier:@"Send" sender:key];
+        }
     }
 }
 
