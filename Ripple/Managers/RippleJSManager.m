@@ -99,17 +99,21 @@
     _log.text = [NSString stringWithFormat:@"%@\n%@",data,_log.text];
 }
 
--(void)updateNetworkStatus
+-(void)notifyNetworkStatus
 {
+    
+    
     if (isConnected) {
-        if (self.delegate_network_status && [self.delegate_network_status respondsToSelector:@selector(RippleJSManagerConnected)]) {
-            [self.delegate_network_status RippleJSManagerConnected];
-        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRippleConnected object:nil userInfo:nil];
+//        if (self.delegate_network_status && [self.delegate_network_status respondsToSelector:@selector(RippleJSManagerConnected)]) {
+//            [self.delegate_network_status RippleJSManagerConnected];
+//        }
     }
     else {
-        if (self.delegate_network_status && [self.delegate_network_status respondsToSelector:@selector(RippleJSManagerDisconnected)]) {
-            [self.delegate_network_status RippleJSManagerDisconnected];
-        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRippleDisconnected object:nil userInfo:nil];
+//        if (self.delegate_network_status && [self.delegate_network_status respondsToSelector:@selector(RippleJSManagerDisconnected)]) {
+//            [self.delegate_network_status RippleJSManagerDisconnected];
+//        }
     }
 }
 
@@ -130,7 +134,7 @@
         isConnected = YES;
         [self log:@"Connected"];
         
-        [self updateNetworkStatus];
+        [self notifyNetworkStatus];
         
         [self afterConnectedSubscribe];
     }];
@@ -144,7 +148,7 @@
         // Try to connect again
         //[self connect];
         
-        [self updateNetworkStatus];
+        [self notifyNetworkStatus];
     }];
     
     
@@ -757,11 +761,11 @@
     [self processBalances];
 }
 
--(void)setDelegate_network_status:(id<RippleJSManagerNetworkStatus>)delegate_network_status
-{
-    _delegate_network_status = delegate_network_status;
-    [self updateNetworkStatus];
-}
+//-(void)setDelegate_network_status:(id<RippleJSManagerNetworkStatus>)delegate_network_status
+//{
+//    _delegate_network_status = delegate_network_status;
+//    [self updateNetworkStatus];
+//}
 
 -(void)accountInfo:(NSDictionary*)params
 {

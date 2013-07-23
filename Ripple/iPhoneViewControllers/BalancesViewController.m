@@ -10,7 +10,7 @@
 #import "RippleJSManager.h"
 #import "SendTransactionViewController.h"
 
-@interface BalancesViewController () <UITableViewDataSource, UITableViewDelegate, RippleJSManagerBalanceDelegate, RippleJSManagerNetworkStatus> {
+@interface BalancesViewController () <UITableViewDataSource, UITableViewDelegate, RippleJSManagerBalanceDelegate> {
     NSDictionary * balances;
 }
 
@@ -40,7 +40,7 @@
     }];
 }
 -(void)RippleJSManagerDisconnected
-{
+{    
     [UIView animateWithDuration:0.3 animations:^{
         CGRect f = self.view.frame;
         f.origin.y = 20.0f;
@@ -151,7 +151,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [RippleJSManager shared].delegate_balances = self;
-    [RippleJSManager shared].delegate_network_status = self;
+    //[RippleJSManager shared].delegate_network_status = self;
 }
 
 - (void)viewDidLoad
@@ -164,6 +164,11 @@
     
     // Close any stories when entering background
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredBackground) name: UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    
+    // Subscribe to ripple network state
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RippleJSManagerConnected) name:kNotificationRippleConnected object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RippleJSManagerDisconnected) name:kNotificationRippleDisconnected object:nil];
     
 }
 
