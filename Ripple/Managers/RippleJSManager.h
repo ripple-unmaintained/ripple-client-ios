@@ -42,4 +42,6 @@
 
 -(BOOL)isLoggedIn;
 
+-(NSString*)rippleWalletAddress;
+
 @end

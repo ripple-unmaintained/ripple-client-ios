@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField * textFieldRecipient;
 @property (weak, nonatomic) IBOutlet UITextField * textFieldAmount;
+@property (weak, nonatomic) IBOutlet UILabel     * navTitle;
 
 @end
 
@@ -40,6 +41,9 @@
 
 -(IBAction)buttonSend:(id)sender
 {
+    [self.textFieldAmount resignFirstResponder];
+    [self.textFieldRecipient resignFirstResponder];
+    
     [SVProgressHUD showWithStatus:@"Sending..." maskType:SVProgressHUDMaskTypeGradient];
     
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
@@ -75,6 +79,9 @@
 	// Do any additional setup after loading the view.
     
     [self.textFieldRecipient becomeFirstResponder];
+    
+    self.navTitle.text = [NSString stringWithFormat:@"Send %@", self.currency];
+    
 }
 
 - (void)didReceiveMemoryWarning

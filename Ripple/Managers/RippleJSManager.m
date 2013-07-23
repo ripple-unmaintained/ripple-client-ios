@@ -56,6 +56,11 @@
 
 @implementation RippleJSManager
 
+-(NSString*)rippleWalletAddress
+{
+    return blobData.account_id;
+}
+
 -(NSString*)rippleHTML
 {
     NSMutableString * html = [NSMutableString stringWithString:HTML_BEGIN];

@@ -10,4 +10,6 @@
 
 @interface SendTransactionViewController : UIViewController
 
+@property (strong, nonatomic) NSString * currency;
+
 @end

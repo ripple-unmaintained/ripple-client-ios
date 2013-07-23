@@ -8,6 +8,7 @@
 
 #import "BalancesViewController.h"
 #import "RippleJSManager.h"
+#import "SendTransactionViewController.h"
 
 @interface BalancesViewController () <UITableViewDataSource, UITableViewDelegate, RippleJSManagerBalanceDelegate, RippleJSManagerNetworkStatus> {
     NSDictionary * balances;
@@ -19,6 +20,14 @@
 @end
 
 @implementation BalancesViewController
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Send"]) {
+        SendTransactionViewController * view = [segue destinationViewController];
+        view.currency = sender;
+    }
+}
 
 -(void)RippleJSManagerConnected
 {
@@ -49,8 +58,14 @@
 
 -(void)RippleJSManagerBalances:(NSDictionary*)_balances
 {
-    balances = _balances;
-    [self.tableView reloadData];
+    if (balances.count != _balances.count) {
+        balances = _balances;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    else {
+        balances = _balances;
+        [self.tableView reloadData];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -67,8 +82,18 @@
     [formatter setMaximumFractionDigits:2]; // Set this if you need 2 digits
     
     UITableViewCell * cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:amount], key];
+    
+    if ([key isEqualToString:@"XRP"]) {
+        NSString *address = [[RippleJSManager shared] rippleWalletAddress];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"xrp"];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:amount], key];
+        cell.detailTextLabel.text = address;
+    }
+    else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:amount], key];
+    }
+    
     return cell;
 }
 
@@ -79,7 +104,7 @@
     NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
     if ([key isEqualToString:@"XRP"]) {
         // Send XRP only
-        [self performSegueWithIdentifier:@"Send" sender:nil];
+        [self performSegueWithIdentifier:@"Send" sender:key];
     }
 }
 

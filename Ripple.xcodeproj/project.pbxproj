@@ -10,7 +10,6 @@
 		2B201D0D179D22AE00B52E90 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D0B179D22AE00B52E90 /* Splash.png */; };
 		2B201D0E179D22AE00B52E90 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D0C179D22AE00B52E90 /* Splash@2x.png */; };
 		2B201D12179D236F00B52E90 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201D11179D236F00B52E90 /* LoginViewController.m */; };
-		2B201D18179D25C300B52E90 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D14179D25C300B52E90 /* .gitignore */; };
 		2B201D19179D25C300B52E90 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D15179D25C300B52E90 /* SVProgressHUD.bundle */; };
 		2B201D1A179D25C300B52E90 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201D17179D25C300B52E90 /* SVProgressHUD.m */; };
 		2B201D1C179D265A00B52E90 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B201D1B179D265A00B52E90 /* QuartzCore.framework */; };
@@ -63,9 +62,7 @@
 		2B5861741798AB8800200D0C /* RPVaultClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861731798AB8800200D0C /* RPVaultClient.m */; };
 		2B5861781798AE3300200D0C /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861771798AE3300200D0C /* NSData+Conversion.m */; };
 		2B58617F1799E5DC00200D0C /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58617E1799E5DC00200D0C /* Base64.m */; };
-		2B58618C1799EA1E00200D0C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861811799EA1E00200D0C /* .gitignore */; };
 		2B58618D1799EA1E00200D0C /* AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861831799EA1E00200D0C /* AESCrypt.m */; };
-		2B58618E1799EA1E00200D0C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861841799EA1E00200D0C /* LICENSE */; };
 		2B58618F1799EA1E00200D0C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861861799EA1E00200D0C /* NSData+Base64.m */; };
 		2B5861901799EA1E00200D0C /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861881799EA1E00200D0C /* NSData+CommonCrypto.m */; };
 		2B5861911799EA1E00200D0C /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58618A1799EA1E00200D0C /* NSString+Base64.m */; };
@@ -615,12 +612,9 @@
 				2B5860D8179764A300200D0C /* MainStoryboard_iPhone.storyboard in Resources */,
 				2B5860DB179764A300200D0C /* MainStoryboard_iPad.storyboard in Resources */,
 				2B5861051797678C00200D0C /* WebViewJavascriptBridge.js.txt in Resources */,
-				2B58618C1799EA1E00200D0C /* .gitignore in Resources */,
-				2B58618E1799EA1E00200D0C /* LICENSE in Resources */,
 				2B5861921799EA1E00200D0C /* README.md in Resources */,
 				2B201D0D179D22AE00B52E90 /* Splash.png in Resources */,
 				2B201D0E179D22AE00B52E90 /* Splash@2x.png in Resources */,
-				2B201D18179D25C300B52E90 /* .gitignore in Resources */,
 				2B201D19179D25C300B52E90 /* SVProgressHUD.bundle in Resources */,
 				2B201DC2179D27C400B52E90 /* SSKeychain.strings in Resources */,
 			);
