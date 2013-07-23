@@ -9,7 +9,7 @@
 #import "BalancesViewController.h"
 #import "RippleJSManager.h"
 
-@interface BalancesViewController () <UITableViewDataSource, UITableViewDelegate, RippleJSManagerBalanceDelegate> {
+@interface BalancesViewController () <UITableViewDataSource, UITableViewDelegate, RippleJSManagerBalanceDelegate, RippleJSManagerNetworkStatus> {
     NSDictionary * balances;
 }
 
@@ -19,6 +19,27 @@
 @end
 
 @implementation BalancesViewController
+
+-(void)RippleJSManagerConnected
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect f = self.view.frame;
+        f.origin.y = 0.0f;
+        self.view.frame = f;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+-(void)RippleJSManagerDisconnected
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect f = self.view.frame;
+        f.origin.y = 20.0f;
+        self.view.frame = f;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
 
 -(IBAction)buttonLogout:(id)sender
 {
@@ -69,6 +90,7 @@
 	// Do any additional setup after loading the view.
     
     [RippleJSManager shared].delegate_balances = self;
+    [RippleJSManager shared].delegate_network_status = self;
 }
 
 - (void)didReceiveMemoryWarning

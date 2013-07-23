@@ -406,7 +406,7 @@
 -(void)subscribe:(NSDictionary*)params
 {
     /*
-     Future callback example:
+     Future callback example for XRP:
      
     {
         "engine_result" = tesSUCCESS;
@@ -529,6 +529,188 @@
     }
     */
     
+    
+    /*
+     Future callback for USD transaction:
+     
+     
+     {
+         "engine_result" = tesSUCCESS;
+         "engine_result_code" = 0;
+         "engine_result_message" = "The transaction was applied.";
+         "ledger_hash" = 130581EA0A6EBF8299D085024410F0C447CCEFC8DA7EF80695CC110708534C31;
+         "ledger_index" = 1409785;
+         meta =     {
+             AffectedNodes =         (
+                                      {
+                                          ModifiedNode =                 {
+                                              FinalFields =                     {
+                                                  Account = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+                                                  Balance = 163315510;
+                                                  Flags = 0;
+                                                  OwnerCount = 1;
+                                                  Sequence = 50;
+                                              };
+                                              LedgerEntryType = AccountRoot;
+                                              LedgerIndex = 1866E369D94B8144C2A7596E1610D560D3A4A50F835812A55A6EEB53D92663B1;
+                                              PreviousFields =                     {
+                                                  Balance = 163315520;
+                                                  Sequence = 49;
+                                              };
+                                              PreviousTxnID = 3BD8E7295078F38117D726A62839CC77AEDD999F85A7CADEB12108B56A5F6BF8;
+                                              PreviousTxnLgrSeq = 1409777;
+                                          };
+                                      },
+                                      {
+                                          ModifiedNode =                 {
+                                              FinalFields =                     {
+                                                  Balance =                         {
+                                                      currency = USD;
+                                                      issuer = rrrrrrrrrrrrrrrrrrrrBZbvji;
+                                                      value = "0.3";
+                                                  };
+                                                  Flags = 65536;
+                                                  HighLimit =                         {
+                                                      currency = USD;
+                                                      issuer = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+                                                      value = 0;
+                                                  };
+                                                  HighNode = 0000000000000000;
+                                                  LowLimit =                         {
+                                                      currency = USD;
+                                                      issuer = rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx;
+                                                      value = 1;
+                                                  };
+                                                  LowNode = 0000000000000000;
+                                              };
+                                              LedgerEntryType = RippleState;
+                                              LedgerIndex = 1EB4457CEE28C02EDD3C1A247F18852822CEBC8A8FDCC5589D8CB3F39406C3A8;
+                                              PreviousFields =                     {
+                                                  Balance =                         {
+                                                      currency = USD;
+                                                      issuer = rrrrrrrrrrrrrrrrrrrrBZbvji;
+                                                      value = "0.2";
+                                                  };
+                                              };
+                                              PreviousTxnID = C33EEC55F460809A11B7FBBD7359EA9C11E57DD0A5E201A66B87A884D89A4433;
+                                              PreviousTxnLgrSeq = 1406212;
+                                          };
+                                      }
+                                      );
+             TransactionIndex = 0;
+             TransactionResult = tesSUCCESS;
+         };
+         mmeta =     {
+             nodes =         (
+                              {
+                                  diffType = ModifiedNode;
+                                  entryType = AccountRoot;
+                                  fields =                 {
+                                      Account = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+                                      Balance = 163315510;
+                                      Flags = 0;
+                                      OwnerCount = 1;
+                                      Sequence = 50;
+                                  };
+                                  fieldsFinal =                 {
+                                      Account = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+                                      Balance = 163315510;
+                                      Flags = 0;
+                                      OwnerCount = 1;
+                                      Sequence = 50;
+                                  };
+                                  fieldsNew =                 {
+                                  };
+                                  fieldsPrev =                 {
+                                      Balance = 163315520;
+                                      Sequence = 49;
+                                  };
+                                  ledgerIndex = 1866E369D94B8144C2A7596E1610D560D3A4A50F835812A55A6EEB53D92663B1;
+                              },
+                              {
+                                  diffType = ModifiedNode;
+                                  entryType = RippleState;
+                                  fields =                 {
+                                      Balance =                     {
+                                          currency = USD;
+                                          issuer = rrrrrrrrrrrrrrrrrrrrBZbvji;
+                                          value = "0.3";
+                                      };
+                                      Flags = 65536;
+                                      HighLimit =                     {
+                                          currency = USD;
+                                          issuer = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+                                          value = 0;
+                                      };
+                                      HighNode = 0000000000000000;
+                                      LowLimit =                     {
+                                          currency = USD;
+                                          issuer = rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx;
+                                          value = 1;
+                                      };
+                                      LowNode = 0000000000000000;
+                                  };
+                                  fieldsFinal =                 {
+                                      Balance =                     {
+                                          currency = USD;
+                                          issuer = rrrrrrrrrrrrrrrrrrrrBZbvji;
+                                          value = "0.3";
+                                      };
+                                      Flags = 65536;
+                                      HighLimit =                     {
+                                          currency = USD;
+                                          issuer = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+                                          value = 0;
+                                      };
+                                      HighNode = 0000000000000000;
+                                      LowLimit =                     {
+                                          currency = USD;
+                                          issuer = rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx;
+                                          value = 1;
+                                      };
+                                      LowNode = 0000000000000000;
+                                  };
+                                  fieldsNew =                 {
+                                  };
+                                  fieldsPrev =                 {
+                                      Balance =                     {
+                                          currency = USD;
+                                          issuer = rrrrrrrrrrrrrrrrrrrrBZbvji;
+                                          value = "0.2";
+                                      };
+                                  };
+                                  ledgerIndex = 1EB4457CEE28C02EDD3C1A247F18852822CEBC8A8FDCC5589D8CB3F39406C3A8;
+                              }
+                              );
+         };
+         status = closed;
+         transaction =     {
+             Account = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+             Amount =         {
+                 currency = USD;
+                 issuer = rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx;
+                 value = "0.1";
+             };
+             Destination = rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx;
+             Fee = 10;
+             Flags = 0;
+             SendMax =         {
+                 currency = USD;
+                 issuer = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+                 value = "0.101";
+             };
+             Sequence = 49;
+             SigningPubKey = 0376BA4EAE729354BED97E26A03AEBA6FB9078BBBB1EAB590772734BCE42E82CD5;
+             TransactionType = Payment;
+             TxnSignature = 3045022100B53B8812B9C0AA770D6CC308F12042862A52631CF15D00BA96511BEEB798D11D02203F889F523402540EA15E37A8D7303B57DA58C194881E1EE522AFF864A3F86BB0;
+             date = 427872630;
+             hash = 84C4432B247C1E27F55180236993E86686361729A803C4AD998C5334B5898287;
+         };
+         type = transaction;
+         validated = 1;
+     }
+    */
+     
     
     
     [_bridge callHandler:@"subscribe_transactions" data:params responseCallback:^(id responseData) {
