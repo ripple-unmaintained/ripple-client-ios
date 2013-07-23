@@ -402,6 +402,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="buttonLogin:"/>
+                <relationship kind="action" name="buttonPressed:"/>
                 <relationship kind="outlet" name="textViewLog" candidateClass="UITextView"/>
             </relationships>
         </class>

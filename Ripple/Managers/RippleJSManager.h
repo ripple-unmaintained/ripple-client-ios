@@ -37,6 +37,8 @@
 -(void)login:(NSString*)username andPassword:(NSString*)password withBlock:(void(^)(NSError* error))block;
 -(void)logout;
 
+-(void)connect;
+
 -(void)rippleFindPath:(NSDictionary*)params;
 -(void)rippleSendTransactionAmount:(NSNumber*)amount toRecipient:(NSString*)recipient withBlock:(void(^)(NSError* error))block;
 

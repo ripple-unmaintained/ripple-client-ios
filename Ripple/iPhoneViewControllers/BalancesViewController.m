@@ -138,14 +138,33 @@
     }
 }
 
+-(void)appEnteredForeground
+{
+    [[RippleJSManager shared] connect];
+}
+
+-(void)appEnteredBackground
+{
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [RippleJSManager shared].delegate_balances = self;
+    [RippleJSManager shared].delegate_network_status = self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [RippleJSManager shared].delegate_balances = self;
-    [RippleJSManager shared].delegate_network_status = self;
+    // Refresh stories every time app becomes active
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name: UIApplicationDidBecomeActiveNotification object:nil];
+    
+    // Close any stories when entering background
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredBackground) name: UIApplicationDidEnterBackgroundNotification object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
