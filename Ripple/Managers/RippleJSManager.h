@@ -43,6 +43,7 @@
 -(void)rippleSendTransactionAmount:(NSNumber*)amount toRecipient:(NSString*)recipient withBlock:(void(^)(NSError* error))block;
 
 -(BOOL)isLoggedIn;
+-(BOOL)isConnected;
 
 -(NSString*)rippleWalletAddress;
 

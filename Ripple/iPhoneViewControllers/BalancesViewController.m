@@ -40,7 +40,7 @@
     }];
 }
 -(void)RippleJSManagerDisconnected
-{    
+{
     [UIView animateWithDuration:0.3 animations:^{
         CGRect f = self.view.frame;
         f.origin.y = 20.0f;
@@ -48,6 +48,16 @@
     } completion:^(BOOL finished) {
         
     }];
+}
+
+-(void)checkNetworkStatus
+{
+    if ([[RippleJSManager shared] isConnected]) {
+        [self RippleJSManagerConnected];
+    }
+    else {
+        [self RippleJSManagerDisconnected];
+    }
 }
 
 -(IBAction)buttonLogout:(id)sender
@@ -140,7 +150,7 @@
 
 -(void)appEnteredForeground
 {
-    [[RippleJSManager shared] connect];
+    //[[RippleJSManager shared] connect];
 }
 
 -(void)appEnteredBackground
@@ -150,8 +160,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [RippleJSManager shared].delegate_balances = self;
-    //[RippleJSManager shared].delegate_network_status = self;
+    [self performSelector:@selector(checkNetworkStatus) withObject:nil afterDelay:0.1];
 }
 
 - (void)viewDidLoad
@@ -169,6 +178,8 @@
     // Subscribe to ripple network state
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RippleJSManagerConnected) name:kNotificationRippleConnected object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RippleJSManagerDisconnected) name:kNotificationRippleDisconnected object:nil];
+    
+    [RippleJSManager shared].delegate_balances = self;
     
 }
 

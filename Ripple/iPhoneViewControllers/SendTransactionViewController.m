@@ -73,6 +73,15 @@
 }
 
 
+-(void)RippleJSManagerConnected
+{
+    
+}
+-(void)RippleJSManagerDisconnected
+{
+    [self done];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -82,6 +91,10 @@
     
     self.navTitle.text = [NSString stringWithFormat:@"Send %@", self.currency];
     
+    
+    // Subscribe to ripple network state
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RippleJSManagerConnected) name:kNotificationRippleConnected object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RippleJSManagerDisconnected) name:kNotificationRippleDisconnected object:nil];
 }
 
 - (void)didReceiveMemoryWarning

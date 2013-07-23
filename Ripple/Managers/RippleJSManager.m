@@ -329,6 +329,11 @@
     }
 }
 
+-(BOOL)isConnected
+{
+    return isConnected;
+}
+
 -(BOOL)isLoggedIn
 {
     NSArray * accounts = [SSKeychain allAccounts];
@@ -350,7 +355,9 @@
     NSArray * accounts = [SSKeychain allAccounts];
     for (NSDictionary * dic in accounts) {
         NSString * username = [dic objectForKey:@"acct"];
-        [SSKeychain deletePasswordForService:SSKEYCHAIN_SERVICE account:username];
+        NSError * error;
+        [SSKeychain deletePasswordForService:SSKEYCHAIN_SERVICE account:username error:&error];
+        
     }
 }
 

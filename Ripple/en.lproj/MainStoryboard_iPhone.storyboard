@@ -92,6 +92,9 @@
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ras-nV-YDw">
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hEn-26-yGM">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="198" type="user" id="wRF-ly-N54"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                         <connections>
@@ -99,6 +102,9 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pNE-VQ-cgT">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="198" type="user" id="g2a-Uu-Hai"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                                         <connections>
@@ -108,10 +114,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="hEn-26-yGM" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="default" id="2Ed-ac-sIv"/>
-                                    <constraint firstItem="hEn-26-yGM" firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" type="default" id="GnR-H4-0aZ"/>
-                                    <constraint firstItem="pNE-VQ-cgT" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="default" id="Jn2-5q-YKC"/>
-                                    <constraint firstItem="pNE-VQ-cgT" firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" type="default" id="XYu-2O-RYB"/>
+                                    <constraint firstItem="hEn-26-yGM" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="user" id="2Ed-ac-sIv"/>
+                                    <constraint firstItem="hEn-26-yGM" firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" type="user" id="GnR-H4-0aZ"/>
+                                    <constraint firstItem="pNE-VQ-cgT" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="user" id="Jn2-5q-YKC"/>
+                                    <constraint firstItem="pNE-VQ-cgT" firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" type="user" id="XYu-2O-RYB"/>
                                     <constraint firstItem="pNE-VQ-cgT" firstAttribute="top" secondItem="hEn-26-yGM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="bLm-SI-7nK"/>
                                     <constraint firstAttribute="height" constant="103" type="user" id="d6l-pC-F33"/>
                                     <constraint firstItem="hEn-26-yGM" firstAttribute="top" secondItem="ras-nV-YDw" secondAttribute="top" type="default" id="hsK-03-Rck"/>
@@ -120,10 +126,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ras-nV-YDw" firstAttribute="leading" secondItem="kag-go-mPW" secondAttribute="leading" constant="61" id="Gun-aG-Zpi"/>
-                            <constraint firstItem="smU-82-9fU" firstAttribute="leading" secondItem="kag-go-mPW" secondAttribute="leading" type="default" id="Zyf-px-leJ"/>
-                            <constraint firstItem="ras-nV-YDw" firstAttribute="top" secondItem="kag-go-mPW" secondAttribute="top" constant="167" type="user" id="cqh-mn-1jo"/>
-                            <constraint firstItem="ras-nV-YDw" firstAttribute="centerX" secondItem="smU-82-9fU" secondAttribute="centerX" type="default" id="e9w-Mc-zjk"/>
+                            <constraint firstItem="ras-nV-YDw" firstAttribute="top" secondItem="kag-go-mPW" secondAttribute="top" constant="167" id="CHq-ef-PLw"/>
+                            <constraint firstItem="ras-nV-YDw" firstAttribute="leading" secondItem="kag-go-mPW" secondAttribute="leading" constant="61" type="user" id="Gun-aG-Zpi"/>
+                            <constraint firstItem="smU-82-9fU" firstAttribute="leading" secondItem="kag-go-mPW" secondAttribute="leading" type="user" id="Zyf-px-leJ"/>
+                            <constraint firstItem="ras-nV-YDw" firstAttribute="centerX" secondItem="smU-82-9fU" secondAttribute="centerX" type="user" id="e9w-Mc-zjk"/>
                             <constraint firstItem="smU-82-9fU" firstAttribute="top" secondItem="kag-go-mPW" secondAttribute="top" type="default" id="w4V-h3-oFI"/>
                         </constraints>
                     </view>
