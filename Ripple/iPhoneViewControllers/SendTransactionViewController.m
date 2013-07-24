@@ -49,7 +49,7 @@
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
     NSNumber * number = [f numberFromString:self.textFieldAmount.text];
-    [[RippleJSManager shared] rippleSendTransactionAmount:number toRecipient:self.textFieldRecipient.text withBlock:^(NSError *error) {
+    [[RippleJSManager shared] rippleSendTransactionAmount:number currency:self.currency toRecipient:self.textFieldRecipient.text withBlock:^(NSError *error) {
         [SVProgressHUD dismiss];
         if (error) {
             UIAlertView *alert = [[UIAlertView alloc]
@@ -80,6 +80,11 @@
 -(void)RippleJSManagerDisconnected
 {
     [self done];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [SVProgressHUD dismiss];
 }
 
 - (void)viewDidLoad

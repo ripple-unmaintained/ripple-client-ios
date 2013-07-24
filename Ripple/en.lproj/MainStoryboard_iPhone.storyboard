@@ -379,7 +379,6 @@
         <class className="BalancesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BalancesViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonLogout:"/>
                 <relationship kind="outlet" name="navLogout" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
@@ -397,8 +396,6 @@
         <class className="SendTransactionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SendTransactionViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonCancel:"/>
-                <relationship kind="action" name="buttonSend:"/>
                 <relationship kind="outlet" name="navTitle" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="textFieldAmount" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="textFieldRecipient" candidateClass="UITextField"/>
@@ -407,8 +404,6 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonLogin:"/>
-                <relationship kind="action" name="buttonPressed:"/>
                 <relationship kind="outlet" name="textViewLog" candidateClass="UITextView"/>
             </relationships>
         </class>

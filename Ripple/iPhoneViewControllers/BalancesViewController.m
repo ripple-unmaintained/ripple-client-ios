@@ -141,10 +141,11 @@
     }
     else {
         NSString * key = [[balances allKeys] objectAtIndex:indexPath.row - 1];
-        if ([key isEqualToString:@"XRP"]) {
-            // Send XRP only
-            [self performSegueWithIdentifier:@"Send" sender:key];
-        }
+        [self performSegueWithIdentifier:@"Send" sender:key];
+//        if ([key isEqualToString:@"XRP"]) {
+//            // Send XRP only
+//            [self performSegueWithIdentifier:@"Send" sender:key];
+//        }
     }
 }
 

@@ -119,7 +119,7 @@
 
 -(void)setupJavascriptBridge
 {
-    //[WebViewJavascriptBridge enableLogging];
+    [WebViewJavascriptBridge enableLogging];
     
     _bridge = [WebViewJavascriptBridge bridgeForWebView:_webView webViewDelegate:self handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"ObjC received message from JS: %@", data);
@@ -367,6 +367,7 @@
     NSDictionary * params = @{@"account": blobData.account_id};
     
     [self subscribe:params];
+    //[self subscribeLedger:params];
 }
 
 #define MAX_TRANSACTIONS 10
@@ -1267,7 +1268,7 @@
 }
 
 
--(void)rippleSendTransactionAmount:(NSNumber*)amount toRecipient:(NSString*)recipient withBlock:(void(^)(NSError* error))block
+-(void)rippleSendTransactionAmount:(NSNumber*)amount currency:(NSString*)currency toRecipient:(NSString*)recipient withBlock:(void(^)(NSError* error))block
 {
     /*
     {
@@ -1319,7 +1320,7 @@
     
     NSDictionary * params = @{@"account": blobData.account_id,
                               @"recipient_address": recipient,
-                              @"currency": @"XRP",
+                              @"currency": currency,
                               @"amount": amount.stringValue,
                               @"secret": blobData.master_seed
                               };
@@ -1327,12 +1328,21 @@
     [_bridge callHandler:@"send_transaction" data:params responseCallback:^(id responseData) {
         NSLog(@"send_transaction response: %@", responseData);
         NSError * error;
+        // Check for ripple-lib error
         NSNumber * returnCode = [responseData objectForKey:@"engine_result_code"];
         if (returnCode.integerValue != 0) {
             // Could not send transaction
             NSString * errorMessage = [responseData objectForKey:@"engine_result_message"];
             error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
         }
+        
+        
+        // Check for wrapper error
+        NSString * errorMessage = [responseData objectForKey:@"error"];
+        if (errorMessage) {
+            error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+        }
+        
         block(error);
     }];
 }

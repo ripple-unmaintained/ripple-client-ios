@@ -40,7 +40,7 @@
 -(void)connect;
 
 -(void)rippleFindPath:(NSDictionary*)params;
--(void)rippleSendTransactionAmount:(NSNumber*)amount toRecipient:(NSString*)recipient withBlock:(void(^)(NSError* error))block;
+-(void)rippleSendTransactionAmount:(NSNumber*)amount currency:(NSString*)currency toRecipient:(NSString*)recipient withBlock:(void(^)(NSError* error))block;
 
 -(BOOL)isLoggedIn;
 -(BOOL)isConnected;
