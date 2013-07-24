@@ -12,6 +12,8 @@
 
 @interface ReceiveViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel * labelAddress;
+
 @end
 
 @implementation ReceiveViewController
@@ -67,6 +69,9 @@
     
     //and that's it!
     [self.view addSubview:qrcodeImageView];
+    
+    
+    self.labelAddress.text = aVeryLongURL;
 }
 
 - (void)didReceiveMemoryWarning
