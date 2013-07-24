@@ -70,7 +70,7 @@
 {
     if (balances.count != _balances.count) {
         balances = _balances;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     else {
         balances = _balances;
@@ -78,25 +78,42 @@
     }
 }
 
+-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return balances.count + 1;
+    if (section == 0) {
+        return 2;
+    }
+    else {
+        return balances.count;
+    }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell;
     
-    if (indexPath.row == 0) {
-        // Receive cell
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            // Send
+            cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            cell.textLabel.text = @"Send";
+        }
+        else {
+            // Receive cell
+            NSString *address = [[RippleJSManager shared] rippleWalletAddress];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"xrp"];
+            cell.textLabel.text = @"Receive";
+            cell.detailTextLabel.text = address;
+        }
         
-        NSString *address = [[RippleJSManager shared] rippleWalletAddress];
-        cell = [tableView dequeueReusableCellWithIdentifier:@"xrp"];
-        cell.textLabel.text = @"Receive";
-        cell.detailTextLabel.text = address;
     }
     else {
         // Currencies
-        NSString * key = [[balances allKeys] objectAtIndex:indexPath.row - 1];
+        NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
         NSNumber * amount = [balances objectForKey:key];
         
         NSNumberFormatter *formatter = [NSNumberFormatter new];
@@ -124,23 +141,32 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row == 0) {
-        NSString *address = [[RippleJSManager shared] rippleWalletAddress];
-        if (address) {
-            UIPasteboard *pb = [UIPasteboard generalPasteboard];
-            [pb setString:address];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            // Send
+            [self performSegueWithIdentifier:@"SendGeneric" sender:nil];
+        }
+        else {
+            // Receive
+            [self performSegueWithIdentifier:@"Receive" sender:nil];
             
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle: @"Copied to clipboard"
-                                  message: address
-                                  delegate: nil
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-            [alert show];
+//            NSString *address = [[RippleJSManager shared] rippleWalletAddress];
+//            if (address) {
+//                UIPasteboard *pb = [UIPasteboard generalPasteboard];
+//                [pb setString:address];
+//                
+//                UIAlertView *alert = [[UIAlertView alloc]
+//                                      initWithTitle: @"Copied to clipboard"
+//                                      message: address
+//                                      delegate: nil
+//                                      cancelButtonTitle:@"OK"
+//                                      otherButtonTitles:nil];
+//                [alert show];
+//            }
         }
     }
     else {
-        NSString * key = [[balances allKeys] objectAtIndex:indexPath.row - 1];
+        NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
         [self performSegueWithIdentifier:@"Send" sender:key];
 //        if ([key isEqualToString:@"XRP"]) {
 //            // Send XRP only

@@ -61,6 +61,11 @@
     return blobData.account_id;
 }
 
+-(NSArray*)rippleContacts
+{
+    return _contacts;
+}
+
 -(NSString*)rippleHTML
 {
     NSMutableString * html = [NSMutableString stringWithString:HTML_BEGIN];
@@ -266,7 +271,7 @@
                     
                     // Collect contacts
                     NSArray * contacts = [responseData objectForKey:@"contacts"];
-                    contacts = [NSMutableArray arrayWithCapacity:contacts.count];
+                    _contacts = [NSMutableArray arrayWithCapacity:contacts.count];
                     for (NSDictionary * contactDic in contacts) {
                         RPContact * contact = [RPContact new];
                         [contact setDictionary:contactDic];

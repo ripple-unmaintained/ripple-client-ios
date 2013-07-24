@@ -71,6 +71,13 @@
 		2B586199179A0A8500200D0C /* RPAccountLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B586198179A0A8400200D0C /* RPAccountLine.m */; };
 		2B58619B179A192A00200D0C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58619A179A192A00200D0C /* SystemConfiguration.framework */; };
 		2B58619D179A193000200D0C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58619C179A193000200D0C /* MobileCoreServices.framework */; };
+		2B58F784179F68F0009AEEEA /* SendGenericViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F783179F68F0009AEEEA /* SendGenericViewController.m */; };
+		2B58F787179F70A5009AEEEA /* SendAmountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F786179F70A5009AEEEA /* SendAmountViewController.m */; };
+		2B58F78A179F71EC009AEEEA /* RPNewTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F789179F71EB009AEEEA /* RPNewTransaction.m */; };
+		2B58F78C179F943D009AEEEA /* Ripple-Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B58F78B179F943D009AEEEA /* Ripple-Icon-57.png */; };
+		2B58F78E179F9444009AEEEA /* Ripple-Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */; };
+		2B58F7C2179F9D2F009AEEEA /* ReceiveViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F7C1179F9D2F009AEEEA /* ReceiveViewController.mm */; };
+		2B58F7D7179F9E35009AEEEA /* libqrencoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F7D2179F9DF9009AEEEA /* libqrencoder.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +87,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2B5860BA179764A300200D0C;
 			remoteInfo = Ripple;
+		};
+		2B58F7D1179F9DF9009AEEEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9672D35713BD662F0002B0E2;
+			remoteInfo = qrencoder;
+		};
+		2B58F7D3179F9DF9009AEEEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9621844115431DBA00447877;
+			remoteInfo = QRCodeEncoderDemo;
+		};
+		2B58F7D5179F9E29009AEEEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9672D35613BD662F0002B0E2;
+			remoteInfo = qrencoder;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -193,6 +221,17 @@
 		2B586198179A0A8400200D0C /* RPAccountLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPAccountLine.m; path = Objects/RPAccountLine.m; sourceTree = "<group>"; };
 		2B58619A179A192A00200D0C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2B58619C179A193000200D0C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		2B58F782179F68F0009AEEEA /* SendGenericViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendGenericViewController.h; path = iPhoneViewControllers/SendGenericViewController.h; sourceTree = "<group>"; };
+		2B58F783179F68F0009AEEEA /* SendGenericViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendGenericViewController.m; path = iPhoneViewControllers/SendGenericViewController.m; sourceTree = "<group>"; };
+		2B58F785179F70A5009AEEEA /* SendAmountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendAmountViewController.h; path = iPhoneViewControllers/SendAmountViewController.h; sourceTree = "<group>"; };
+		2B58F786179F70A5009AEEEA /* SendAmountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendAmountViewController.m; path = iPhoneViewControllers/SendAmountViewController.m; sourceTree = "<group>"; };
+		2B58F788179F71EB009AEEEA /* RPNewTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPNewTransaction.h; path = Objects/RPNewTransaction.h; sourceTree = "<group>"; };
+		2B58F789179F71EB009AEEEA /* RPNewTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPNewTransaction.m; path = Objects/RPNewTransaction.m; sourceTree = "<group>"; };
+		2B58F78B179F943D009AEEEA /* Ripple-Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ripple-Icon-57.png"; sourceTree = "<group>"; };
+		2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ripple-Icon-114.png"; sourceTree = "<group>"; };
+		2B58F7C0179F9D2F009AEEEA /* ReceiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReceiveViewController.h; path = iPhoneViewControllers/ReceiveViewController.h; sourceTree = "<group>"; };
+		2B58F7C1179F9D2F009AEEEA /* ReceiveViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ReceiveViewController.mm; path = iPhoneViewControllers/ReceiveViewController.mm; sourceTree = "<group>"; };
+		2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QRCodeEncoderObjectiveCAtGithub.xcodeproj; path = "QR-Code-Encoder-for-Objective-C/QRCodeEncoderObjectiveCAtGithub.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +239,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B58F7D7179F9E35009AEEEA /* libqrencoder.a in Frameworks */,
 				2B201DC6179D29D000B52E90 /* Security.framework in Frameworks */,
 				2B201D1C179D265A00B52E90 /* QuartzCore.framework in Frameworks */,
 				2B58619D179A193000200D0C /* MobileCoreServices.framework in Frameworks */,
@@ -241,6 +281,12 @@
 				2B201DC8179D2B9F00B52E90 /* BalancesViewController.m */,
 				2B201DCA179D36E600B52E90 /* SendTransactionViewController.h */,
 				2B201DCB179D36E600B52E90 /* SendTransactionViewController.m */,
+				2B58F782179F68F0009AEEEA /* SendGenericViewController.h */,
+				2B58F783179F68F0009AEEEA /* SendGenericViewController.m */,
+				2B58F785179F70A5009AEEEA /* SendAmountViewController.h */,
+				2B58F786179F70A5009AEEEA /* SendAmountViewController.m */,
+				2B58F7C0179F9D2F009AEEEA /* ReceiveViewController.h */,
+				2B58F7C1179F9D2F009AEEEA /* ReceiveViewController.mm */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -272,6 +318,8 @@
 		2B5860B2179764A300200D0C = {
 			isa = PBXGroup;
 			children = (
+				2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */,
+				2B58F78B179F943D009AEEEA /* Ripple-Icon-57.png */,
 				2B201D0A179D22AE00B52E90 /* Images */,
 				2B5861001797678C00200D0C /* Libraries */,
 				2B5860C4179764A300200D0C /* Ripple */,
@@ -370,6 +418,7 @@
 		2B5861001797678C00200D0C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */,
 				2B201DBB179D27C400B52E90 /* SSKeychain */,
 				2B201D13179D25C300B52E90 /* SVProgressHUD-master */,
 				2B5861931799EC6F00200D0C /* SJCL */,
@@ -422,6 +471,8 @@
 				2B201DDC179E483F00B52E90 /* RPTransaction.m */,
 				2B201DDE179E497C00B52E90 /* RPTransactionSubscription.h */,
 				2B201DDF179E497C00B52E90 /* RPTransactionSubscription.m */,
+				2B58F788179F71EB009AEEEA /* RPNewTransaction.h */,
+				2B58F789179F71EB009AEEEA /* RPNewTransaction.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -531,6 +582,15 @@
 			path = SJCL;
 			sourceTree = "<group>";
 		};
+		2B58F7CD179F9DF8009AEEEA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2B58F7D2179F9DF9009AEEEA /* libqrencoder.a */,
+				2B58F7D4179F9DF9009AEEEA /* QRCodeEncoderDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -545,6 +605,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2B58F7D6179F9E29009AEEEA /* PBXTargetDependency */,
 			);
 			name = Ripple;
 			productName = Ripple;
@@ -589,6 +650,12 @@
 			mainGroup = 2B5860B2179764A300200D0C;
 			productRefGroup = 2B5860BC179764A300200D0C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2B58F7CD179F9DF8009AEEEA /* Products */;
+					ProjectRef = 2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2B5860BA179764A300200D0C /* Ripple */,
@@ -596,6 +663,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2B58F7D2179F9DF9009AEEEA /* libqrencoder.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libqrencoder.a;
+			remoteRef = 2B58F7D1179F9DF9009AEEEA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2B58F7D4179F9DF9009AEEEA /* QRCodeEncoderDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = QRCodeEncoderDemo.app;
+			remoteRef = 2B58F7D3179F9DF9009AEEEA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2B5860B9179764A300200D0C /* Resources */ = {
@@ -617,6 +701,8 @@
 				2B201D0E179D22AE00B52E90 /* Splash@2x.png in Resources */,
 				2B201D19179D25C300B52E90 /* SVProgressHUD.bundle in Resources */,
 				2B201DC2179D27C400B52E90 /* SSKeychain.strings in Resources */,
+				2B58F78C179F943D009AEEEA /* Ripple-Icon-57.png in Resources */,
+				2B58F78E179F9444009AEEEA /* Ripple-Icon-114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +774,10 @@
 				2B201DDA179E03AD00B52E90 /* RPContact.m in Sources */,
 				2B201DDD179E483F00B52E90 /* RPTransaction.m in Sources */,
 				2B201DE0179E497C00B52E90 /* RPTransactionSubscription.m in Sources */,
+				2B58F784179F68F0009AEEEA /* SendGenericViewController.m in Sources */,
+				2B58F787179F70A5009AEEEA /* SendAmountViewController.m in Sources */,
+				2B58F78A179F71EC009AEEEA /* RPNewTransaction.m in Sources */,
+				2B58F7C2179F9D2F009AEEEA /* ReceiveViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,6 +796,11 @@
 			isa = PBXTargetDependency;
 			target = 2B5860BA179764A300200D0C /* Ripple */;
 			targetProxy = 2B5860E9179764A300200D0C /* PBXContainerItemProxy */;
+		};
+		2B58F7D6179F9E29009AEEEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = qrencoder;
+			targetProxy = 2B58F7D5179F9E29009AEEEA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -817,7 +912,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kevin Johnson (5Z79N3T28E)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ripple/Ripple-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/QR-Code-Encoder-for-Objective-C\"/**";
 				INFOPLIST_FILE = "Ripple/Ripple-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/ZBarSDK\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "001CDE08-5510-44CA-A59D-F5B1480D0C17";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -831,7 +931,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kevin Johnson (5Z79N3T28E)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ripple/Ripple-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/QR-Code-Encoder-for-Objective-C\"/**";
 				INFOPLIST_FILE = "Ripple/Ripple-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Libraries/ZBarSDK\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "001CDE08-5510-44CA-A59D-F5B1480D0C17";
 				TARGETED_DEVICE_FAMILY = 1;

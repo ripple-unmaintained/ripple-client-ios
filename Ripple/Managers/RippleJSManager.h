@@ -47,4 +47,6 @@
 
 -(NSString*)rippleWalletAddress;
 
+-(NSArray*)rippleContacts;
+
 @end
