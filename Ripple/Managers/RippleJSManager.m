@@ -80,7 +80,7 @@
     NSString *path;
     NSString *contents;
     
-    path = [[NSBundle mainBundle] pathForResource:@"ripple" ofType:@"js"];
+    path = [[NSBundle mainBundle] pathForResource:@"ripple-0.7.17-min" ofType:@"js"];
     contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     [html appendFormat:@"<script>%@</script>", contents];
     path = nil;

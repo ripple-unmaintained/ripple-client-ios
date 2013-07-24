@@ -44,7 +44,6 @@
 		2B5861051797678C00200D0C /* WebViewJavascriptBridge.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2B5861031797678C00200D0C /* WebViewJavascriptBridge.js.txt */; };
 		2B5861061797678C00200D0C /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861041797678C00200D0C /* WebViewJavascriptBridge.m */; };
 		2B58613917976D3400200D0C /* ripple-lib-wrapper.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B586126179769C500200D0C /* ripple-lib-wrapper.js */; };
-		2B58613D17976DFC00200D0C /* ripple.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B58613B17976DE700200D0C /* ripple.js */; };
 		2B5861411797806E00200D0C /* RPAccountData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861401797806E00200D0C /* RPAccountData.m */; };
 		2B5861451797813000200D0C /* NSObject+KJSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861441797813000200D0C /* NSObject+KJSerializer.m */; };
 		2B5861481797879700200D0C /* RPLedgerClosed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5861471797879700200D0C /* RPLedgerClosed.m */; };
@@ -78,6 +77,7 @@
 		2B58F78E179F9444009AEEEA /* Ripple-Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */; };
 		2B58F7C2179F9D2F009AEEEA /* ReceiveViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F7C1179F9D2F009AEEEA /* ReceiveViewController.mm */; };
 		2B58F7D7179F9E35009AEEEA /* libqrencoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F7D2179F9DF9009AEEEA /* libqrencoder.a */; };
+		2B58F7E217A057C4009AEEEA /* ripple-0.7.17-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B58F7DF17A057B3009AEEEA /* ripple-0.7.17-min.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,7 +168,6 @@
 		2B5861031797678C00200D0C /* WebViewJavascriptBridge.js.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebViewJavascriptBridge.js.txt; sourceTree = "<group>"; };
 		2B5861041797678C00200D0C /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		2B586126179769C500200D0C /* ripple-lib-wrapper.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ripple-lib-wrapper.js"; sourceTree = "<group>"; };
-		2B58613B17976DE700200D0C /* ripple.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ripple.js; sourceTree = "<group>"; };
 		2B58613F1797806E00200D0C /* RPAccountData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPAccountData.h; path = Objects/RPAccountData.h; sourceTree = "<group>"; };
 		2B5861401797806E00200D0C /* RPAccountData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPAccountData.m; path = Objects/RPAccountData.m; sourceTree = "<group>"; };
 		2B5861431797813000200D0C /* NSObject+KJSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KJSerializer.h"; sourceTree = "<group>"; };
@@ -232,6 +231,7 @@
 		2B58F7C0179F9D2F009AEEEA /* ReceiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReceiveViewController.h; path = iPhoneViewControllers/ReceiveViewController.h; sourceTree = "<group>"; };
 		2B58F7C1179F9D2F009AEEEA /* ReceiveViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ReceiveViewController.mm; path = iPhoneViewControllers/ReceiveViewController.mm; sourceTree = "<group>"; };
 		2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QRCodeEncoderObjectiveCAtGithub.xcodeproj; path = "QR-Code-Encoder-for-Objective-C/QRCodeEncoderObjectiveCAtGithub.xcodeproj"; sourceTree = "<group>"; };
+		2B58F7DF17A057B3009AEEEA /* ripple-0.7.17-min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ripple-0.7.17-min.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,7 +447,7 @@
 		2B58613A17976DE700200D0C /* ripple-lib-demo */ = {
 			isa = PBXGroup;
 			children = (
-				2B58613B17976DE700200D0C /* ripple.js */,
+				2B58F7DF17A057B3009AEEEA /* ripple-0.7.17-min.js */,
 			);
 			path = "ripple-lib-demo";
 			sourceTree = "<group>";
@@ -686,8 +686,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B58F7E217A057C4009AEEEA /* ripple-0.7.17-min.js in Resources */,
 				2B5861961799EC7B00200D0C /* sjcl.js in Resources */,
-				2B58613D17976DFC00200D0C /* ripple.js in Resources */,
 				2B58613917976D3400200D0C /* ripple-lib-wrapper.js in Resources */,
 				2B5860C9179764A300200D0C /* InfoPlist.strings in Resources */,
 				2B5860D1179764A300200D0C /* Default.png in Resources */,
