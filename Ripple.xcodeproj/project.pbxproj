@@ -227,8 +227,8 @@
 		2B58F786179F70A5009AEEEA /* SendAmountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendAmountViewController.m; path = iPhoneViewControllers/SendAmountViewController.m; sourceTree = "<group>"; };
 		2B58F788179F71EB009AEEEA /* RPNewTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPNewTransaction.h; path = Objects/RPNewTransaction.h; sourceTree = "<group>"; };
 		2B58F789179F71EB009AEEEA /* RPNewTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPNewTransaction.m; path = Objects/RPNewTransaction.m; sourceTree = "<group>"; };
-		2B58F78B179F943D009AEEEA /* Ripple-Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ripple-Icon-57.png"; sourceTree = "<group>"; };
-		2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ripple-Icon-114.png"; sourceTree = "<group>"; };
+		2B58F78B179F943D009AEEEA /* Ripple-Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ripple-Icon-57.png"; sourceTree = SOURCE_ROOT; };
+		2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ripple-Icon-114.png"; sourceTree = SOURCE_ROOT; };
 		2B58F7C0179F9D2F009AEEEA /* ReceiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReceiveViewController.h; path = iPhoneViewControllers/ReceiveViewController.h; sourceTree = "<group>"; };
 		2B58F7C1179F9D2F009AEEEA /* ReceiveViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ReceiveViewController.mm; path = iPhoneViewControllers/ReceiveViewController.mm; sourceTree = "<group>"; };
 		2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QRCodeEncoderObjectiveCAtGithub.xcodeproj; path = "QR-Code-Encoder-for-Objective-C/QRCodeEncoderObjectiveCAtGithub.xcodeproj"; sourceTree = "<group>"; };
@@ -318,8 +318,6 @@
 		2B5860B2179764A300200D0C = {
 			isa = PBXGroup;
 			children = (
-				2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */,
-				2B58F78B179F943D009AEEEA /* Ripple-Icon-57.png */,
 				2B201D0A179D22AE00B52E90 /* Images */,
 				2B5861001797678C00200D0C /* Libraries */,
 				2B5860C4179764A300200D0C /* Ripple */,
@@ -375,6 +373,8 @@
 		2B5860C5179764A300200D0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */,
+				2B58F78B179F943D009AEEEA /* Ripple-Icon-57.png */,
 				2B5860C6179764A300200D0C /* Ripple-Info.plist */,
 				2B5860C7179764A300200D0C /* InfoPlist.strings */,
 				2B5860CA179764A300200D0C /* main.m */,

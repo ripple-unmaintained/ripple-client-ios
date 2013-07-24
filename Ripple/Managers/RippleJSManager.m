@@ -56,9 +56,16 @@
 
 @implementation RippleJSManager
 
+#define USERDEFAULTS_RIPPLE_KEY @"RippleKey"
+
 -(NSString*)rippleWalletAddress
 {
-    return blobData.account_id;
+    NSString *address = blobData.account_id;
+    if (!address) {
+        address = [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULTS_RIPPLE_KEY];
+    }
+
+    return address;
 }
 
 -(NSArray*)rippleContacts
@@ -364,6 +371,9 @@
         [SSKeychain deletePasswordForService:SSKEYCHAIN_SERVICE account:username error:&error];
         
     }
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERDEFAULTS_RIPPLE_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
@@ -381,6 +391,10 @@
 {
     // Received Blob. Request account information from network
     // TODO: Check for connected?
+    
+    [[NSUserDefaults standardUserDefaults] setObject:blobData.account_id forKey:USERDEFAULTS_RIPPLE_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     
     isLoggedIn = YES;
     NSDictionary * params = @{@"account": blobData.account_id,
