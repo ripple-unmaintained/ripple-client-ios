@@ -8,6 +8,7 @@
 
 #import "ReceiveViewController.h"
 #import "QREncoder.h"
+#import "RippleJSManager.h"
 
 @interface ReceiveViewController ()
 
@@ -30,7 +31,7 @@
     int qrcodeImageDimension = 250;
     
     //the string can be very long
-    NSString* aVeryLongURL = @"http://thelongestlistofthelongeststuffatthelongestdomainnameatlonglast.com/";
+    NSString* aVeryLongURL = [[RippleJSManager shared] rippleWalletAddress];
     
     //first encode the string into a matrix of bools, TRUE for black dot and FALSE for white. Let the encoder decide the error correction level and version
     DataMatrix* qrMatrix = [QREncoder encodeWithECLevel:QR_ECLEVEL_AUTO version:QR_VERSION_AUTO string:aVeryLongURL];
