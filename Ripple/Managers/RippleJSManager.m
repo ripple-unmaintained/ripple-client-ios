@@ -890,7 +890,7 @@
     /*
     {
         account = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
-        count = 3;
+        count = 3;˘
         "ledger_index_max" = 1364947;
         "ledger_index_min" = 32570;
         limit = 10;

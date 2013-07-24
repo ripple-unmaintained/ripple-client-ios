@@ -16,6 +16,21 @@
 
 @implementation ReceiveViewController
 
+-(IBAction)buttonCopyToClipboard:(id)sender
+{
+    NSString * address = [[RippleJSManager shared] rippleWalletAddress];
+    UIPasteboard *pb = [UIPasteboard generalPasteboard];
+    [pb setString:address];
+
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Copied to clipboard"
+                          message: address
+                          delegate: nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+    [alert show];
+}
+
 -(IBAction)buttonBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
