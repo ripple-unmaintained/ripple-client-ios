@@ -16,6 +16,11 @@
 
 @implementation SendAmountViewController
 
+-(IBAction)buttonBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];

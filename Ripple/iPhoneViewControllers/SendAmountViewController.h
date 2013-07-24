@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class RPNewTransaction;
+
 @interface SendAmountViewController : UIViewController
+
+@property (strong, nonatomic) RPNewTransaction * transaction;
 
 @end

@@ -1,0 +1,152 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.7. ZBarReaderViewDelegate Protocol Reference &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="3. API Reference" href="apiref.html" />
+    <link rel="next" title="3.8. ZBarSymbol Class Reference" href="ZBarSymbol.html" />
+    <link rel="prev" title="3.6. ZBarReaderViewController Class Reference" href="ZBarReaderViewController.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarSymbol.html" title="3.8. ZBarSymbol Class Reference"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ZBarReaderViewController.html" title="3.6. ZBarReaderViewController Class Reference"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" accesskey="U">3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="zbarreaderviewdelegate-protocol-reference">
+<h1>3.7. ZBarReaderViewDelegate Protocol Reference<a class="headerlink" href="#zbarreaderviewdelegate-protocol-reference" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ZBarReaderViewDelegate">
+<em class="property">class </em><tt class="descname">ZBarReaderViewDelegate</tt><a class="headerlink" href="#ZBarReaderViewDelegate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Inherits from:</th><td class="field-body"><tt class="xref cpp cpp-class docutils literal"><span class="pre">NSObject</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>This protocol, which must be implemented by the <cite>readerDelegate</cite> provided
+to a <a class="reference internal" href="ZBarReaderView.html#ZBarReaderView" title="ZBarReaderView"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderView</span></tt></a>, is used to notify the delegate of new decode
+results.</p>
+</dd></dl>
+
+<div class="section" id="instance-methods">
+<h2>3.7.1. Instance Methods<a class="headerlink" href="#instance-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<dl class="describe">
+<dt>
+<tt class="descname">- (void) readerView:(ZBarReaderView*)readerView didReadSymbols:(ZBarSymbolSet*)symbols fromImage:(UIImage*)image</tt></dt>
+<dd><p>Called to notify the delegate of new decode results.</p>
+<p>Note that the referenced image is a proxy for a video buffer that is
+asynchronously being converted to a <tt class="xref cpp cpp-class docutils literal"><span class="pre">UIImage</span></tt>, attempting to
+access the data will block until the conversion is complete.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Readerview :</th><td class="field-body"><a class="reference internal" href="ZBarReaderView.html#ZBarReaderView" title="ZBarReaderView"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderView</span></tt></a> that scanned the barcode(s).</td>
+</tr>
+<tr class="field"><th class="field-name">Symbols :</th><td class="field-body"><a class="reference internal" href="ZBarSymbolSet.html#ZBarSymbolSet" title="ZBarSymbolSet"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarSymbolSet</span></tt></a> containing the decode results.</td>
+</tr>
+<tr class="field"><th class="field-name">Image :</th><td class="field-body"><tt class="xref cpp cpp-class docutils literal"><span class="pre">UIImage</span></tt> from which the barcode(s) were scanned.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.7. ZBarReaderViewDelegate Protocol Reference</a><ul>
+<li><a class="reference internal" href="#instance-methods">3.7.1. Instance Methods</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ZBarReaderViewController.html"
+                        title="previous chapter">3.6. ZBarReaderViewController Class Reference</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ZBarSymbol.html"
+                        title="next chapter">3.8. ZBarSymbol Class Reference</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarSymbol.html" title="3.8. ZBarSymbol Class Reference"
+             >next</a></li>
+        <li class="right" >
+          <a href="ZBarReaderViewController.html" title="3.6. ZBarReaderViewController Class Reference"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" >3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

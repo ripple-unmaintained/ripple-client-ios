@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.5. Backward Compatibility &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="2. Developer’s Guide" href="devguide.html" />
+    <link rel="next" title="2.6. Licensing the Library" href="licensing.html" />
+    <link rel="prev" title="2.4. Optimizing the Reader" href="optimizing.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="licensing.html" title="2.6. Licensing the Library"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="optimizing.html" title="2.4. Optimizing the Reader"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="devguide.html" accesskey="U">2. Developer&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="backward-compatibility">
+<h1>2.5. Backward Compatibility<a class="headerlink" href="#backward-compatibility" title="Permalink to this headline">¶</a></h1>
+<p>Generally speaking, we take great care to ensure that each release of the
+library is backward compatible with previous versions - upgrading the library
+should not require any changes to your code and will continue to provide
+equivalent functionality.  The notable exception to this is the iOS 4 upgrade
+and associated &#8220;deprecation&#8221; of the former automatic capture method by our
+vendor.</p>
+<div class="section" id="the-private-api">
+<h2>2.5.1. The Private API<a class="headerlink" href="#the-private-api" title="Permalink to this headline">¶</a></h2>
+<p>The API that we use for automatic capture with iOS 3.x (namely
+<tt class="xref cpp cpp-func docutils literal"><span class="pre">UIGetScreenImage()</span></tt>) has an interesting history.  It has changed status
+several times, starting with &#8220;Private, unless we like you&#8221; moving to
+&#8220;reluctantly Public but undocumeted&#8221; by popular demand and reverting to
+&#8220;strictly Private&#8221; as of iOS 4.  The current story: if you want to distribute
+on the App Store, you had better not be using it - IOW, no automatic capture
+for you with iOS 3.x.</p>
+<p>Since App Store distribution is the most common use for the library, the
+default configuration, and thus the binary SDK, does <em>not</em> use any private
+APIs.</p>
+<p>Users targeting ad-hoc or enterprise distribution may not care about the
+status of the API and may prefer to continue supporting automatic capture for
+iOS 3.x.  To do this you will need to rebuild the library with the following
+define set for all configurations:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">USE_PRIVATE_APIS</span><span class="o">=</span>1
+</pre></div>
+</div>
+<p>For reference, you can check whether your app refers to the offensive function
+with this command:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>otool -vI MyApp.app/MyApp | grep UIGetScreenImage
+</pre></div>
+</div>
+<p>If there is any output, then the executable includes the private API and is
+bound to be rejected if submitted for review.  Otherwise it is &#8220;clean&#8221; as far
+as this library is concerned.</p>
+</div>
+<div class="section" id="upgrading-to-ios-4">
+<h2>2.5.2. Upgrading to iOS 4<a class="headerlink" href="#upgrading-to-ios-4" title="Permalink to this headline">¶</a></h2>
+<p>If you were using the reader before iOS 4 was introduced, you will want to
+upgrade to the new reader controller.  The performance has improved quite a
+bit, and you can continue to support automatic capture on the App Store.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This discussion only applies to automatic capture from the camera.  If you
+are only scanning image files, or prefer/need to use manual capture, you
+should not change anything.</p>
+</div>
+<p>Basically just replace your old <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a> with a new
+<a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a> and you&#8217;re done!  See the reference and the
+next section for compatibility between the two classes.</p>
+<p>Also see the <a class="reference internal" href="install.html"><em>Installing the SDK</em></a> instructions for details about upgrading the
+header references to use the SDK.</p>
+</div>
+<div class="section" id="supporting-ios-3-x">
+<h2>2.5.3. Supporting iOS 3.x<a class="headerlink" href="#supporting-ios-3-x" title="Permalink to this headline">¶</a></h2>
+<p>The new <a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a> is intentionally designed to be
+compatible with the old <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a> in most aspects that
+relate to reading barcodes.  When a <a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a> is
+initialized under iOS 3.x, it will <em>replace</em> itself with a
+<a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a>.  You can leverage the compatibility of these
+controllers to continue supporting iOS 3.x.</p>
+<p>The following properties and methods should be equivalent across
+implementations.  You may use them without regard for the actual instance
+type.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="93%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Equivalent Members</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">cameraOverlayView</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">cameraViewTransform</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">enableCache</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">scanner</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">readerDelegate</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">scanCrop</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><tt class="docutils literal"><span class="pre">showHelpWithReason:</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">showsZBarControls</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">tracksSymbols</span></tt></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>Some properties are available with <a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a> only for
+backward compatibility.  If these are configured, they must be set as
+indicated; attempts to set another value will raise an exception.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head"><a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a> Property</th>
+<th class="head"><a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a> Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">allowsEditing</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">NO</span></tt></td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">cameraMode</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">Sampling</span></tt></td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">maxScanDimension</span></tt></td>
+<td>(ignored)</td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">showsCameraControls</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">NO</span></tt></td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">showsHelpOnFail</span></tt></td>
+<td>(ignored)</td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">sourceType</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">Camera</span></tt></td>
+</tr>
+<tr><td><tt class="xref cpp cpp-member docutils literal"><span class="pre">takesPicture</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">NO</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>Also, the <tt class="docutils literal"><span class="pre">isSourceTypeAvailable:</span></tt> class method of
+<a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a> will return <tt class="docutils literal"><span class="pre">YES</span></tt> only for the <tt class="docutils literal"><span class="pre">Camera</span></tt>
+source.</p>
+<p>All other members of <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a>, including those inherited
+from <tt class="xref cpp cpp-class docutils literal"><span class="pre">UIImagePickerController</span></tt> are not supported by
+<a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a>.  This includes <tt class="docutils literal"><span class="pre">takePicture</span></tt> and
+<tt class="docutils literal"><span class="pre">scanImage:</span></tt>, among others.</p>
+<p>Remaining members of <a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a>: are only available
+with the new implementation.  At the moment this is only
+<tt class="xref cpp cpp-member docutils literal"><span class="pre">readerView</span></tt>, but any new properties or
+methods not listed here will also fall in this category.</p>
+<p>To access settings that may not be available in a potential fallback
+environment, you must verify that they exist and may be set as desired - eg,
+by testing the specific reader subtype.</p>
+<div class="section" id="weak-linking">
+<h3>2.5.3.1. Weak Linking<a class="headerlink" href="#weak-linking" title="Permalink to this headline">¶</a></h3>
+<p>When leveraging fallbacks to iOS 3.x, it is important that features introduced
+in iOS 4 are referenced using <em>weak</em> links.  You must configure your project
+correctly to support this:</p>
+<ul class="simple">
+<li>Make sure the iOS 4 frameworks are set to <em>Weak</em>.  Specifically, these are
+AVCapture, CoreMedia and CoreVideo.</li>
+<li>Build with the latest SDK - do <em>not</em> use the &#8220;Base SDK&#8221; setting to target
+earlier devices.</li>
+<li>Set the correct iOS 3.x version for the &#8220;iPhone OS Deployment Target&#8221;
+build setting.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="example-fallback-to-manual-capture">
+<h2>2.5.4. Example: Fallback to Manual Capture<a class="headerlink" href="#example-fallback-to-manual-capture" title="Permalink to this headline">¶</a></h2>
+<p>This code example will configure the reader for automatic capture from the
+camera for iOS 4 and fall back to manual or automatic capture for iOS 3.x,
+depending on whether the library was compiled to use private APIs:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">ZBarReaderController</span> <span class="nl">isSourceTypeAvailable:</span>
+                              <span class="n">UIImagePickerControllerSourceTypeCamera</span><span class="p">])</span> <span class="p">{</span>
+    <span class="c1">// camera unavailable: display warning and abort</span>
+    <span class="c1">// or resort to keypad entry, etc...</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">ZBarReaderViewController</span> <span class="o">*</span><span class="n">reader</span> <span class="o">=</span> <span class="p">[</span><span class="n">ZBarReaderViewController</span> <span class="n">new</span><span class="p">];</span>
+<span class="c1">// reader will be a ZBarReaderController for iOS 3.x</span>
+<span class="c1">// or a ZBarReaderViewController for iOS 4</span>
+
+<span class="n">reader</span><span class="p">.</span><span class="n">readerDelegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+<span class="n">reader</span><span class="p">.</span><span class="n">sourceType</span> <span class="o">=</span> <span class="n">UIImagePickerControllerSourceTypeCamera</span><span class="p">;</span>
+<span class="n">reader</span><span class="p">.</span><span class="n">showsZBarControls</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
+
+<span class="k">if</span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="n">cameraMode</span> <span class="o">==</span> <span class="n">ZBarReaderControllerCameraModeSampling</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// additional automatic capture configuration here</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// additional manual capture configuration here</span>
+<span class="p">}</span>
+
+<span class="p">[</span><span class="n">self</span> <span class="nl">presentModalViewController:</span> <span class="n">reader</span>
+      <span class="nl">animated:</span> <span class="n">YES</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>If you are using a custom control set
+(<tt class="xref cpp cpp-member docutils literal"><span class="pre">showsZBarControls</span></tt><tt class="docutils literal"><span class="pre">=NO</span></tt>), you will
+want to provide a button attached to <tt class="docutils literal"><span class="pre">takePicture</span></tt> for the manual capture
+case.  The built-in controls do this automatically.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.5. Backward Compatibility</a><ul>
+<li><a class="reference internal" href="#the-private-api">2.5.1. The Private API</a></li>
+<li><a class="reference internal" href="#upgrading-to-ios-4">2.5.2. Upgrading to iOS 4</a></li>
+<li><a class="reference internal" href="#supporting-ios-3-x">2.5.3. Supporting iOS 3.x</a><ul>
+<li><a class="reference internal" href="#weak-linking">2.5.3.1. Weak Linking</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-fallback-to-manual-capture">2.5.4. Example: Fallback to Manual Capture</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="optimizing.html"
+                        title="previous chapter">2.4. Optimizing the Reader</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="licensing.html"
+                        title="next chapter">2.6. Licensing the Library</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="licensing.html" title="2.6. Licensing the Library"
+             >next</a></li>
+        <li class="right" >
+          <a href="optimizing.html" title="2.4. Optimizing the Reader"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="devguide.html" >2. Developer&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

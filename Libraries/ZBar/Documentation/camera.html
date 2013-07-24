@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.1. Scanning From the Camera Feed &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="2. Developer’s Guide" href="devguide.html" />
+    <link rel="next" title="2.2. Scanning a User-Selected Image" href="picker.html" />
+    <link rel="prev" title="2. Developer’s Guide" href="devguide.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="picker.html" title="2.2. Scanning a User-Selected Image"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="devguide.html" title="2. Developer’s Guide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="devguide.html" accesskey="U">2. Developer&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scanning-from-the-camera-feed">
+<h1>2.1. Scanning From the Camera Feed<a class="headerlink" href="#scanning-from-the-camera-feed" title="Permalink to this headline">¶</a></h1>
+<p>Many iPhone developers want their application to support automatic recognition
+of barcodes from the camera feed in real-time.  ZBar makes this easy!</p>
+<p>There are three levels that you may choose to integrate at, from least complex
+(recommended) to most complex these are:</p>
+<ul class="simple">
+<li>Use the fully integrated view controller - this is very easy to implement
+and is the recommended approach.</li>
+<li>Use the reader view with your own controller - this more advanced approach
+allows you to embed the view directly in your view hierarchy.</li>
+<li>Use the capture component with your own AVCapture session - this is not
+supported and only provided for advanced developers with special needs who
+are already familiar with AVCapture.</li>
+</ul>
+<div class="section" id="using-a-zbarreaderviewcontroller">
+<h2>2.1.1. Using a ZBarReaderViewController<a class="headerlink" href="#using-a-zbarreaderviewcontroller" title="Permalink to this headline">¶</a></h2>
+<p>This is the fastest, easiest and recommend way to get the barcode reader into
+your application.  It is also the only way to support <a class="reference internal" href="compat.html"><em>automatic fallback
+for iOS 3.1</em></a>.  The procedure is the same as using a
+UIImagePickerController to take a picture with the camera, so it will help if
+you are familiar with that.  Basically you:</p>
+<ol class="arabic">
+<li><p class="first">Create the reader.</p>
+<p>This is as simple as creating a new <a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a>:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="n">ZBarReaderViewController</span> <span class="o">*</span><span class="n">reader</span> <span class="o">=</span> <span class="p">[</span><span class="n">ZBarReaderViewController</span> <span class="n">new</span><span class="p">];</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Setup a delegate to receive the results.</p>
+<p>The delegate should implement the <a class="reference internal" href="ZBarReaderDelegate.html#ZBarReaderDelegate" title="ZBarReaderDelegate"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderDelegate</span></tt></a> protocol,
+which inherits from <tt class="xref cpp cpp-class docutils literal"><span class="pre">UIImagePickerControllerDelegate</span></tt>:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="n">reader</span><span class="p">.</span><span class="n">readerDelegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Configure the reader.</p>
+<p>Aside from the properties of the reader itself, you can configure the
+decoder via the <tt class="xref cpp cpp-member docutils literal"><span class="pre">scanner</span></tt> property and
+further customize the view via the
+<tt class="xref cpp cpp-member docutils literal"><span class="pre">readerView</span></tt> property:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="p">[</span><span class="n">reader</span><span class="p">.</span><span class="n">scanner</span> <span class="nl">setSymbology:</span> <span class="n">ZBAR_QRCODE</span>
+                <span class="nl">config:</span> <span class="n">ZBAR_CFG_ENABLE</span>
+                <span class="nl">to:</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">reader</span><span class="p">.</span><span class="n">readerView</span><span class="p">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="custom.html"><em>Customizing the Interface</em></a> and <a class="reference internal" href="optimizing.html"><em>Optimizing the Reader</em></a> for more details.</p>
+</li>
+<li><p class="first">Present the reader to the user.</p>
+<p>Typically the controller is presented modally, although the new controller
+does not require it (note that modal presentation is the only option if you
+want to support <a class="reference internal" href="compat.html"><em>iOS 3.1 fallback</em></a>):</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="p">[</span><span class="n">self</span> <span class="nl">presentModalViewController:</span> <span class="n">reader</span>
+      <span class="nl">animated:</span> <span class="n">YES</span><span class="p">];</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Process the results.</p>
+<p>The controller will call the
+<tt class="xref cpp cpp-member docutils literal"><span class="pre">imagePickerController:didFinishPickingMediaWithInfo:</span></tt> method of
+your delegate every time new results become available.  The barcode data
+can be obtained using the <a class="reference internal" href="ZBarReaderController.html#ZBarReaderControllerResults" title="ZBarReaderControllerResults"><tt class="xref c c-data docutils literal"><span class="pre">ZBarReaderControllerResults</span></tt></a> key of the
+info dictionary.  This key will return &#8220;something enumerable&#8221;; keep in mind
+that there may be multiple results.  You may also retrieve the
+corresponding image with <tt class="xref c c-data docutils literal"><span class="pre">UIImagePickerControllerOriginalImage</span></tt> as
+usual:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nl">imagePickerController:</span> <span class="p">(</span><span class="n">UIImagePickerController</span><span class="o">*</span><span class="p">)</span> <span class="n">reader</span>
+ <span class="nl">didFinishPickingMediaWithInfo:</span> <span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span> <span class="n">info</span>
+<span class="p">{</span>
+    <span class="kt">id</span><span class="o">&lt;</span><span class="n">NSFastEnumeration</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span>
+        <span class="p">[</span><span class="n">info</span> <span class="nl">objectForKey:</span> <span class="n">ZBarReaderControllerResults</span><span class="p">];</span>
+    <span class="n">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span>
+        <span class="p">[</span><span class="n">info</span> <span class="nl">objectForKey:</span> <span class="n">UIImagePickerControllerOriginalImage</span><span class="p">];</span>
+    <span class="p">...</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">reader</span></tt> parameter will be the actual type of the reader (not
+necessarily a <tt class="xref cpp cpp-class docutils literal"><span class="pre">UIImagePickerController</span></tt>).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The delegate method should queue the interface response and return as
+soon as possible; any processing of the results should be deferred until
+later, otherwise the user will experience unacceptable latency between
+the actual scan completion and the visual interface feedback.</p>
+</div>
+</li>
+<li><p class="first">Dismiss the reader (or not).</p>
+<p>Once you have the results you may dismiss the reader:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="p">[</span><span class="n">reader</span> <span class="nl">dismissModalViewControllerAnimated:</span> <span class="n">YES</span><span class="p">];</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">It is very important to dismiss from the <em>reader</em> (not the presenting
+controller) to avoid corrupting the interface.</p>
+</div>
+<p>Alternatively, you may choose to continue scanning and provide visual
+feedback another way (eg, maybe by updating your custom overlay with the
+results).  The &#8220;continuous&#8221; mode of the readertest example does this.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="using-a-zbarreaderview">
+<h2>2.1.2. Using a ZBarReaderView<a class="headerlink" href="#using-a-zbarreaderview" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a> is a relatively thin wrapper around a
+<a class="reference internal" href="ZBarReaderView.html#ZBarReaderView" title="ZBarReaderView"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderView</span></tt></a>; it is possible to use the view directly, even from
+Interface Builder.  You will lose the automatic fallback for iOS 3.1 and some
+of the simulator and rotation hooks.  The documentation is also less complete,
+so you need to be able to UTSL.  See the <tt class="file docutils literal"><span class="pre">EmbedReader</span></tt> sample for a
+working example.</p>
+</div>
+<div class="section" id="using-the-zbarcapturereader">
+<h2>2.1.3. Using the ZBarCaptureReader<a class="headerlink" href="#using-the-zbarcapturereader" title="Permalink to this headline">¶</a></h2>
+<p>If you have special requirements for the capture session or just want to use
+your own preview, you can add your own <tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarCaptureReader</span></tt> to your
+session.  You must have a solid understanding of the AVCapture infrastructure
+if you plan to use this approach.</p>
+<div class="admonition-tbd admonition ">
+<p class="first admonition-title">TBD</p>
+<p class="last">sorry, you&#8217;re on your own here - UTSL  :)</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.1. Scanning From the Camera Feed</a><ul>
+<li><a class="reference internal" href="#using-a-zbarreaderviewcontroller">2.1.1. Using a ZBarReaderViewController</a></li>
+<li><a class="reference internal" href="#using-a-zbarreaderview">2.1.2. Using a ZBarReaderView</a></li>
+<li><a class="reference internal" href="#using-the-zbarcapturereader">2.1.3. Using the ZBarCaptureReader</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="devguide.html"
+                        title="previous chapter">2. Developer&#8217;s Guide</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="picker.html"
+                        title="next chapter">2.2. Scanning a User-Selected Image</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="picker.html" title="2.2. Scanning a User-Selected Image"
+             >next</a></li>
+        <li class="right" >
+          <a href="devguide.html" title="2. Developer’s Guide"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="devguide.html" >2. Developer&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

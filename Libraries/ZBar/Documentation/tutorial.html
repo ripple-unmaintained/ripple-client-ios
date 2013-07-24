@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.2. ZBar SDK Integration Tutorial &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="1. Getting Started" href="getstarted.html" />
+    <link rel="next" title="1.3. Frequently Asked Questions (FAQ)" href="faq.html" />
+    <link rel="prev" title="1.1. Installing the SDK" href="install.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="faq.html" title="1.3. Frequently Asked Questions (FAQ)"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="install.html" title="1.1. Installing the SDK"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="getstarted.html" accesskey="U">1. Getting Started</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="zbar-sdk-integration-tutorial">
+<h1>1.2. ZBar SDK Integration Tutorial<a class="headerlink" href="#zbar-sdk-integration-tutorial" title="Permalink to this headline">¶</a></h1>
+<a class="floatright reference internal image-reference" href="_images/ReaderSample.png"><img alt="Screenshot of the ReaderSample app" class="floatright" src="_images/ReaderSample.png" style="width: 165.6px; height: 308.0px;" /></a>
+<p>This tutorial will quickly get you up and running with the ZBar iPhone SDK.</p>
+<p>We will develop a very simple app that presents a button the user can tap to
+invoke the barcode reader and then displays the results.  Interface Builder
+will be used to create the interface.</p>
+<p>The completed project is also available with the distributed SDK under
+<tt class="file docutils literal"><span class="pre">Examples/ReaderSample</span></tt>.</p>
+<div class="section" id="create-the-app">
+<h2>1.2.1. Create the App<a class="headerlink" href="#create-the-app" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Open Xcode; you must have version 3.2.3 or later.</p>
+</li>
+<li><p class="first">Create a new project using the &#8220;View-based Application&#8221; template.  Name the
+project &#8220;ReaderSample&#8221;.  Save it wherever you like.</p>
+</li>
+<li><p class="first">Open <tt class="file docutils literal"><span class="pre">ReaderSampleViewController.xib</span></tt></p>
+</li>
+<li><p class="first">Drag a Round Rect Button onto the view and title it &#8220;Scan&#8221;.  Customize the
+placement and appearance as you like.</p>
+</li>
+<li><p class="first">Drag an Image View onto the view.  Size it to fill about half of the
+remaining space.  Change the view mode to Aspect Fit.</p>
+</li>
+<li><p class="first">Drag a Text View onto the view and size it to fill the remaining space.
+Change the default text to &#8220;No barcode scanned&#8221; or something.  De-select
+&#8220;Editable&#8221;</p>
+</li>
+<li><p class="first">Add connections to the interface elements in the code; open
+<tt class="file docutils literal"><span class="pre">ReaderSampleViewController.h</span></tt> and change the interface to:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">@interface</span> <span class="nc">ReaderSampleViewController</span> : <span class="nc">UIViewController</span>
+<span class="p">{</span>
+    <span class="n">UIImageView</span> <span class="o">*</span><span class="n">resultImage</span><span class="p">;</span>
+    <span class="n">UITextView</span> <span class="o">*</span><span class="n">resultText</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="kt">IBOutlet</span> <span class="n">UIImageView</span> <span class="o">*</span><span class="n">resultImage</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="kt">IBOutlet</span> <span class="n">UITextView</span> <span class="o">*</span><span class="n">resultText</span><span class="p">;</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span> <span class="n">scanButtonTapped</span><span class="p">;</span>
+<span class="k">@end</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Now we can finish the interface connections - open
+<tt class="file docutils literal"><span class="pre">ReaderSampleViewController.xib</span></tt> and make these connections:</p>
+<ul class="simple">
+<li>Connect ReaderSampleViewController <tt class="docutils literal"><span class="pre">resultImage</span></tt> outlet to the
+ImageView.</li>
+<li>Connect ReaderSampleViewController <tt class="docutils literal"><span class="pre">resultText</span></tt> outlet to the TextView.</li>
+<li>Connect ReaderSampleViewController <tt class="docutils literal"><span class="pre">scanButtonTapped</span></tt> action to the
+RoundedRectButton(Scan) event <tt class="docutils literal"><span class="pre">TouchUpInside</span></tt>.</li>
+</ul>
+<p>Consult the Xcode documentation if you need help making these connections.
+Make sure you save the XIB once they are finished.</p>
+</li>
+<li><p class="first">Finish the implementation in <tt class="file docutils literal"><span class="pre">ReaderSampleViewController.m</span></tt>:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">@synthesize</span> <span class="n">resultImage</span><span class="p">,</span> <span class="n">resultText</span><span class="p">;</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span> <span class="n">scanButtonTapped</span>
+<span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;TBD: scan barcode here...&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">dealloc</span>
+<span class="p">{</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">resultImage</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">resultText</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">super</span> <span class="n">dealloc</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span> <span class="nl">shouldAutorotateToInterfaceOrientation:</span> <span class="p">(</span><span class="n">UIInterfaceOrientation</span><span class="p">)</span> <span class="n">interfaceOrientation</span>
+<span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">YES</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This stub for scanButtonTapped is temporary, we&#8217;ll fix it in a minute...</p>
+</li>
+</ol>
+<p>Although it doesn&#8217;t do much yet, you should now have a working skeleton app
+that you can build and run.</p>
+</div>
+<div class="section" id="integrate-the-reader">
+<h2>1.2.2. Integrate the Reader<a class="headerlink" href="#integrate-the-reader" title="Permalink to this headline">¶</a></h2>
+<p>Now for the exciting part - let&#8217;s add a barcode reader!</p>
+<ol class="arabic">
+<li><p class="first">If you have not done so already, download the latest SDK from
+<a class="reference external" href="http://zbar.sourceforge.net/iphone">http://zbar.sourceforge.net/iphone</a></p>
+</li>
+<li><p class="first">Double-click the disk image, ZBarSDK-1.2.dmg in the Finder to open it.</p>
+</li>
+<li><p class="first">Drag the <tt class="file docutils literal"><span class="pre">ZBarSDK</span></tt> folder into your Xcode project.  Make sure that
+the &#8220;Copy Items into destination group&#8217;s folder&#8221; checkbox is checked.</p>
+</li>
+<li><p class="first">Open the target build settings and find <tt class="docutils literal"><span class="pre">Link</span> <span class="pre">Binary</span> <span class="pre">With</span> <span class="pre">Libraries</span></tt>.
+Click the <tt class="docutils literal"><span class="pre">+</span></tt> and add each of these (NB hold down command for multiple
+selection):</p>
+<ul class="simple">
+<li>AVFoundation.framework</li>
+<li>CoreMedia.framework</li>
+<li>CoreVideo.framework</li>
+<li>QuartzCore.framework</li>
+<li>libiconv.dylib</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Link order may be important for some versions of Xcode; the libraries
+referenced above should be listed <em>before</em> <tt class="file docutils literal"><span class="pre">libzbar.a</span></tt> in the
+link order.</p>
+</div>
+</li>
+<li><p class="first">Import the SDK header.  You will usually want to prefix it, so add it to
+<tt class="file docutils literal"><span class="pre">ReaderSample-prefix.pch</span></tt>:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="c1">// ADD: import barcode reader APIs</span>
+<span class="cp">#import &quot;ZBarSDK.h&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Declare support for the delegate protocol in
+<tt class="file docutils literal"><span class="pre">ReaderSampleViewController.h</span></tt>:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="k">@interface</span> <span class="nc">ReaderSampleViewController</span> : <span class="nc">UIViewController</span>
+    <span class="c1">// ADD: delegate protocol</span>
+    <span class="o">&lt;</span> <span class="n">ZBarReaderDelegate</span> <span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Re-implement scanButtonTapped to present a barcode reader when the user
+taps the Scan button.  In <tt class="file docutils literal"><span class="pre">ReaderSampleViewController.m</span></tt>:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span> <span class="n">scanButtonTapped</span>
+<span class="p">{</span>
+    <span class="c1">// ADD: present a barcode reader that scans from the camera feed</span>
+    <span class="n">ZBarReaderViewController</span> <span class="o">*</span><span class="n">reader</span> <span class="o">=</span> <span class="p">[</span><span class="n">ZBarReaderViewController</span> <span class="n">new</span><span class="p">];</span>
+    <span class="n">reader</span><span class="p">.</span><span class="n">readerDelegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+    <span class="n">reader</span><span class="p">.</span><span class="n">supportedOrientationsMask</span> <span class="o">=</span> <span class="n">ZBarOrientationMaskAll</span><span class="p">;</span>
+
+    <span class="n">ZBarImageScanner</span> <span class="o">*</span><span class="n">scanner</span> <span class="o">=</span> <span class="n">reader</span><span class="p">.</span><span class="n">scanner</span><span class="p">;</span>
+    <span class="c1">// TODO: (optional) additional reader configuration here</span>
+
+    <span class="c1">// EXAMPLE: disable rarely used I2/5 to improve performance</span>
+    <span class="p">[</span><span class="n">scanner</span> <span class="nl">setSymbology:</span> <span class="n">ZBAR_I25</span>
+             <span class="nl">config:</span> <span class="n">ZBAR_CFG_ENABLE</span>
+             <span class="nl">to:</span> <span class="mi">0</span><span class="p">];</span>
+
+    <span class="c1">// present and release the controller</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nl">presentModalViewController:</span> <span class="n">reader</span>
+          <span class="nl">animated:</span> <span class="n">YES</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">reader</span> <span class="n">release</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Finally, implement the delegate method to do something useful with the
+results.  Still in <tt class="file docutils literal"><span class="pre">ReaderSampleViewController.m</span></tt>:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nl">imagePickerController:</span> <span class="p">(</span><span class="n">UIImagePickerController</span><span class="o">*</span><span class="p">)</span> <span class="n">reader</span>
+ <span class="nl">didFinishPickingMediaWithInfo:</span> <span class="p">(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span> <span class="n">info</span>
+<span class="p">{</span>
+    <span class="c1">// ADD: get the decode results</span>
+    <span class="kt">id</span><span class="o">&lt;</span><span class="n">NSFastEnumeration</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span>
+        <span class="p">[</span><span class="n">info</span> <span class="nl">objectForKey:</span> <span class="n">ZBarReaderControllerResults</span><span class="p">];</span>
+    <span class="n">ZBarSymbol</span> <span class="o">*</span><span class="n">symbol</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">symbol</span> <span class="k">in</span> <span class="n">results</span><span class="p">)</span>
+        <span class="c1">// EXAMPLE: just grab the first barcode</span>
+        <span class="k">break</span><span class="p">;</span>
+
+    <span class="c1">// EXAMPLE: do something useful with the barcode data</span>
+    <span class="n">resultText</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">symbol</span><span class="p">.</span><span class="n">data</span><span class="p">;</span>
+
+    <span class="c1">// EXAMPLE: do something useful with the barcode image</span>
+    <span class="n">resultImage</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span>
+        <span class="p">[</span><span class="n">info</span> <span class="nl">objectForKey:</span> <span class="n">UIImagePickerControllerOriginalImage</span><span class="p">];</span>
+
+    <span class="c1">// ADD: dismiss the controller (NB dismiss from the *reader*!)</span>
+    <span class="p">[</span><span class="n">reader</span> <span class="nl">dismissModalViewControllerAnimated:</span> <span class="n">YES</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>And that&#8217;s it!</p>
+</div>
+<div class="section" id="testing">
+<h2>1.2.3. Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Save everything (don&#8217;t forget to save MyAppViewController.xib).</li>
+<li>Build and Run the project.</li>
+<li>Tap the Scan button.</li>
+<li>Aim at barcode.</li>
+<li>Enjoy the sweet fruits of your minimal labor</li>
+</ol>
+</div>
+<div class="section" id="where-to-go-from-here">
+<h2>1.2.4. Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Permalink to this headline">¶</a></h2>
+<p>You can learn more about using the reader APIs to scan barcodes from
+<a class="reference internal" href="camera.html"><em>Scanning From the Camera Feed</em></a> or <a class="reference internal" href="picker.html"><em>Scanning a User-Selected Image</em></a>.  Use the <a class="reference internal" href="apiref.html"><em>API Reference</em></a> to find details about a
+particular interface.</p>
+</div>
+<div class="section" id="troubleshooting">
+<h2>1.2.5. Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>We take great care to ensure this tutorial is working as described.  However,
+if you do have a problem</p>
+<ol class="arabic simple">
+<li>Make sure you followed the instructions exactly - every detail is
+important.</li>
+<li>Start from scratch with a new project and follow the instructions
+<em>exactly</em>.</li>
+<li>Try the ReaderSample distributed with the SDK and compare your work with
+that.</li>
+<li>If you are unable to get things working, you may post your frustrations in
+the project <a class="reference external" href="http://sourceforge.net/projects/zbar/forums/forum/1072195">iPhone Developers Forum</a>.  Please be very specific about your
+problem, post the complete text of any errors, etc.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1.2. ZBar SDK Integration Tutorial</a><ul>
+<li><a class="reference internal" href="#create-the-app">1.2.1. Create the App</a></li>
+<li><a class="reference internal" href="#integrate-the-reader">1.2.2. Integrate the Reader</a></li>
+<li><a class="reference internal" href="#testing">1.2.3. Testing</a></li>
+<li><a class="reference internal" href="#where-to-go-from-here">1.2.4. Where to go from here</a></li>
+<li><a class="reference internal" href="#troubleshooting">1.2.5. Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="previous chapter">1.1. Installing the SDK</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="faq.html"
+                        title="next chapter">1.3. Frequently Asked Questions (FAQ)</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="faq.html" title="1.3. Frequently Asked Questions (FAQ)"
+             >next</a></li>
+        <li class="right" >
+          <a href="install.html" title="1.1. Installing the SDK"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="getstarted.html" >1. Getting Started</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

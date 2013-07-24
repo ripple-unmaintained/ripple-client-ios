@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.6. ZBarReaderViewController Class Reference &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="3. API Reference" href="apiref.html" />
+    <link rel="next" title="3.7. ZBarReaderViewDelegate Protocol Reference" href="ZBarReaderViewDelegate.html" />
+    <link rel="prev" title="3.5. ZBarReaderView Class Reference" href="ZBarReaderView.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarReaderViewDelegate.html" title="3.7. ZBarReaderViewDelegate Protocol Reference"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ZBarReaderView.html" title="3.5. ZBarReaderView Class Reference"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" accesskey="U">3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="zbarreaderviewcontroller-class-reference">
+<h1>3.6. ZBarReaderViewController Class Reference<a class="headerlink" href="#zbarreaderviewcontroller-class-reference" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ZBarReaderViewController">
+<em class="property">class </em><tt class="descname">ZBarReaderViewController</tt><a class="headerlink" href="#ZBarReaderViewController" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Inherits from:</th><td class="field-body"><tt class="xref cpp cpp-class docutils literal"><span class="pre">UIViewController</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>This is the controller to use for live scanning from the camera feed with
+automatic capture.  For scanning from image files or with manual capture,
+see <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a>.</p>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>3.6.1. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<dl class="member">
+<dt id="scanner__ZBarImageScannerP">
+<a class="reference internal" href="ZBarImageScanner.html#ZBarImageScanner" title="ZBarImageScanner">ZBarImageScanner*</a> <tt class="descname">scanner</tt><a class="headerlink" href="#scanner__ZBarImageScannerP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access to the image scanner for configuration. (read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="readerDelegate__id:ZBarReaderDelegate:">
+id&lt;ZBarReaderDelegate&gt; <tt class="descname">readerDelegate</tt><a class="headerlink" href="#readerDelegate__id:ZBarReaderDelegate:" title="Permalink to this definition">¶</a></dt>
+<dd><p>The delegate that will be notified when new barcode results are
+available.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="showsZBarControls__BOOL">
+BOOL <tt class="descname">showsZBarControls</tt><a class="headerlink" href="#showsZBarControls__BOOL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to display a default control set consisting of cancel, scan and
+info buttons.  Disable these if you provide your own controls using the
+<a class="reference internal" href="ZBarReaderController.html#cameraOverlayView__UIViewP" title="cameraOverlayView"><tt class="xref cpp cpp-member docutils literal"><span class="pre">cameraOverlayView</span></tt></a>.  (Default <tt class="docutils literal"><span class="pre">YES</span></tt>).</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="tracksSymbols__BOOL">
+BOOL <tt class="descname">tracksSymbols</tt><a class="headerlink" href="#tracksSymbols__BOOL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to display the tracking rectangle around detected barcodes.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="supportedOrientationsMask__NSUInteger">
+NSUInteger <tt class="descname">supportedOrientationsMask</tt><a class="headerlink" href="#supportedOrientationsMask__NSUInteger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of interface orientations that the controller should support.  Use
+<a class="reference internal" href="#ZBarOrientationMask__X" title="ZBarOrientationMask"><tt class="xref cpp cpp-func docutils literal"><span class="pre">ZBarOrientationMask()</span></tt></a> or <tt class="docutils literal"><span class="pre">ZBarOrientationMaskAll</span></tt> to
+generate the mask.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="scanCrop__CGRect">
+CGRect <tt class="descname">scanCrop</tt><a class="headerlink" href="#scanCrop__CGRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crop images before scanning.  The original image will be cropped to this
+rectangle, which should be in normalized image coordinates (NB the
+camera image x-axis is <em>vertical</em> on the screen).  Defaults to the full
+image <tt class="docutils literal"><span class="pre">{{0,</span> <span class="pre">0},</span> <span class="pre">{1,</span> <span class="pre">1}}</span></tt>.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="cameraOverlayView__UIViewP">
+UIView* <tt class="descname">cameraOverlayView</tt><a class="headerlink" href="#cameraOverlayView__UIViewP" title="Permalink to this definition">¶</a></dt>
+<dd><p>A custom view to display over the camera preview.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="cameraViewTransform__CGAffineTransform">
+CGAffineTransform <tt class="descname">cameraViewTransform</tt><a class="headerlink" href="#cameraViewTransform__CGAffineTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>A transform to apply to the camera preview.  Ignored by the reader.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="cameraDevice__UIImagePickerControllerCameraDevice">
+UIImagePickerControllerCameraDevice <tt class="descname">cameraDevice</tt><a class="headerlink" href="#cameraDevice__UIImagePickerControllerCameraDevice" title="Permalink to this definition">¶</a></dt>
+<dd><p>The camera device to use for scanning.  Defaults to the system default
+camera.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="cameraFlashMode__UIImagePickerControllerCameraFlashMode">
+UIImagePickerControllerCameraFlashMode <tt class="descname">cameraFlashMode</tt><a class="headerlink" href="#cameraFlashMode__UIImagePickerControllerCameraFlashMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>The &#8220;flash&#8221; (aka torch) mode to use while scanning.  Defaults to
+UIImagePickerControllerCameraFlashModeAuto.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="videoQuality__UIImagePickerControllerQualityType">
+UIImagePickerControllerQualityType <tt class="descname">videoQuality</tt><a class="headerlink" href="#videoQuality__UIImagePickerControllerQualityType" title="Permalink to this definition">¶</a></dt>
+<dd><p>The resolution to use while scanning.  Defaults to
+UIImagePickerControllerQuality640x480.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="readerView__ZBarReaderViewP">
+<a class="reference internal" href="ZBarReaderView.html#ZBarReaderView" title="ZBarReaderView">ZBarReaderView*</a> <tt class="descname">readerView</tt><a class="headerlink" href="#readerView__ZBarReaderViewP" title="Permalink to this definition">¶</a></dt>
+<dd><p>View that presents the camera preview and performs the scanning.  This
+view has other properties you may use to control the appearance and
+behavior of the reader.</p>
+<p>Note that this view may be released when it is not displayed (eg, under
+low memory conditions).  You should apply any configuration just before
+you present the reader.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="enableCache__BOOL">
+BOOL <tt class="descname">enableCache</tt><a class="headerlink" href="#enableCache__BOOL" title="Permalink to this definition">¶</a></dt>
+<dd><p>This property is deprecated and should not be modified.</p>
+</dd></dl>
+
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The remaining properties are deprecated, they are only present for
+backward compatibility with <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a> and will raise
+an exception if inappropriate/unsupported values are set.</p>
+</div>
+<dl class="member">
+<dt id="sourceType__UIImagePickerControllerSourceType">
+UIImagePickerControllerSourceType <tt class="descname">sourceType</tt><a class="headerlink" href="#sourceType__UIImagePickerControllerSourceType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises an exception if anything other than
+<tt class="docutils literal"><span class="pre">UIImagePickerControllerSourceTypeCamera</span></tt> is set.  If you want to scan
+images, use a <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a> instead of this class.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="cameraCaptureMode__UIImagePickerControllerCameraCaptureMode">
+UIImagePickerControllerCameraCaptureMode <tt class="descname">cameraCaptureMode</tt><a class="headerlink" href="#cameraCaptureMode__UIImagePickerControllerCameraCaptureMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises an exception if anything other than
+<tt class="docutils literal"><span class="pre">UIImagePickerControllerCameraCaptureModeVideo</span></tt> is set.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="allowsEditing__BOOL">
+BOOL <tt class="descname">allowsEditing</tt><a class="headerlink" href="#allowsEditing__BOOL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises an exception if anything other than <tt class="docutils literal"><span class="pre">NO</span></tt> is set.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="showsCameraControls__BOOL">
+BOOL <tt class="descname">showsCameraControls</tt><a class="headerlink" href="#showsCameraControls__BOOL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises an exception if anything other than <tt class="docutils literal"><span class="pre">NO</span></tt> is set.  Use
+<a class="reference internal" href="ZBarReaderController.html#showsZBarControls__BOOL" title="showsZBarControls"><tt class="xref cpp cpp-member docutils literal"><span class="pre">showsZBarControls</span></tt></a> to disable the buit-in overlay.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="showsHelpOnFail__BOOL">
+BOOL <tt class="descname">showsHelpOnFail</tt><a class="headerlink" href="#showsHelpOnFail__BOOL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any value set to this property is ignored.  It is only useful for
+scanning images, for which you should use <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="cameraMode__ZBarReaderControllerCameraMode">
+<a class="reference internal" href="ZBarReaderController.html#ZBarReaderControllerCameraMode" title="ZBarReaderControllerCameraMode">ZBarReaderControllerCameraMode</a> <tt class="descname">cameraMode</tt><a class="headerlink" href="#cameraMode__ZBarReaderControllerCameraMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>This reader only supports scanning from the camera feed.  If you want to
+scan manually captured images, use a <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a>
+instead of this class.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="takesPicture__BOOL">
+BOOL <tt class="descname">takesPicture</tt><a class="headerlink" href="#takesPicture__BOOL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises an exception if anything other than <tt class="docutils literal"><span class="pre">NO</span></tt> is set.  This
+controller automatically returns the scanned camera frame and does not
+support capturing a separate image.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="maxScanDimension__NSInteger">
+NSInteger <tt class="descname">maxScanDimension</tt><a class="headerlink" href="#maxScanDimension__NSInteger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any value set to this property is ignored.  It is only useful for
+scanning images, for which you should use <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a>.</p>
+</dd></dl>
+
+</blockquote>
+</div>
+<div class="section" id="class-methods">
+<h2>3.6.2. Class Methods<a class="headerlink" href="#class-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<dl class="describe">
+<dt>
+<tt class="descname">+ (BOOL) isSourceTypeAvailable:(UIImagePickerControllerSourceType)source</tt></dt>
+<dd><p>Returns <tt class="docutils literal"><span class="pre">YES</span></tt> only if <tt class="docutils literal"><span class="pre">source</span></tt> is <tt class="docutils literal"><span class="pre">Camera</span></tt> and the
+<tt class="xref cpp cpp-class docutils literal"><span class="pre">UImagePickerController</span></tt> method of the same name also returns
+<tt class="docutils literal"><span class="pre">YES</span></tt>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">+ (BOOL) isCameraDeviceAvailable:(UIImagePickerControllerCameraDevice)cameraDevice</tt></dt>
+<dd><p>See the <tt class="xref cpp cpp-class docutils literal"><span class="pre">UImagePickerController</span></tt> method of the same name.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">+ (BOOL) isFlashAvailableForCameraDevice:(UIImagePickerControllerCameraDevice)cameraDevice</tt></dt>
+<dd><p>See the <tt class="xref cpp cpp-class docutils literal"><span class="pre">UImagePickerController</span></tt> method of the same name.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">+ (NSArray*) availableCaptureModesForCameraDevice:(UIImagePickerControllerCameraDevice)cameraDevice</tt></dt>
+<dd><p>Returns an array with the single element
+<tt class="docutils literal"><span class="pre">UIImagePickerControllerCameraCaptureModeVideo</span></tt> if the device is
+avilable, otherwise returns an empty array.</p>
+</dd></dl>
+
+</blockquote>
+</div>
+<div class="section" id="instance-methods">
+<h2>3.6.3. Instance Methods<a class="headerlink" href="#instance-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<span class="target" id="showhelpwithreason"></span><dl class="describe">
+<dt>
+<tt class="descname">- (void) showHelpWithReason:(NSString*)reason</tt></dt>
+<dd><p>Display the integrated help browser.  Use this with custom overlays if
+you don&#8217;t also want to create your own help view.  Should only be called
+when the reader is displayed.  The <tt class="docutils literal"><span class="pre">reason</span></tt> argument will be passed to
+the <tt class="xref cpp cpp-func docutils literal"><span class="pre">onZBarHelp()</span></tt> javascript function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Reason :</th><td class="field-body">A string parameter passed to javascript.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="takepicture"></span><dl class="describe">
+<dt>
+<tt class="descname">- (void) takePicture</tt></dt>
+<dd><p>Capture the next available frame and send it over the usual delegate
+path.</p>
+</dd></dl>
+
+</blockquote>
+</div>
+<div class="section" id="macros">
+<h2>3.6.4. Macros<a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<dl class="function">
+<dt id="ZBarOrientationMask__X">
+ <tt class="descname">ZBarOrientationMask</tt><big>(</big><em>interfaceOrientation</em><big>)</big><a class="headerlink" href="#ZBarOrientationMask__X" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a bit-mask for the specified interface orientation, suitable
+for setting <a class="reference internal" href="#supportedOrientationsMask__NSUInteger" title="supportedOrientationsMask"><tt class="xref cpp cpp-member docutils literal"><span class="pre">supportedOrientationsMask</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">ZBarOrientationMaskAll</tt></dt>
+<dd><p>Combination of <a class="reference internal" href="#ZBarOrientationMask__X" title="ZBarOrientationMask"><tt class="xref cpp cpp-func docutils literal"><span class="pre">ZBarOrientationMask()</span></tt></a> for all interface
+orientations (Portrait, PortraitUpsideDown, LandscapeLeft and
+LandscapeRight)</p>
+</dd></dl>
+
+</blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.6. ZBarReaderViewController Class Reference</a><ul>
+<li><a class="reference internal" href="#properties">3.6.1. Properties</a></li>
+<li><a class="reference internal" href="#class-methods">3.6.2. Class Methods</a></li>
+<li><a class="reference internal" href="#instance-methods">3.6.3. Instance Methods</a></li>
+<li><a class="reference internal" href="#macros">3.6.4. Macros</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ZBarReaderView.html"
+                        title="previous chapter">3.5. ZBarReaderView Class Reference</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ZBarReaderViewDelegate.html"
+                        title="next chapter">3.7. ZBarReaderViewDelegate Protocol Reference</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarReaderViewDelegate.html" title="3.7. ZBarReaderViewDelegate Protocol Reference"
+             >next</a></li>
+        <li class="right" >
+          <a href="ZBarReaderView.html" title="3.5. ZBarReaderView Class Reference"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" >3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

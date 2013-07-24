@@ -1,0 +1,242 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.2. ZBarImageScanner Class Reference &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="3. API Reference" href="apiref.html" />
+    <link rel="next" title="3.3. ZBarReaderController Class Reference" href="ZBarReaderController.html" />
+    <link rel="prev" title="3.1. ZBarImage Class Reference" href="ZBarImage.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarReaderController.html" title="3.3. ZBarReaderController Class Reference"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ZBarImage.html" title="3.1. ZBarImage Class Reference"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" accesskey="U">3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="zbarimagescanner-class-reference">
+<h1>3.2. ZBarImageScanner Class Reference<a class="headerlink" href="#zbarimagescanner-class-reference" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ZBarImageScanner">
+<em class="property">class </em><tt class="descname">ZBarImageScanner</tt><a class="headerlink" href="#ZBarImageScanner" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Inherits from:</th><td class="field-body"><tt class="xref cpp cpp-class docutils literal"><span class="pre">NSObject</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>This is a low-level interface for programmatically scanning images without
+a user interface.  If you want to scan images manually selected by the user
+(from the photo library or using the camera), you may prefer to use a
+<a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a> instead.</p>
+<p>This class is a wrapper around a <tt class="xref cpp cpp-type docutils literal"><span class="pre">zbar_image_scanner_t</span></tt> C object
+(q.v.)</p>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>3.2.1. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<dl class="member">
+<dt id="enableCache__BOOL">
+BOOL <tt class="descname">enableCache</tt><a class="headerlink" href="#enableCache__BOOL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable the inter-frame consistency cache.  Set to <tt class="docutils literal"><span class="pre">YES</span></tt> for scanning
+video or <tt class="docutils literal"><span class="pre">NO</span></tt> for scanning images.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="results__ZBarSymbolSet">
+<a class="reference internal" href="ZBarSymbolSet.html#ZBarSymbolSet" title="ZBarSymbolSet">ZBarSymbolSet</a> <tt class="descname">results</tt><a class="headerlink" href="#results__ZBarSymbolSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decoded symbols resulting from the last scan.</p>
+</dd></dl>
+
+</blockquote>
+</div>
+<div class="section" id="instance-methods">
+<h2>3.2.2. Instance Methods<a class="headerlink" href="#instance-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<span class="target" id="parseconfig"></span><dl class="describe">
+<dt>
+<tt class="descname">- (void) parseConfig:(NSString*)config</tt></dt>
+<dd><p>Apply scanner/decoder configuration parsed from a string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Config :</th><td class="field-body">A configuration setting of the form: <cite>symbology.config[=value]</cite>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="setsymbology-config-to"></span><dl class="describe">
+<dt>
+<tt class="descname">- (void) setSymbology:(zbar_symbol_type_t)symbology config:(zbar_config_t)config to:(int)value</tt></dt>
+<dd><p>Apply generic scanner/decoder configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Symbology :</th><td class="field-body">The symbology to effect, or 0 for all.</td>
+</tr>
+<tr class="field"><th class="field-name">Config :</th><td class="field-body">The configuration setting to adjust.</td>
+</tr>
+<tr class="field"><th class="field-name">Value :</th><td class="field-body">The value to set for the specific configuration/symbology.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="scanimage"></span><dl class="describe">
+<dt>
+<tt class="descname">- (NSInteger) scanImage:(ZBarImage*)image</tt></dt>
+<dd><p>Scan an image for barcodes using the current configuration.  The image
+must be in <tt class="docutils literal"><span class="pre">Y800</span></tt> format (8-bpp graysale).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Image :</th><td class="field-body">The <a class="reference internal" href="ZBarImage.html#ZBarImage" title="ZBarImage"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarImage</span></tt></a> to scan.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">The number of barcode symbols decoded in the image.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</blockquote>
+</div>
+<div class="section" id="constants">
+<h2>3.2.3. Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="zbar_config_t">
+<em class="property">type </em><tt class="descname">zbar_config_t</tt><a class="headerlink" href="#zbar_config_t" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>ZBAR_CFG_ENABLE</dt>
+<dd>Control whether specific symbologies will be recognized.  Disabling
+unused symbologies improves performance and prevents bad scans.</dd>
+<dt>ZBAR_CFG_EMIT_CHECK</dt>
+<dd>Whether to include the check digit in the result data string.  This
+value may be set individually for symbologies where it makes sense.</dd>
+<dt>ZBAR_CFG_MIN_LEN</dt>
+<dd>The minimum data length for a symbol to be valid, set to 0 to disable.
+Use with eg, I2/5 to avoid short scans.  This value may be set
+individually for variable-length symbologies.</dd>
+<dt>ZBAR_CFG_MAX_LEN</dt>
+<dd>The maximum data length for which a symbol is valid, set to 0 to
+disable.  Use with eg, I2/5 to enforce a specific range of data lengths.
+This value may be set individually for variable-length symbologies.</dd>
+<dt>ZBAR_CFG_UNCERTAINTY</dt>
+<dd>Number of &#8220;nearby&#8221; frames that must contain a symbol before it will be
+considered valid.  This value may be set for individual symbologies.</dd>
+<dt>ZBAR_CFG_POSITION</dt>
+<dd>Whether to track position information.</dd>
+<dt>ZBAR_CFG_X_DENSITY</dt>
+<dd>The stride to use for scanning vertical columns of the image.  This many
+pixel columns will be skipped between vertical scan passes.  Useful for
+trading off between resolution and performance.  This is a scanner
+setting (use 0 for the symbology).</dd>
+<dt>ZBAR_CFG_Y_DENSITY</dt>
+<dd>The stride to use for scanning horizontal columns of the image.  This
+many pixel rows will be skipped between horizontal scan passes.  Useful
+for trading off between resolution and performance.  This is a scanner
+setting (use 0 for the symbology).</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.2. ZBarImageScanner Class Reference</a><ul>
+<li><a class="reference internal" href="#properties">3.2.1. Properties</a></li>
+<li><a class="reference internal" href="#instance-methods">3.2.2. Instance Methods</a></li>
+<li><a class="reference internal" href="#constants">3.2.3. Constants</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ZBarImage.html"
+                        title="previous chapter">3.1. ZBarImage Class Reference</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ZBarReaderController.html"
+                        title="next chapter">3.3. ZBarReaderController Class Reference</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarReaderController.html" title="3.3. ZBarReaderController Class Reference"
+             >next</a></li>
+        <li class="right" >
+          <a href="ZBarImage.html" title="3.1. ZBarImage Class Reference"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" >3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

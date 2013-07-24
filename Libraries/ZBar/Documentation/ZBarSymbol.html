@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.8. ZBarSymbol Class Reference &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="3. API Reference" href="apiref.html" />
+    <link rel="next" title="3.9. ZBarSymbolSet Class Reference" href="ZBarSymbolSet.html" />
+    <link rel="prev" title="3.7. ZBarReaderViewDelegate Protocol Reference" href="ZBarReaderViewDelegate.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarSymbolSet.html" title="3.9. ZBarSymbolSet Class Reference"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ZBarReaderViewDelegate.html" title="3.7. ZBarReaderViewDelegate Protocol Reference"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" accesskey="U">3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="zbarsymbol-class-reference">
+<h1>3.8. ZBarSymbol Class Reference<a class="headerlink" href="#zbarsymbol-class-reference" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ZBarSymbol">
+<em class="property">class </em><tt class="descname">ZBarSymbol</tt><a class="headerlink" href="#ZBarSymbol" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Inherits from:</th><td class="field-body"><tt class="xref cpp cpp-class docutils literal"><span class="pre">NSObject</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>A symbol wraps all of the information the library has about a decoded
+barcode.  Use the available properties to retrieve the barcode data, the
+symbology (type of barcode), location and more.</p>
+<p>This class is a simple wrapper around a <tt class="xref cpp cpp-type docutils literal"><span class="pre">zbar_symbol_t</span></tt> C object
+(q.v.)</p>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>3.8.1. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<dl class="member">
+<dt id="type__zbar_symbol_type_t">
+<a class="reference internal" href="#zbar_symbol_type_t" title="zbar_symbol_type_t">zbar_symbol_type_t</a> <tt class="descname">type</tt><a class="headerlink" href="#type__zbar_symbol_type_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>The type of symbology that was decoded. (read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="typeName__NSStringP">
+NSString* <tt class="descname">typeName</tt><a class="headerlink" href="#typeName__NSStringP" title="Permalink to this definition">¶</a></dt>
+<dd><p>The canonical name used by the library to represent the symbology.
+(read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="configMask__NSUInteger">
+NSUInteger <tt class="descname">configMask</tt><a class="headerlink" href="#configMask__NSUInteger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bitmask of symbology config settings used during decode.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="modifierMask__NSUInteger">
+NSUInteger <tt class="descname">modifierMask</tt><a class="headerlink" href="#modifierMask__NSUInteger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bitmask of symbology characteristics detected during decode.  See
+<a class="reference internal" href="#zbar_modifier_t" title="zbar_modifier_t"><tt class="xref cpp cpp-type docutils literal"><span class="pre">zbar_modifier_t</span></tt></a> for the currently defined modifier bits.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="data__NSStringP">
+NSString* <tt class="descname">data</tt><a class="headerlink" href="#data__NSStringP" title="Permalink to this definition">¶</a></dt>
+<dd><p>The raw decoded barcode data. (read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="quality__i">
+int <tt class="descname">quality</tt><a class="headerlink" href="#quality__i" title="Permalink to this definition">¶</a></dt>
+<dd><p>A relative metric indicating rough confidence in the decoded value.
+Larger values are better than smaller values. (read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="orientation__zbar_orientation_t">
+<a class="reference internal" href="#zbar_orientation_t" title="zbar_orientation_t">zbar_orientation_t</a> <tt class="descname">orientation</tt><a class="headerlink" href="#orientation__zbar_orientation_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>The general, axis-aligned orientation of the symbol, or
+ZBAR_ORIENT_UNKNOWN if unknown. (read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="components__ZBarSymbolSetP">
+<a class="reference internal" href="ZBarSymbolSet.html#ZBarSymbolSet" title="ZBarSymbolSet">ZBarSymbolSet*</a> <tt class="descname">components</tt><a class="headerlink" href="#components__ZBarSymbolSetP" title="Permalink to this definition">¶</a></dt>
+<dd><p>The components of a composite symbol. (read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="zbarSymbol__zbar_symbol_tCP">
+const zbar_symbol_t* <tt class="descname">zbarSymbol</tt><a class="headerlink" href="#zbarSymbol__zbar_symbol_tCP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the underlying C object instance. (read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="bounds__CGRect">
+CGRect <tt class="descname">bounds</tt><a class="headerlink" href="#bounds__CGRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate a rough bounding box for the symbol. (read-only)</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Coordinates are relative to the image <em>data</em>, which may not match a
+displayed UIImage.  Make sure to account for the UIImage orientation
+when using these values.</p>
+</div>
+</dd></dl>
+
+</blockquote>
+</div>
+<div class="section" id="class-methods">
+<h2>3.8.2. Class Methods<a class="headerlink" href="#class-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<span class="target" id="namefortype"></span><dl class="describe">
+<dt>
+<tt class="descname">+ (NSString*) nameForType:(zbar_symbol_type_t)type</tt></dt>
+<dd><p>Retrieve the canonical name for a symbology used by the library, given
+its enumerated value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Type :</th><td class="field-body">The <a class="reference internal" href="#zbar_symbol_type_t" title="zbar_symbol_type_t"><tt class="xref cpp cpp-type docutils literal"><span class="pre">zbar_symbol_type_t</span></tt></a> enumerated symbology value.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">A short string name for the symbology.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</blockquote>
+</div>
+<div class="section" id="instance-methods">
+<h2>3.8.3. Instance Methods<a class="headerlink" href="#instance-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<span class="target" id="initwithsymbol"></span><dl class="describe">
+<dt>
+<tt class="descname">- (id) initWithSymbol:(const zbar_symbol_t*)symbol</tt></dt>
+<dd><p>Initialize a symbol wrapper, given the C object to wrap.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Symbol :</th><td class="field-body">The C object to wrap.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">The initialized symbol, or nil if an error occurred.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</blockquote>
+</div>
+<div class="section" id="constants">
+<h2>3.8.4. Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="type">
+<dt id="zbar_symbol_type_t">
+<em class="property">type </em><tt class="descname">zbar_symbol_type_t</tt><a class="headerlink" href="#zbar_symbol_type_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>Symbology identifiers.</p>
+<dl class="docutils">
+<dt>ZBAR_NONE</dt>
+<dd>No symbol was decoded.</dd>
+<dt>ZBAR_PARTIAL</dt>
+<dd>Intermediate status.</dd>
+<dt>ZBAR_EAN8</dt>
+<dd>EAN-8</dd>
+<dt>ZBAR_UPCE</dt>
+<dd>UPC-E</dd>
+<dt>ZBAR_ISBN10</dt>
+<dd>ISBN-10, converted from EAN-13</dd>
+<dt>ZBAR_UPCA</dt>
+<dd>UPC-A</dd>
+<dt>ZBAR_EAN13</dt>
+<dd>EAN-13</dd>
+<dt>ZBAR_ISBN13</dt>
+<dd>ISBN-13, converted from EAN-13</dd>
+<dt>ZBAR_I25</dt>
+<dd>Interleaved 2 of 5</dd>
+<dt>ZBAR_DATABAR</dt>
+<dd>GS1 DataBar (RSS)</dd>
+<dt>ZBAR_DATABAR_EXP</dt>
+<dd>GS1 DataBar Expanded</dd>
+<dt>ZBAR_CODE39</dt>
+<dd>Code 39 (3 of 9)</dd>
+<dt>ZBAR_QRCODE</dt>
+<dd>QR Code</dd>
+<dt>ZBAR_CODE128</dt>
+<dd>Code 128</dd>
+</dl>
+</dd></dl>
+
+<dl class="type">
+<dt id="zbar_orientation_t">
+<em class="property">type </em><tt class="descname">zbar_orientation_t</tt><a class="headerlink" href="#zbar_orientation_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>The coarse orientation of a symbol.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Orientation is relative to the image <em>data</em>, which may not match a
+displayed UIImage.  Make sure to account for the UIImage orientation
+when using these values.</p>
+</div>
+<dl class="docutils">
+<dt>ZBAR_ORIENT_UNKNOWN</dt>
+<dd>Unable to determine orientation.</dd>
+<dt>ZBAR_ORIENT_UP</dt>
+<dd>Upright, read left to right</dd>
+<dt>ZBAR_ORIENT_RIGHT</dt>
+<dd>Sideways, read top to bottom</dd>
+<dt>ZBAR_ORIENT_DOWN</dt>
+<dd>Upside-down, read right to left</dd>
+<dt>ZBAR_ORIENT_LEFT</dt>
+<dd>Sideways, read bottom to top</dd>
+</dl>
+</dd></dl>
+
+<dl class="type">
+<dt id="zbar_modifier_t">
+<em class="property">type </em><tt class="descname">zbar_modifier_t</tt><a class="headerlink" href="#zbar_modifier_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decoder symbology modifier flags.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These are bit indices, use eg, (1 &lt;&lt; ZBAR_MOD_GS1) to test the
+modifierMask property.</p>
+</div>
+<dl class="docutils">
+<dt>ZBAR_MOD_GS1</dt>
+<dd>Barcode tagged as GS1 (EAN.UCC) reserved (eg, FNC1 before first data
+character).  Data may be parsed as a sequence of GS1 AIs.</dd>
+<dt>ZBAR_MOD_AIM</dt>
+<dd>Barcode tagged as AIM reserved.</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.8. ZBarSymbol Class Reference</a><ul>
+<li><a class="reference internal" href="#properties">3.8.1. Properties</a></li>
+<li><a class="reference internal" href="#class-methods">3.8.2. Class Methods</a></li>
+<li><a class="reference internal" href="#instance-methods">3.8.3. Instance Methods</a></li>
+<li><a class="reference internal" href="#constants">3.8.4. Constants</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ZBarReaderViewDelegate.html"
+                        title="previous chapter">3.7. ZBarReaderViewDelegate Protocol Reference</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ZBarSymbolSet.html"
+                        title="next chapter">3.9. ZBarSymbolSet Class Reference</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarSymbolSet.html" title="3.9. ZBarSymbolSet Class Reference"
+             >next</a></li>
+        <li class="right" >
+          <a href="ZBarReaderViewDelegate.html" title="3.7. ZBarReaderViewDelegate Protocol Reference"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" >3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

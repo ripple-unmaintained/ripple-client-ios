@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.3. Customizing the Interface &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="2. Developer’s Guide" href="devguide.html" />
+    <link rel="next" title="2.4. Optimizing the Reader" href="optimizing.html" />
+    <link rel="prev" title="2.2. Scanning a User-Selected Image" href="picker.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="optimizing.html" title="2.4. Optimizing the Reader"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="picker.html" title="2.2. Scanning a User-Selected Image"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="devguide.html" accesskey="U">2. Developer&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="customizing-the-interface">
+<h1>2.3. Customizing the Interface<a class="headerlink" href="#customizing-the-interface" title="Permalink to this headline">¶</a></h1>
+<p>The reader supports customization of the camera overlay and the integrated
+help that is displayed.</p>
+<div class="section" id="customizing-the-overlay">
+<h2>2.3.1. Customizing the Overlay<a class="headerlink" href="#customizing-the-overlay" title="Permalink to this headline">¶</a></h2>
+<p>If you are scanning with the camera, whether using a
+<a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a> for automatic capture or manually with
+<a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a>, you may want to customize the appearance of the
+reader.  You do this mainly by setting a
+<tt class="xref cpp cpp-member docutils literal"><span class="pre">cameraOverlayView</span></tt>.</p>
+<p>Note that if you are scanning images from the photo library, there is no
+customization - you are limited to the system picker interface provided by the
+<tt class="xref cpp cpp-class docutils literal"><span class="pre">UIImagePickerController</span></tt>.</p>
+<p>If you are using a <a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a>, are <em>only</em> planning to
+support iOS 4 and just want to add to the existing controls, you can simply
+set your overlay to include the additional view hierarchy:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="n">reader</span><span class="p">.</span><span class="n">cameraOverlayView</span> <span class="o">=</span> <span class="n">myLogoImageView</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Otherwise, if you are using a <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a>, still need the
+iOS 3.1 fallback or prefer to completely replace the default controls, you
+should disable those first.  Note that you will need to provide your own
+controls, which should at least include a way to dismiss the reader:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="n">reader</span><span class="p">.</span><span class="n">showsCameraControls</span> <span class="o">=</span> <span class="n">NO</span><span class="p">;</span>  <span class="c1">// for UIImagePickerController</span>
+<span class="n">reader</span><span class="p">.</span><span class="n">showsZBarControls</span> <span class="o">=</span> <span class="n">NO</span><span class="p">;</span>
+<span class="n">reader</span><span class="p">.</span><span class="n">cameraOverlayView</span> <span class="o">=</span> <span class="n">myControlView</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>For manual capture with <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a>, you should also include
+a control connected to <tt class="xref cpp cpp-member docutils literal"><span class="pre">takePicture</span></tt>.</p>
+<p>See <a class="reference internal" href="compat.html"><em>Backward Compatibility</em></a> for more information about iOS 3.1 fallbacks.</p>
+<p>In either case, the overlay view may be loaded from a NIB, or simply created
+programmatically.</p>
+<p>You can also disable the tracking rectangle that highlights barcodes with
+<tt class="xref cpp cpp-member docutils literal"><span class="pre">tracksSymbols</span></tt>.</p>
+</div>
+<div class="section" id="presenting-help">
+<h2>2.3.2. Presenting Help<a class="headerlink" href="#presenting-help" title="Permalink to this headline">¶</a></h2>
+<p>If you have set <tt class="docutils literal"><span class="pre">showsZBarControls</span> <span class="pre">=</span> <span class="pre">NO</span></tt> and replaced the default controls,
+you may still present the built-in help viewer.  Just hook your custom control
+to the <tt class="docutils literal"><span class="pre">showsHelpWithReason:</span></tt> method of the controller.  You should only
+call this method when the reader is actually presented.</p>
+<p>The default reader controls invoke <tt class="docutils literal"><span class="pre">showsHelpWithReason:</span></tt> with a reason
+parameter of <tt class="docutils literal"><span class="pre">&quot;INFO&quot;</span></tt> when the info button is tapped.</p>
+</div>
+<div class="section" id="customizing-the-help-content">
+<h2>2.3.3. Customizing the Help Content<a class="headerlink" href="#customizing-the-help-content" title="Permalink to this headline">¶</a></h2>
+<p>Whether you use the default controls or provide your own, you can still
+customize the content of the help that is displayed.  The integrated viewer
+uses a UIWebView to display the contents of <tt class="file docutils literal"><span class="pre">zbar-help.html</span></tt> that we
+copied into your Resources.  You should hack this up as you see fit to give
+your users the best help experience.</p>
+<p>To allow for runtime customization based on the reason for presenting help,
+the javascript function <tt class="docutils literal"><span class="pre">onZBarHelp</span></tt> will be called just before the page is
+displayed, with the <tt class="docutils literal"><span class="pre">reason</span></tt> argument set as provided to
+<tt class="docutils literal"><span class="pre">showsHelpWithReason:</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.3. Customizing the Interface</a><ul>
+<li><a class="reference internal" href="#customizing-the-overlay">2.3.1. Customizing the Overlay</a></li>
+<li><a class="reference internal" href="#presenting-help">2.3.2. Presenting Help</a></li>
+<li><a class="reference internal" href="#customizing-the-help-content">2.3.3. Customizing the Help Content</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="picker.html"
+                        title="previous chapter">2.2. Scanning a User-Selected Image</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="optimizing.html"
+                        title="next chapter">2.4. Optimizing the Reader</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="optimizing.html" title="2.4. Optimizing the Reader"
+             >next</a></li>
+        <li class="right" >
+          <a href="picker.html" title="2.2. Scanning a User-Selected Image"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="devguide.html" >2. Developer&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

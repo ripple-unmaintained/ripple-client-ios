@@ -13,11 +13,12 @@ function onBridgeReady(event) {
             })
 
 	var remote = ripple.Remote.from_config({
-		"trace" : true,
+		//"trace" : true,
 		"trusted" : true,
 		"websocket_ip" : "s1.ripple.com",
 		"websocket_port" : 443,
-		"websocket_ssl" : true
+		"websocket_ssl" : true,
+		"local_signing" : true
 	});
 
 	// bridge.registerHandler('request_wallet_accounts', function(data, responseCallback) {
@@ -264,19 +265,19 @@ function onBridgeReady(event) {
 	// })
 
 	// Subscribe to ledger and server after logged in
-	bridge.registerHandler('subscribe_ledger', function(data, responseCallback) {
-		remote.set_secret(data.account, data.secret);
-		// Subscribe
-		remote.root_.request_subscribe(["ledger","server"]).accounts(data.account,false)
-		.on('success', function (result) {
-			responseCallback(result)
-		})
-		.on('error', function (result) {
-			console.error(result)
-			responseCallback(result)
-		})
-		.request();
-	})
+	// bridge.registerHandler('subscribe_ledger', function(data, responseCallback) {
+	// 	remote.set_secret(data.account, data.secret);
+	// 	// Subscribe
+	// 	remote.root_.request_subscribe(["ledger","server"]).accounts(data.account,false)
+	// 	.on('success', function (result) {
+	// 		responseCallback(result)
+	// 	})
+	// 	.on('error', function (result) {
+	// 		console.error(result)
+	// 		responseCallback(result)
+	// 	})
+	// 	.request();
+	// })
 
 
 	// Subscribe

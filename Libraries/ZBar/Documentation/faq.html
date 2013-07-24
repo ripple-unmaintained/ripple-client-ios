@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.3. Frequently Asked Questions (FAQ) &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="1. Getting Started" href="getstarted.html" />
+    <link rel="next" title="1.4. Obtaining Support" href="support.html" />
+    <link rel="prev" title="1.2. ZBar SDK Integration Tutorial" href="tutorial.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="support.html" title="1.4. Obtaining Support"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="1.2. ZBar SDK Integration Tutorial"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="getstarted.html" accesskey="U">1. Getting Started</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="frequently-asked-questions-faq">
+<h1>1.3. Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequently-asked-questions-faq" title="Permalink to this headline">¶</a></h1>
+<p>This is the ever-growing list of answers to commonly asked questions.  Please
+feel free to post you question in our <a class="reference external" href="http://sourceforge.net/projects/zbar/forums/forum/1072195">iPhone Developers forum</a> if you do not
+find the information you need in this documentation.</p>
+<div class="section" id="general">
+<h2>1.3.1. General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>This looks great...  Where can I get it?</dt>
+<dd>You can download the latest version of the SDK from
+<a class="reference external" href="http://zbar.sf.net/iphone">http://zbar.sf.net/iphone</a></dd>
+</dl>
+</div>
+<div class="section" id="compatibility">
+<h2>1.3.2. Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Which iPhone devices does this library support?</dt>
+<dd>The library works <em>only</em> with the iPhone 3GS and iPhone 4.</dd>
+<dt>Will you make it work with the iPhone 3G?</dt>
+<dd><p class="first"><em>No</em> - the 3G it is not supported and is unlikely to ever be supported.</p>
+<p class="last">To be fair, you <em>can</em> use the 3G to scan image files, as long as they&#8217;re in
+focus (ie, <em>not</em> images taken by the built-in fixed-focus camera).  There
+is at least one application that found a use for this...</p>
+</dd>
+<dt>What target iOS versions does this library work with?</dt>
+<dd><p class="first">iOS 4 is fully supported, including the latest video streaming interfaces.
+Since Apple has dropped support for earlier versions of iOS on the App
+Store, we recommend that you target only iOS 4 for reading barcodes.</p>
+<p>iOS 3.1 is also supported, but you will have to resort to manual capture if
+you intend to distribute on the App Store.</p>
+<p>The library should work all the way back to iOS 3.0, although we no longer
+test with it.  For most cases we recommend you use at least iOS 3.1, which
+introduced several must-have enhancements for the UIImagePickerController
+(ie, <tt class="xref cpp cpp-member docutils literal"><span class="pre">cameraOverlayView</span></tt> and <tt class="docutils literal"><span class="pre">takePicture</span></tt>)</p>
+<p>In all cases you will need at least a 4.0 SDK to build.</p>
+<p class="last">See <a class="reference internal" href="compat.html"><em>Backward Compatibility</em></a> for details about iOS version fallbacks.</p>
+</dd>
+<dt>Are any private APIs in use?</dt>
+<dd><p class="first">No - the binary release of the SDK does not use any private APIs.</p>
+<p>OTOH, if you do not care about private APIs (for instance, you are
+targeting AdHoc or enterprise distribution) and you want to enable
+automatic capture with iOS 3.1, you can build a version that uses
+UIGetScreenImage (which is again a private API).</p>
+<p class="last">See <a class="reference internal" href="compat.html"><em>Backward Compatibility</em></a> for details.</p>
+</dd>
+<dt>Does this support &#8220;automatic&#8221; barcode capture?</dt>
+<dd><p class="first">Yes - if you use iOS 4, the default configuration will capture barcodes
+automatically from the video stream.</p>
+<p class="last">Again, automatic capture is no longer supported with iOS 3.1 for apps
+distributed on the App Store.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="building">
+<h2>1.3.3. Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>I get &#8220;Undefined symbols&#8221; errors when I try to build?</dt>
+<dd>Most likely you did not add all of the necessary framework dependencies.
+See <a class="reference internal" href="tutorial.html"><em>ZBar SDK Integration Tutorial</em></a> or <a class="reference internal" href="install.html"><em>Installing the SDK</em></a> for the list of frameworks you need
+to link against.</dd>
+</dl>
+</div>
+<div class="section" id="licensing">
+<h2>1.3.4. Licensing<a class="headerlink" href="#licensing" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to <a class="reference internal" href="licensing.html"><em>Licensing the Library</em></a> for questions about licensing.</p>
+</div>
+<div class="section" id="barcodes">
+<h2>1.3.5. Barcodes<a class="headerlink" href="#barcodes" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Why do my UPC barcodes have an extra 0 at the front?</dt>
+<dd><p class="first">The <a class="reference external" href="http://wikipedia.org/wiki/UPC-A">UPC-A</a> symbology is the subset of <a class="reference external" href="http://wikipedia.org/wiki/EAN-13">EAN-13</a> that starts with a leading 0.
+The ZBar decoder enables only <a class="reference external" href="http://wikipedia.org/wiki/EAN-13">EAN-13</a> by default, so <a class="reference external" href="http://wikipedia.org/wiki/GTIN">GTIN-13</a> product codes
+are consistently reported.  You can choose to receive the 12-digit results
+instead by explicitly enabling <a class="reference external" href="http://wikipedia.org/wiki/UPC-A">UPC-A</a>.</p>
+<p>The <tt class="xref cpp cpp-member docutils literal"><span class="pre">type</span></tt> property of the symbol can be used to see
+which type of barcode is reported.</p>
+<p class="last">See <a class="reference external" href="http://wikipedia.org/wiki/EAN-13">EAN-13</a> and <a class="reference external" href="http://wikipedia.org/wiki/UPC-A">UPC-A</a> for more information.</p>
+</dd>
+<dt>Why does my UPC-E (short version) barcode data look completely wrong?</dt>
+<dd><p class="first"><a class="reference external" href="http://wikipedia.org/wiki/UPC-E#Zero-compressed_UPC-E">UPC-E</a> is a &#8220;zero compressed&#8221; version of <a class="reference external" href="http://wikipedia.org/wiki/UPC-A">UPC-A</a>; certain of the zeros are
+removed from the <a class="reference external" href="http://wikipedia.org/wiki/UPC-A">UPC-A</a> data to generate the <a class="reference external" href="http://wikipedia.org/wiki/UPC-E#Zero-compressed_UPC-E">UPC-E</a> barcode.  The ZBar
+decoder <em>expands</em> this compression by default, again to consistently report
+<a class="reference external" href="http://wikipedia.org/wiki/GTIN">GTIN-13</a> product codes.  You can choose to receive the compressed 8-digit
+results instead by explicitly enabling <a class="reference external" href="http://wikipedia.org/wiki/UPC-E#Zero-compressed_UPC-E">UPC-E</a>.</p>
+<p>The <tt class="xref cpp cpp-member docutils literal"><span class="pre">type</span></tt> property of the symbol can be used to see
+which type of barcode is reported.</p>
+<p class="last">See <a class="reference external" href="http://wikipedia.org/wiki/UPC-E#Zero-compressed_UPC-E">UPC-E</a> for more information.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1.3. Frequently Asked Questions (FAQ)</a><ul>
+<li><a class="reference internal" href="#general">1.3.1. General</a></li>
+<li><a class="reference internal" href="#compatibility">1.3.2. Compatibility</a></li>
+<li><a class="reference internal" href="#building">1.3.3. Building</a></li>
+<li><a class="reference internal" href="#licensing">1.3.4. Licensing</a></li>
+<li><a class="reference internal" href="#barcodes">1.3.5. Barcodes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="previous chapter">1.2. ZBar SDK Integration Tutorial</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="support.html"
+                        title="next chapter">1.4. Obtaining Support</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="support.html" title="1.4. Obtaining Support"
+             >next</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="1.2. ZBar SDK Integration Tutorial"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="getstarted.html" >1. Getting Started</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.1. Installing the SDK &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="1. Getting Started" href="getstarted.html" />
+    <link rel="next" title="1.2. ZBar SDK Integration Tutorial" href="tutorial.html" />
+    <link rel="prev" title="1. Getting Started" href="getstarted.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="tutorial.html" title="1.2. ZBar SDK Integration Tutorial"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="getstarted.html" title="1. Getting Started"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="getstarted.html" accesskey="U">1. Getting Started</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installing-the-sdk">
+<h1>1.1. Installing the SDK<a class="headerlink" href="#installing-the-sdk" title="Permalink to this headline">¶</a></h1>
+<p>These are the basic instructions for obtaining the SDK and adding it to an
+Xcode project.</p>
+<p>You may want to try things out with the <a class="reference internal" href="tutorial.html"><em>ZBar SDK Integration Tutorial</em></a> before hacking at your
+own project.</p>
+<div class="section" id="requirements">
+<h2>1.1.1. Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>You will need <em>all</em> of the following to develop iPhone applications
+using this SDK:</p>
+<ul class="simple">
+<li>Mac OS X &gt;= 10.6.x (Snow Leopard)</li>
+<li>Xcode &gt;= 3.2.3</li>
+<li>iPhone SDK &gt;= 4.0</li>
+<li>An iPhone 3GS or iPhone 4</li>
+<li>iOS &gt;= 3.1 running on the device (&gt;= 4.0 is preferred)</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><em>Only</em> the iPhone 3GS and iPhone 4 are supported, as they have a camera
+with auto-focus.  The ZBar library does not support the iPhone 3G and is
+unlikely to ever support it.</p>
+</div>
+</div>
+<div class="section" id="downloading">
+<h2>1.1.2. Downloading<a class="headerlink" href="#downloading" title="Permalink to this headline">¶</a></h2>
+<p>Download the latest binary release of the ZBar SDK from</p>
+<p><a class="reference external" href="http://zbar.sourceforge.net/iphone">http://zbar.sourceforge.net/iphone</a></p>
+</div>
+<div class="section" id="integration">
+<h2>1.1.3. Integration<a class="headerlink" href="#integration" title="Permalink to this headline">¶</a></h2>
+<p>The recommended installation method is to simply copy the SDK into your
+Xcode project:</p>
+<ol class="arabic">
+<li><p class="first">Open ZBarSDK-1.2.dmg in the Finder.</p>
+</li>
+<li><p class="first">Drag the <tt class="file docutils literal"><span class="pre">ZBarSDK</span></tt> folder into your Xcode project.  In the dialog
+that appears, you should choose to <strong>copy</strong> the SDK into your project by
+checking the box.  The target that you want to link with the library should
+also be selected in the target list.</p>
+</li>
+<li><p class="first">Link the following additional frameworks to any targets that link with the
+ZBarSDK.  You should set the first three to use weak references and
+configure an appropriate deployment target if you still need to support
+iOS 3:</p>
+<ul class="simple">
+<li><tt class="file docutils literal"><span class="pre">AVFoundation.framework</span></tt> (weak)</li>
+<li><tt class="file docutils literal"><span class="pre">CoreMedia.framework</span></tt> (weak)</li>
+<li><tt class="file docutils literal"><span class="pre">CoreVideo.framework</span></tt> (weak)</li>
+<li><tt class="file docutils literal"><span class="pre">QuartzCore.framework</span></tt></li>
+<li><tt class="file docutils literal"><span class="pre">libiconv.dylib</span></tt></li>
+</ul>
+<p>If you check &#8220;Link Binary With Libraries&#8221; for the target(s), you should see
+all of these frameworks followed by <tt class="file docutils literal"><span class="pre">libzbar.a</span></tt>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Link order may be important for some versions of Xcode; the referenced
+libraries should be listed <em>before</em> <tt class="file docutils literal"><span class="pre">libzbar.a</span></tt> in the link order.</p>
+</div>
+</li>
+<li><p class="first">Import the SDK header from your prefix header to make the barcode reader
+APIs available:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="cp">#import &quot;ZBarSDK.h&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Proceed to <a class="reference internal" href="camera.html"><em>Scanning From the Camera Feed</em></a> or <a class="reference internal" href="picker.html"><em>Scanning a User-Selected Image</em></a> to learn about using the reader APIs
+to scan barcodes.  Use the <a class="reference internal" href="apiref.html"><em>API Reference</em></a> for specific interface details.</p>
+</div>
+<div class="section" id="upgrading-from-an-older-version">
+<h2>1.1.4. Upgrading from an Older Version<a class="headerlink" href="#upgrading-from-an-older-version" title="Permalink to this headline">¶</a></h2>
+<p>If you are using an older version of the <em>SDK</em> (NB, skip to the next section
+if you are currently using Mercurial), upgrading is straightforward:</p>
+<ol class="arabic simple">
+<li>Delete the current ZBarSDK group from your project.  You should choose
+to delete the files if you copied them into your project.</li>
+<li>Drag the new ZBarSDK from the DMG into your project.</li>
+</ol>
+<p>Clean out and rebuild your project with the new version.</p>
+</div>
+<div class="section" id="upgrading-a-pre-sdk-integration">
+<h2>1.1.5. Upgrading a Pre-SDK Integration<a class="headerlink" href="#upgrading-a-pre-sdk-integration" title="Permalink to this headline">¶</a></h2>
+<p>If your project was using the library directly from the Mercurial repository,
+before the SDK was introduced, there are a few incompatibilities that you must
+resolve in order to upgrade.  Don&#8217;t worry - all of your source stays the same,
+you just need to update how the library is included in the project and how the
+headers are imported.</p>
+<div class="section" id="switching-to-the-binary-distribution">
+<h3>1.1.5.1. Switching to the Binary Distribution<a class="headerlink" href="#switching-to-the-binary-distribution" title="Permalink to this headline">¶</a></h3>
+<p>This approach is recommended - the binary releases provide you with a stable
+development platform, isolating you from temporary instability and transient
+problems that may occur at the bleeding edge.</p>
+<p>The first task is to reverse the previous ZBar integration:</p>
+<ol class="arabic simple">
+<li>Remove the reference to zbar.xcodeproj from your project.</li>
+<li>Remove any <tt class="file docutils literal"><span class="pre">zbar-*</span></tt> files from your Resources.</li>
+<li>In the target build settings, remove any &#8220;Header Search Paths&#8221; that
+reference zbar.</li>
+<li>Remove any references to zbar headers in your <tt class="file docutils literal"><span class="pre">prefix.pch</span></tt> or source
+files.</li>
+</ol>
+<p>Now just continue with the <a class="reference external" href="#integration">integration</a> instructions above and you should be
+back up and running!</p>
+</div>
+<div class="section" id="continuing-with-mercurial">
+<h3>1.1.5.2. Continuing with Mercurial<a class="headerlink" href="#continuing-with-mercurial" title="Permalink to this headline">¶</a></h3>
+<p>Alternatively, you may still prefer to select Mercurial revisions.  You have a
+few choices for this:</p>
+<ul class="simple">
+<li>You may build your own ZBarSDK and copy/link it into your project.  This is
+the same as <a class="reference external" href="#switching-to-the-binary-distribution">Switching to the Binary Distribution</a>, except that you use
+your own version of the SDK.  In this case you need to manually rebuild the
+SDK when you update it.</li>
+<li>You may leave zbar.xcodeproj as a project dependency and pull the SDK into
+your project.  This is not well tested, so ymmv.</li>
+<li>You may leave zbar.xcodeproj as a project dependency and just link libzbar.a
+into your project, as before.  You will need to update the target dependency
+(the library target changed names to libzbar) and add the
+<tt class="file docutils literal"><span class="pre">iphone/include/ZBarSDK</span></tt> directory to &#8220;Header Search Paths&#8221;</li>
+</ul>
+<p>In any case, you should remove the references to the zbar headers from
+<tt class="file docutils literal"><span class="pre">prefix.pch</span></tt> (or your source files) and replace them with:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="cp">#import &quot;ZBarSDK.h&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1.1. Installing the SDK</a><ul>
+<li><a class="reference internal" href="#requirements">1.1.1. Requirements</a></li>
+<li><a class="reference internal" href="#downloading">1.1.2. Downloading</a></li>
+<li><a class="reference internal" href="#integration">1.1.3. Integration</a></li>
+<li><a class="reference internal" href="#upgrading-from-an-older-version">1.1.4. Upgrading from an Older Version</a></li>
+<li><a class="reference internal" href="#upgrading-a-pre-sdk-integration">1.1.5. Upgrading a Pre-SDK Integration</a><ul>
+<li><a class="reference internal" href="#switching-to-the-binary-distribution">1.1.5.1. Switching to the Binary Distribution</a></li>
+<li><a class="reference internal" href="#continuing-with-mercurial">1.1.5.2. Continuing with Mercurial</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="getstarted.html"
+                        title="previous chapter">1. Getting Started</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="next chapter">1.2. ZBar SDK Integration Tutorial</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="tutorial.html" title="1.2. ZBar SDK Integration Tutorial"
+             >next</a></li>
+        <li class="right" >
+          <a href="getstarted.html" title="1. Getting Started"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="getstarted.html" >1. Getting Started</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,165 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.9. ZBarSymbolSet Class Reference &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="3. API Reference" href="apiref.html" />
+    <link rel="prev" title="3.8. ZBarSymbol Class Reference" href="ZBarSymbol.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarSymbol.html" title="3.8. ZBarSymbol Class Reference"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" accesskey="U">3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="zbarsymbolset-class-reference">
+<h1>3.9. ZBarSymbolSet Class Reference<a class="headerlink" href="#zbarsymbolset-class-reference" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ZBarSymbolSet">
+<em class="property">class </em><tt class="descname">ZBarSymbolSet</tt><a class="headerlink" href="#ZBarSymbolSet" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Inherits from:</th><td class="field-body"><tt class="xref cpp cpp-class docutils literal"><span class="pre">NSObject</span></tt></td>
+</tr>
+<tr class="field"><th class="field-name">Conforms to:</th><td class="field-body"><tt class="xref cpp cpp-class docutils literal"><span class="pre">NSFastEnumeration</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>A symbol set is a simple container for the symbols scanned from an image.
+It supports <tt class="xref cpp cpp-class docutils literal"><span class="pre">NSFastEnumeration</span></tt>, and not much else...  Use it to
+iterate through the <a class="reference internal" href="ZBarSymbol.html#ZBarSymbol" title="ZBarSymbol"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarSymbol</span></tt></a> objects in a decode result set:</p>
+<div class="highlight-objc"><div class="highlight"><pre><span class="n">ZBarSymbolSet</span> <span class="o">*</span><span class="n">symbols</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">symbols</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="n">ZBarSymbol</span> <span class="o">*</span><span class="n">symbol</span> <span class="k">in</span> <span class="n">symbols</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// process result</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This class is a simple wrapper around a <tt class="xref cpp cpp-type docutils literal"><span class="pre">zbar_symbol_set_t</span></tt> C object
+(q.v.)</p>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>3.9.1. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<dl class="member">
+<dt id="count__i">
+int <tt class="descname">count</tt><a class="headerlink" href="#count__i" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of symbols in the set. (read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="zbarSymbolSet__zbar_symbol_set_tCP">
+const zbar_symbol_set_t* <tt class="descname">zbarSymbolSet</tt><a class="headerlink" href="#zbarSymbolSet__zbar_symbol_set_tCP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the underlying C object instance. (read-only)</p>
+</dd></dl>
+
+</blockquote>
+</div>
+<div class="section" id="instance-methods">
+<h2>3.9.2. Instance Methods<a class="headerlink" href="#instance-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<span class="target" id="initwithsymbolset"></span><dl class="describe">
+<dt>
+<tt class="descname">- (id) initWithSymbolSet:(const zbar_symbol_set_t*)set</tt></dt>
+<dd><p>Initialize a symbol set wrapper, given the C object to wrap.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Set :</th><td class="field-body">The C object to wrap.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">The initialized symbol set, or nil if an error occurred.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.9. ZBarSymbolSet Class Reference</a><ul>
+<li><a class="reference internal" href="#properties">3.9.1. Properties</a></li>
+<li><a class="reference internal" href="#instance-methods">3.9.2. Instance Methods</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ZBarSymbol.html"
+                        title="previous chapter">3.8. ZBarSymbol Class Reference</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarSymbol.html" title="3.8. ZBarSymbol Class Reference"
+             >previous</a></li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" >3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

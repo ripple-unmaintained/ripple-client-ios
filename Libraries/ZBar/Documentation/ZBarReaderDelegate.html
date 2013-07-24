@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.4. ZBarReaderDelegate Protocol Reference &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="3. API Reference" href="apiref.html" />
+    <link rel="next" title="3.5. ZBarReaderView Class Reference" href="ZBarReaderView.html" />
+    <link rel="prev" title="3.3. ZBarReaderController Class Reference" href="ZBarReaderController.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarReaderView.html" title="3.5. ZBarReaderView Class Reference"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ZBarReaderController.html" title="3.3. ZBarReaderController Class Reference"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" accesskey="U">3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="zbarreaderdelegate-protocol-reference">
+<h1>3.4. ZBarReaderDelegate Protocol Reference<a class="headerlink" href="#zbarreaderdelegate-protocol-reference" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ZBarReaderDelegate">
+<em class="property">class </em><tt class="descname">ZBarReaderDelegate</tt><a class="headerlink" href="#ZBarReaderDelegate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Inherits from:</th><td class="field-body"><tt class="xref cpp cpp-class docutils literal"><span class="pre">UIImagePickerControllerDelegate</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>This protocol must be implemented by the
+<tt class="xref cpp cpp-member docutils literal"><span class="pre">readerDelegate</span></tt> provided to a
+<a class="reference internal" href="ZBarReaderViewController.html#ZBarReaderViewController" title="ZBarReaderViewController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderViewController</span></tt></a> or <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a>.  It is
+used to notify the delegate of new decode results, when an image fails to
+decode, or when the user dismisses the reader with the built-in controls.</p>
+</dd></dl>
+
+<div class="section" id="instance-methods">
+<h2>3.4.1. Instance Methods<a class="headerlink" href="#instance-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<dl class="describe">
+<dt>
+<tt class="descname">- (void) imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)info</tt></dt>
+<dd><p>This inherited delegate method is called when a barcode is successfully
+decoded.  The decoded symbols are available from the dictionary as a
+<a class="reference internal" href="ZBarSymbolSet.html#ZBarSymbolSet" title="ZBarSymbolSet"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarSymbolSet</span></tt></a> using the <a class="reference internal" href="ZBarReaderController.html#ZBarReaderControllerResults" title="ZBarReaderControllerResults"><tt class="xref c c-data docutils literal"><span class="pre">ZBarReaderControllerResults</span></tt></a>
+key.  The image from which the barcodes were scanned is available using
+the <tt class="xref c c-data docutils literal"><span class="pre">UIImagePickerControllerOriginalImage</span></tt> key.  No other keys
+are guaranteed to be valid.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">picker</span></tt> parameter will be the reader controller instance that
+read the barcodes - not necessarily a
+<tt class="xref cpp cpp-class docutils literal"><span class="pre">UIImagePickerController</span></tt> instance.  You should cast it to the
+correct type for anything other than basic view controller access.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Picker :</th><td class="field-body">The reader controller that scanned the barcode(s).</td>
+</tr>
+<tr class="field"><th class="field-name">Info :</th><td class="field-body">A dictionary containing the image and decode results.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">- (void) imagePickerControllerDidCancel:(UIImagePickerController*)picker</tt></dt>
+<dd><p>Called when the user taps the &#8220;Cancel&#8221; button provided by the built-in
+controls (when <a class="reference internal" href="ZBarReaderController.html#showsZBarControls__BOOL" title="showsZBarControls"><tt class="xref cpp cpp-member docutils literal"><span class="pre">showsZBarControls</span></tt></a><tt class="docutils literal"><span class="pre">=YES</span></tt>).  The default
+implementation dismisses the reader.  If this method is implemented, it
+should do the same.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">picker</span></tt> parameter will be the reader controller instance that
+read the barcodes - not necessarily a
+<tt class="xref cpp cpp-class docutils literal"><span class="pre">UIImagePickerController</span></tt> instance.  You should cast it to the
+correct type for anything other than basic view controller access.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Picker :</th><td class="field-body">The reader controller that scanned the barcode(s).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">- (void) readerControllerDidFailToRead:(ZBarReaderController*)reader withRetry:(BOOL)retry</tt></dt>
+<dd><p>Called when an image, manually captured or selected from the photo
+library, is scanned and no barcodes were detected.</p>
+<p>If the <tt class="docutils literal"><span class="pre">retry</span></tt> parameter is <tt class="docutils literal"><span class="pre">NO</span></tt>, the controller must be dismissed
+before this method returns.  Otherwise, another scan may be attempted
+without re-presenting the controller.</p>
+<p>If the <tt class="xref cpp cpp-member docutils literal"><span class="pre">showsHelpOnFail</span></tt> is <tt class="docutils literal"><span class="pre">YES</span></tt> <em>and</em>
+<tt class="docutils literal"><span class="pre">retry</span></tt> is <tt class="docutils literal"><span class="pre">YES</span></tt>, the integrated help viewer will already be
+presenting.</p>
+<p>If this method is not implemented, the controller will be dismissed iff
+<tt class="docutils literal"><span class="pre">retry</span></tt> is <tt class="docutils literal"><span class="pre">NO</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Reader :</th><td class="field-body">The <a class="reference internal" href="ZBarReaderController.html#ZBarReaderController" title="ZBarReaderController"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderController</span></tt></a> that scanned the barcode(s).</td>
+</tr>
+<tr class="field"><th class="field-name">Retry :</th><td class="field-body">Whether another scan may be attempted.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.4. ZBarReaderDelegate Protocol Reference</a><ul>
+<li><a class="reference internal" href="#instance-methods">3.4.1. Instance Methods</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ZBarReaderController.html"
+                        title="previous chapter">3.3. ZBarReaderController Class Reference</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ZBarReaderView.html"
+                        title="next chapter">3.5. ZBarReaderView Class Reference</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarReaderView.html" title="3.5. ZBarReaderView Class Reference"
+             >next</a></li>
+        <li class="right" >
+          <a href="ZBarReaderController.html" title="3.3. ZBarReaderController Class Reference"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" >3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

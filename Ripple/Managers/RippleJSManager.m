@@ -432,15 +432,18 @@
 //}
 
 
--(void)subscribeLedger:(NSDictionary*)params
-{
-    [_bridge callHandler:@"subscribe_ledger" data:params responseCallback:^(id responseData) {
-        NSLog(@"subscribe_ledger response: %@", responseData);
-    }];
-}
+//-(void)subscribeLedger:(NSDictionary*)params
+//{
+//    [_bridge callHandler:@"subscribe_ledger" data:params responseCallback:^(id responseData) {
+//        NSLog(@"subscribe_ledger response: %@", responseData);
+//    }];
+//}
 
 -(void)subscribe:(NSDictionary*)params
 {
+    // Only use nmeta data
+    
+    
     /*
      Future callback example for XRP:
      

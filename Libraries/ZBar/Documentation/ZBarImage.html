@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.1. ZBarImage Class Reference &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="3. API Reference" href="apiref.html" />
+    <link rel="next" title="3.2. ZBarImageScanner Class Reference" href="ZBarImageScanner.html" />
+    <link rel="prev" title="3. API Reference" href="apiref.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarImageScanner.html" title="3.2. ZBarImageScanner Class Reference"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="apiref.html" title="3. API Reference"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" accesskey="U">3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="zbarimage-class-reference">
+<h1>3.1. ZBarImage Class Reference<a class="headerlink" href="#zbarimage-class-reference" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ZBarImage">
+<em class="property">class </em><tt class="descname">ZBarImage</tt><a class="headerlink" href="#ZBarImage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Inherits from:</th><td class="field-body"><tt class="xref cpp cpp-class docutils literal"><span class="pre">NSObject</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>A <a class="reference internal" href="#ZBarImage" title="ZBarImage"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarImage</span></tt></a> is a wrapper for images passed to the barcode reader.
+It encapsulates raw image data with the format and size metadata necessary
+to interpret it.</p>
+<p>An image must be wrapped in a <a class="reference internal" href="#ZBarImage" title="ZBarImage"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarImage</span></tt></a> in order to be scanned by
+the library.  At least the format, size and data must be set.  There are
+also initialization methods for automatically extracting the data and
+format from a <cite>CGImage</cite>.</p>
+<p>This class is a wrapper around a <tt class="xref cpp cpp-type docutils literal"><span class="pre">zbar_image_t</span></tt> C object (q.v.)</p>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>3.1.1. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<dl class="member">
+<dt id="format__unsigned-l">
+unsigned long <tt class="descname">format</tt><a class="headerlink" href="#format__unsigned-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>The image format four-charcter code (fourcc) as a 4-byte integer.  Use
+<em class="xref std std-ref">fourcc:</em> to create a fourcc value from a string.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="sequence__unsigned-i">
+unsigned int <tt class="descname">sequence</tt><a class="headerlink" href="#sequence__unsigned-i" title="Permalink to this definition">¶</a></dt>
+<dd><p>A &#8220;sequence number&#8221; associated with the image.  This reference value is
+unused by the library.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="size__CGSize">
+CGSize <tt class="descname">size</tt><a class="headerlink" href="#size__CGSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>The size of the image in pixels.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is no separate &#8220;bytesPerLine&#8221; property, the width must match
+the image data (which is not always the logical image width).</p>
+</div>
+</dd></dl>
+
+<dl class="member">
+<dt id="crop__CGRect">
+CGRect <tt class="descname">crop</tt><a class="headerlink" href="#crop__CGRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optionally limit the scan region to this rectangle without having to
+generate a cropped image.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="data__voidCP">
+const void* <tt class="descname">data</tt><a class="headerlink" href="#data__voidCP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain a pointer to the raw image data.  This property is read-only, use
+<em class="xref std std-ref">setData:withLength:</em> to set the image data.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="dataLength__unsigned-l">
+unsigned long <tt class="descname">dataLength</tt><a class="headerlink" href="#dataLength__unsigned-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Byte length of the raw image data.  This property is read-only, use
+<em class="xref std std-ref">setData:withLength:</em> to set the image data.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="symbols__ZBarSymbolSetP">
+<a class="reference internal" href="ZBarSymbolSet.html#ZBarSymbolSet" title="ZBarSymbolSet">ZBarSymbolSet*</a> <tt class="descname">symbols</tt><a class="headerlink" href="#symbols__ZBarSymbolSetP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Barcode results from the last scan.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="zbarImage__zbar_image_tP">
+zbar_image_t* <tt class="descname">zbarImage</tt><a class="headerlink" href="#zbarImage__zbar_image_tP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the underlying C object instance. (read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="UIImage__UIImageP">
+UIImage* <tt class="descname">UIImage</tt><a class="headerlink" href="#UIImage__UIImageP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the image to a UIImage.  Only certain image formats are
+supported for conversion (read-only)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">See also:</th><td class="field-body"><em class="xref std std-ref">UIImageWithOrientation:</em></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</blockquote>
+</div>
+<div class="section" id="class-methods">
+<h2>3.1.2. Class Methods<a class="headerlink" href="#class-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<span class="target" id="fourcc"></span><dl class="describe">
+<dt>
+<tt class="descname">+ (unsigned long) fourcc:(NSString*)format</tt></dt>
+<dd><p>Parse the integer four-character code from a string.  Alternatively use
+the <tt class="xref cpp cpp-func docutils literal"><span class="pre">zbar_fourcc()</span></tt> macro to create a constant expression.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Format :</th><td class="field-body">A four character string representing an image format.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">The corresponding 4-byte integer format code.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</blockquote>
+</div>
+<div class="section" id="instance-methods">
+<h2>3.1.3. Instance Methods<a class="headerlink" href="#instance-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<span class="target" id="initwithimage"></span><dl class="describe">
+<dt>
+<tt class="descname">- (id) initWithImage:(zbar_image_t*)image</tt></dt>
+<dd><p>Initialize an image wrapper, given the C object to wrap.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Image :</th><td class="field-body">The C object to wrap.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">The initialized <a class="reference internal" href="#ZBarImage" title="ZBarImage"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarImage</span></tt></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="initwithcgimage"></span><dl class="describe">
+<dt>
+<tt class="descname">- (id) initWithCGImage:(CGImageRef)image</tt></dt>
+<dd><p>Initialize a <a class="reference internal" href="#ZBarImage" title="ZBarImage"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarImage</span></tt></a> from the data and metadata extracted
+from a <cite>CGImage</cite>.  The image is converted to <cite>Y800</cite> (grayscale) format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Image :</th><td class="field-body">A <cite>CGImage</cite> to source the data and metadata.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">The initialized <a class="reference internal" href="#ZBarImage" title="ZBarImage"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarImage</span></tt></a>.</td>
+</tr>
+<tr class="field"><th class="field-name">See also:</th><td class="field-body"><em class="xref std std-ref">initWithCGImage:size:</em></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="initwithcgimage-size"></span><dl class="describe">
+<dt>
+<tt class="descname">- (id) initWithCGImage:(CGImageRef)image size:(CGSize)size</tt></dt>
+<dd><p>Initialize a <a class="reference internal" href="#ZBarImage" title="ZBarImage"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarImage</span></tt></a> from the data and metadata extracted
+from a <cite>CGImage</cite>.  The image is converted to <cite>Y800</cite> (grayscale) format
+and scaled to the specified size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Image :</th><td class="field-body">A <cite>CGImage</cite> to source the data and metadata.</td>
+</tr>
+<tr class="field"><th class="field-name">Size :</th><td class="field-body">The pixel size of the resulting ZBarImage.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">The initialized <a class="reference internal" href="#ZBarImage" title="ZBarImage"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarImage</span></tt></a>.</td>
+</tr>
+<tr class="field"><th class="field-name">See also:</th><td class="field-body"><em class="xref std std-ref">initWithCGImage:crop:size:</em></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="initwithcgimage-crop-size"></span><dl class="describe">
+<dt>
+<tt class="descname">- (id) initWithCGImage:(CGImageRef)image crop:(CGRect)crop size:(CGSize)size</tt></dt>
+<dd><p>Initialize a <a class="reference internal" href="#ZBarImage" title="ZBarImage"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarImage</span></tt></a> from the data and metadata extracted
+from a <cite>CGImage</cite>.  The image is simultaneously converted to <cite>Y800</cite>
+(grayscale) format, cropped and scaled to the specified size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Image :</th><td class="field-body">A <cite>CGImage</cite> to source the data and metadata.</td>
+</tr>
+<tr class="field"><th class="field-name">Crop :</th><td class="field-body">The region to convert, in image coordinates.</td>
+</tr>
+<tr class="field"><th class="field-name">Size :</th><td class="field-body">The pixel size of the resulting ZBarImage.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">The initialized <a class="reference internal" href="#ZBarImage" title="ZBarImage"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarImage</span></tt></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="setdata-withlength"></span><dl class="describe">
+<dt>
+<tt class="descname">- (void) setData:(const void*)data withLength:(unsigned long)length</tt></dt>
+<dd><p>Specify a pointer to the raw image data, for the image format and size.
+The length of the data must also be provided.  Note that the data must
+remain valid as long as the image has a reference to it.  Set data to
+<tt class="docutils literal"><span class="pre">NULL</span></tt> to clear a previous reference.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Data :</th><td class="field-body">A pointer to a raw image data buffer.</td>
+</tr>
+<tr class="field"><th class="field-name">Length :</th><td class="field-body">The size of the image data buffer.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="uiimagewithorientation"></span><dl class="describe">
+<dt>
+<tt class="descname">- (UIImage*) UIImageWithOrientation:(UIImageOrientation)orient</tt></dt>
+<dd><p>Convert the image to a UIImage with the specified orientation.  Only
+certain image formats are supported for conversion.  (currently
+<tt class="docutils literal"><span class="pre">RGB3</span></tt>, <tt class="docutils literal"><span class="pre">RGB4</span></tt>, <tt class="docutils literal"><span class="pre">RGBQ</span></tt>)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Orient :</th><td class="field-body">Desired orientation of the image.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">A new <tt class="xref cpp cpp-class docutils literal"><span class="pre">UIImage</span></tt>, or <tt class="docutils literal"><span class="pre">nil</span></tt> in case of error.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.1. ZBarImage Class Reference</a><ul>
+<li><a class="reference internal" href="#properties">3.1.1. Properties</a></li>
+<li><a class="reference internal" href="#class-methods">3.1.2. Class Methods</a></li>
+<li><a class="reference internal" href="#instance-methods">3.1.3. Instance Methods</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="apiref.html"
+                        title="previous chapter">3. API Reference</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ZBarImageScanner.html"
+                        title="next chapter">3.2. ZBarImageScanner Class Reference</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarImageScanner.html" title="3.2. ZBarImageScanner Class Reference"
+             >next</a></li>
+        <li class="right" >
+          <a href="apiref.html" title="3. API Reference"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" >3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

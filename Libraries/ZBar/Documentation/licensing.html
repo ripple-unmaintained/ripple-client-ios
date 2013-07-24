@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.6. Licensing the Library &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="2. Developer’s Guide" href="devguide.html" />
+    <link rel="next" title="3. API Reference" href="apiref.html" />
+    <link rel="prev" title="2.5. Backward Compatibility" href="compat.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="apiref.html" title="3. API Reference"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="compat.html" title="2.5. Backward Compatibility"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="devguide.html" accesskey="U">2. Developer&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="licensing-the-library">
+<h1>2.6. Licensing the Library<a class="headerlink" href="#licensing-the-library" title="Permalink to this headline">¶</a></h1>
+<p>First of all, the big disclaimer:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">We are <em>not</em> lawyers; we cannot help you decide if you should use the
+library or how to apply the license, only your lawyer can advise you
+concerning legal matters.</p>
+</div>
+<p>That said, it should also be noted that we have neither the resources (time,
+cash, etc) nor the patience to enforce the license (at all); the reality is
+that all of this is left to your discretion.</p>
+<p>If you prefer to leave the lawyers out of it, the rest of this section will
+help you apply the license to your application.</p>
+<div class="section" id="licensing-faq">
+<h2>2.6.1. Licensing FAQ<a class="headerlink" href="#licensing-faq" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Can I use this library with my proprietary (closed source) application?</dt>
+<dd>Yes, that is our intent and we do not believe there is any problem
+regarding the license.</dd>
+<dt>Will I need to open source my entire app?</dt>
+<dd>No, it is not required by the license.</dd>
+<dt>Will I need to distribute all of my &#8220;object files&#8221; on the App Store?</dt>
+<dd>No, this is also not required by the license, although you should offer to
+provide them upon request.  See below for more detail.</dd>
+<dt>But I read somewhere that &#8220;iPhone apps may not use LGPL code&#8221;?</dt>
+<dd><p class="first">That statement is an over-generalization that does not apply in this case.
+Most likely your source is either:</p>
+<ul class="simple">
+<li>referring to the GPL, which is significantly different from the
+<em>L</em>GPL</li>
+<li>referring to a different version of the LGPL; we intentionally use
+version 2.1, which has specific static linking exceptions.</li>
+<li>not a lawyer either and too lazy to read the whole license</li>
+</ul>
+<p class="last">Basically, if you leverage the appropriate sections of the license, it
+should be fully compatible with the App Store restrictions and
+requirements.</p>
+</dd>
+<dt>This is too complicated, can I just pay for an easier license?</dt>
+<dd><p class="first">No, it is not possible.  There are multiple problems with this approach,
+some brief highlights:</p>
+<ul class="simple">
+<li>Most open source projects (including this one) do not have a single
+author.  Tracking down every contributor and getting their approval could
+be quite a challenge.</li>
+<li>The license is meant to protect users&#8217; rights to the software.  Giving
+you special treatment bypasses the protection we offered them,
+effectively revoking their rights.  This would be a violation of their
+trust and completely defeats the purpose of the license.</li>
+</ul>
+<p class="last">You may think of this as the &#8220;price&#8221; you pay for using our open source
+library.  If you want to make your life easier, you should be petitioning
+Apple for shared library support...</p>
+</dd>
+<dt>What if you add a clause that lets me do whatever I want?</dt>
+<dd><p class="first">No, also not possible.  In addition to the problems mentioned above, there
+are even more problems with this:</p>
+<ul class="last simple">
+<li>Sourceforge requires an OSI approved license for hosting our project;
+an altered license would no longer be approved.</li>
+<li>Again we are not lawyers and therefore not qualified to change the
+license, we would have to pay one of those slimy buggers to do it.</li>
+</ul>
+</dd>
+<dt>Do I need to add an &#8220;about&#8221; dialog to display your copyright/license?</dt>
+<dd><p class="first">No, not as such.  We won&#8217;t discourage you from plugging the library if you
+like, but it is not a requirement.  You should think of our license as a
+supplement to your own software license, therefore it is appropriate to
+display it where (and only where) you display your own:</p>
+<ul class="last simple">
+<li>If you follow Apple&#8217;s recommendation, the App Store is the only place
+that the user accesses your license, so it should also be the only place
+where the library supplement is available.</li>
+<li>If your app already has some kind of &#8220;about&#8221; view that displays your
+copyright/license information, it is also appropriate to display the same
+information for the library.</li>
+</ul>
+</dd>
+<dt>Do I need to include the entire library in my application bundle?</dt>
+<dd><p class="first">No, it is not necessary:</p>
+<ul class="last simple">
+<li>If you have not modified the library, it is sufficient to provide a link
+to the project and the version information.</li>
+<li>If you are using a modified version, you may provide a link to download
+that instead of including it in the bundle.</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="modifications">
+<h2>2.6.2. Modifications<a class="headerlink" href="#modifications" title="Permalink to this headline">¶</a></h2>
+<p>What is a &#8220;modification&#8221;?  Again, we leave it to your discretion with this
+guidance:</p>
+<ul class="simple">
+<li>If you use the distributed binary SDK you have certainly not modified the
+library.</li>
+<li>If you are working from Mercurial, <em>any</em> change you have made to the
+&#8220;source code&#8221; of the library is a modification, it does not matter how
+trivial.  You can see what changes have been made by running
+<tt class="docutils literal"><span class="pre">hg</span> <span class="pre">status</span> <span class="pre">-mard</span></tt>; if this command outputs anything, you have modified
+the library.</li>
+</ul>
+<p>If you find that you have made changes to the library, you should carefully
+consider how far you want to proceed down that path.  Once you publish your
+changes you have created a &#8220;fork&#8221; of the project which you now need to
+maintain.  Are you prepared to merge every time the library is updated?</p>
+<p>If your change adds a useful feature to the library, we absolutely encourage
+you to submit patches.  Assuming you can get your patch into the project, then
+you will no longer need to use a modified version!  When submitting patches,
+ensure that your changes are appropriate for all of our users.  Specifically,
+we are not interested in patches that simply hack up the library to work the
+way you want.  Compare a patch that changes the default behavior to your
+preference (probably not acceptable), to a patch that adds a new configuration
+to support the feature you have added (probably fine).</p>
+</div>
+<div class="section" id="object-file-distribution">
+<h2>2.6.3. Object File Distribution<a class="headerlink" href="#object-file-distribution" title="Permalink to this headline">¶</a></h2>
+<p>Section 6 of the LGPL v2.1 specifically permits static linking with the
+library.  If your project is not open source, this section does require that
+you make your object files available to your users.  The intent, as indicated
+in the license, is that a user who has obtained your software may exercise
+their right to modify the library and then re-link their modified version into
+your application.</p>
+<p>We recommend that you apply Subsection 6c, which only requires that you make a
+written offer to provide the object files.  Now...if you consider the actual
+utility of this mechanism - that it is only applicable to developers, and only
+those with in depth knowledge of the tools, the time required for development
+- all to have a new barcode reader in a specific version of your application
+that only they can use, the reality is that no one is going to request this.
+You probably should not even waste time preparing for it until a request is
+made.</p>
+<p>Additionally, to avoid &#8220;casual requests&#8221; from nefarious types that just want
+to inconvenience you, also consider charging a fee for the distribution of
+this material (as permitted by the license); just add up the cost of burning
+and shipping a disk.  If this cost is &#8220;large&#8221; compared to the price of your
+app, the likelyhood of a request is reduced even further.</p>
+</div>
+<div class="section" id="using-the-unmodified-library">
+<h2>2.6.4. Using the Unmodified Library<a class="headerlink" href="#using-the-unmodified-library" title="Permalink to this headline">¶</a></h2>
+<p>Applying the license in this case is somewhat simpler.  These are the basic
+steps you can follow:</p>
+<ol class="arabic">
+<li><p class="first">Verify that the rest of your software license is compatible with the LGPL.
+You cannot use the library if they are incompatible.</p>
+<p>For those using the default App Store license, we have reviewed this and
+believe it is compatible with the LGPL.</p>
+</li>
+<li><p class="first">At the end of your license text, in an annex or supplement, start by
+declaring your use of the library and offering a link to the project.
+Something like this:</p>
+<blockquote>
+<p>This software uses the open source ZBar Barcode Reader library, version
+1.2, which is available from <a class="reference external" href="http://zbar.sourceforge.net/iphone">http://zbar.sourceforge.net/iphone</a></p>
+</blockquote>
+<p>If you built your own version of the library, replace the version callout
+with eg, &#8220;cloned from Mercurial revision xxxxxxxx&#8221;</p>
+</li>
+<li><p class="first">Then append the contents of the text file COPYING, included with the
+library.  This is all of the copyright information for the library.</p>
+</li>
+<li><p class="first">Then append the contents of the text file LICENSE, also included with the
+library.  This is just the LGPL version 2.1 which you may also obtain from
+<a class="reference external" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html</a></p>
+</li>
+<li><p class="first">You may choose to make the written offer for the object files explicit.
+Provide some text and whatever link or email address is appropriate.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="using-a-modified-library">
+<h2>2.6.5. Using a Modified Library<a class="headerlink" href="#using-a-modified-library" title="Permalink to this headline">¶</a></h2>
+<p>We intentionally leave this option vague and force you to refer to the license
+as an underhanded way of encouraging you to contribute back to the project ;)</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.6. Licensing the Library</a><ul>
+<li><a class="reference internal" href="#licensing-faq">2.6.1. Licensing FAQ</a></li>
+<li><a class="reference internal" href="#modifications">2.6.2. Modifications</a></li>
+<li><a class="reference internal" href="#object-file-distribution">2.6.3. Object File Distribution</a></li>
+<li><a class="reference internal" href="#using-the-unmodified-library">2.6.4. Using the Unmodified Library</a></li>
+<li><a class="reference internal" href="#using-a-modified-library">2.6.5. Using a Modified Library</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="compat.html"
+                        title="previous chapter">2.5. Backward Compatibility</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="apiref.html"
+                        title="next chapter">3. API Reference</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="apiref.html" title="3. API Reference"
+             >next</a></li>
+        <li class="right" >
+          <a href="compat.html" title="2.5. Backward Compatibility"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="devguide.html" >2. Developer&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>

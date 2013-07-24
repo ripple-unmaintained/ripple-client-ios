@@ -477,7 +477,7 @@
                                     <constraint firstAttribute="width" constant="73" id="OaE-MP-Kn5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Cancel">
+                                <state key="normal" title="Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -492,7 +492,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cell" textLabel="7P7-Zl-Qeq" detailTextLabel="BAZ-vm-7eq" style="IBUITableViewCellStyleSubtitle" id="VB1-ij-xa6">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="68"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="67"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="65"/>
@@ -511,6 +511,41 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="custom" id="n6j-oz-bzO">
+                                        <rect key="frame" x="0.0" y="113" width="320" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ripple Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFX-rb-wmw">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="207" id="5sx-Sh-qy6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fol-x0-QkI">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="260" id="loL-TJ-Da7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="psa-Rj-nLU" id="43Z-si-lbF"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="fol-x0-QkI" firstAttribute="centerX" secondItem="n6j-oz-bzO" secondAttribute="centerX" type="default" id="fc5-36-TAR"/>
+                                            <constraint firstItem="EFX-rb-wmw" firstAttribute="leading" secondItem="fol-x0-QkI" secondAttribute="leading" type="default" id="oU8-N8-es6"/>
+                                            <constraint firstItem="EFX-rb-wmw" firstAttribute="top" secondItem="n6j-oz-bzO" secondAttribute="top" constant="6" id="trd-ju-GC4"/>
+                                            <constraint firstItem="fol-x0-QkI" firstAttribute="top" secondItem="n6j-oz-bzO" secondAttribute="top" constant="30" id="xbh-gB-BIs"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -564,7 +599,7 @@
                                     <constraint firstAttribute="width" constant="73" id="Mpm-vi-ALF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Cancel">
+                                <state key="normal" title="Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -572,7 +607,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonBack:" destination="psa-Rj-nLU" eventType="touchUpInside" id="rHr-iq-DNl"/>
+                                    <action selector="buttonBack:" destination="zbf-dm-hdZ" eventType="touchUpInside" id="nDr-Vq-jLg"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount to send" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lnq-sd-IcN">
@@ -653,6 +688,8 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
+                <relationship kind="action" name="buttonLogin:"/>
+                <relationship kind="action" name="buttonPressed:"/>
                 <relationship kind="outlet" name="textViewLog" candidateClass="UITextView"/>
             </relationships>
         </class>

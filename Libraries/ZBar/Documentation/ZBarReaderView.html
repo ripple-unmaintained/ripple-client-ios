@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.5. ZBarReaderView Class Reference &mdash; ZBar iPhone SDK Documentation</title>
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/zbar.ico"/>
+    <link rel="top" title="ZBar iPhone SDK Documentation" href="index.html" />
+    <link rel="up" title="3. API Reference" href="apiref.html" />
+    <link rel="next" title="3.6. ZBarReaderViewController Class Reference" href="ZBarReaderViewController.html" />
+    <link rel="prev" title="3.4. ZBarReaderDelegate Protocol Reference" href="ZBarReaderDelegate.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarReaderViewController.html" title="3.6. ZBarReaderViewController Class Reference"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ZBarReaderDelegate.html" title="3.4. ZBarReaderDelegate Protocol Reference"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" accesskey="U">3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="zbarreaderview-class-reference">
+<h1>3.5. ZBarReaderView Class Reference<a class="headerlink" href="#zbarreaderview-class-reference" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ZBarReaderView">
+<em class="property">class </em><tt class="descname">ZBarReaderView</tt><a class="headerlink" href="#ZBarReaderView" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Inherits from:</th><td class="field-body"><tt class="xref cpp cpp-class docutils literal"><span class="pre">UIView</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>This is a barcode reader encapsulted in a UIView.  It manages an
+<tt class="xref cpp cpp-class docutils literal"><span class="pre">AVCaptureSession</span></tt> with a camera device and a
+<tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarCaptureReader</span></tt>, presents the video preview and optionally
+tracks detected barcode symbols.  A delegate will usually be assigned for
+notification of new decode results.</p>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>3.5.1. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<dl class="member">
+<dt id="readerDelegate__id:ZBarReaderViewDelegate:">
+id&lt;ZBarReaderViewDelegate&gt; <tt class="descname">readerDelegate</tt><a class="headerlink" href="#readerDelegate__id:ZBarReaderViewDelegate:" title="Permalink to this definition">¶</a></dt>
+<dd><p>The delegate that will be notified of new decode results.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="scanner__ZBarImageScannerP">
+<a class="reference internal" href="ZBarImageScanner.html#ZBarImageScanner" title="ZBarImageScanner">ZBarImageScanner*</a> <tt class="descname">scanner</tt><a class="headerlink" href="#scanner__ZBarImageScannerP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access to the image scanner is provided for configuration. (read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="tracksSymbols__BOOL">
+BOOL <tt class="descname">tracksSymbols</tt><a class="headerlink" href="#tracksSymbols__BOOL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to display the tracking annotation (default <tt class="docutils literal"><span class="pre">YES</span></tt>).</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="trackingColor__UIColorP">
+UIColor* <tt class="descname">trackingColor</tt><a class="headerlink" href="#trackingColor__UIColorP" title="Permalink to this definition">¶</a></dt>
+<dd><p>The color of the tracking annotation (default green).</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="allowsPinchZoom__BOOL">
+BOOL <tt class="descname">allowsPinchZoom</tt><a class="headerlink" href="#allowsPinchZoom__BOOL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable pinch gesture recognition for manually zooming the preview/decode
+(default <tt class="docutils literal"><span class="pre">YES</span></tt>).</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="torchMode__NSInteger">
+NSInteger <tt class="descname">torchMode</tt><a class="headerlink" href="#torchMode__NSInteger" title="Permalink to this definition">¶</a></dt>
+<dd><p>An <tt class="xref cpp cpp-type docutils literal"><span class="pre">AVCaptureTorchMode</span></tt> value that will be applied if/when
+appropriate.  (default Auto)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="showsFPS__BOOL">
+BOOL <tt class="descname">showsFPS</tt><a class="headerlink" href="#showsFPS__BOOL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overlay the decode frame rate on the preview to help with performance
+optimization.  This is for <em>debug only</em> and should not be set for
+production.  (default <tt class="docutils literal"><span class="pre">NO</span></tt>)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="zoom__CGFloat">
+CGFloat <tt class="descname">zoom</tt><a class="headerlink" href="#zoom__CGFloat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Zoom scale factor applied to the video preview <em>and</em> scanCrop.  This
+value is also updated by the pinch-zoom gesture.  Valid values are in
+the range [1,maxZoom].  (default 1.25)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="maxZoom__CGFloat">
+CGFloat <tt class="descname">maxZoom</tt><a class="headerlink" href="#maxZoom__CGFloat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum settable zoom level.  The zoom property will be clipped to this
+value.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="scanCrop__CGRect">
+CGRect <tt class="descname">scanCrop</tt><a class="headerlink" href="#scanCrop__CGRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>The region of the video image that will be scanned, in normalized image
+coordinates.  Note that the video image is in landscape mode (default
+{{0, 0}, {1, 1}})</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="previewTransform__CGAffineTransform">
+CGAffineTransform <tt class="descname">previewTransform</tt><a class="headerlink" href="#previewTransform__CGAffineTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Additional transform that will be applied to the video preview.  Note
+that this transform is <em>not</em> applied to scanCrop.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="device__AVCaptureDeviceP">
+AVCaptureDevice* <tt class="descname">device</tt><a class="headerlink" href="#device__AVCaptureDeviceP" title="Permalink to this definition">¶</a></dt>
+<dd><p>The capture device may be manipulated or replaced.</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="session__AVCaptureSessionP">
+AVCaptureSession* <tt class="descname">session</tt><a class="headerlink" href="#session__AVCaptureSessionP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Direct access to the capture session.  Warranty void if opened.
+(read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="captureReader__ZBarCaptureReaderP">
+ZBarCaptureReader* <tt class="descname">captureReader</tt><a class="headerlink" href="#captureReader__ZBarCaptureReaderP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Direct access to the capture reader.  Warranty void if opened.
+(read-only)</p>
+</dd></dl>
+
+<dl class="member">
+<dt id="enableCache__BOOL">
+BOOL <tt class="descname">enableCache</tt><a class="headerlink" href="#enableCache__BOOL" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Deprecated :</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>Whether to use the inter-frame consistency cache.  This should always be
+set to <tt class="docutils literal"><span class="pre">YES</span></tt>.</p>
+</dd></dl>
+
+</blockquote>
+</div>
+<div class="section" id="instance-methods">
+<h2>3.5.2. Instance Methods<a class="headerlink" href="#instance-methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<dl class="describe">
+<dt>
+<tt class="descname">- (id) initWithImageScanner:(ZBarImageScanner*)imageScanner</tt></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Imagescanner :</th><td class="field-body">A pre-configured <a class="reference internal" href="ZBarImageScanner.html#ZBarImageScanner" title="ZBarImageScanner"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarImageScanner</span></tt></a> to use for scanning</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body">The initialized <a class="reference internal" href="#ZBarReaderView" title="ZBarReaderView"><tt class="xref cpp cpp-class docutils literal"><span class="pre">ZBarReaderView</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">- (void) start</tt></dt>
+<dd><p>Begin/resume scanning after a call to <tt class="docutils literal"><span class="pre">stop</span></tt>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">- (void) stop</tt></dt>
+<dd><p>Stop scanning and pause the video feed.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<tt class="descname">- (void) flushCache</tt></dt>
+<dd><p>Flush the inter-frame consistency cache.  Any barcodes in the frame will
+be re-recognized in subsequent frames.</p>
+</dd></dl>
+
+<span class="target" id="setzoom-animated"></span><dl class="describe">
+<dt>
+<tt class="descname">- (void) setZoom:(CGFloat)zoom animated:(BOOL)animated</tt></dt>
+<dd><p>Set the zoom property with optional animation.</p>
+</dd></dl>
+
+<span class="target" id="willrotatetointerfaceorientation-duration"></span><dl class="describe">
+<dt>
+<tt class="descname">- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration</tt></dt>
+<dd><p>Compensate for device / camera / interface orientation.  Must be called
+by containing view controller that supports any non-portrait orientation
+to restore the camera preview to the correct orientation.  Call from
+view controller method of the same name for correct animation.</p>
+</dd></dl>
+
+</blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.5. ZBarReaderView Class Reference</a><ul>
+<li><a class="reference internal" href="#properties">3.5.1. Properties</a></li>
+<li><a class="reference internal" href="#instance-methods">3.5.2. Instance Methods</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ZBarReaderDelegate.html"
+                        title="previous chapter">3.4. ZBarReaderDelegate Protocol Reference</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ZBarReaderViewController.html"
+                        title="next chapter">3.6. ZBarReaderViewController Class Reference</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ZBarReaderViewController.html" title="3.6. ZBarReaderViewController Class Reference"
+             >next</a></li>
+        <li class="right" >
+          <a href="ZBarReaderDelegate.html" title="3.4. ZBarReaderDelegate Protocol Reference"
+             >previous</a> |</li>
+        <li><a href="index.html">ZBarSDK 1.2</a> &raquo;</li>
+          <li><a href="apiref.html" >3. API Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Jeff Brown et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.1.
+    </div>
+  </body>
+</html>
