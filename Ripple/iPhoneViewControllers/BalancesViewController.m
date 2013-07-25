@@ -9,6 +9,8 @@
 #import "BalancesViewController.h"
 #import "RippleJSManager.h"
 #import "SendTransactionViewController.h"
+#import "SendGenericViewController.h"
+#import "RPNewTransaction.h"
 
 @interface BalancesViewController () <UITableViewDataSource, UITableViewDelegate, RippleJSManagerBalanceDelegate> {
     NSDictionary * balances;
@@ -24,8 +26,13 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Send"]) {
-        SendTransactionViewController * view = [segue destinationViewController];
-        view.currency = sender;
+        SendGenericViewController * view = [segue destinationViewController];
+        
+        RPNewTransaction * t = [RPNewTransaction new];
+        t.Date = [NSDate date];
+        t.Currency = sender;
+        
+        view.transaction = t;
     }
 }
 
@@ -86,7 +93,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 2;
+        return 1;
     }
     else {
         return balances.count;
@@ -98,16 +105,17 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            // Send
-            cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-            cell.textLabel.text = @"Send";
-        }
-        else {
             // Receive cell
-            NSString *address = [[RippleJSManager shared] rippleWalletAddress];
+            //NSString *address = [[RippleJSManager shared] rippleWalletAddress];
             cell = [tableView dequeueReusableCellWithIdentifier:@"xrp"];
             cell.textLabel.text = @"Receive";
-            cell.detailTextLabel.text = address;
+            //cell.detailTextLabel.text = address;
+            cell.detailTextLabel.text = nil;
+        }
+        else {
+            // Send
+            cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            cell.textLabel.text = @"Send";            
         }
         
     }
@@ -143,12 +151,12 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            // Send
-            [self performSegueWithIdentifier:@"SendGeneric" sender:nil];
-        }
-        else {
             // Receive
             [self performSegueWithIdentifier:@"Receive" sender:nil];
+        }
+        else {
+            // Send
+            [self performSegueWithIdentifier:@"SendGeneric" sender:nil];
             
 //            NSString *address = [[RippleJSManager shared] rippleWalletAddress];
 //            if (address) {

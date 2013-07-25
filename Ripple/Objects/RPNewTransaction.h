@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSNumber * Amount;
 @property (strong, nonatomic) NSString * Destination;
 @property (strong, nonatomic) NSString * Destination_name;
+@property (strong, nonatomic) NSString * Currency;
 @property (strong, nonatomic) NSDate   * Date;
 
 @end

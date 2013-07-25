@@ -16,10 +16,10 @@
 
 @interface SendGenericViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ZBarReaderDelegate> {
     NSArray * contacts;
-    RPNewTransaction * transaction;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView * tableView;
+@property (weak, nonatomic) IBOutlet UILabel * labelTitle;
 
 @end
 
@@ -57,9 +57,10 @@
         // EXAMPLE: just grab the first barcode
         break;
     
-    NSString * address = symbol.data;
+    self.transaction.Destination = symbol.data;
+    self.transaction.Destination_name = nil;
     
-    [self performSegueWithIdentifier:@"Next" sender:address];
+    [self performSegueWithIdentifier:@"Next" sender:nil];
     
     // EXAMPLE: do something useful with the barcode data
     //resultText.text = symbol.data;
@@ -80,7 +81,7 @@
 {
     if ([segue.identifier isEqualToString:@"Next"]) {
         SendAmountViewController * view = [segue destinationViewController];
-        view.transaction = transaction;
+        view.transaction = self.transaction;
     }
 }
 
@@ -88,10 +89,12 @@
 {
     [textField resignFirstResponder];
     
-    transaction.Destination = textField.text;
-    //transaction.Destination_name = @"Ripple Address";
-    
-    [self performSegueWithIdentifier:@"Next" sender:nil];
+    if (textField.text.length > 0) {
+        self.transaction.Destination = textField.text;
+        self.transaction.Destination_name = nil;
+        
+        [self performSegueWithIdentifier:@"Next" sender:nil];
+    }
     
     return YES;
 }
@@ -119,9 +122,10 @@
         if (indexPath.row == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
             cell.textLabel.text = @"QR Code";
+            cell.detailTextLabel.text = nil;
         }
         else {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"custom"];
         }
     }
     else {
@@ -150,8 +154,8 @@
     }
     else {
         RPContact * contact = [contacts objectAtIndex:indexPath.row];
-        transaction.Destination = contact.address;
-        transaction.Destination_name = contact.name;
+        self.transaction.Destination = contact.address;
+        self.transaction.Destination_name = contact.name;
         [self performSegueWithIdentifier:@"Next" sender:nil];
     }
     
@@ -162,15 +166,32 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)refreshContacts
+{
+    contacts = [[RippleJSManager shared] rippleContacts];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    contacts = [[RippleJSManager shared] rippleContacts];
+    [self refreshContacts];
+    
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    transaction = [RPNewTransaction new];
+    self.labelTitle.text = [NSString stringWithFormat:@"Send %@", self.transaction.Currency];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshContacts) name:kNotificationUpdatedContacts object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationUpdatedContacts object:nil];
 }
 
 - (void)didReceiveMemoryWarning

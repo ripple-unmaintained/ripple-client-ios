@@ -285,6 +285,8 @@
                         [_contacts  addObject:contact];
                     }
                     
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedContacts object:nil userInfo:nil];
+                    
                     block(nil);
                     
                     [self loggedIn];
