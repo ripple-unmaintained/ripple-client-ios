@@ -8,8 +8,6 @@
 
 #import "RippleJSManager+AccountInfo.h"
 
-#define MAX_TRANSACTIONS 10
-
 @implementation RippleJSManager (AccountInfo)
 
 
@@ -43,14 +41,7 @@
      */
     
     NSDictionary * params = @{@"account": blobData.account_id,
-                              @"secret": blobData.master_seed,
-                              
-                              // accountTx
-                              @"params": @{@"account": blobData.account_id,
-                                           @"ledger_index_min": [NSNumber numberWithInt:-1],
-                                           @"descending": @YES,
-                                           @"limit": [NSNumber numberWithInt:MAX_TRANSACTIONS],
-                                           @"count": @YES}
+                              @"secret": blobData.master_seed
                               };
     
     [_bridge callHandler:@"account_info" data:params responseCallback:^(id responseData) {

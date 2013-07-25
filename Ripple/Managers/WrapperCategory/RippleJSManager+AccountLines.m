@@ -30,15 +30,7 @@
     */
     
     NSDictionary * params = @{@"account": blobData.account_id,
-                              @"secret": blobData.master_seed,
-                              
-                              // accountTx
-                              @"params": @{@"account": blobData.account_id,
-                                           @"ledger_index_min": [NSNumber numberWithInt:-1],
-                                           @"descending": @YES,
-                                           @"limit": [NSNumber numberWithInt:10],
-                                           @"count": @YES}
-                              };
+                              @"secret": blobData.master_seed};
     
     [_bridge callHandler:@"account_lines" data:params responseCallback:^(id responseData) {
         NSLog(@"accountLines response: %@", responseData);
