@@ -13,7 +13,7 @@
 #import "RPNewTransaction.h"
 #import "AppDelegate.h"
 
-@interface BalancesViewController () <UITableViewDataSource, UITableViewDelegate, RippleJSManagerBalanceDelegate> {
+@interface BalancesViewController () <UITableViewDataSource, UITableViewDelegate> {
     NSDictionary * balances;
 }
 
@@ -44,16 +44,10 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
--(void)RippleJSManagerBalances:(NSDictionary*)_balances
+-(void)updateBalances
 {
-    if (balances.count != _balances.count) {
-        balances = _balances;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    else {
-        balances = _balances;
-        [self.tableView reloadData];
-    }
+    balances = [[RippleJSManager shared] rippleBalances];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
@@ -170,15 +164,16 @@
 	// Do any additional setup after loading the view.
     
     // Refresh stories every time app becomes active
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name: UIApplicationDidBecomeActiveNotification object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name: UIApplicationDidBecomeActiveNotification object:nil];
     
     // Close any stories when entering background
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredBackground) name: UIApplicationDidEnterBackgroundNotification object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredBackground) name: UIApplicationDidEnterBackgroundNotification object:nil];
     
-    [RippleJSManager shared].delegate_balances = self;
     
     AppDelegate * appdelegate =  (AppDelegate*)[UIApplication sharedApplication].delegate;
     appdelegate.viewControllerBalance = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBalances) name:kNotificationUpdatedBalance object:nil];
     
 }
 

@@ -8,26 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-//@protocol RippleJSManagerNetworkStatus <NSObject>
-//
-//@required
-//-(void)RippleJSManagerConnected;
-//-(void)RippleJSManagerDisconnected;
-//
-//@end
-
-
-@protocol RippleJSManagerBalanceDelegate <NSObject>
-
-@required
--(void)RippleJSManagerBalances:(NSDictionary*)balances;
-
-@end
-
 @interface RippleJSManager : NSObject
-
-@property (weak ,nonatomic) id<RippleJSManagerBalanceDelegate> delegate_balances;
-//@property (weak ,nonatomic) id<RippleJSManagerNetworkStatus> delegate_network_status;
 
 +(RippleJSManager*)shared;
 
@@ -46,7 +27,7 @@
 -(BOOL)isConnected;
 
 -(NSString*)rippleWalletAddress;
-
 -(NSArray*)rippleContacts;
+-(NSDictionary*)rippleBalances;
 
 @end

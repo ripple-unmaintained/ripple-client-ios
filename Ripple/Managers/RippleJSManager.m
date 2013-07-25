@@ -45,6 +45,11 @@
     BOOL isConnected;
     BOOL isLoggedIn;
     
+    
+    BOOL receivedLines;
+    BOOL receivedAccount;
+    
+    
     RPBlobData * blobData;
     RPAccountData * accountData;
     NSMutableArray * accountLines;
@@ -147,8 +152,8 @@
         [self log:@"Connected"];
         
         [self notifyNetworkStatus];
-        
         [self afterConnectedSubscribe];
+        [self gatherAccountInfo];
     }];
     
     // Disconnected from Ripple network
@@ -180,14 +185,15 @@
 
     [_bridge registerHandler:@"transaction_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"transaction_callback called: %@", data);
-        //responseCallback(@"Response from testObjcCallback");
-        
+
         // Process transaction
         //RPTransactionSubscription * obj = [RPTransactionSubscription new];
         //[obj setValuesForKeysWithDictionary:data];
         
-        [self loggedIn];
-        
+#warning Update balances according to transaction
+        receivedLines = NO;
+        receivedAccount = NO;
+        [self gatherAccountInfo];
     }];
     
     
@@ -287,9 +293,15 @@
                     
                     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedContacts object:nil userInfo:nil];
                     
+                    // Save ripple address
+                    [[NSUserDefaults standardUserDefaults] setObject:blobData.account_id forKey:USERDEFAULTS_RIPPLE_KEY];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    
+                    isLoggedIn = YES;
+                    
                     block(nil);
                     
-                    [self loggedIn];
+                    [self gatherAccountInfo];
                     
                     /*
                      Example blob
@@ -366,6 +378,9 @@
     accountLines = nil;
     accountData = nil;
     
+    receivedLines = NO;
+    receivedAccount = NO;
+    
     NSArray * accounts = [SSKeychain allAccounts];
     for (NSDictionary * dic in accounts) {
         NSString * username = [dic objectForKey:@"acct"];
@@ -389,57 +404,35 @@
 
 #define MAX_TRANSACTIONS 10
 
--(void)loggedIn
+-(void)gatherAccountInfo
 {
-    // Received Blob. Request account information from network
-    // TODO: Check for connected?
-    
-    [[NSUserDefaults standardUserDefaults] setObject:blobData.account_id forKey:USERDEFAULTS_RIPPLE_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    
-    isLoggedIn = YES;
-    NSDictionary * params = @{@"account": blobData.account_id,
-                              @"secret": blobData.master_seed,
-                              
-                              // accountTx
-                              @"params": @{@"account": blobData.account_id,
-                                          @"ledger_index_min": [NSNumber numberWithInt:-1],
-                                          @"descending": @YES,
-                                          @"limit": [NSNumber numberWithInt:MAX_TRANSACTIONS],
-                                          @"count": @YES}
-                              };
-    
-    [self accountLines:params]; // IOU balances
-    [self accountInfo:params];  // Ripple balance
-    //[self accountTx:params];    // Last transactions
-    //[self subscribeLedger:params];
-    
-    
+    if (isLoggedIn) {
+        ;
+        
+        if (!receivedAccount || !receivedLines) {
+            NSDictionary * params = @{@"account": blobData.account_id,
+                                     @"secret": blobData.master_seed,
+                                     
+                                     // accountTx
+                                     @"params": @{@"account": blobData.account_id,
+                                                  @"ledger_index_min": [NSNumber numberWithInt:-1],
+                                                  @"descending": @YES,
+                                                  @"limit": [NSNumber numberWithInt:MAX_TRANSACTIONS],
+                                                  @"count": @YES}
+                                     };
+            
+            if (!receivedLines) {
+                [self accountLines:params]; // IOU balances
+            }
+            if (!receivedAccount) {
+                [self accountInfo:params];  // Ripple balance
+            }
+        }
+        
+        //[self accountTx:params];    // Last transactions
+    }
 }
 
-
-//-(void)requestWalletAccounts
-//{
-//    [_bridge callHandler:@"request_wallet_accounts" data:[NSDictionary dictionaryWithObject:@"snShK2SuSqw7VjAzGKzT5xc1Qyp4K" forKey:@"seed"] responseCallback:^(id responseData) {
-//        NSLog(@"request_wallet_accounts response: %@", responseData);
-//    }];
-//}
-
-//-(void)subscribeWalletAddress
-//{
-//    [_bridge callHandler:@"subscribe_ripple_address" data:[NSDictionary dictionaryWithObject:@"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96" forKey:@"ripple_address"] responseCallback:^(id responseData) {
-//        NSLog(@"subscribe_ripple_address response: %@", responseData);
-//    }];
-//}
-
-
-//-(void)subscribeLedger:(NSDictionary*)params
-//{
-//    [_bridge callHandler:@"subscribe_ledger" data:params responseCallback:^(id responseData) {
-//        NSLog(@"subscribe_ledger response: %@", responseData);
-//    }];
-//}
 
 -(void)subscribe:(NSDictionary*)params
 {
@@ -763,7 +756,7 @@
 
 #define XRP_FACTOR 1000000
 
--(void)processBalances
+-(NSDictionary*)rippleBalances
 {
     NSMutableDictionary * balances = [NSMutableDictionary dictionary];
     if (accountData) {
@@ -781,17 +774,14 @@
         
         [balances setObject:balance forKey:line.currency];
     }
-    
-    if (self.delegate_balances && [self.delegate_balances respondsToSelector:@selector(RippleJSManagerBalances:)]) {
-        [self.delegate_balances RippleJSManagerBalances:balances];
-    }
+    return balances;
 }
 
--(void)setDelegate_balances:(id<RippleJSManagerBalanceDelegate>)delegate_balances
-{
-    _delegate_balances = delegate_balances;
-    [self processBalances];
-}
+//-(void)setDelegate_balances:(id<RippleJSManagerBalanceDelegate>)delegate_balances
+//{
+//    _delegate_balances = delegate_balances;
+//    [self processBalances];
+//}
 
 //-(void)setDelegate_network_status:(id<RippleJSManagerNetworkStatus>)delegate_network_status
 //{
@@ -834,7 +824,10 @@
                 
                 [self log:[NSString stringWithFormat:@"Balance XRP: %@", accountData.Balance]];
                 
-                [self processBalances];
+                receivedAccount = YES;
+                
+                //[self processBalances];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedBalance object:nil userInfo:nil];
             }
             else {
                 // Unknown object
@@ -882,7 +875,11 @@
                     
                     [self log:[NSString stringWithFormat:@"Balance %@: %@", obj.currency, obj.balance]];
                 }
-                [self processBalances];
+                
+                receivedLines = YES;
+                
+                //[self processBalances];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedBalance object:nil userInfo:nil];
             }
         }
         // TODO: Handle errors
@@ -1412,6 +1409,9 @@
     if (self) {
         isConnected = NO;
         isLoggedIn = NO;
+        
+        receivedAccount = NO;
+        receivedLines = NO;
         
         _webView = [[UIWebView alloc] initWithFrame:CGRectZero];
         _webView.delegate = self;

@@ -38,6 +38,20 @@
     }];
 }
 
+//-(void)connectedNoAnimation
+//{
+//    CGRect f = self.view.frame;
+//    f.origin.y = 0.0f;
+//    self.view.frame = f;
+//}
+//
+//-(void)disconnectedNoAnimation
+//{
+//    CGRect f = self.view.frame;
+//    f.origin.y = 20.0f;
+//    self.view.frame = f;
+//}
+
 -(void)checkNetworkStatus
 {
     if ([[RippleJSManager shared] isConnected]) {
@@ -62,7 +76,8 @@
 {
     [super viewDidAppear:animated];
     
-    [self performSelector:@selector(checkNetworkStatus) withObject:nil afterDelay:0.1];
+    //[self performSelector:@selector(checkNetworkStatus) withObject:nil afterDelay:0.1];
+    [self checkNetworkStatus];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -88,6 +103,8 @@
     
     self.view.clipsToBounds = NO;
     [self.view addSubview:labelStatus];
+    
+    [self checkNetworkStatus];
     
 }
 

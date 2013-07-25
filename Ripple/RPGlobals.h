@@ -5,3 +5,5 @@
 #define kNotificationRippleConnected     @"RippleNetworkConnected"
 #define kNotificationRippleDisconnected  @"RippleNetworkDisconnected"
 #define kNotificationUpdatedContacts     @"RippleUpdatedContacts"
+
+#define kNotificationUpdatedBalance     @"RippleUpdatedBalance"

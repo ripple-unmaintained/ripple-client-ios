@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class RPNewTransaction;
+
 @interface SendWaitingViewController : RippleStatusViewController
+
+@property (strong, nonatomic) RPNewTransaction * transaction;
 
 @end
