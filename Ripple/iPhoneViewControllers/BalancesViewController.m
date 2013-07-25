@@ -11,6 +11,7 @@
 #import "SendTransactionViewController.h"
 #import "SendGenericViewController.h"
 #import "RPNewTransaction.h"
+#import "AppDelegate.h"
 
 @interface BalancesViewController () <UITableViewDataSource, UITableViewDelegate, RippleJSManagerBalanceDelegate> {
     NSDictionary * balances;
@@ -215,6 +216,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RippleJSManagerDisconnected) name:kNotificationRippleDisconnected object:nil];
     
     [RippleJSManager shared].delegate_balances = self;
+    
+    AppDelegate * appdelegate =  (AppDelegate*)[UIApplication sharedApplication].delegate;
+    appdelegate.viewControllerBalance = self;
     
 }
 

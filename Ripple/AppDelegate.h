@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class BalancesViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (weak, nonatomic) UIViewController * viewControllerBalance;
 
 @end

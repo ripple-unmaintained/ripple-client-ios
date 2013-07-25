@@ -8,6 +8,9 @@
 
 #import "SendAmountViewController.h"
 #import "RPNewTransaction.h"
+#import "RippleJSManager.h"
+#import "SVProgressHUD.h"
+#import "AppDelegate.h"
 
 @interface SendAmountViewController () <UITextFieldDelegate>
 
@@ -18,9 +21,40 @@
 
 @implementation SendAmountViewController
 
+-(void)sendConfirm
+{
+    [SVProgressHUD showWithStatus:@"Sending..." maskType:SVProgressHUDMaskTypeGradient];
+    
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber * number = [f numberFromString:self.textFieldAmount.text];
+    self.transaction.Amount = number;
+    
+    [[RippleJSManager shared] rippleSendTransactionAmount:self.transaction.Amount currency:self.transaction.Currency toRecipient:self.transaction.Destination withBlock:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        if (error) {
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: @"Could not send"
+                                  message: error.localizedDescription
+                                  delegate: nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        else {
+            // Success
+            // Pop to balance
+            AppDelegate * appdelegate =  (AppDelegate*)[UIApplication sharedApplication].delegate;
+            [self.navigationController popToViewController:appdelegate.viewControllerBalance animated:YES];
+        }
+    }];
+    
+    //[self performSegueWithIdentifier:@"Next" sender:nil];
+}
+
 -(IBAction)buttonNext:(id)sender
 {
-    [self performSegueWithIdentifier:@"Next" sender:nil];
+    [self sendConfirm];
 }
 
 -(IBAction)buttonBack:(id)sender
