@@ -37,36 +37,6 @@
     }
 }
 
--(void)RippleJSManagerConnected
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        CGRect f = self.view.frame;
-        f.origin.y = 0.0f;
-        self.view.frame = f;
-    } completion:^(BOOL finished) {
-        
-    }];
-}
--(void)RippleJSManagerDisconnected
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        CGRect f = self.view.frame;
-        f.origin.y = 20.0f;
-        self.view.frame = f;
-    } completion:^(BOOL finished) {
-        
-    }];
-}
-
--(void)checkNetworkStatus
-{
-    if ([[RippleJSManager shared] isConnected]) {
-        [self RippleJSManagerConnected];
-    }
-    else {
-        [self RippleJSManagerDisconnected];
-    }
-}
 
 -(IBAction)buttonLogout:(id)sender
 {
@@ -194,11 +164,6 @@
     
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    [self performSelector:@selector(checkNetworkStatus) withObject:nil afterDelay:0.1];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -209,11 +174,6 @@
     
     // Close any stories when entering background
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredBackground) name: UIApplicationDidEnterBackgroundNotification object:nil];
-    
-    
-    // Subscribe to ripple network state
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RippleJSManagerConnected) name:kNotificationRippleConnected object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RippleJSManagerDisconnected) name:kNotificationRippleDisconnected object:nil];
     
     [RippleJSManager shared].delegate_balances = self;
     

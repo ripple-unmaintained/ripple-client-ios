@@ -10,7 +10,7 @@
 
 @class RPNewTransaction;
 
-@interface SendAmountViewController : UIViewController
+@interface SendAmountViewController : RippleStatusViewController
 
 @property (strong, nonatomic) RPNewTransaction * transaction;
 

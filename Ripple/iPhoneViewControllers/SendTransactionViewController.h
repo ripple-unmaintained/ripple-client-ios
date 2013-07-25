@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SendTransactionViewController : UIViewController
+@interface SendTransactionViewController : RippleStatusViewController
 
 @property (strong, nonatomic) NSString * currency;
 

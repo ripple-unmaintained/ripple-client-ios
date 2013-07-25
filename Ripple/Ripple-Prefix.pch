@@ -15,4 +15,5 @@
     #import <SystemConfiguration/SystemConfiguration.h>
     #import <MobileCoreServices/MobileCoreServices.h>
     #import "RPGlobals.h"
+    #import "RippleStatusViewController.h"
 #endif

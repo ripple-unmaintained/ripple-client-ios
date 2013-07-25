@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BalancesViewController : UIViewController
+@interface BalancesViewController : RippleStatusViewController
 
 @end

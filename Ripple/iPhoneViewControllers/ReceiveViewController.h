@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ReceiveViewController : UIViewController
+@interface ReceiveViewController : RippleStatusViewController
 
 @end

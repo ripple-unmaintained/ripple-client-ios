@@ -83,6 +83,8 @@
 		2B58F80917A081C2009AEEEA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F80817A081C2009AEEEA /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2B58F80B17A081D1009AEEEA /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F80A17A081D1009AEEEA /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2B58F80D17A08207009AEEEA /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F80C17A08206009AEEEA /* CoreVideo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2B58F81017A0D013009AEEEA /* SendWaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F80F17A0D013009AEEEA /* SendWaitingViewController.m */; };
+		2B58F81317A0D108009AEEEA /* RippleStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F81217A0D108009AEEEA /* RippleStatusViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,6 +264,10 @@
 		2B58F80817A081C2009AEEEA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2B58F80A17A081D1009AEEEA /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		2B58F80C17A08206009AEEEA /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		2B58F80E17A0D013009AEEEA /* SendWaitingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendWaitingViewController.h; path = iPhoneViewControllers/SendWaitingViewController.h; sourceTree = "<group>"; };
+		2B58F80F17A0D013009AEEEA /* SendWaitingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendWaitingViewController.m; path = iPhoneViewControllers/SendWaitingViewController.m; sourceTree = "<group>"; };
+		2B58F81117A0D108009AEEEA /* RippleStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RippleStatusViewController.h; path = iPhoneViewControllers/RippleStatusViewController.h; sourceTree = "<group>"; };
+		2B58F81217A0D108009AEEEA /* RippleStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RippleStatusViewController.m; path = iPhoneViewControllers/RippleStatusViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +316,7 @@
 		2B201D0F179D235300B52E90 /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				2B58F81417A0D115009AEEEA /* Global */,
 				2B201D10179D236F00B52E90 /* LoginViewController.h */,
 				2B201D11179D236F00B52E90 /* LoginViewController.m */,
 				2B201DC7179D2B9F00B52E90 /* BalancesViewController.h */,
@@ -320,6 +327,8 @@
 				2B58F783179F68F0009AEEEA /* SendGenericViewController.m */,
 				2B58F785179F70A5009AEEEA /* SendAmountViewController.h */,
 				2B58F786179F70A5009AEEEA /* SendAmountViewController.m */,
+				2B58F80E17A0D013009AEEEA /* SendWaitingViewController.h */,
+				2B58F80F17A0D013009AEEEA /* SendWaitingViewController.m */,
 				2B58F7C0179F9D2F009AEEEA /* ReceiveViewController.h */,
 				2B58F7C1179F9D2F009AEEEA /* ReceiveViewController.mm */,
 			);
@@ -683,6 +692,15 @@
 			path = zbar;
 			sourceTree = "<group>";
 		};
+		2B58F81417A0D115009AEEEA /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				2B58F81117A0D108009AEEEA /* RippleStatusViewController.h */,
+				2B58F81217A0D108009AEEEA /* RippleStatusViewController.m */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -870,6 +888,8 @@
 				2B58F787179F70A5009AEEEA /* SendAmountViewController.m in Sources */,
 				2B58F78A179F71EC009AEEEA /* RPNewTransaction.m in Sources */,
 				2B58F7C2179F9D2F009AEEEA /* ReceiveViewController.mm in Sources */,
+				2B58F81017A0D013009AEEEA /* SendWaitingViewController.m in Sources */,
+				2B58F81317A0D108009AEEEA /* RippleStatusViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
