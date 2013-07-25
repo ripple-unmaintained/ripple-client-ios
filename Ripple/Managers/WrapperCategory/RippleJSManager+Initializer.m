@@ -7,7 +7,6 @@
 //
 
 #import "RippleJSManager+Initializer.h"
-#import "WebViewJavascriptBridge.h"
 
 @implementation RippleJSManager (Initializer)
 
@@ -38,7 +37,7 @@
     
     path = [[NSBundle mainBundle] pathForResource:@"jsonrewriter" ofType:@"js"];
     contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    [html appendFormat:@"<script>%@</script>", contents];
+    //[html appendFormat:@"<script>%@</script>", contents];
     path = nil;
     contents = nil;
     

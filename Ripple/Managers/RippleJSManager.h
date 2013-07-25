@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "WebViewJavascriptBridge.h"
+#import "NSObject+KJSerializer.h"
+#import "RPError.h"
+#import "RPAccountData.h"
+#import "RPBlobData.h"
+#import "RPAccountLine.h"
+
 @class WebViewJavascriptBridge, RPBlobData,RPAccountData;
 
 @interface RippleJSManager : NSObject {

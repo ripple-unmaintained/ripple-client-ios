@@ -24,6 +24,8 @@
 #import "RPTransactionSubscription.h"
 
 #import "RippleJSManager+Initializer.h"
+#import "RippleJSManager+AccountInfo.h"
+#import "RippleJSManager+AccountLines.h"
 
 
 @interface RippleJSManager ()
@@ -177,16 +179,6 @@
     //}];
 }
 
-
--(RPError*)checkForError:(NSDictionary*)response
-{
-    RPError * error;
-    if ([response isKindOfClass:[NSDictionary class]] && [response objectForKey:@"error"]) {
-        error = [RPError new];
-        [error setDictionary:response];
-    }
-    return error;
-}
 
 #define SSKEYCHAIN_SERVICE @"ripple"
 
@@ -363,32 +355,16 @@
     //[self subscribeLedger:params];
 }
 
-#define MAX_TRANSACTIONS 10
-
 -(void)gatherAccountInfo
 {
     if (isLoggedIn) {
-        ;
-        
-        if (!receivedAccount || !receivedLines) {
-            NSDictionary * params = @{@"account": blobData.account_id,
-                                     @"secret": blobData.master_seed,
-                                     
-                                     // accountTx
-                                     @"params": @{@"account": blobData.account_id,
-                                                  @"ledger_index_min": [NSNumber numberWithInt:-1],
-                                                  @"descending": @YES,
-                                                  @"limit": [NSNumber numberWithInt:MAX_TRANSACTIONS],
-                                                  @"count": @YES}
-                                     };
-            
-            if (!receivedLines) {
-                [self accountLines:params]; // IOU balances
-            }
-            if (!receivedAccount) {
-                [self accountInfo:params];  // Ripple balance
-            }
+        if (!receivedLines) {
+            [self wrapperAccountLines]; // IOU balances
         }
+        if (!receivedAccount) {
+            [self wrapperAccountInfo];  // Get Ripple balance
+        }
+
         
         //[self accountTx:params];    // Last transactions
     }
@@ -750,102 +726,9 @@
 //    [self updateNetworkStatus];
 //}
 
--(void)accountInfo:(NSDictionary*)params
-{
-    /*
-    {
-        "account_data" =     {
-            Account = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
-            Balance = 170215990;
-            Flags = 0;
-            LedgerEntryType = AccountRoot;
-            OwnerCount = 1;
-            PreviousTxnID = C77D333A3F9341F3116C8E191505DC17C204E4384EDAEEB1D6998440A991EDAD;
-            PreviousTxnLgrSeq = 1364528;
-            Sequence = 2;
-            index = 1866E369D94B8144C2A7596E1610D560D3A4A50F835812A55A6EEB53D92663B1;
-        };
-        "ledger_current_index" = 1364948;
-    }
-    */
-    
-    [_bridge callHandler:@"account_info" data:params responseCallback:^(id responseData) {
-        NSLog(@"accountInformation response: %@", responseData);
-        
-        RPError * error = [self checkForError:responseData];
-        if (!error) {
-            NSDictionary * accountDataDic = [responseData objectForKey:@"account_data"];
-            if (accountDataDic) {
-                RPAccountData * obj = [RPAccountData new];
-                [obj setDictionary:accountDataDic];
-                
-                // Check for valid?
-                accountData = obj;
-                
-                
-                [self log:[NSString stringWithFormat:@"Balance XRP: %@", accountData.Balance]];
-                
-                receivedAccount = YES;
-                
-                //[self processBalances];
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedBalance object:nil userInfo:nil];
-            }
-            else {
-                // Unknown object
-                raise(1);
-            }
-        }
-        else {
-            // Error
-            NSString * error_message = [error.remote objectForKey:@"error_message"];
-            [self log:error_message];
-        }
-    }];
-}
 
--(void)accountLines:(NSDictionary*)params
-{
-    /*
-    {
-        account = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
-        lines =     (
-                     {
-                         account = rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B;
-                         balance = "0.2";
-                         currency = USD;
-                         limit = 0;
-                         "limit_peer" = 0;
-                         "quality_in" = 0;
-                         "quality_out" = 0;
-                     }
-                     );
-    }
-    */
-    
-    
-    [_bridge callHandler:@"account_lines" data:params responseCallback:^(id responseData) {
-        NSLog(@"accountLines response: %@", responseData);
-        if (responseData && [responseData isKindOfClass:[NSDictionary class]]) {
-            NSArray * lines = [responseData objectForKey:@"lines"];
-            if (lines && [lines isKindOfClass:[NSArray class]]) {
-                accountLines = [NSMutableArray arrayWithCapacity:lines.count];
-                for (NSDictionary * line in lines) {
-                    RPAccountLine * obj = [RPAccountLine new];
-                    [obj setDictionary:line];
-                    [accountLines addObject:obj];
-                    
-                    [self log:[NSString stringWithFormat:@"Balance %@: %@", obj.currency, obj.balance]];
-                }
-                
-                receivedLines = YES;
-                
-                //[self processBalances];
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedBalance object:nil userInfo:nil];
-            }
-        }
-        // TODO: Handle errors
-    }];
-}
+
+
 
 // Last transactions
 -(void)accountTx:(NSDictionary*)params
