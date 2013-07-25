@@ -85,6 +85,8 @@
 		2B58F80D17A08207009AEEEA /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F80C17A08206009AEEEA /* CoreVideo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2B58F81017A0D013009AEEEA /* SendWaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F80F17A0D013009AEEEA /* SendWaitingViewController.m */; };
 		2B58F81317A0D108009AEEEA /* RippleStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F81217A0D108009AEEEA /* RippleStatusViewController.m */; };
+		2B58F81817A1D9D6009AEEEA /* jsonrewriter.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B58F81617A1D996009AEEEA /* jsonrewriter.js */; };
+		2B58F81F17A1E6A8009AEEEA /* RippleJSManager+Initializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F81E17A1E6A8009AEEEA /* RippleJSManager+Initializer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -268,6 +270,9 @@
 		2B58F80F17A0D013009AEEEA /* SendWaitingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendWaitingViewController.m; path = iPhoneViewControllers/SendWaitingViewController.m; sourceTree = "<group>"; };
 		2B58F81117A0D108009AEEEA /* RippleStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RippleStatusViewController.h; path = iPhoneViewControllers/RippleStatusViewController.h; sourceTree = "<group>"; };
 		2B58F81217A0D108009AEEEA /* RippleStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RippleStatusViewController.m; path = iPhoneViewControllers/RippleStatusViewController.m; sourceTree = "<group>"; };
+		2B58F81617A1D996009AEEEA /* jsonrewriter.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jsonrewriter.js; sourceTree = "<group>"; };
+		2B58F81D17A1E6A8009AEEEA /* RippleJSManager+Initializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+Initializer.h"; path = "Managers/WrapperCategory/RippleJSManager+Initializer.h"; sourceTree = "<group>"; };
+		2B58F81E17A1E6A8009AEEEA /* RippleJSManager+Initializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+Initializer.m"; path = "Managers/WrapperCategory/RippleJSManager+Initializer.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -456,6 +461,7 @@
 		2B5860FC1797670700200D0C /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				2B58F81C17A1E61F009AEEEA /* WrapperCategories */,
 				2B5860FD1797672E00200D0C /* RippleJSManager.h */,
 				2B5860FE1797672E00200D0C /* RippleJSManager.m */,
 				2B586126179769C500200D0C /* ripple-lib-wrapper.js */,
@@ -466,6 +472,7 @@
 		2B5861001797678C00200D0C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2B58F81517A1D996009AEEEA /* ripple-client */,
 				2B58F7E317A07D6F009AEEEA /* ZBarSDK-armv7s */,
 				2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */,
 				2B201DBB179D27C400B52E90 /* SSKeychain */,
@@ -701,6 +708,23 @@
 			name = Global;
 			sourceTree = "<group>";
 		};
+		2B58F81517A1D996009AEEEA /* ripple-client */ = {
+			isa = PBXGroup;
+			children = (
+				2B58F81617A1D996009AEEEA /* jsonrewriter.js */,
+			);
+			path = "ripple-client";
+			sourceTree = "<group>";
+		};
+		2B58F81C17A1E61F009AEEEA /* WrapperCategories */ = {
+			isa = PBXGroup;
+			children = (
+				2B58F81D17A1E6A8009AEEEA /* RippleJSManager+Initializer.h */,
+				2B58F81E17A1E6A8009AEEEA /* RippleJSManager+Initializer.m */,
+			);
+			name = WrapperCategories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -796,6 +820,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B58F81817A1D9D6009AEEEA /* jsonrewriter.js in Resources */,
 				2B58F7E217A057C4009AEEEA /* ripple-0.7.17-min.js in Resources */,
 				2B5861961799EC7B00200D0C /* sjcl.js in Resources */,
 				2B58613917976D3400200D0C /* ripple-lib-wrapper.js in Resources */,
@@ -890,6 +915,7 @@
 				2B58F7C2179F9D2F009AEEEA /* ReceiveViewController.mm in Sources */,
 				2B58F81017A0D013009AEEEA /* SendWaitingViewController.m in Sources */,
 				2B58F81317A0D108009AEEEA /* RippleStatusViewController.m in Sources */,
+				2B58F81F17A1E6A8009AEEEA /* RippleJSManager+Initializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

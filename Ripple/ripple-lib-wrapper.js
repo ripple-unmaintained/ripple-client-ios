@@ -335,9 +335,37 @@ function onBridgeReady(event) {
 	})
 
 	remote.on('transaction', function (result) {
+		// if (result.transactions) {
+		//   result.transactions.reverse().forEach(function (e) {
+		//   	JsonRewriter.processTxn(e.tx, e.meta, remote.account)
+		//     processTxn(e.tx, e.meta, true);
+		//   });
+		// }
 		bridge.callHandler('transaction_callback', result, function(response) {
 		})
 	})
+
+
+	// Sets account
+	bridge.registerHandler('set_account', function(data, responseCallback) {
+		remote.account = data.account
+		responseCallback(remote.account)
+
+	})
+
+	// Testing transaction decrypt
+	// bridge.registerHandler('test_transaction', function(result, responseCallback) {
+	// 	//responseCallback(result.meta)
+	// 	rewriter = new JsonRewriter();
+	// 	responseCallback(result.meta)
+	// 	var rewrite = rewriter.processTxn(result.transaction, result.meta, remote.account)
+	// 	responseCallback(rewrite)
+
+
+
+	// 	//bridge.callHandler('transaction_callback', result, function(response) {
+	// 	//})
+	// })
 
 
 	// remote.on('state', function (result) {

@@ -23,39 +23,10 @@
 #import "RPTransaction.h"
 #import "RPTransactionSubscription.h"
 
-#define HTML_BEGIN @"<!DOCTYPE html>\
-<html lang=\"en\">\
-<head>\
-<meta charset=\"utf-8\">\
-<title>Ripple Lib Demo</title>"
+#import "RippleJSManager+Initializer.h"
 
-#define HTML_END @"</head>\
-<body>\
-<h1>Ripple Lib Demo</h1>\
-</body>\
-</html>"
 
-@interface RippleJSManager () <UIWebViewDelegate> {
-    UIWebView * _webView;
-    WebViewJavascriptBridge *_bridge;
-    
-    UITextView * _log;
-    
-    
-    BOOL isConnected;
-    BOOL isLoggedIn;
-    
-    
-    BOOL receivedLines;
-    BOOL receivedAccount;
-    
-    
-    RPBlobData * blobData;
-    RPAccountData * accountData;
-    NSMutableArray * accountLines;
-    
-    NSMutableArray * _contacts;
-}
+@interface RippleJSManager ()
 
 @end
 
@@ -78,38 +49,6 @@
     return _contacts;
 }
 
--(NSString*)rippleHTML
-{
-    NSMutableString * html = [NSMutableString stringWithString:HTML_BEGIN];
-    
-    NSString *path;
-    NSString *contents;
-    
-    path = [[NSBundle mainBundle] pathForResource:@"ripple-0.7.17-min" ofType:@"js"];
-    contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    [html appendFormat:@"<script>%@</script>", contents];
-    path = nil;
-    contents = nil;
-    
-    path = [[NSBundle mainBundle] pathForResource:@"sjcl" ofType:@"js"];
-    contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    [html appendFormat:@"<script>%@</script>", contents];
-    path = nil;
-    contents = nil;
-    
-    path = [[NSBundle mainBundle] pathForResource:@"ripple-lib-wrapper" ofType:@"js"];
-    contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    [html appendFormat:@"<script>%@</script>", contents];
-    path = nil;
-    contents = nil;
-    
-    [html appendString:HTML_END];
-    
-    //NSLog(@"%@: Ripple HTML:\n%@", self.class.description, html);
-    
-    
-    return html;
-}
 
 -(void)log:(id)data
 {
@@ -134,22 +73,13 @@
     }
 }
 
--(void)setupJavascriptBridge
+-(void)registerBridgeHandlers
 {
-    [WebViewJavascriptBridge enableLogging];
-    
-    _bridge = [WebViewJavascriptBridge bridgeForWebView:_webView webViewDelegate:self handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"ObjC received message from JS: %@", data);
-        responseCallback(@"Response for message from ObjC");
-//#warning Testing purposes only
-        raise(1);
-    }];
-    
     // Connected to Ripple network
     [_bridge registerHandler:@"connected" handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"connected called: %@", data);
         isConnected = YES;
-        [self log:@"Connected"];
+        //[self log:@"Connected"];
         
         [self notifyNetworkStatus];
         [self afterConnectedSubscribe];
@@ -182,13 +112,18 @@
     }];
     
     
-
+    
     [_bridge registerHandler:@"transaction_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"transaction_callback called: %@", data);
-
+        
         // Process transaction
         //RPTransactionSubscription * obj = [RPTransactionSubscription new];
         //[obj setValuesForKeysWithDictionary:data];
+        
+        
+        // Testing purposes
+        //[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"transaction"];
+        //[[NSUserDefaults standardUserDefaults] synchronize];
         
 #warning Update balances according to transaction
         receivedLines = NO;
@@ -198,15 +133,15 @@
     
     
     // Subscribe
-//    [_bridge registerHandler:@"subscribe_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
-//        NSLog(@"rippleRemoteGenericCallback called: %@", data);
-//        //responseCallback(@"Response from testObjcCallback");
-//    }];
-//    
-//    [_bridge registerHandler:@"subscribe_error_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
-//        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
-//        //responseCallback(@"Response from testObjcCallback");
-//    }];
+    //    [_bridge registerHandler:@"subscribe_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
+    //        NSLog(@"rippleRemoteGenericCallback called: %@", data);
+    //        //responseCallback(@"Response from testObjcCallback");
+    //    }];
+    //
+    //    [_bridge registerHandler:@"subscribe_error_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
+    //        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
+    //        //responseCallback(@"Response from testObjcCallback");
+    //    }];
     
     
     
@@ -218,11 +153,14 @@
         NSLog(@"generic_callback called: %@", data);
         //responseCallback(@"Response from testObjcCallback");
     }];
-//
-//    [_bridge registerHandler:@"rippleRemoteGenericErrorCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
-//        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
-//        //responseCallback(@"Response from testObjcCallback");
-//    }];
+    //
+    //    [_bridge registerHandler:@"rippleRemoteGenericErrorCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
+    //        NSLog(@"rippleRemoteGenericErrorCallback called: %@", data);
+    //        //responseCallback(@"Response from testObjcCallback");
+    //    }];
+    
+    
+    
     
     
     
@@ -238,6 +176,7 @@
     //    NSLog(@"sendMessage got response: %@", response);
     //}];
 }
+
 
 -(RPError*)checkForError:(NSDictionary*)response
 {
@@ -297,6 +236,9 @@
                     [[NSUserDefaults standardUserDefaults] setObject:blobData.account_id forKey:USERDEFAULTS_RIPPLE_KEY];
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     
+                    
+                    [self wrapperSetAccount:blobData.account_id];
+                    
                     isLoggedIn = YES;
                     
                     block(nil);
@@ -340,6 +282,16 @@
     }];
 }
 
+-(void)wrapperSetAccount:(NSString*)account
+{
+    // Set account in wrapper
+    NSDictionary * data = @{@"account": account};
+    [_bridge callHandler:@"set_account" data:data responseCallback:^(id responseData) {
+        NSLog(@"set_account response: %@", responseData);
+        
+    }];
+}
+
 -(void)checkForLogin
 {
     NSArray * accounts = [SSKeychain allAccounts];
@@ -348,9 +300,18 @@
         NSString * username = [account objectForKey:@"acct"];
         NSString * password = [SSKeychain passwordForService:SSKEYCHAIN_SERVICE account:username];
         if (username && password && username.length > 0 && password.length > 0) {
+            
+            NSString *account_id = [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULTS_RIPPLE_KEY];
+            if (account_id) {
+                [self wrapperSetAccount:account_id];
+            }
+            
+            
             [self login:username andPassword:password withBlock:^(NSError *error) {
                 
             }];
+            
+            
         }
     }
 }
@@ -1375,24 +1336,6 @@
 }
 
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    NSLog(@"%@: webView: shouldStartLoadWithRequest", self.class.description);
-    return YES;
-}
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    NSLog(@"%@: webViewDidStartLoad", self.class.description);
-}
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    NSLog(@"%@: webViewDidStartLoad", self.class.description);
-}
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    NSLog(@"%@: webView: didFailLoadWithError", self.class.description);
-}
-
 
 +(RippleJSManager*)shared
 {
@@ -1413,17 +1356,22 @@
         receivedAccount = NO;
         receivedLines = NO;
         
-        _webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-        _webView.delegate = self;
-        NSString * html = [self rippleHTML];
-        [_webView loadHTMLString:html baseURL:[NSBundle mainBundle].bundleURL];
-        [self setupJavascriptBridge];
+        [self wrapperInitialize];
+        [self registerBridgeHandlers];
         
         [self connect];
         
         
         // Check if loggedin
         [self checkForLogin];
+        
+        
+//#warning Testing purposes
+//        NSDictionary * params = [[NSUserDefaults standardUserDefaults] objectForKey:@"transaction"];
+//        [_bridge callHandler:@"test_transaction" data:params responseCallback:^(id responseData) {
+//            NSLog(@"test_transaction response: %@", responseData);
+//            
+//        }];
     }
     return self;
 }

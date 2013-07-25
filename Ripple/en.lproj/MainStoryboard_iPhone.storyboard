@@ -705,7 +705,7 @@
                         <color key="backgroundColor" red="0.37647062539999998" green="0.6784313917" blue="0.87843143940000001" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="nV3-Pc-uYw" firstAttribute="leading" secondItem="mvF-JT-7OJ" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Fyg-cV-GeS"/>
-                            <constraint firstItem="nV3-Pc-uYw" firstAttribute="top" secondItem="mvF-JT-7OJ" secondAttribute="top" constant="74" id="IVf-Ws-oe8"/>
+                            <constraint firstItem="nV3-Pc-uYw" firstAttribute="top" secondItem="mvF-JT-7OJ" secondAttribute="top" constant="260" id="LdB-Pm-Me3"/>
                             <constraint firstItem="nIE-9l-eaE" firstAttribute="leading" secondItem="mvF-JT-7OJ" secondAttribute="leading" type="default" id="UCV-pj-qGb"/>
                             <constraint firstItem="nIE-9l-eaE" firstAttribute="top" secondItem="mvF-JT-7OJ" secondAttribute="top" type="default" id="e1i-uT-CDV"/>
                             <constraint firstAttribute="trailing" secondItem="nV3-Pc-uYw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="e6G-gg-HrS"/>
@@ -775,7 +775,6 @@
         <class className="SendWaitingViewController" superclassName="RippleStatusViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SendWaitingViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonBack:"/>
                 <relationship kind="outlet" name="labelConfirm" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="labelStatus" candidateClass="UILabel"/>
             </relationships>
@@ -783,7 +782,6 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonLogin:"/>
                 <relationship kind="outlet" name="textViewLog" candidateClass="UITextView"/>
             </relationships>
         </class>

@@ -8,7 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RippleJSManager : NSObject
+@class WebViewJavascriptBridge, RPBlobData,RPAccountData;
+
+@interface RippleJSManager : NSObject {
+    UIWebView * _webView;
+    WebViewJavascriptBridge *_bridge;
+    
+    UITextView * _log;
+    
+    
+    BOOL isConnected;
+    BOOL isLoggedIn;
+    
+    
+    BOOL receivedLines;
+    BOOL receivedAccount;
+    
+    
+    RPBlobData * blobData;
+    RPAccountData * accountData;
+    NSMutableArray * accountLines;
+    
+    NSMutableArray * _contacts;
+}
 
 +(RippleJSManager*)shared;
 
