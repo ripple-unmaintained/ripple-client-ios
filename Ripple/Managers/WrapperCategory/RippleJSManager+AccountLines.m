@@ -35,7 +35,7 @@
     [_bridge callHandler:@"account_lines" data:params responseCallback:^(id responseData) {
         NSLog(@"accountLines response: %@", responseData);
         
-        [_userAccountInformation processAccountLines:responseData];
+        [_accountBalance processAccountLines:responseData];
     }];
 }
 

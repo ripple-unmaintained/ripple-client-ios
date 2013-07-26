@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B08036C17A321510095F199 /* UserAccountInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B08036B17A321510095F199 /* UserAccountInformation.m */; };
+		2B08036C17A321510095F199 /* AccountBalanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B08036B17A321510095F199 /* AccountBalanceManager.m */; };
 		2B201D0D179D22AE00B52E90 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D0B179D22AE00B52E90 /* Splash.png */; };
 		2B201D0E179D22AE00B52E90 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D0C179D22AE00B52E90 /* Splash@2x.png */; };
 		2B201D12179D236F00B52E90 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201D11179D236F00B52E90 /* LoginViewController.m */; };
@@ -131,8 +131,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B08036A17A321510095F199 /* UserAccountInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserAccountInformation.h; path = Managers/Other/UserAccountInformation.h; sourceTree = "<group>"; };
-		2B08036B17A321510095F199 /* UserAccountInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserAccountInformation.m; path = Managers/Other/UserAccountInformation.m; sourceTree = "<group>"; };
+		2B08036A17A321510095F199 /* AccountBalanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountBalanceManager.h; path = Managers/Other/AccountBalanceManager.h; sourceTree = "<group>"; };
+		2B08036B17A321510095F199 /* AccountBalanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountBalanceManager.m; path = Managers/Other/AccountBalanceManager.m; sourceTree = "<group>"; };
 		2B201D0B179D22AE00B52E90 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
 		2B201D0C179D22AE00B52E90 /* Splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Splash@2x.png"; sourceTree = "<group>"; };
 		2B201D10179D236F00B52E90 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = iPhoneViewControllers/LoginViewController.h; sourceTree = "<group>"; };
@@ -342,8 +342,8 @@
 		2B08036817A320F90095F199 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				2B08036A17A321510095F199 /* UserAccountInformation.h */,
-				2B08036B17A321510095F199 /* UserAccountInformation.m */,
+				2B08036A17A321510095F199 /* AccountBalanceManager.h */,
+				2B08036B17A321510095F199 /* AccountBalanceManager.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -983,7 +983,7 @@
 				2B58F83717A1F157009AEEEA /* RippleJSManager+SendTransaction.m in Sources */,
 				2B58F83A17A1FAEA009AEEEA /* RippleJSManager+AccountOffers.m in Sources */,
 				2B58F83D17A1FD0C009AEEEA /* RippleJSManager+Ledger.m in Sources */,
-				2B08036C17A321510095F199 /* UserAccountInformation.m in Sources */,
+				2B08036C17A321510095F199 /* AccountBalanceManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

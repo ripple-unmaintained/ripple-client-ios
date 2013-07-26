@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 OpenCoin Inc. All rights reserved.
 //
 
-#import "UserAccountInformation.h"
+#import "AccountBalanceManager.h"
 
 #import "NSObject+KJSerializer.h"
 #import "RippleJSManager.h"
@@ -19,13 +19,13 @@
 
 #define XRP_FACTOR 1000000
 
-@interface UserAccountInformation () {
+@interface AccountBalanceManager () {
     
 }
 
 @end
 
-@implementation UserAccountInformation
+@implementation AccountBalanceManager
 
 -(RPError*)checkForError:(NSDictionary*)response
 {

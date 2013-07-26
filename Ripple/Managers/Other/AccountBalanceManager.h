@@ -10,7 +10,7 @@
 
 @class RPBlobData, RPAccountData;
 
-@interface UserAccountInformation : NSObject {
+@interface AccountBalanceManager : NSObject {
     RPAccountData    * _accountData;
     NSMutableArray   * _accountLines;
 }

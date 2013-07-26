@@ -51,7 +51,7 @@
 
 -(NSDictionary*)rippleBalances
 {
-    return [_userAccountInformation rippleBalances];
+    return [_accountBalance rippleBalances];
 }
 
 -(void)connect
@@ -99,7 +99,7 @@
         _isConnected = NO;
         _isLoggedIn = NO;
         
-        _userAccountInformation = [UserAccountInformation new];
+        _accountBalance = [AccountBalanceManager new];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rippleNetworkConnected) name:kNotificationRippleConnected object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rippleNetworkDisconnected) name:kNotificationRippleDisconnected object:nil];

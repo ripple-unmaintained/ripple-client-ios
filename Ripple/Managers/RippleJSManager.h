@@ -24,7 +24,7 @@
 #import "RPTransaction.h"
 #import "RPTransactionSubscription.h"
 
-#import "UserAccountInformation.h"
+#import "AccountBalanceManager.h"
 
 
 // Notifications
@@ -50,7 +50,7 @@
     RPBlobData       * _blobData;
     NSMutableArray   * _contacts;
     
-    UserAccountInformation * _userAccountInformation;
+    AccountBalanceManager * _accountBalance;
 }
 
 +(RippleJSManager*)shared;
