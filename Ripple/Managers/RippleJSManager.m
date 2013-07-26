@@ -79,9 +79,15 @@
 
 -(void)userLoggedIn
 {
+    _accountBalance = [[AccountBalanceManager alloc] initWithAccount:[self rippleWalletAddress]];
     [self updateAccountInformation];
 }
 
+
+-(void)userLoggedOut
+{
+    _accountBalance = nil;
+}
 
 +(RippleJSManager*)shared
 {
@@ -99,11 +105,10 @@
         _isConnected = NO;
         _isLoggedIn = NO;
         
-        _accountBalance = [AccountBalanceManager new];
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rippleNetworkConnected) name:kNotificationRippleConnected object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rippleNetworkDisconnected) name:kNotificationRippleDisconnected object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoggedIn) name:kNotificationUserLoggedIn object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoggedOut) name:kNotificationUserLoggedOut object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAccountInformation) name:kNotificationAccountChanged object:nil];
         

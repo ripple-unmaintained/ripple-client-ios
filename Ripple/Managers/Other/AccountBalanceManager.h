@@ -13,6 +13,8 @@
 @interface AccountBalanceManager : NSObject {
     RPAccountData    * _accountData;
     NSMutableArray   * _accountLines;
+    
+    NSString         * _account;
 }
 
 //+(UserAccountInformation*)shared;
@@ -23,5 +25,7 @@
 -(void)processTransactionCallback:(NSDictionary*)responseData;
 
 -(void)clearBalances;
+
+-(id)initWithAccount:(NSString*)account;
 
 @end

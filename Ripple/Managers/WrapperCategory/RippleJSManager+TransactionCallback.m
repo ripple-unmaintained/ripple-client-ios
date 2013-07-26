@@ -345,8 +345,9 @@
         //[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"transaction"];
         //[[NSUserDefaults standardUserDefaults] synchronize];
         
-#warning Update balances according to transaction
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAccountChanged object:nil userInfo:nil];
+//#warning Update balances according to transaction
+        //[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAccountChanged object:nil userInfo:nil];
+        [_accountBalance processTransactionCallback:data];
     }];
 }
 

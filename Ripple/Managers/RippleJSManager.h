@@ -33,8 +33,9 @@
 #define kNotificationUpdatedContacts     @"RippleUpdatedContacts"
 #define kNotificationUpdatedBalance      @"RippleUpdatedBalance"
 #define kNotificationUserLoggedIn        @"RippleUserLoggedIn"
+#define kNotificationUserLoggedOut       @"RippleUserLoggedOut"
 
-#warning This should eventually removed
+
 #define kNotificationAccountChanged      @"RippleAccountChanged"
 
 

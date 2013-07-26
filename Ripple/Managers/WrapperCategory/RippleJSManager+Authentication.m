@@ -174,6 +174,8 @@
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERDEFAULTS_RIPPLE_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserLoggedOut object:nil userInfo:nil];
 }
 
 @end

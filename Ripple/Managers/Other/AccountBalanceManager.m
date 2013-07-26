@@ -63,7 +63,8 @@
         // Error
         //NSString * error_message = [error.remote objectForKey:@"error_message"];
         //[self log:error_message];
-        raise(1);
+        //raise(1);
+        NSLog(@"AccountInfor error: %@", error.error_message);
     }
 }
 
@@ -92,7 +93,34 @@
 
 -(void)processTransactionCallback:(NSDictionary*)responseData
 {
-    
+    if (responseData && [responseData isKindOfClass:[NSDictionary class]]) {
+        NSDictionary * mmeta = [responseData objectForKey:@"mmeta"];
+        NSArray * nodes = [mmeta objectForKey:@"nodes"];
+        for (NSDictionary * node in nodes) {
+            NSString * entryType = [node objectForKey:@"entryType"];
+            if ([entryType isEqualToString:@"AccountRoot"]) {
+                // XRP
+                NSDictionary * fields = [node objectForKey:@"fields"];
+                NSString * Account = [fields objectForKey:@"Account"];
+                if ([Account isEqualToString:_account]) {
+                    // Balance is your account
+                    RPAccountData * accountData = [RPAccountData new];
+                    [accountData setDictionary:fields];
+                    
+                    // Validate?
+                    if (accountData.Account && accountData.Balance) {
+                        _accountData = accountData;
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedBalance object:nil userInfo:nil];
+                    }
+                }
+            }
+            else {
+                // IOU
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAccountChanged object:nil userInfo:nil];
+            }
+        }
+    }
 }
 
 -(void)clearBalances
@@ -129,6 +157,12 @@
         
     }
     return self;
+}
+
+-(id)initWithAccount:(NSString*)account
+{
+    _account = account;
+    return [self init];
 }
 
 //+(UserAccountInformation*)shared
