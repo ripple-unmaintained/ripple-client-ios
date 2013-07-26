@@ -68,15 +68,12 @@
                     [[NSUserDefaults standardUserDefaults] setObject:_blobData.account_id forKey:USERDEFAULTS_RIPPLE_KEY];
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     
-                    
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserLoggedIn object:nil userInfo:nil];
-                    
                     [self wrapperSetAccount:_blobData.account_id];
                     _isLoggedIn = YES;
                     
                     block(nil);
                     
-                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserLoggedIn object:nil userInfo:nil];
                     /*
                      Example blob
                      {

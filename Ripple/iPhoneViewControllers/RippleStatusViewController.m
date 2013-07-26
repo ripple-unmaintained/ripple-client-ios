@@ -11,6 +11,8 @@
 
 @interface RippleStatusViewController () {
     UILabel * labelStatus;
+    
+    BOOL  showingDisconnected;
 }
 
 @end
@@ -18,7 +20,7 @@
 @implementation RippleStatusViewController
 
 -(void)RippleJSManagerConnected
-{    
+{
     [UIView animateWithDuration:0.3 animations:^{
         CGRect f = self.view.frame;
         f.origin.y = 0.0f;
@@ -104,8 +106,16 @@
     self.view.clipsToBounds = NO;
     [self.view addSubview:labelStatus];
     
-    [self checkNetworkStatus];
-    
+    if (![[RippleJSManager shared] isConnected]) {
+        CGRect f = self.view.frame;
+        f.origin.y = 20.0f;
+        self.view.frame = f;
+        
+        showingDisconnected = YES;
+    }
+    else {
+        showingDisconnected = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning

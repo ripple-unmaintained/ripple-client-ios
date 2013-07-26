@@ -327,35 +327,15 @@
                                     <constraint firstItem="WJg-0g-83E" firstAttribute="leading" secondItem="gUW-LP-JSH" secondAttribute="leading" constant="11" id="saV-5r-df8"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QrY-xi-h7c">
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reconnecting..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6X-M4-jnV">
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="p6X-M4-jnV" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Ir9-An-LST"/>
-                                    <constraint firstItem="p6X-M4-jnV" firstAttribute="bottom" secondItem="QrY-xi-h7c" secondAttribute="bottom" type="default" id="M32-o0-lyu"/>
-                                    <constraint firstItem="p6X-M4-jnV" firstAttribute="top" secondItem="QrY-xi-h7c" secondAttribute="top" type="default" id="Ryx-5C-ND6"/>
-                                    <constraint firstAttribute="height" constant="20" type="user" id="pqH-xM-7wb"/>
-                                    <constraint firstItem="p6X-M4-jnV" firstAttribute="leading" secondItem="QrY-xi-h7c" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xtz-gk-luX"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gUW-LP-JSH" firstAttribute="trailing" secondItem="rwm-be-NSW" secondAttribute="trailing" type="default" id="3cA-3Y-o6A"/>
                             <constraint firstItem="Ztl-uG-ZmP" firstAttribute="bottom" secondItem="rwm-be-NSW" secondAttribute="bottom" type="user" id="3dn-ki-8rI"/>
-                            <constraint firstItem="QrY-xi-h7c" firstAttribute="top" secondItem="rwm-be-NSW" secondAttribute="top" constant="-20" id="9gn-bj-zG0"/>
                             <constraint firstItem="gUW-LP-JSH" firstAttribute="top" secondItem="rwm-be-NSW" secondAttribute="top" type="user" id="Ce2-fX-9z8"/>
                             <constraint firstItem="Ztl-uG-ZmP" firstAttribute="trailing" secondItem="rwm-be-NSW" secondAttribute="trailing" type="default" id="MKK-BZ-h1b"/>
-                            <constraint firstItem="QrY-xi-h7c" firstAttribute="leading" secondItem="rwm-be-NSW" secondAttribute="leading" type="default" id="XUB-37-HQ1"/>
                             <constraint firstItem="Ztl-uG-ZmP" firstAttribute="leading" secondItem="rwm-be-NSW" secondAttribute="leading" type="default" id="dfg-SF-5Bu"/>
                             <constraint firstItem="Ztl-uG-ZmP" firstAttribute="top" secondItem="rwm-be-NSW" secondAttribute="top" constant="44" type="user" id="fnZ-q1-NqX"/>
-                            <constraint firstItem="QrY-xi-h7c" firstAttribute="trailing" secondItem="rwm-be-NSW" secondAttribute="trailing" type="default" id="pgF-Vf-klV"/>
                             <constraint firstItem="Ztl-uG-ZmP" firstAttribute="bottom" secondItem="rwm-be-NSW" secondAttribute="bottom" type="user" id="qc6-5B-pme"/>
                             <constraint firstItem="gUW-LP-JSH" firstAttribute="leading" secondItem="rwm-be-NSW" secondAttribute="leading" type="default" id="w2L-dJ-PGc"/>
                         </constraints>
