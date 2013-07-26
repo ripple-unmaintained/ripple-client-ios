@@ -631,6 +631,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="KwN-0G-0tU"/>
                     <connections>
+                        <outlet property="buttonSend" destination="Xwo-cX-iI6" id="wBV-Pn-rLZ"/>
                         <outlet property="labelRecipient" destination="PaQ-8R-wfd" id="BUg-el-FgF"/>
                         <outlet property="textFieldAmount" destination="lnq-sd-IcN" id="66l-gE-5lp"/>
                         <segue destination="wWQ-1R-RUu" kind="push" identifier="Next" id="bU1-7b-e70"/>
@@ -734,6 +735,9 @@
         <class className="SendAmountViewController" superclassName="RippleStatusViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SendAmountViewController.h"/>
             <relationships>
+                <relationship kind="action" name="buttonBack:"/>
+                <relationship kind="action" name="buttonNext:"/>
+                <relationship kind="outlet" name="buttonSend" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="labelRecipient" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="textFieldAmount" candidateClass="UITextField"/>
             </relationships>

@@ -16,10 +16,24 @@
 
 @property (weak, nonatomic) IBOutlet UITextField * textFieldAmount;
 @property (weak, nonatomic) IBOutlet UILabel     * labelRecipient;
+@property (weak, nonatomic) IBOutlet UIButton    * buttonSend;
 
 @end
 
 @implementation SendAmountViewController
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString * afterText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if (afterText.length > 0 && ![afterText isEqualToString:@"."]) {
+        self.buttonSend.hidden = NO;
+    }
+    else {
+        self.buttonSend.hidden = YES;
+    }
+    
+    return YES;
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -75,6 +89,8 @@
     else {
         self.labelRecipient.text = @"Unkown destination";
     }
+    
+    self.buttonSend.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
