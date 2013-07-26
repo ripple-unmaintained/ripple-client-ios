@@ -498,9 +498,10 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Manually Enter Ripple Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fol-x0-QkI">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Manually Enter Ripple Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fol-x0-QkI">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="loL-TJ-Da7"/>
+                                                        <constraint firstAttribute="height" constant="65" id="tc0-tT-tcD"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
@@ -512,8 +513,8 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="fol-x0-QkI" firstAttribute="top" secondItem="n6j-oz-bzO" secondAttribute="top" type="default" id="NBf-v8-qh4"/>
                                             <constraint firstItem="fol-x0-QkI" firstAttribute="centerX" secondItem="n6j-oz-bzO" secondAttribute="centerX" type="default" id="fc5-36-TAR"/>
-                                            <constraint firstItem="fol-x0-QkI" firstAttribute="centerY" secondItem="n6j-oz-bzO" secondAttribute="centerY" type="default" id="uEl-jU-vtn"/>
                                         </constraints>
                                     </tableViewCell>
                                 </prototypes>
