@@ -11,5 +11,6 @@
 @interface RippleJSManager (SendTransaction)
 
 -(void)wrapperSendTransactionAmount:(NSNumber*)amount currency:(NSString*)currency toRecipient:(NSString*)recipient withBlock:(void(^)(NSError* error))block;
+-(void)wrapperIsValidAccount:(NSString*)account withBlock:(void(^)(NSError* error))block;
 
 @end

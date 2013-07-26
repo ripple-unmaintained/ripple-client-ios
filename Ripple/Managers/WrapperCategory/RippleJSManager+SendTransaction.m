@@ -134,4 +134,17 @@
     }];
 }
 
+-(void)wrapperIsValidAccount:(NSString*)account withBlock:(void(^)(NSError* error))block
+{
+    [_bridge callHandler:@"is_valid_account" data:@{@"account": account} responseCallback:^(id responseData) {
+        NSLog(@"is_valid_account response: %@", responseData);
+        NSError * error;
+        NSString * errorMessage = [responseData objectForKey:@"error"];
+        if (errorMessage) {
+            error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+        }
+        block(error);
+    }];
+}
+
 @end

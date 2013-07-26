@@ -8,11 +8,13 @@
 
 #import "SendGenericViewController.h"
 #import "RippleJSManager.h"
+#import "RippleJSManager+SendTransaction.h"
 #import "RPContact.h"
 #import "SendAmountViewController.h"
 #import "RPTransaction.h"
 #import "ZBarSDK.h"
 #import "RPNewTransaction.h"
+#import "SVProgressHUD.h"
 
 @interface SendGenericViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, ZBarReaderDelegate> {
     NSArray * contacts;
@@ -57,11 +59,8 @@
         // EXAMPLE: just grab the first barcode
         break;
     
-    self.transaction.Destination = symbol.data;
-    self.transaction.Destination_name = nil;
-    
-    [self performSegueWithIdentifier:@"Next" sender:nil];
-    
+    [self checkValidAccount:symbol.data];
+        
     // EXAMPLE: do something useful with the barcode data
     //resultText.text = symbol.data;
     
@@ -85,15 +84,29 @@
     }
 }
 
+-(void)checkValidAccount:(NSString*)account
+{
+    [SVProgressHUD showWithStatus:@"Validating address" maskType:SVProgressHUDMaskTypeGradient];
+    [[RippleJSManager shared] wrapperIsValidAccount:account withBlock:^(NSError *error) {
+        if (!error) {
+            [SVProgressHUD dismiss];
+            self.transaction.Destination = account;
+            self.transaction.Destination_name = nil;
+            
+            [self performSegueWithIdentifier:@"Next" sender:nil];
+        }
+        else {
+            [SVProgressHUD showErrorWithStatus:@"Invalid account"];
+        }
+    }];
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     
     if (textField.text.length > 0) {
-        self.transaction.Destination = textField.text;
-        self.transaction.Destination_name = nil;
-        
-        [self performSegueWithIdentifier:@"Next" sender:nil];
+        [self checkValidAccount:textField.text];
     }
     
     return YES;

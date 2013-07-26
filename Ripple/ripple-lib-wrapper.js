@@ -175,6 +175,28 @@ function onBridgeReady(event) {
 	})
 
 
+	// Checking for valid account
+	bridge.registerHandler('is_valid_account', function(data, responseCallback) {
+		remote.request_account_info(data.account)
+		  .on('error', function (response_account_info) {
+	      if (response_account_info.error === "remoteError" &&
+	          response_account_info.remote.error === "actNotFound") {
+	      	// Invalid address
+	      	responseCallback(JSON.parse('{"error":"Account not found"}'))
+	      	return;
+	      } else {
+	      	responseCallback(JSON.parse('{"error":"Validating address. Unknown error: '+response+'"}'))
+	      	return;
+	      }
+
+		  })
+		  .on('success', function (response_account_info) {
+		    responseCallback(JSON.parse('{"message":"Valid address: '+data.account+'"}'))
+		  })
+		  .request();
+	})
+
+
 	// Not yet needed for iOS app
 	// bridge.registerHandler('account_offers', function(data, responseCallback) {
 	// 	remote.set_secret(data.account, data.secret);
