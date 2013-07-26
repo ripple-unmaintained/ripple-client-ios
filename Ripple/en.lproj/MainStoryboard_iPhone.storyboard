@@ -178,7 +178,7 @@
                                     <action selector="buttonBack:" destination="CT0-nw-gLh" eventType="touchUpInside" id="u1F-DV-GvG"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="66" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ga1-i3-fgu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="66" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ga1-i3-fgu">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cell" textLabel="o9Z-5f-ebO" detailTextLabel="NgU-e9-1Lf" style="IBUITableViewCellStyleSubtitle" id="r2q-rW-TMY">
@@ -218,9 +218,9 @@
                             <constraint firstItem="gF0-Y5-p2j" firstAttribute="top" secondItem="2wg-SO-5xG" secondAttribute="top" type="default" id="ITA-4n-IcZ"/>
                             <constraint firstItem="Adj-Cf-eLO" firstAttribute="leading" secondItem="2wg-SO-5xG" secondAttribute="leading" type="default" id="J9V-Ah-1d7"/>
                             <constraint firstItem="Ga1-i3-fgu" firstAttribute="leading" secondItem="2wg-SO-5xG" secondAttribute="leading" type="default" id="jfG-hd-B0q"/>
+                            <constraint firstItem="Ga1-i3-fgu" firstAttribute="top" secondItem="Adj-Cf-eLO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="lHz-ah-eo2"/>
                             <constraint firstItem="gF0-Y5-p2j" firstAttribute="centerX" secondItem="Ga1-i3-fgu" secondAttribute="centerX" type="default" id="mNX-d3-TeZ"/>
                             <constraint firstItem="Adj-Cf-eLO" firstAttribute="top" secondItem="2wg-SO-5xG" secondAttribute="top" type="default" id="r3S-Yb-G6X"/>
-                            <constraint firstItem="Ga1-i3-fgu" firstAttribute="top" secondItem="gF0-Y5-p2j" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="y8M-zX-v0Z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ESg-6x-bm7"/>
@@ -616,11 +616,11 @@
                         <color key="backgroundColor" red="0.37647062539999998" green="0.6784313917" blue="0.87843143940000001" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="E1o-x2-x14" firstAttribute="leading" secondItem="Nde-b7-a4w" secondAttribute="leading" type="default" id="2EB-Op-ybG"/>
-                            <constraint firstItem="mT1-bP-gsF" firstAttribute="top" secondItem="0Jf-8g-exK" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="4eC-0h-J1a"/>
                             <constraint firstItem="mT1-bP-gsF" firstAttribute="leading" secondItem="Nde-b7-a4w" secondAttribute="leading" type="default" id="H3O-6e-1zI"/>
                             <constraint firstItem="0Jf-8g-exK" firstAttribute="top" secondItem="Nde-b7-a4w" secondAttribute="top" type="default" id="OsJ-kf-QQF"/>
                             <constraint firstItem="mT1-bP-gsF" firstAttribute="trailing" secondItem="Nde-b7-a4w" secondAttribute="trailing" type="default" id="U1N-Uc-QB7"/>
                             <constraint firstItem="E1o-x2-x14" firstAttribute="top" secondItem="Nde-b7-a4w" secondAttribute="top" type="default" id="URK-1Y-e5S"/>
+                            <constraint firstItem="mT1-bP-gsF" firstAttribute="top" secondItem="E1o-x2-x14" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="WwC-Uw-TgZ"/>
                             <constraint firstItem="mT1-bP-gsF" firstAttribute="bottom" secondItem="Nde-b7-a4w" secondAttribute="bottom" type="default" id="wfW-pc-9M5"/>
                             <constraint firstItem="mT1-bP-gsF" firstAttribute="centerX" secondItem="0Jf-8g-exK" secondAttribute="centerX" type="default" id="z0f-Az-dYT"/>
                         </constraints>
@@ -793,8 +793,8 @@
                                     <constraint firstItem="e58-xc-s2y" firstAttribute="top" secondItem="q1P-V4-zD2" secondAttribute="top" constant="20" symbolic="YES" type="default" id="3iv-NO-yZw"/>
                                     <constraint firstAttribute="height" constant="206" type="user" id="7Kc-MT-HcN"/>
                                     <constraint firstItem="GwQ-iC-8C1" firstAttribute="centerX" secondItem="e58-xc-s2y" secondAttribute="centerX" type="default" id="I5n-cf-gc0"/>
+                                    <constraint firstItem="GwQ-iC-8C1" firstAttribute="top" secondItem="q1P-V4-zD2" secondAttribute="top" constant="79" id="W35-B1-UJy"/>
                                     <constraint firstItem="GwQ-iC-8C1" firstAttribute="leading" secondItem="q1P-V4-zD2" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ezm-1l-vtK"/>
-                                    <constraint firstAttribute="bottom" secondItem="wog-AM-yDi" secondAttribute="bottom" constant="5" id="jCm-UA-Dv6"/>
                                     <constraint firstAttribute="trailing" secondItem="GwQ-iC-8C1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nHw-qp-9X9"/>
                                     <constraint firstItem="wog-AM-yDi" firstAttribute="top" secondItem="GwQ-iC-8C1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="pKa-gE-53T"/>
                                     <constraint firstItem="wog-AM-yDi" firstAttribute="centerX" secondItem="GwQ-iC-8C1" secondAttribute="centerX" type="default" id="udq-OB-bLc"/>
@@ -803,11 +803,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.37647062539999998" green="0.6784313917" blue="0.87843143940000001" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="q1P-V4-zD2" firstAttribute="trailing" secondItem="mvF-JT-7OJ" secondAttribute="trailing" type="default" id="RaH-wY-Onr"/>
                             <constraint firstItem="nIE-9l-eaE" firstAttribute="leading" secondItem="mvF-JT-7OJ" secondAttribute="leading" type="default" id="UCV-pj-qGb"/>
                             <constraint firstItem="q1P-V4-zD2" firstAttribute="leading" secondItem="mvF-JT-7OJ" secondAttribute="leading" type="default" id="XqB-Gj-SLq"/>
                             <constraint firstItem="nIE-9l-eaE" firstAttribute="top" secondItem="mvF-JT-7OJ" secondAttribute="top" type="default" id="e1i-uT-CDV"/>
                             <constraint firstItem="q1P-V4-zD2" firstAttribute="centerY" secondItem="mvF-JT-7OJ" secondAttribute="centerY" type="default" id="gpa-Po-AU9"/>
+                            <constraint firstItem="q1P-V4-zD2" firstAttribute="centerX" secondItem="mvF-JT-7OJ" secondAttribute="centerX" type="default" id="r7p-Lc-AwF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JC4-p4-Uay"/>
@@ -889,7 +889,6 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonLogin:"/>
                 <relationship kind="outlet" name="textViewLog" candidateClass="UITextView"/>
             </relationships>
         </class>
