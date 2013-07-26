@@ -59,8 +59,6 @@
                 
                 //[self log:[NSString stringWithFormat:@"Balance XRP: %@", accountData.Balance]];
                 
-                _receivedAccount = YES;
-                
                 //[self processBalances];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedBalance object:nil userInfo:nil];
             }

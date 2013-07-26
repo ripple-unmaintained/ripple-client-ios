@@ -45,7 +45,6 @@
                     
                     //[self log:[NSString stringWithFormat:@"Balance %@: %@", obj.currency, obj.balance]];
                 }
-                _receivedLines = YES;
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedBalance object:nil userInfo:nil];
             }

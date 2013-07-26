@@ -45,9 +45,6 @@
     BOOL _isConnected;
     BOOL _isLoggedIn;
     
-    BOOL _receivedLines;
-    BOOL _receivedAccount;
-    
     RPBlobData       * _blobData;
     RPAccountData    * _accountData;
     NSMutableArray   * _accountLines;

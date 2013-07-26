@@ -328,8 +328,6 @@
         //[[NSUserDefaults standardUserDefaults] synchronize];
         
 #warning Update balances according to transaction
-        _receivedLines = NO;
-        _receivedAccount = NO;
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAccountChanged object:nil userInfo:nil];
     }];
 }

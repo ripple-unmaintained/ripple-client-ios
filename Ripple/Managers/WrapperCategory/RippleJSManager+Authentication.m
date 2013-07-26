@@ -168,9 +168,6 @@
     _accountLines = nil;
     _accountData = nil;
     
-    _receivedLines = NO;
-    _receivedAccount = NO;
-    
     NSArray * accounts = [SSKeychain allAccounts];
     for (NSDictionary * dic in accounts) {
         NSString * username = [dic objectForKey:@"acct"];

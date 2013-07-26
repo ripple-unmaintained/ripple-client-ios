@@ -39,16 +39,14 @@
     return _isConnected;
 }
 
--(void)gatherAccountInfo
+-(void)updateAccountInformation
 {
-    if (_isLoggedIn && !_receivedLines) {
-        [self wrapperAccountLines]; // IOU balances
+    if (_isLoggedIn) {
+        [self wrapperSubscribeTransactions];  // Subscribe to users transactions
+        [self wrapperAccountLines];           // Get IOU balances
+        [self wrapperAccountInfo];            // Get Ripple balance
+        //[self accountTx:params];            // Get Last transactions
     }
-    if (_isLoggedIn && !_receivedAccount) {
-        [self wrapperAccountInfo];  // Get Ripple balance
-    }
-    
-    //[self accountTx:params];    // Last transactions
 }
 
 #define XRP_FACTOR 1000000
@@ -89,8 +87,7 @@
 
 -(void)rippleNetworkConnected
 {
-    [self wrapperSubscribeTransactions];
-    [self gatherAccountInfo];
+    [self updateAccountInformation];
 }
 
 -(void)rippleNetworkDisconnected
@@ -100,7 +97,7 @@
 
 -(void)userLoggedIn
 {
-    [self gatherAccountInfo];
+    [self updateAccountInformation];
 }
 
 
@@ -124,7 +121,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rippleNetworkDisconnected) name:kNotificationRippleDisconnected object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoggedIn) name:kNotificationUserLoggedIn object:nil];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gatherAccountInfo) name:kNotificationAccountChanged object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAccountInformation) name:kNotificationAccountChanged object:nil];
         
         [self wrapperInitialize];
         [self wrapperRegisterBridgeHandlersNetworkStatus];
