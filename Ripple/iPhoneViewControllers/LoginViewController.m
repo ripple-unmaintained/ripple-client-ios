@@ -26,6 +26,9 @@
     [[RippleJSManager shared] login:self.textFieldUsername.text andPassword:self.textFieldPassword.text withBlock:^(NSError *error) {
         [SVProgressHUD dismiss];
         if (!error) {
+            self.textFieldUsername.text = @"";
+            self.textFieldPassword.text = @"";
+            
             [self performSegueWithIdentifier:@"Next" sender:nil];
         }
         else {

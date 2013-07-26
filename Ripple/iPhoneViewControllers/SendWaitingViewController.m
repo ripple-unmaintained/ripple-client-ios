@@ -11,6 +11,7 @@
 #import "RPNewTransaction.h"
 #import "RippleJSManager.h"
 #import "RippleJSManager+SendTransaction.h"
+#import "SVProgressHUD.h"
 
 @interface SendWaitingViewController ()
 
@@ -40,6 +41,8 @@
         }
         else {
             // Success
+            [SVProgressHUD showSuccessWithStatus:@"Sent!"];
+            
             // Pop to balance
             AppDelegate * appdelegate =  (AppDelegate*)[UIApplication sharedApplication].delegate;
             [self.navigationController popToViewController:appdelegate.viewControllerBalance animated:YES];
