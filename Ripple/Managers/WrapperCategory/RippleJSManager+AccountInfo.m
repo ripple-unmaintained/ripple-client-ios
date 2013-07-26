@@ -10,17 +10,6 @@
 
 @implementation RippleJSManager (AccountInfo)
 
-
--(RPError*)checkForError:(NSDictionary*)response
-{
-    RPError * error;
-    if ([response isKindOfClass:[NSDictionary class]] && [response objectForKey:@"error"]) {
-        error = [RPError new];
-        [error setDictionary:response];
-    }
-    return error;
-}
-
 -(void)wrapperAccountInfo
 {
     /*(
@@ -47,32 +36,7 @@
     [_bridge callHandler:@"account_info" data:params responseCallback:^(id responseData) {
         NSLog(@"account_info response: %@", responseData);
         
-        RPError * error = [self checkForError:responseData];
-        if (!error) {
-            NSDictionary * accountDataDic = [responseData objectForKey:@"account_data"];
-            if (accountDataDic) {
-                RPAccountData * obj = [RPAccountData new];
-                [obj setDictionary:accountDataDic];
-                
-                // Check for valid?
-                _accountData = obj;
-                
-                //[self log:[NSString stringWithFormat:@"Balance XRP: %@", accountData.Balance]];
-                
-                //[self processBalances];
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedBalance object:nil userInfo:nil];
-            }
-            else {
-                // Unknown object
-                raise(1);
-            }
-        }
-        else {
-            // Error
-            //NSString * error_message = [error.remote objectForKey:@"error_message"];
-            //[self log:error_message];
-            raise(1);
-        }
+        [_userAccountInformation processAccountInfo:responseData];
     }];
 }
 

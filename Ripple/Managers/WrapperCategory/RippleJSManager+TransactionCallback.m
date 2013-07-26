@@ -10,6 +10,19 @@
 
 @implementation RippleJSManager (TransactionCallback)
 
+-(NSError*)checkForError:(NSDictionary*)response
+{
+    NSError * error;
+    // Check for ripple-lib error
+    NSNumber * returnCode = [response objectForKey:@"engine_result_code"];
+    if (returnCode.integerValue != 0) {
+        // Could not send transaction
+        NSString * errorMessage = [response objectForKey:@"engine_result_message"];
+        error = [NSError errorWithDomain:@"transaction_callback" code:returnCode.integerValue userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+    }
+    return error;
+}
+
 -(void)wrapperRegisterHandlerTransactionCallback
 {
     /*
@@ -317,6 +330,11 @@
     
     [_bridge registerHandler:@"transaction_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"transaction_callback called: %@", data);
+        
+        NSError * error = [self checkForError:data];
+        if (!error) {
+            
+        }
         
         // Process transaction
         //RPTransactionSubscription * obj = [RPTransactionSubscription new];

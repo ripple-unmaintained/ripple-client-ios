@@ -24,6 +24,8 @@
 #import "RPTransaction.h"
 #import "RPTransactionSubscription.h"
 
+#import "UserAccountInformation.h"
+
 
 // Notifications
 #define kNotificationRippleConnected     @"RippleNetworkConnected"
@@ -46,9 +48,9 @@
     BOOL _isLoggedIn;
     
     RPBlobData       * _blobData;
-    RPAccountData    * _accountData;
-    NSMutableArray   * _accountLines;
     NSMutableArray   * _contacts;
+    
+    UserAccountInformation * _userAccountInformation;
 }
 
 +(RippleJSManager*)shared;

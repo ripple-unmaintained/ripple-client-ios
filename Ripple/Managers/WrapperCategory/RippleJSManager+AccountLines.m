@@ -34,22 +34,8 @@
     
     [_bridge callHandler:@"account_lines" data:params responseCallback:^(id responseData) {
         NSLog(@"accountLines response: %@", responseData);
-        if (responseData && [responseData isKindOfClass:[NSDictionary class]]) {
-            NSArray * lines = [responseData objectForKey:@"lines"];
-            if (lines && [lines isKindOfClass:[NSArray class]]) {
-                _accountLines = [NSMutableArray arrayWithCapacity:lines.count];
-                for (NSDictionary * line in lines) {
-                    RPAccountLine * obj = [RPAccountLine new];
-                    [obj setDictionary:line];
-                    [_accountLines addObject:obj];
-                    
-                    //[self log:[NSString stringWithFormat:@"Balance %@: %@", obj.currency, obj.balance]];
-                }
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedBalance object:nil userInfo:nil];
-            }
-        }
-        // TODO: Handle errors
+        
+        [_userAccountInformation processAccountLines:responseData];
     }];
 }
 

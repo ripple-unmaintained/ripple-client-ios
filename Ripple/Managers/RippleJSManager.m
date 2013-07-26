@@ -49,27 +49,9 @@
     }
 }
 
-#define XRP_FACTOR 1000000
-
 -(NSDictionary*)rippleBalances
 {
-    NSMutableDictionary * balances = [NSMutableDictionary dictionary];
-    if (_accountData) {
-        NSNumber * balance = [NSNumber numberWithUnsignedLongLong:(_accountData.Balance.unsignedLongLongValue / XRP_FACTOR)];
-        [balances setObject:balance forKey:@"XRP"];
-    }
-    for (RPAccountLine * line in _accountLines) {
-        NSNumber * balance = [balances objectForKey:line.currency];
-        if (balance) {
-            balance = [NSNumber numberWithDouble:(balance.doubleValue + line.balance.doubleValue)];
-        }
-        else {
-            balance = line.balance;
-        }
-        
-        [balances setObject:balance forKey:line.currency];
-    }
-    return balances;
+    return [_userAccountInformation rippleBalances];
 }
 
 -(void)connect
@@ -116,6 +98,8 @@
     if (self) {
         _isConnected = NO;
         _isLoggedIn = NO;
+        
+        _userAccountInformation = [UserAccountInformation new];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rippleNetworkConnected) name:kNotificationRippleConnected object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rippleNetworkDisconnected) name:kNotificationRippleDisconnected object:nil];

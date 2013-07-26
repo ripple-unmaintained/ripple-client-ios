@@ -162,8 +162,7 @@
 {
     _isLoggedIn = NO;
     _blobData = nil;
-    _accountLines = nil;
-    _accountData = nil;
+    [_userAccountInformation clearBalances];
     
     NSArray * accounts = [SSKeychain allAccounts];
     for (NSDictionary * dic in accounts) {
