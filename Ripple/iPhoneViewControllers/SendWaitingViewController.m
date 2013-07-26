@@ -15,29 +15,33 @@
 
 @interface SendWaitingViewController ()
 
-
-@property (weak, nonatomic) IBOutlet UILabel     * labelConfirm;
 @property (weak, nonatomic) IBOutlet UILabel     * labelStatus;
-
+@property (weak, nonatomic) IBOutlet UILabel     * labelErrorReason;
+@property (weak, nonatomic) IBOutlet UIButton    * buttonRetry;
 @end
 
 @implementation SendWaitingViewController
 
+-(IBAction)buttonRetry:(id)sender
+{
+    self.buttonRetry.hidden = YES;
+    
+    [self send];
+}
+
 -(void)send
 {
     self.labelStatus.text = @"Sending...";
+    self.labelErrorReason.text = @"";
     
     [[RippleJSManager shared] wrapperSendTransactionAmount:self.transaction.Amount currency:self.transaction.Currency toRecipient:self.transaction.Destination withBlock:^(NSError *error) {
         if (error) {
-            self.labelStatus.text = @"Could not send";
+            //[SVProgressHUD showErrorWithStatus:@"Could not send"];
             
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle: @"Could not send"
-                                  message: error.localizedDescription
-                                  delegate: nil
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-            [alert show];
+            self.labelStatus.text = @"Could not send";
+            self.labelErrorReason.text = error.localizedDescription;
+            
+            self.buttonRetry.hidden = NO;
         }
         else {
             // Success
@@ -60,6 +64,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.buttonRetry.hidden = YES;
     
     [self send];
 }
