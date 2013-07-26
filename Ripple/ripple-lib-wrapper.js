@@ -21,19 +21,6 @@ function onBridgeReady(event) {
 		"local_signing" : true
 	});
 
-	// bridge.registerHandler('request_wallet_accounts', function(data, responseCallback) {
-	// 	remote.request_wallet_accounts(data['seed'])
-	// 	.on('success', function (result) {
-	// 		account = result
-	// 		responseCallback(result)
-	// 	})
-	// 	.on('error', function (result) {
-	// 		console.error(result)
-	// 		responseCallback(result)
-	// 	})
-	// 	.request();
-	// })
-
 	// XRP Account Balance
 	bridge.registerHandler('account_info', function(data, responseCallback) {
 		remote.set_secret(data.account, data.secret);
@@ -75,8 +62,6 @@ function onBridgeReady(event) {
 		})
 		.request();
 	})
-
-
 
 	// Sending payment
 	// Find payment path
@@ -120,12 +105,6 @@ function onBridgeReady(event) {
 		      	// Invalid address
 		      	responseCallback(JSON.parse('{"error":"Account not found"}'))
 		      	return;
-		        // if (amount.is_native()) {
-		        //   // XXX Show info about creating accounts, reserve reqs etc.
-		        //   return
-		        // } else {
-		        //   $scope.error_type = "noDest";
-		        // }
 		      } else {
 		      	responseCallback(JSON.parse('{"error":"Validating address. Unknown error: '+response+'"}'))
 		      	return;
@@ -197,56 +176,6 @@ function onBridgeReady(event) {
 			catch (e) {
 				responseCallback("Exception");
 			}
-
-		//var dt =
-
-		//responseCallback(amount.to_json())
-
-		//amount.set_issuer(addr);
-
-		// var tx = remote.transaction()
-		// // What is a source tag?
-		// // what is a destination tag?
-
-		// tx.payment(data.account, addr, amount.to_json())
-
-		// //responseCallback("AFTER")
-
-		// //tx.source_tag(TODO)
-		// //tx.destination_tag(TODO)
-		// tx.payment(data.account, addr, amount.to_json())
-		// tx.build_path(true);
-
-		// //responseCallback("AFTER")
-
-	 //    // if ($scope.send.alt) {
-	 //    // 	tx.send_max($scope.send.alt.send_max);
-	 //    // 	tx.paths($scope.send.alt.paths);
-	 //    // } else {
-	 //    // 	if (!amount.is_native()) {
-	 //    // 		tx.build_path(true);
-	 //    // 	}
-	 //    // }
-	 //    tx.on('success', function (res) {
-	 //    	responseCallback(res)
-	 //    });
-	 //    tx.on('error', function (res) {
-	 //    	responseCallback(res)
-	 //    });
-	 //    tx.submit();
-
-
-
-
-	    // remote.request_submit()
-	    // .on('success', function (result) {
-	    // 	responseCallback(result)
-	    // })
-	    // .on('error', function (result) {
-	    // 	console.error(result)
-	    // 	responseCallback(result)
-	    // })
-	    // .request();
 	})
 
 
@@ -264,38 +193,13 @@ function onBridgeReady(event) {
 	// 	.request();
 	// })
 
-	// Subscribe to ledger and server after logged in
-	// bridge.registerHandler('subscribe_ledger', function(data, responseCallback) {
-	// 	remote.set_secret(data.account, data.secret);
-	// 	// Subscribe
-	// 	remote.root_.request_subscribe(["ledger","server"]).accounts(data.account,false)
-	// 	.on('success', function (result) {
-	// 		responseCallback(result)
-	// 	})
-	// 	.on('error', function (result) {
-	// 		console.error(result)
-	// 		responseCallback(result)
-	// 	})
-	// 	.request();
-	// })
-
 
 	// Subscribe
 	bridge.registerHandler('subscribe_transactions', function(data, responseCallback) {
 		//remote.set_secret(data.account, data.secret);
 		// Subscribe
-		remote.request_subscribe().accounts(data.account,false)
-		// .on('success', function (result) {
-		// 	responseCallback(result)
-		// })
-		// .on('error', function (result) {
-		// 	console.error(result)
-		// 	responseCallback(result)
-		// })
-		.request();
-		//responseCallback("test")
+		remote.request_subscribe().accounts(data.account,false).request();
 	})
-
 
 	// Decrypts with sjcl library
 	bridge.registerHandler('sjcl_decrypt', function(data, responseCallback) {
@@ -317,7 +221,7 @@ function onBridgeReady(event) {
 		remote.disconnect();
 	})
 
-
+	// Testing purposes
 	// remote.on('ledger_closed', function (ledger) {
 	//   bridge.callHandler('ledger_closed', ledger, function(response) {
 	//   })
@@ -361,28 +265,7 @@ function onBridgeReady(event) {
 	// 	var rewrite = rewriter.processTxn(result.transaction, result.meta, remote.account)
 	// 	responseCallback(rewrite)
 
-
-
 	// 	//bridge.callHandler('transaction_callback', result, function(response) {
 	// 	//})
 	// })
-
-
-	// remote.on('state', function (result) {
-	// 	bridge.callHandler('generic_callback', result, function(response) {
-	// 	})
-	// })
-
-	// remote.on('online', function (result) {
-	// 	bridge.callHandler('connected', result, function(response) {
-	// 	})
-	// })
-
-	// remote.on('offline', function (result) {
-	// 	bridge.callHandler('disconnected', result, function(response) {
-	// 	})
-	// })
-
-
-
 }
