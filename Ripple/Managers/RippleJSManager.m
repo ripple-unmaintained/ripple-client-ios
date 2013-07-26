@@ -12,7 +12,6 @@
 #import "RippleJSManager+AccountInfo.h"
 #import "RippleJSManager+AccountLines.h"
 #import "RippleJSManager+TransactionCallback.h"
-#import "RippleJSManager+FindPath.h"
 #import "RippleJSManager+NetworkStatus.h"
 #import "RippleJSManager+Authentication.h"
 #import "RippleJSManager+SendTransaction.h"

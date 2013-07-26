@@ -91,7 +91,6 @@
 		2B58F82517A1EA6D009AEEEA /* RippleJSManager+AccountLines.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F82417A1EA6D009AEEEA /* RippleJSManager+AccountLines.m */; };
 		2B58F82817A1EBBE009AEEEA /* RippleJSManager+AccountTx.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F82717A1EBBE009AEEEA /* RippleJSManager+AccountTx.m */; };
 		2B58F82B17A1ECC3009AEEEA /* RippleJSManager+TransactionCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F82A17A1ECC3009AEEEA /* RippleJSManager+TransactionCallback.m */; };
-		2B58F82E17A1EE85009AEEEA /* RippleJSManager+FindPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F82D17A1EE84009AEEEA /* RippleJSManager+FindPath.m */; };
 		2B58F83117A1EF03009AEEEA /* RippleJSManager+NetworkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83017A1EF02009AEEEA /* RippleJSManager+NetworkStatus.m */; };
 		2B58F83417A1EFAA009AEEEA /* RippleJSManager+Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83317A1EFA9009AEEEA /* RippleJSManager+Authentication.m */; };
 		2B58F83717A1F157009AEEEA /* RippleJSManager+SendTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83617A1F156009AEEEA /* RippleJSManager+SendTransaction.m */; };
@@ -290,8 +289,6 @@
 		2B58F82717A1EBBE009AEEEA /* RippleJSManager+AccountTx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+AccountTx.m"; path = "Managers/WrapperCategory/RippleJSManager+AccountTx.m"; sourceTree = "<group>"; };
 		2B58F82917A1ECC2009AEEEA /* RippleJSManager+TransactionCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+TransactionCallback.h"; path = "Managers/WrapperCategory/RippleJSManager+TransactionCallback.h"; sourceTree = "<group>"; };
 		2B58F82A17A1ECC3009AEEEA /* RippleJSManager+TransactionCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+TransactionCallback.m"; path = "Managers/WrapperCategory/RippleJSManager+TransactionCallback.m"; sourceTree = "<group>"; };
-		2B58F82C17A1EE84009AEEEA /* RippleJSManager+FindPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+FindPath.h"; path = "Managers/WrapperCategory/RippleJSManager+FindPath.h"; sourceTree = "<group>"; };
-		2B58F82D17A1EE84009AEEEA /* RippleJSManager+FindPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+FindPath.m"; path = "Managers/WrapperCategory/RippleJSManager+FindPath.m"; sourceTree = "<group>"; };
 		2B58F82F17A1EF02009AEEEA /* RippleJSManager+NetworkStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+NetworkStatus.h"; path = "Managers/WrapperCategory/RippleJSManager+NetworkStatus.h"; sourceTree = "<group>"; };
 		2B58F83017A1EF02009AEEEA /* RippleJSManager+NetworkStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+NetworkStatus.m"; path = "Managers/WrapperCategory/RippleJSManager+NetworkStatus.m"; sourceTree = "<group>"; };
 		2B58F83217A1EFA9009AEEEA /* RippleJSManager+Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+Authentication.h"; path = "Managers/WrapperCategory/RippleJSManager+Authentication.h"; sourceTree = "<group>"; };
@@ -756,8 +753,6 @@
 				2B58F82717A1EBBE009AEEEA /* RippleJSManager+AccountTx.m */,
 				2B58F82917A1ECC2009AEEEA /* RippleJSManager+TransactionCallback.h */,
 				2B58F82A17A1ECC3009AEEEA /* RippleJSManager+TransactionCallback.m */,
-				2B58F82C17A1EE84009AEEEA /* RippleJSManager+FindPath.h */,
-				2B58F82D17A1EE84009AEEEA /* RippleJSManager+FindPath.m */,
 				2B58F82F17A1EF02009AEEEA /* RippleJSManager+NetworkStatus.h */,
 				2B58F83017A1EF02009AEEEA /* RippleJSManager+NetworkStatus.m */,
 				2B58F83217A1EFA9009AEEEA /* RippleJSManager+Authentication.h */,
@@ -965,7 +960,6 @@
 				2B58F82517A1EA6D009AEEEA /* RippleJSManager+AccountLines.m in Sources */,
 				2B58F82817A1EBBE009AEEEA /* RippleJSManager+AccountTx.m in Sources */,
 				2B58F82B17A1ECC3009AEEEA /* RippleJSManager+TransactionCallback.m in Sources */,
-				2B58F82E17A1EE85009AEEEA /* RippleJSManager+FindPath.m in Sources */,
 				2B58F83117A1EF03009AEEEA /* RippleJSManager+NetworkStatus.m in Sources */,
 				2B58F83417A1EFAA009AEEEA /* RippleJSManager+Authentication.m in Sources */,
 				2B58F83717A1F157009AEEEA /* RippleJSManager+SendTransaction.m in Sources */,
