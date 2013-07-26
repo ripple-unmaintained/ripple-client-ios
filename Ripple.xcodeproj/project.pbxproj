@@ -92,6 +92,10 @@
 		2B58F82817A1EBBE009AEEEA /* RippleJSManager+AccountTx.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F82717A1EBBE009AEEEA /* RippleJSManager+AccountTx.m */; };
 		2B58F82B17A1ECC3009AEEEA /* RippleJSManager+TransactionCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F82A17A1ECC3009AEEEA /* RippleJSManager+TransactionCallback.m */; };
 		2B58F82E17A1EE85009AEEEA /* RippleJSManager+FindPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F82D17A1EE84009AEEEA /* RippleJSManager+FindPath.m */; };
+		2B58F83117A1EF03009AEEEA /* RippleJSManager+NetworkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83017A1EF02009AEEEA /* RippleJSManager+NetworkStatus.m */; };
+		2B58F83417A1EFAA009AEEEA /* RippleJSManager+Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83317A1EFA9009AEEEA /* RippleJSManager+Authentication.m */; };
+		2B58F83717A1F157009AEEEA /* RippleJSManager+SendTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83617A1F156009AEEEA /* RippleJSManager+SendTransaction.m */; };
+		2B58F83A17A1FAEA009AEEEA /* RippleJSManager+AccountOffers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83917A1FAE9009AEEEA /* RippleJSManager+AccountOffers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,6 +292,14 @@
 		2B58F82A17A1ECC3009AEEEA /* RippleJSManager+TransactionCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+TransactionCallback.m"; path = "Managers/WrapperCategory/RippleJSManager+TransactionCallback.m"; sourceTree = "<group>"; };
 		2B58F82C17A1EE84009AEEEA /* RippleJSManager+FindPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+FindPath.h"; path = "Managers/WrapperCategory/RippleJSManager+FindPath.h"; sourceTree = "<group>"; };
 		2B58F82D17A1EE84009AEEEA /* RippleJSManager+FindPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+FindPath.m"; path = "Managers/WrapperCategory/RippleJSManager+FindPath.m"; sourceTree = "<group>"; };
+		2B58F82F17A1EF02009AEEEA /* RippleJSManager+NetworkStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+NetworkStatus.h"; path = "Managers/WrapperCategory/RippleJSManager+NetworkStatus.h"; sourceTree = "<group>"; };
+		2B58F83017A1EF02009AEEEA /* RippleJSManager+NetworkStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+NetworkStatus.m"; path = "Managers/WrapperCategory/RippleJSManager+NetworkStatus.m"; sourceTree = "<group>"; };
+		2B58F83217A1EFA9009AEEEA /* RippleJSManager+Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+Authentication.h"; path = "Managers/WrapperCategory/RippleJSManager+Authentication.h"; sourceTree = "<group>"; };
+		2B58F83317A1EFA9009AEEEA /* RippleJSManager+Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+Authentication.m"; path = "Managers/WrapperCategory/RippleJSManager+Authentication.m"; sourceTree = "<group>"; };
+		2B58F83517A1F155009AEEEA /* RippleJSManager+SendTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+SendTransaction.h"; path = "Managers/WrapperCategory/RippleJSManager+SendTransaction.h"; sourceTree = "<group>"; };
+		2B58F83617A1F156009AEEEA /* RippleJSManager+SendTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+SendTransaction.m"; path = "Managers/WrapperCategory/RippleJSManager+SendTransaction.m"; sourceTree = "<group>"; };
+		2B58F83817A1FAE8009AEEEA /* RippleJSManager+AccountOffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+AccountOffers.h"; path = "Managers/WrapperCategory/RippleJSManager+AccountOffers.h"; sourceTree = "<group>"; };
+		2B58F83917A1FAE9009AEEEA /* RippleJSManager+AccountOffers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+AccountOffers.m"; path = "Managers/WrapperCategory/RippleJSManager+AccountOffers.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -746,6 +758,14 @@
 				2B58F82A17A1ECC3009AEEEA /* RippleJSManager+TransactionCallback.m */,
 				2B58F82C17A1EE84009AEEEA /* RippleJSManager+FindPath.h */,
 				2B58F82D17A1EE84009AEEEA /* RippleJSManager+FindPath.m */,
+				2B58F82F17A1EF02009AEEEA /* RippleJSManager+NetworkStatus.h */,
+				2B58F83017A1EF02009AEEEA /* RippleJSManager+NetworkStatus.m */,
+				2B58F83217A1EFA9009AEEEA /* RippleJSManager+Authentication.h */,
+				2B58F83317A1EFA9009AEEEA /* RippleJSManager+Authentication.m */,
+				2B58F83517A1F155009AEEEA /* RippleJSManager+SendTransaction.h */,
+				2B58F83617A1F156009AEEEA /* RippleJSManager+SendTransaction.m */,
+				2B58F83817A1FAE8009AEEEA /* RippleJSManager+AccountOffers.h */,
+				2B58F83917A1FAE9009AEEEA /* RippleJSManager+AccountOffers.m */,
 			);
 			name = WrapperCategories;
 			sourceTree = "<group>";
@@ -946,6 +966,10 @@
 				2B58F82817A1EBBE009AEEEA /* RippleJSManager+AccountTx.m in Sources */,
 				2B58F82B17A1ECC3009AEEEA /* RippleJSManager+TransactionCallback.m in Sources */,
 				2B58F82E17A1EE85009AEEEA /* RippleJSManager+FindPath.m in Sources */,
+				2B58F83117A1EF03009AEEEA /* RippleJSManager+NetworkStatus.m in Sources */,
+				2B58F83417A1EFAA009AEEEA /* RippleJSManager+Authentication.m in Sources */,
+				2B58F83717A1F157009AEEEA /* RippleJSManager+SendTransaction.m in Sources */,
+				2B58F83A17A1FAEA009AEEEA /* RippleJSManager+AccountOffers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

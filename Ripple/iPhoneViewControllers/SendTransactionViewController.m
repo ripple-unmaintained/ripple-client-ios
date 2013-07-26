@@ -9,6 +9,7 @@
 #import "SendTransactionViewController.h"
 #import "SVProgressHUD.h"
 #import "RippleJSManager.h"
+#import "RippleJSManager+SendTransaction.h"
 
 @interface SendTransactionViewController () <UITextFieldDelegate>
 
@@ -49,7 +50,7 @@
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
     NSNumber * number = [f numberFromString:self.textFieldAmount.text];
-    [[RippleJSManager shared] rippleSendTransactionAmount:number currency:self.currency toRecipient:self.textFieldRecipient.text withBlock:^(NSError *error) {
+    [[RippleJSManager shared] wrapperSendTransactionAmount:number currency:self.currency toRecipient:self.textFieldRecipient.text withBlock:^(NSError *error) {
         [SVProgressHUD dismiss];
         if (error) {
             UIAlertView *alert = [[UIAlertView alloc]

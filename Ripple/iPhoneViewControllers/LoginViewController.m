@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "RippleJSManager.h"
+#import "RippleJSManager+Authentication.h"
 #import "SVProgressHUD.h"
 
 @interface LoginViewController () <UITextFieldDelegate>

@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "RPNewTransaction.h"
 #import "RippleJSManager.h"
+#import "RippleJSManager+SendTransaction.h"
 
 @interface SendWaitingViewController ()
 
@@ -25,7 +26,7 @@
 {
     self.labelStatus.text = @"Sending...";
     
-    [[RippleJSManager shared] rippleSendTransactionAmount:self.transaction.Amount currency:self.transaction.Currency toRecipient:self.transaction.Destination withBlock:^(NSError *error) {
+    [[RippleJSManager shared] wrapperSendTransactionAmount:self.transaction.Amount currency:self.transaction.Currency toRecipient:self.transaction.Destination withBlock:^(NSError *error) {
         if (error) {
             self.labelStatus.text = @"Could not send";
             

@@ -327,16 +327,16 @@
         //[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"transaction"];
         //[[NSUserDefaults standardUserDefaults] synchronize];
         
-//#warning Update balances according to transaction
-//        receivedLines = NO;
-//        receivedAccount = NO;
-//        [self gatherAccountInfo];
+#warning Update balances according to transaction
+        _receivedLines = NO;
+        _receivedAccount = NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAccountChanged object:nil userInfo:nil];
     }];
 }
 
 -(void)wrapperSubscribeTransactions
 {
-    NSDictionary * params = @{@"account": blobData.account_id};
+    NSDictionary * params = @{@"account": _blobData.account_id};
     [_bridge callHandler:@"subscribe_transactions" data:params responseCallback:^(id responseData) {
         NSLog(@"subscribe_transactions response: %@", responseData);
     }];

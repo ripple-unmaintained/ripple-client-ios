@@ -14,47 +14,49 @@
 #import "RPAccountData.h"
 #import "RPBlobData.h"
 #import "RPAccountLine.h"
+#import "RPContact.h"
+#import "RPAccountData.h"
+#import "RPLedgerClosed.h"
+#import "RPError.h"
+#import "RPAccountLine.h"
+#import "RPBlobData.h"
+#import "RPContact.h"
+#import "RPTransaction.h"
+#import "RPTransactionSubscription.h"
+
+
+// Notifications
+#define kNotificationRippleConnected     @"RippleNetworkConnected"
+#define kNotificationRippleDisconnected  @"RippleNetworkDisconnected"
+#define kNotificationUpdatedContacts     @"RippleUpdatedContacts"
+#define kNotificationUpdatedBalance      @"RippleUpdatedBalance"
+#define kNotificationUserLoggedIn        @"RippleUserLoggedIn"
+
+#warning This should eventually removed
+#define kNotificationAccountChanged      @"RippleAccountChanged"
+
 
 @class WebViewJavascriptBridge, RPBlobData,RPAccountData;
 
 @interface RippleJSManager : NSObject {
-    UIWebView * _webView;
+    UIWebView               * _webView;
     WebViewJavascriptBridge *_bridge;
     
-    UITextView * _log;
+    BOOL _isConnected;
+    BOOL _isLoggedIn;
     
+    BOOL _receivedLines;
+    BOOL _receivedAccount;
     
-    BOOL isConnected;
-    BOOL isLoggedIn;
-    
-    
-    BOOL receivedLines;
-    BOOL receivedAccount;
-    
-    
-    RPBlobData * blobData;
-    RPAccountData * accountData;
-    NSMutableArray * accountLines;
-    
-    NSMutableArray * _contacts;
+    RPBlobData       * _blobData;
+    RPAccountData    * _accountData;
+    NSMutableArray   * _accountLines;
+    NSMutableArray   * _contacts;
 }
 
 +(RippleJSManager*)shared;
 
--(void)setLog:(UITextView*)textView;
-
-
--(void)login:(NSString*)username andPassword:(NSString*)password withBlock:(void(^)(NSError* error))block;
--(void)logout;
-
--(void)connect;
-
--(void)rippleFindPath:(NSDictionary*)params;
--(void)rippleSendTransactionAmount:(NSNumber*)amount currency:(NSString*)currency toRecipient:(NSString*)recipient withBlock:(void(^)(NSError* error))block;
-
--(BOOL)isLoggedIn;
 -(BOOL)isConnected;
-
 -(NSString*)rippleWalletAddress;
 -(NSArray*)rippleContacts;
 -(NSDictionary*)rippleBalances;

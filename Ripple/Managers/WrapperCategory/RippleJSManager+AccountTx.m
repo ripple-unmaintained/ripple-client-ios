@@ -339,11 +339,11 @@
     }
     */
     
-    NSDictionary * params = @{@"account": blobData.account_id,
-                              @"secret": blobData.master_seed,
+    NSDictionary * params = @{@"account": _blobData.account_id,
+                              @"secret": _blobData.master_seed,
     
                               // accountTx
-                              @"params": @{@"account": blobData.account_id,
+                              @"params": @{@"account": _blobData.account_id,
                                            @"ledger_index_min": [NSNumber numberWithInt:-1],
                                            @"descending": @YES,
                                            @"limit": [NSNumber numberWithInt:MAX_TRANSACTIONS],

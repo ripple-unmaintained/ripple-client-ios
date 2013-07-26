@@ -8,6 +8,7 @@
 
 #import "BalancesViewController.h"
 #import "RippleJSManager.h"
+#import "RippleJSManager+Authentication.h"
 #import "SendTransactionViewController.h"
 #import "SendGenericViewController.h"
 #import "RPNewTransaction.h"
