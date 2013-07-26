@@ -16,6 +16,7 @@
 #import "RippleJSManager+Authentication.h"
 #import "RippleJSManager+SendTransaction.h"
 #import "RippleJSManager+AccountOffers.h"
+#import "RippleJSManager+AccountTx.h"
 
 
 @interface RippleJSManager ()
@@ -34,6 +35,11 @@
     return _contacts;
 }
 
+-(NSArray*)rippleTxHistory
+{
+    return [_accountHistory rippleTxHistory];
+}
+
 -(BOOL)isConnected
 {
     return _isConnected;
@@ -45,7 +51,7 @@
         [self wrapperSubscribeTransactions];  // Subscribe to users transactions
         [self wrapperAccountLines];           // Get IOU balances
         [self wrapperAccountInfo];            // Get Ripple balance
-        //[self accountTx:params];            // Get Last transactions
+        [self wrapperAccountTx];              // Get Last transactions
     }
 }
 
@@ -80,6 +86,7 @@
 -(void)userLoggedIn
 {
     _accountBalance = [[AccountBalanceManager alloc] initWithAccount:[self rippleWalletAddress]];
+    _accountHistory = [[AccountHistoryManager alloc] initWithAccount:[self rippleWalletAddress]];
     [self updateAccountInformation];
 }
 
@@ -87,6 +94,7 @@
 -(void)userLoggedOut
 {
     _accountBalance = nil;
+    _accountHistory = nil;
 }
 
 +(RippleJSManager*)shared

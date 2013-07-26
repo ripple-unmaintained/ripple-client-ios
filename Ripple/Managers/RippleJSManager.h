@@ -23,8 +23,12 @@
 #import "RPContact.h"
 #import "RPTransaction.h"
 #import "RPTransactionSubscription.h"
+#import "RPTxHistory.h"
 
 #import "AccountBalanceManager.h"
+#import "AccountHistoryManager.h"
+
+#define XRP_FACTOR 1000000
 
 
 // Notifications
@@ -32,6 +36,7 @@
 #define kNotificationRippleDisconnected  @"RippleNetworkDisconnected"
 #define kNotificationUpdatedContacts     @"RippleUpdatedContacts"
 #define kNotificationUpdatedBalance      @"RippleUpdatedBalance"
+#define kNotificationUpdatedAccountTx    @"RippleUpdatedAccountTx"
 #define kNotificationUserLoggedIn        @"RippleUserLoggedIn"
 #define kNotificationUserLoggedOut       @"RippleUserLoggedOut"
 
@@ -43,7 +48,7 @@
 
 @interface RippleJSManager : NSObject {
     UIWebView               * _webView;
-    WebViewJavascriptBridge *_bridge;
+    WebViewJavascriptBridge * _bridge;
     
     BOOL _isConnected;
     BOOL _isLoggedIn;
@@ -52,6 +57,7 @@
     NSMutableArray   * _contacts;
     
     AccountBalanceManager * _accountBalance;
+    AccountHistoryManager * _accountHistory;
 }
 
 +(RippleJSManager*)shared;
@@ -60,5 +66,6 @@
 -(NSString*)rippleWalletAddress;
 -(NSArray*)rippleContacts;
 -(NSDictionary*)rippleBalances;
+-(NSArray*)rippleTxHistory;
 
 @end

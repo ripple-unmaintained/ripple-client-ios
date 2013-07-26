@@ -17,8 +17,6 @@
 #import "RPAccountLine.h"
 #import "RPError.h"
 
-#define XRP_FACTOR 1000000
-
 @interface AccountBalanceManager () {
     
 }

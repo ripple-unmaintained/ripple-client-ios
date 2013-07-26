@@ -21,5 +21,7 @@
 @property (strong, nonatomic) NSString * TxnSignature;
 @property (strong, nonatomic) NSString * date;
 @property (strong, nonatomic) NSString * hash;
+@property (strong, nonatomic) NSString * inLedger;
+@property (strong, nonatomic) NSString * ledger_index;
 
 @end

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2B08036C17A321510095F199 /* AccountBalanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B08036B17A321510095F199 /* AccountBalanceManager.m */; };
+		2B08036F17A32DE70095F199 /* AccountHistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B08036E17A32DE70095F199 /* AccountHistoryManager.m */; };
+		2B08037217A32E660095F199 /* RPTxHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B08037117A32E660095F199 /* RPTxHistory.m */; };
+		2B08037517A335AE0095F199 /* TxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B08037417A335AE0095F199 /* TxViewController.m */; };
 		2B201D0D179D22AE00B52E90 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D0B179D22AE00B52E90 /* Splash.png */; };
 		2B201D0E179D22AE00B52E90 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D0C179D22AE00B52E90 /* Splash@2x.png */; };
 		2B201D12179D236F00B52E90 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201D11179D236F00B52E90 /* LoginViewController.m */; };
@@ -133,6 +136,12 @@
 /* Begin PBXFileReference section */
 		2B08036A17A321510095F199 /* AccountBalanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountBalanceManager.h; path = Managers/Other/AccountBalanceManager.h; sourceTree = "<group>"; };
 		2B08036B17A321510095F199 /* AccountBalanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountBalanceManager.m; path = Managers/Other/AccountBalanceManager.m; sourceTree = "<group>"; };
+		2B08036D17A32DE70095F199 /* AccountHistoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountHistoryManager.h; path = Managers/Other/AccountHistoryManager.h; sourceTree = "<group>"; };
+		2B08036E17A32DE70095F199 /* AccountHistoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountHistoryManager.m; path = Managers/Other/AccountHistoryManager.m; sourceTree = "<group>"; };
+		2B08037017A32E660095F199 /* RPTxHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPTxHistory.h; path = Objects/RPTxHistory.h; sourceTree = "<group>"; };
+		2B08037117A32E660095F199 /* RPTxHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPTxHistory.m; path = Objects/RPTxHistory.m; sourceTree = "<group>"; };
+		2B08037317A335AE0095F199 /* TxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TxViewController.h; path = iPhoneViewControllers/TxViewController.h; sourceTree = "<group>"; };
+		2B08037417A335AE0095F199 /* TxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TxViewController.m; path = iPhoneViewControllers/TxViewController.m; sourceTree = "<group>"; };
 		2B201D0B179D22AE00B52E90 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
 		2B201D0C179D22AE00B52E90 /* Splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Splash@2x.png"; sourceTree = "<group>"; };
 		2B201D10179D236F00B52E90 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = iPhoneViewControllers/LoginViewController.h; sourceTree = "<group>"; };
@@ -344,6 +353,8 @@
 			children = (
 				2B08036A17A321510095F199 /* AccountBalanceManager.h */,
 				2B08036B17A321510095F199 /* AccountBalanceManager.m */,
+				2B08036D17A32DE70095F199 /* AccountHistoryManager.h */,
+				2B08036E17A32DE70095F199 /* AccountHistoryManager.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -375,6 +386,8 @@
 				2B58F80F17A0D013009AEEEA /* SendWaitingViewController.m */,
 				2B58F7C0179F9D2F009AEEEA /* ReceiveViewController.h */,
 				2B58F7C1179F9D2F009AEEEA /* ReceiveViewController.mm */,
+				2B08037317A335AE0095F199 /* TxViewController.h */,
+				2B08037417A335AE0095F199 /* TxViewController.m */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -569,6 +582,8 @@
 				2B201DDF179E497C00B52E90 /* RPTransactionSubscription.m */,
 				2B58F788179F71EB009AEEEA /* RPNewTransaction.h */,
 				2B58F789179F71EB009AEEEA /* RPNewTransaction.m */,
+				2B08037017A32E660095F199 /* RPTxHistory.h */,
+				2B08037117A32E660095F199 /* RPTxHistory.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -984,6 +999,9 @@
 				2B58F83A17A1FAEA009AEEEA /* RippleJSManager+AccountOffers.m in Sources */,
 				2B58F83D17A1FD0C009AEEEA /* RippleJSManager+Ledger.m in Sources */,
 				2B08036C17A321510095F199 /* AccountBalanceManager.m in Sources */,
+				2B08036F17A32DE70095F199 /* AccountHistoryManager.m in Sources */,
+				2B08037217A32E660095F199 /* RPTxHistory.m in Sources */,
+				2B08037517A335AE0095F199 /* TxViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

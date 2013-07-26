@@ -59,7 +59,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 1;
+        return 2;
     }
     else {
         return balances.count;
@@ -79,9 +79,9 @@
             cell.detailTextLabel.text = nil;
         }
         else {
-            // Send
+            // Transaction History
             cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-            cell.textLabel.text = @"Send";            
+            cell.textLabel.text = @"History";
         }
         
     }
@@ -121,8 +121,9 @@
             [self performSegueWithIdentifier:@"Receive" sender:nil];
         }
         else {
-            // Send
-            [self performSegueWithIdentifier:@"SendGeneric" sender:nil];
+            // Transaction History
+            [self performSegueWithIdentifier:@"Tx" sender:nil];
+            
             
 //            NSString *address = [[RippleJSManager shared] rippleWalletAddress];
 //            if (address) {
