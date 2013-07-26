@@ -39,25 +39,6 @@
     return _isConnected;
 }
 
--(void)registerBridgeHandlers
-{
-    [self wrapperRegisterBridgeHandlersNetworkStatus];
-    [self wrapperRegisterHandlerTransactionCallback];
-    
-    //    // Testing purposes
-    //    [_bridge registerHandler:@"ledger_closed" handler:^(id data, WVJBResponseCallback responseCallback) {
-    //        NSLog(@"ledger_closed called: %@", data);
-    //        [self log:data];
-    //
-    //        RPLedgerClosed * obj = [RPLedgerClosed new];
-    //        [obj setDictionary:data];
-    //        // Validate?
-    //
-    //        //responseCallback(@"Response from testObjcCallback");
-    //    }];
-}
-
-
 -(void)gatherAccountInfo
 {
     if (_isLoggedIn && !_receivedLines) {
@@ -69,8 +50,6 @@
     
     //[self accountTx:params];    // Last transactions
 }
-
-
 
 #define XRP_FACTOR 1000000
 
@@ -141,21 +120,17 @@
         _isConnected = NO;
         _isLoggedIn = NO;
         
-        _receivedAccount = NO;
-        _receivedLines = NO;
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rippleNetworkConnected) name:kNotificationRippleConnected object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rippleNetworkDisconnected) name:kNotificationRippleDisconnected object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoggedIn) name:kNotificationUserLoggedIn object:nil];
         
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gatherAccountInfo) name:kNotificationAccountChanged object:nil];
         
         [self wrapperInitialize];
-        [self registerBridgeHandlers];
+        [self wrapperRegisterBridgeHandlersNetworkStatus];
+        [self wrapperRegisterHandlerTransactionCallback];
         
         [self connect];
-        
         
         // Check if loggedin
         [self checkForLogin];
