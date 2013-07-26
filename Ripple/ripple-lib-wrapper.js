@@ -29,7 +29,6 @@ function onBridgeReady(event) {
 			responseCallback(result)
 		})
 		.on('error', function (result) {
-			console.error(result)
 			responseCallback(result)
 		})
 		.request();
@@ -43,7 +42,6 @@ function onBridgeReady(event) {
 			responseCallback(result)
 		})
 		.on('error', function (result) {
-			console.error(result)
 			responseCallback(result)
 		})
 		.request();
@@ -57,7 +55,6 @@ function onBridgeReady(event) {
 			responseCallback(result)
 		})
 		.on('error', function (result) {
-			console.error(result)
 			responseCallback(result)
 		})
 		.request();
@@ -72,7 +69,6 @@ function onBridgeReady(event) {
 			responseCallback(result)
 		})
 		.on('error', function (result) {
-			console.error(result)
 			responseCallback(result)
 		})
 		.request();
@@ -239,12 +235,6 @@ function onBridgeReady(event) {
 	})
 
 	remote.on('transaction', function (result) {
-		// if (result.transactions) {
-		//   result.transactions.reverse().forEach(function (e) {
-		//   	JsonRewriter.processTxn(e.tx, e.meta, remote.account)
-		//     processTxn(e.tx, e.meta, true);
-		//   });
-		// }
 		bridge.callHandler('transaction_callback', result, function(response) {
 		})
 	})
@@ -254,7 +244,6 @@ function onBridgeReady(event) {
 	bridge.registerHandler('set_account', function(data, responseCallback) {
 		remote.account = data.account
 		responseCallback(remote.account)
-
 	})
 
 	// Testing transaction decrypt
