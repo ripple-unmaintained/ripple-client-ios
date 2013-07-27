@@ -42,6 +42,7 @@
 
 
 #define kNotificationAccountChanged      @"RippleAccountChanged"
+#define kNotificationRefreshTx           @"RippleRefreshTx"
 
 
 @class WebViewJavascriptBridge, RPBlobData,RPAccountData;

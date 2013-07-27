@@ -54,7 +54,7 @@
         }
         else {
             // Unknown object
-            raise(1);
+            //raise(1);
         }
     }
     else {
@@ -85,7 +85,8 @@
     }
     else {
         // TODO handle error?
-        raise(1);
+        //raise(1);
+        NSLog(@"processAccountLines error");
     }
 }
 
@@ -94,6 +95,10 @@
     if (responseData && [responseData isKindOfClass:[NSDictionary class]]) {
         NSDictionary * mmeta = [responseData objectForKey:@"mmeta"];
         NSArray * nodes = [mmeta objectForKey:@"nodes"];
+        
+        BOOL updatedXRP = NO;
+        BOOL updatedIOU = NO;
+        
         for (NSDictionary * node in nodes) {
             NSString * entryType = [node objectForKey:@"entryType"];
             if ([entryType isEqualToString:@"AccountRoot"]) {
@@ -108,16 +113,25 @@
                     // Validate?
                     if (accountData.Account && accountData.Balance) {
                         _accountData = accountData;
-                        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedBalance object:nil userInfo:nil];
+                        updatedXRP = YES;
                     }
                 }
             }
             else {
                 // IOU
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAccountChanged object:nil userInfo:nil];
+                updatedIOU = YES;
             }
         }
+        
+        if (updatedXRP) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedBalance object:nil userInfo:nil];
+        }
+        if (updatedIOU) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAccountChanged object:nil userInfo:nil];
+        }
+        
+        // Refresh Tx
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefreshTx object:nil userInfo:nil];
     }
 }
 

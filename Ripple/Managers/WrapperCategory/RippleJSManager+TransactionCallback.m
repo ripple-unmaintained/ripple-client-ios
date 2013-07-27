@@ -331,22 +331,6 @@
     [_bridge registerHandler:@"transaction_callback" handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"transaction_callback called: %@", data);
         
-        NSError * error = [self checkForError:data];
-        if (!error) {
-            
-        }
-        
-        // Process transaction
-        //RPTransactionSubscription * obj = [RPTransactionSubscription new];
-        //[obj setValuesForKeysWithDictionary:data];
-        
-        
-        // Testing purposes
-        //[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"transaction"];
-        //[[NSUserDefaults standardUserDefaults] synchronize];
-        
-//#warning Update balances according to transaction
-        //[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationAccountChanged object:nil userInfo:nil];
         [_accountBalance processTransactionCallback:data];
     }];
 }

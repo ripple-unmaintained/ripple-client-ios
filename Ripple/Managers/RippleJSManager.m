@@ -55,6 +55,13 @@
     }
 }
 
+-(void)refreshTx
+{
+    if (_isLoggedIn) {
+        [self wrapperAccountTx];              // Get Last transactions
+    }
+}
+
 -(NSDictionary*)rippleBalances
 {
     return [_accountBalance rippleBalances];
@@ -119,6 +126,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoggedOut) name:kNotificationUserLoggedOut object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAccountInformation) name:kNotificationAccountChanged object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTx) name:kNotificationRefreshTx object:nil];
         
         [self wrapperInitialize];
         [self wrapperRegisterBridgeHandlersNetworkStatus];
