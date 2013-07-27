@@ -8,8 +8,6 @@
 
 #import "RippleJSManager+AccountTx.h"
 
-#define MAX_TRANSACTIONS 10
-
 @implementation RippleJSManager (AccountTx)
 
 // Last transactions

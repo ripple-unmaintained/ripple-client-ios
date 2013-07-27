@@ -73,10 +73,8 @@
         if (indexPath.row == 0) {
             // Receive cell
             //NSString *address = [[RippleJSManager shared] rippleWalletAddress];
-            cell = [tableView dequeueReusableCellWithIdentifier:@"xrp"];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
             cell.textLabel.text = @"Receive";
-            //cell.detailTextLabel.text = address;
-            cell.detailTextLabel.text = nil;
         }
         else {
             // Transaction History

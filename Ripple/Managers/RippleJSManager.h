@@ -29,6 +29,7 @@
 #import "AccountHistoryManager.h"
 
 #define XRP_FACTOR 1000000
+#define MAX_TRANSACTIONS 12
 
 
 // Notifications

@@ -26,49 +26,54 @@
         
         _tx_history = [NSMutableArray array];
         for (NSDictionary * transaction in transactions) {
-            NSDictionary * tx = [transaction objectForKey:@"tx"];
             
-            
-            
-            RPTxHistory * t = [RPTxHistory new];
-            t.FromAccount = [tx objectForKey:@"Account"];
-            t.ToAccount = [tx objectForKey:@"Destination"];
-            
-            NSDictionary * ammount = [tx objectForKey:@"Amount"];
-            if (ammount && [ammount isKindOfClass:[NSDictionary class]]) {
-                // Non XRP
-                t.Currency = [ammount objectForKey:@"currency"];
+            // Check for successful transaction
+            NSDictionary * meta = [transaction objectForKey:@"meta"];
+            NSString * TransactionResult = [meta objectForKey:@"TransactionResult"];
+            if ([TransactionResult isEqualToString:@"tesSUCCESS"]) {
+                NSDictionary * tx = [transaction objectForKey:@"tx"];
                 
-                NSString * ammountString = [ammount objectForKey:@"value"];
-                NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-                [f setNumberStyle:NSNumberFormatterDecimalStyle];
-                t.Amount = [f numberFromString:ammountString];
-            }
-            else {
-                // XRP
-                t.Currency = @"XRP";
-
-                NSString * ammountString = [tx objectForKey:@"Amount"];
-                NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-                [f setNumberStyle:NSNumberFormatterDecimalStyle];
-                NSNumber * num = [f numberFromString:ammountString];
-                t.Amount = [NSNumber numberWithUnsignedLongLong:(num.unsignedLongLongValue / XRP_FACTOR)];
-            }
-            
-            //RPTransaction * transaction = [RPTransaction new];
-            //[transaction setDictionary:tx];
-            
-            /*
-            Amount =                 {
-                currency = USD;
-                issuer = r4LADqzmqQUMhgSyBLTtPMG4pAzrMDx7Yj;
-                value = "0.1";
-            };
-             */
-            
-            
-            if ([t isValid]) {
-                [_tx_history addObject:t];
+                
+                RPTxHistory * t = [RPTxHistory new];
+                t.FromAccount = [tx objectForKey:@"Account"];
+                t.ToAccount = [tx objectForKey:@"Destination"];
+                
+                NSDictionary * ammount = [tx objectForKey:@"Amount"];
+                if (ammount && [ammount isKindOfClass:[NSDictionary class]]) {
+                    // Non XRP
+                    t.Currency = [ammount objectForKey:@"currency"];
+                    
+                    NSString * ammountString = [ammount objectForKey:@"value"];
+                    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+                    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+                    t.Amount = [f numberFromString:ammountString];
+                }
+                else {
+                    // XRP
+                    t.Currency = @"XRP";
+                    
+                    NSString * ammountString = [tx objectForKey:@"Amount"];
+                    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+                    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+                    NSNumber * num = [f numberFromString:ammountString];
+                    t.Amount = [NSNumber numberWithUnsignedLongLong:(num.unsignedLongLongValue / XRP_FACTOR)];
+                }
+                
+                //RPTransaction * transaction = [RPTransaction new];
+                //[transaction setDictionary:tx];
+                
+                /*
+                 Amount =                 {
+                 currency = USD;
+                 issuer = r4LADqzmqQUMhgSyBLTtPMG4pAzrMDx7Yj;
+                 value = "0.1";
+                 };
+                 */
+                
+                
+                if ([t isValid]) {
+                    [_tx_history addObject:t];
+                }
             }
         }
     
