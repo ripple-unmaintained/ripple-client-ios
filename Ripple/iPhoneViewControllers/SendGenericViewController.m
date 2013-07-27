@@ -37,10 +37,19 @@
     ZBarImageScanner *scanner = reader.scanner;
     // TODO: (optional) additional reader configuration here
     
-    // EXAMPLE: disable rarely used I2/5 to improve performance
-    [scanner setSymbology: ZBAR_I25
+//    // EXAMPLE: disable rarely used I2/5 to improve performance
+//    [scanner setSymbology: ZBAR_I25
+//                   config: ZBAR_CFG_ENABLE
+//                       to: 0];
+    
+    // Disable all
+    [scanner setSymbology: 0
                    config: ZBAR_CFG_ENABLE
                        to: 0];
+    // Enable QR Code
+    [scanner setSymbology: ZBAR_QRCODE
+                   config: ZBAR_CFG_ENABLE
+                       to: 1];
     
     // present and release the controller
     [self presentViewController:reader animated:YES completion:^{
