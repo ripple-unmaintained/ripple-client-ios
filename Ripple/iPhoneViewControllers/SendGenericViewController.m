@@ -59,7 +59,25 @@
         // EXAMPLE: just grab the first barcode
         break;
     
-    [self checkValidAccount:symbol.data];
+    
+    // Scrub address
+    NSString * result = symbol.data;
+    NSString * searchStr = @"to=";
+    NSRange range = [result rangeOfString:searchStr];
+    if (range.location == NSNotFound) {
+        //NSLog(@"string was not found");
+    } else {
+        //NSLog(@"position %lu", (unsigned long)range.location);
+        NSUInteger startPosition = range.location + searchStr.length;
+        NSUInteger addressLength = [[RippleJSManager shared] rippleWalletAddress].length;
+        if ((addressLength + startPosition) <= result.length) {
+            // Trim to address
+            NSRange r = NSMakeRange(startPosition, addressLength);
+            result = [result substringWithRange:r];
+        }
+    }
+    
+    [self checkValidAccount:result];
         
     // EXAMPLE: do something useful with the barcode data
     //resultText.text = symbol.data;
