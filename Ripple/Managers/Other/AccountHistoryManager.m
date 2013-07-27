@@ -67,9 +67,9 @@
              */
             
             
-            
-            
-            [_tx_history addObject:t];
+            if ([t isValid]) {
+                [_tx_history addObject:t];
+            }
         }
     
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedAccountTx object:nil userInfo:nil];

@@ -146,6 +146,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         cell.textLabel.text = contact.name;
         cell.detailTextLabel.text = contact.address;
+        [cell.detailTextLabel setAdjustsFontSizeToFitWidth:YES];
     }
         
     return cell;

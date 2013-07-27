@@ -10,4 +10,14 @@
 
 @implementation RPTxHistory
 
+-(BOOL)isValid
+{
+    if (self.Amount && self.ToAccount && self.FromAccount && self.Currency) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
 @end

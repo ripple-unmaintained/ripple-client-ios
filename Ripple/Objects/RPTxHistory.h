@@ -15,4 +15,6 @@
 @property (strong, nonatomic) NSNumber * Amount;
 @property (strong, nonatomic) NSString * Currency;
 
+-(BOOL)isValid;
+
 @end

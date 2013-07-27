@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TxViewController : UIViewController
+@interface TxViewController : RippleStatusViewController
 
 @end
