@@ -10,6 +10,9 @@
 #import "RPNewTransaction.h"
 #import "RippleJSManager.h"
 #import "AppDelegate.h"
+#import "SendPathsViewController.h"
+#import "SVProgressHUD.h"
+#import "RippleJSManager+SendTransaction.h"
 #import "SendWaitingViewController.h"
 
 @interface SendAmountViewController () <UITextFieldDelegate>
@@ -35,9 +38,14 @@
     return YES;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSArray*)sender
 {
     if ([segue.identifier isEqualToString:@"Next"]) {
+        SendPathsViewController * view = [segue destinationViewController];
+        view.transaction = self.transaction;
+        view.paths = sender;
+    }
+    else if ([segue.identifier isEqualToString:@"Skip"]) {
         SendWaitingViewController * view = [segue destinationViewController];
         view.transaction = self.transaction;
     }
@@ -45,17 +53,35 @@
 
 -(void)sendConfirm
 {
+    
+}
+
+-(IBAction)buttonNext:(id)sender
+{
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
     NSNumber * number = [f numberFromString:self.textFieldAmount.text];
     self.transaction.Amount = number;
     
-    [self performSegueWithIdentifier:@"Next" sender:nil];
-}
-
--(IBAction)buttonNext:(id)sender
-{
-    [self sendConfirm];
+    [self performSegueWithIdentifier:@"Skip" sender:nil];
+    
+    // Finding paths
+//    if ([self.transaction.Currency isEqualToString:@"XRP"]) {
+//        [self performSegueWithIdentifier:@"Skip" sender:nil];
+//    }
+//    else {
+//        [SVProgressHUD showWithStatus:@"Finding paths..." maskType:SVProgressHUDMaskTypeGradient];
+//        [[RippleJSManager shared] wrapperFindPathWithAmount:self.transaction.Amount currency:self.transaction.Currency toRecipient:self.transaction.Destination withBlock:^(NSArray *paths, NSError *error) {
+//            if (!error) {
+//                [SVProgressHUD dismiss];
+//                
+//                [self performSegueWithIdentifier:@"Next" sender:paths];
+//            }
+//            else {
+//                [SVProgressHUD showErrorWithStatus:@"Could not find path"];
+//            }
+//        }];
+//    }
 }
 
 -(IBAction)buttonBack:(id)sender

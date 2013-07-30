@@ -201,8 +201,11 @@ function onBridgeReady(event) {
 
 	// Find paths between two accounts
 	bridge.registerHandler('find_path_currencies', function(data, responseCallback) {
+		remote.set_secret(data.account, data.secret);
+
 		var currency = data.currency.slice(0, 3).toUpperCase();
 		var amount = ripple.Amount.from_human(""+data.amount+" "+currency)
+		amount.set_issuer(data.recipient_address);
 
   	// Calculate path
     remote.request_ripple_path_find(data.account,

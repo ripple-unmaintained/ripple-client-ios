@@ -101,6 +101,7 @@
 		2B58F83A17A1FAEA009AEEEA /* RippleJSManager+AccountOffers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83917A1FAE9009AEEEA /* RippleJSManager+AccountOffers.m */; };
 		2B58F83D17A1FD0C009AEEEA /* RippleJSManager+Ledger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83C17A1FD0B009AEEEA /* RippleJSManager+Ledger.m */; };
 		2BE6DA9A17A72278008CAC64 /* SendCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */; };
+		2BE6DA9D17A748BA008CAC64 /* SendPathsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -315,6 +316,8 @@
 		2B58F83C17A1FD0B009AEEEA /* RippleJSManager+Ledger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+Ledger.m"; path = "Managers/WrapperCategory/RippleJSManager+Ledger.m"; sourceTree = "<group>"; };
 		2BE6DA9817A72278008CAC64 /* SendCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendCurrencyViewController.h; path = iPhoneViewControllers/SendCurrencyViewController.h; sourceTree = "<group>"; };
 		2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendCurrencyViewController.m; path = iPhoneViewControllers/SendCurrencyViewController.m; sourceTree = "<group>"; };
+		2BE6DA9B17A748BA008CAC64 /* SendPathsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendPathsViewController.h; path = iPhoneViewControllers/SendPathsViewController.h; sourceTree = "<group>"; };
+		2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendPathsViewController.m; path = iPhoneViewControllers/SendPathsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,6 +390,8 @@
 				2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */,
 				2B58F785179F70A5009AEEEA /* SendAmountViewController.h */,
 				2B58F786179F70A5009AEEEA /* SendAmountViewController.m */,
+				2BE6DA9B17A748BA008CAC64 /* SendPathsViewController.h */,
+				2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */,
 				2B58F80E17A0D013009AEEEA /* SendWaitingViewController.h */,
 				2B58F80F17A0D013009AEEEA /* SendWaitingViewController.m */,
 				2B58F7C0179F9D2F009AEEEA /* ReceiveViewController.h */,
@@ -1008,6 +1013,7 @@
 				2B08037217A32E660095F199 /* RPTxHistory.m in Sources */,
 				2B08037517A335AE0095F199 /* TxViewController.m in Sources */,
 				2BE6DA9A17A72278008CAC64 /* SendCurrencyViewController.m in Sources */,
+				2BE6DA9D17A748BA008CAC64 /* SendPathsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

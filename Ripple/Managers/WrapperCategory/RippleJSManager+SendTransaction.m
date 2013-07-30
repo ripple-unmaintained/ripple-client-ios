@@ -13,19 +13,21 @@
 -(NSError *)checkForErrorResponse:(NSDictionary*)responseData
 {
     NSError * error;
-    // Check for ripple-lib error
-    NSNumber * returnCode = [responseData objectForKey:@"engine_result_code"];
-    if (returnCode.integerValue != 0) {
-        // Could not send transaction
-        NSString * errorMessage = [responseData objectForKey:@"engine_result_message"];
-        error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
-    }
-    
-    
-    // Check for wrapper error
-    NSString * errorMessage = [responseData objectForKey:@"error"];
-    if (errorMessage) {
-        error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+    if (responseData && [responseData isKindOfClass:[NSDictionary class]]) {
+        // Check for ripple-lib error
+        NSNumber * returnCode = [responseData objectForKey:@"engine_result_code"];
+        if (returnCode.integerValue != 0) {
+            // Could not send transaction
+            NSString * errorMessage = [responseData objectForKey:@"engine_result_message"];
+            error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+        }
+        
+        
+        // Check for wrapper error
+        NSString * errorMessage = [responseData objectForKey:@"error"];
+        if (errorMessage) {
+            error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+        }
     }
     return error;
 }
@@ -138,6 +140,7 @@
                               @"recipient_address": recipient,
                               @"currency": currency,
                               @"amount": amount.stringValue,
+                              @"secret": _blobData.master_seed
                               };
     
     [_bridge callHandler:@"find_path_currencies" data:params responseCallback:^(id responseData) {

@@ -1,5 +1,5 @@
 //
-//  SendCurrencyViewController.h
+//  SendPathsViewController.h
 //  Ripple
 //
 //  Created by Kevin Johnson on 7/29/13.
@@ -10,8 +10,9 @@
 
 @class RPNewTransaction;
 
-@interface SendCurrencyViewController : RippleStatusViewController
+@interface SendPathsViewController : RippleStatusViewController
 
 @property (strong, nonatomic) RPNewTransaction * transaction;
+@property (strong, nonatomic) NSArray * paths;
 
 @end
