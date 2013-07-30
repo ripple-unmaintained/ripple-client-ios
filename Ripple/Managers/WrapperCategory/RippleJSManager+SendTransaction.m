@@ -10,6 +10,26 @@
 
 @implementation RippleJSManager (SendTransaction)
 
+-(NSError *)checkForErrorResponse:(NSDictionary*)responseData
+{
+    NSError * error;
+    // Check for ripple-lib error
+    NSNumber * returnCode = [responseData objectForKey:@"engine_result_code"];
+    if (returnCode.integerValue != 0) {
+        // Could not send transaction
+        NSString * errorMessage = [responseData objectForKey:@"engine_result_message"];
+        error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+    }
+    
+    
+    // Check for wrapper error
+    NSString * errorMessage = [responseData objectForKey:@"error"];
+    if (errorMessage) {
+        error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+    }
+    return error;
+}
+
 -(void)wrapperSendTransactionAmount:(NSNumber*)amount currency:(NSString*)currency toRecipient:(NSString*)recipient withBlock:(void(^)(NSError* error))block
 {
     /*
@@ -69,28 +89,13 @@
     
     [_bridge callHandler:@"send_transaction" data:params responseCallback:^(id responseData) {
         NSLog(@"send_transaction response: %@", responseData);
-        NSError * error;
-        // Check for ripple-lib error
-        NSNumber * returnCode = [responseData objectForKey:@"engine_result_code"];
-        if (returnCode.integerValue != 0) {
-            // Could not send transaction
-            NSString * errorMessage = [responseData objectForKey:@"engine_result_message"];
-            error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
-        }
-        
-        
-        // Check for wrapper error
-        NSString * errorMessage = [responseData objectForKey:@"error"];
-        if (errorMessage) {
-            error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
-        }
-        
+        NSError * error = [self checkForErrorResponse:responseData];
         block(error);
     }];
 }
 
 
--(void)wrapperFindPath:(NSDictionary*)params
+-(void)wrapperFindPathWithAmount:(NSNumber*)amount currency:(NSString*)currency toRecipient:(NSString*)recipient withBlock:(void(^)(NSArray * paths, NSError* error))block
 {
     /*
     {
@@ -129,8 +134,20 @@
     }
      */
     
-    [_bridge callHandler:@"request_ripple_find_path" data:params responseCallback:^(id responseData) {
-        NSLog(@"request_ripple_find_path response: %@", responseData);
+    NSDictionary * params = @{@"account": _blobData.account_id,
+                              @"recipient_address": recipient,
+                              @"currency": currency,
+                              @"amount": amount.stringValue,
+                              };
+    
+    [_bridge callHandler:@"find_path_currencies" data:params responseCallback:^(id responseData) {
+        NSLog(@"find_path_currencies response: %@", responseData);
+        NSError * error = [self checkForErrorResponse:responseData];
+        NSArray * paths;
+        if (!error) {
+            paths = responseData;
+        }
+        block(paths, error);
     }];
 }
 

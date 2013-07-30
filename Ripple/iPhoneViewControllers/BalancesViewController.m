@@ -59,7 +59,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 2;
+        return 3;
     }
     else {
         return balances.count;
@@ -71,6 +71,12 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
+            // Receive cell
+            //NSString *address = [[RippleJSManager shared] rippleWalletAddress];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            cell.textLabel.text = @"Send";
+        }
+        else if (indexPath.row == 1) {
             // Receive cell
             //NSString *address = [[RippleJSManager shared] rippleWalletAddress];
             cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
@@ -109,12 +115,27 @@
     return cell;
 }
 
+-(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1) {
+        // Do not allow selection
+        return NO;
+    }
+    else {
+        return YES;
+    }
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
+            // Receive
+            [self performSegueWithIdentifier:@"Send" sender:nil];
+        }
+        else if (indexPath.row == 1) {
             // Receive
             [self performSegueWithIdentifier:@"Receive" sender:nil];
         }
@@ -139,8 +160,8 @@
         }
     }
     else {
-        NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
-        [self performSegueWithIdentifier:@"Send" sender:key];
+        //NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
+        //[self performSegueWithIdentifier:@"Send" sender:key];
 //        if ([key isEqualToString:@"XRP"]) {
 //            // Send XRP only
 //            [self performSegueWithIdentifier:@"Send" sender:key];

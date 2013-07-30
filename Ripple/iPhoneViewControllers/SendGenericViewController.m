@@ -10,7 +10,7 @@
 #import "RippleJSManager.h"
 #import "RippleJSManager+SendTransaction.h"
 #import "RPContact.h"
-#import "SendAmountViewController.h"
+#import "SendCurrencyViewController.h"
 #import "RPTransaction.h"
 #import "ZBarSDK.h"
 #import "RPNewTransaction.h"
@@ -106,7 +106,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Next"]) {
-        SendAmountViewController * view = [segue destinationViewController];
+        SendCurrencyViewController * view = [segue destinationViewController];
         view.transaction = self.transaction;
     }
 }
@@ -222,7 +222,7 @@
     
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    self.labelTitle.text = [NSString stringWithFormat:@"Send %@", self.transaction.Currency];
+    //self.labelTitle.text = [NSString stringWithFormat:@"Send %@", self.transaction.Currency];
 }
 
 -(void)viewWillAppear:(BOOL)animated

@@ -197,6 +197,34 @@ function onBridgeReady(event) {
 	})
 
 
+
+
+	// Find paths between two accounts
+	bridge.registerHandler('find_path_currencies', function(data, responseCallback) {
+		var currency = data.currency.slice(0, 3).toUpperCase();
+		var amount = ripple.Amount.from_human(""+data.amount+" "+currency)
+
+  	// Calculate path
+    remote.request_ripple_path_find(data.account,
+                                            data.recipient_address,
+                                            amount)
+    // XXX Handle error response
+    .on('success', function (response_find_path) {
+      if (!response_find_path.alternatives || !response_find_path.alternatives.length) {
+        responseCallback(JSON.parse('{"error":"No Path"}'))
+  			return;
+      } else {
+      	responseCallback(response_find_path.destination_currencies)
+      }
+    })
+    .on('error', function (response_find_path) {
+      responseCallback(JSON.parse('{"error":"Path_find: Unknown Error: '+response_find_path+'"}'))
+			return;
+    })
+    .request();
+	})
+
+
 	// Not yet needed for iOS app
 	// bridge.registerHandler('account_offers', function(data, responseCallback) {
 	// 	remote.set_secret(data.account, data.secret);
