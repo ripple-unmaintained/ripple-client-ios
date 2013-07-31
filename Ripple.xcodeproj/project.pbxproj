@@ -81,7 +81,6 @@
 		2B58F78E179F9444009AEEEA /* Ripple-Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */; };
 		2B58F7C2179F9D2F009AEEEA /* ReceiveViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F7C1179F9D2F009AEEEA /* ReceiveViewController.mm */; };
 		2B58F7D7179F9E35009AEEEA /* libqrencoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F7D2179F9DF9009AEEEA /* libqrencoder.a */; };
-		2B58F7E217A057C4009AEEEA /* ripple-0.7.17-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B58F7DF17A057B3009AEEEA /* ripple-0.7.17-min.js */; };
 		2B58F80117A07D6F009AEEEA /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F7FB17A07D6F009AEEEA /* libzbar.a */; };
 		2B58F80717A081B4009AEEEA /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F80617A081B4009AEEEA /* libiconv.dylib */; };
 		2B58F80917A081C2009AEEEA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F80817A081C2009AEEEA /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -102,6 +101,7 @@
 		2B58F83D17A1FD0C009AEEEA /* RippleJSManager+Ledger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83C17A1FD0B009AEEEA /* RippleJSManager+Ledger.m */; };
 		2BE6DA9A17A72278008CAC64 /* SendCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */; };
 		2BE6DA9D17A748BA008CAC64 /* SendPathsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */; };
+		2BE8F63E17A9DB3700372FCB /* ripple-0.7.18-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8F63B17A9DB2C00372FCB /* ripple-0.7.18-min.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -263,7 +263,6 @@
 		2B58F7C0179F9D2F009AEEEA /* ReceiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReceiveViewController.h; path = iPhoneViewControllers/ReceiveViewController.h; sourceTree = "<group>"; };
 		2B58F7C1179F9D2F009AEEEA /* ReceiveViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ReceiveViewController.mm; path = iPhoneViewControllers/ReceiveViewController.mm; sourceTree = "<group>"; };
 		2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QRCodeEncoderObjectiveCAtGithub.xcodeproj; path = "QR-Code-Encoder-for-Objective-C/QRCodeEncoderObjectiveCAtGithub.xcodeproj"; sourceTree = "<group>"; };
-		2B58F7DF17A057B3009AEEEA /* ripple-0.7.17-min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ripple-0.7.17-min.js"; sourceTree = "<group>"; };
 		2B58F7E717A07D6F009AEEEA /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		2B58F7E817A07D6F009AEEEA /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
 		2B58F7E917A07D6F009AEEEA /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
@@ -318,6 +317,7 @@
 		2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendCurrencyViewController.m; path = iPhoneViewControllers/SendCurrencyViewController.m; sourceTree = "<group>"; };
 		2BE6DA9B17A748BA008CAC64 /* SendPathsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendPathsViewController.h; path = iPhoneViewControllers/SendPathsViewController.h; sourceTree = "<group>"; };
 		2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendPathsViewController.m; path = iPhoneViewControllers/SendPathsViewController.m; sourceTree = "<group>"; };
+		2BE8F63B17A9DB2C00372FCB /* ripple-0.7.18-min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ripple-0.7.18-min.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -566,7 +566,7 @@
 		2B58613A17976DE700200D0C /* ripple-lib-demo */ = {
 			isa = PBXGroup;
 			children = (
-				2B58F7DF17A057B3009AEEEA /* ripple-0.7.17-min.js */,
+				2BE8F63B17A9DB2C00372FCB /* ripple-0.7.18-min.js */,
 			);
 			path = "ripple-lib-demo";
 			sourceTree = "<group>";
@@ -903,8 +903,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BE8F63E17A9DB3700372FCB /* ripple-0.7.18-min.js in Resources */,
 				2B58F81817A1D9D6009AEEEA /* jsonrewriter.js in Resources */,
-				2B58F7E217A057C4009AEEEA /* ripple-0.7.17-min.js in Resources */,
 				2B5861961799EC7B00200D0C /* sjcl.js in Resources */,
 				2B58613917976D3400200D0C /* ripple-lib-wrapper.js in Resources */,
 				2B5860C9179764A300200D0C /* InfoPlist.strings in Resources */,

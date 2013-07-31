@@ -7,6 +7,7 @@
 //
 
 #import "RippleJSManager+Initializer.h"
+#import "RPGlobals.h"
 
 @implementation RippleJSManager (Initializer)
 
@@ -29,7 +30,7 @@
     NSString *path;
     NSString *contents;
     
-    path = [[NSBundle mainBundle] pathForResource:@"ripple-0.7.17-min" ofType:@"js"];
+    path = [[NSBundle mainBundle] pathForResource:GLOBAL_RIPPLE_LIB_VERSION ofType:@"js"];
     contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     [html appendFormat:@"<script>%@</script>", contents];
     path = nil;
