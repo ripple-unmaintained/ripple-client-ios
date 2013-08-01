@@ -176,8 +176,8 @@
             }
             
             UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle: @"Received"
-                                  message: [NSString stringWithFormat:@"%@ %@ from %@",value.stringValue,currency,fromAccount]
+                                  initWithTitle: [NSString stringWithFormat:@"Received %@ %@ from",value.stringValue,currency]
+                                  message:fromAccount
                                   delegate: nil
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];

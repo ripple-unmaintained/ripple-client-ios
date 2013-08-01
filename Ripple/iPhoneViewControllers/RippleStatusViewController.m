@@ -72,6 +72,8 @@
     // Subscribe to ripple network state
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RippleJSManagerConnected) name:kNotificationRippleConnected object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(RippleJSManagerDisconnected) name:kNotificationRippleDisconnected object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus) name: UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated
