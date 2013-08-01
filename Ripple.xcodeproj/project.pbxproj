@@ -102,6 +102,7 @@
 		2BE6DA9A17A72278008CAC64 /* SendCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */; };
 		2BE6DA9D17A748BA008CAC64 /* SendPathsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */; };
 		2BE8F63E17A9DB3700372FCB /* ripple-0.7.18-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8F63B17A9DB2C00372FCB /* ripple-0.7.18-min.js */; };
+		2BE8F64217A9EF9100372FCB /* RPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE8F64117A9EF9100372FCB /* RPHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -318,6 +319,8 @@
 		2BE6DA9B17A748BA008CAC64 /* SendPathsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendPathsViewController.h; path = iPhoneViewControllers/SendPathsViewController.h; sourceTree = "<group>"; };
 		2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendPathsViewController.m; path = iPhoneViewControllers/SendPathsViewController.m; sourceTree = "<group>"; };
 		2BE8F63B17A9DB2C00372FCB /* ripple-0.7.18-min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ripple-0.7.18-min.js"; sourceTree = "<group>"; };
+		2BE8F64017A9EF9100372FCB /* RPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPHelper.h; path = Helpers/RPHelper.h; sourceTree = "<group>"; };
+		2BE8F64117A9EF9100372FCB /* RPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPHelper.m; path = Helpers/RPHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +472,7 @@
 		2B5860C4179764A300200D0C /* Ripple */ = {
 			isa = PBXGroup;
 			children = (
+				2BE8F63F17A9EF7D00372FCB /* Helpers */,
 				2B201D0F179D235300B52E90 /* iPhone */,
 				2B5861791799E44C00200D0C /* Globals */,
 				2B5861711798AB6700200D0C /* HTTP */,
@@ -808,6 +812,15 @@
 			name = WrapperCategories;
 			sourceTree = "<group>";
 		};
+		2BE8F63F17A9EF7D00372FCB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2BE8F64017A9EF9100372FCB /* RPHelper.h */,
+				2BE8F64117A9EF9100372FCB /* RPHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1014,6 +1027,7 @@
 				2B08037517A335AE0095F199 /* TxViewController.m in Sources */,
 				2BE6DA9A17A72278008CAC64 /* SendCurrencyViewController.m in Sources */,
 				2BE6DA9D17A748BA008CAC64 /* SendPathsViewController.m in Sources */,
+				2BE8F64217A9EF9100372FCB /* RPHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

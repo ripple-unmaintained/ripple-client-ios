@@ -66,7 +66,7 @@
     [self performSegueWithIdentifier:@"Skip" sender:nil];
     
     // Finding paths
-//    if ([self.transaction.Currency isEqualToString:@"XRP"]) {
+//    if ([self.transaction.Currency isEqualToString:GLOBAL_XRP_STRING]) {
 //        [self performSegueWithIdentifier:@"Skip" sender:nil];
 //    }
 //    else {

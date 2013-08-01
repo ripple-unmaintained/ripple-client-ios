@@ -17,6 +17,8 @@
 #import "RPAccountLine.h"
 #import "RPError.h"
 
+#import "RPHelper.h"
+
 @interface AccountBalanceManager () {
     
 }
@@ -123,6 +125,69 @@
             }
         }
         
+        
+        
+        // Parse transaction
+        /*
+        transaction =     {
+            Account = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+            Amount =         {
+                currency = USD;
+                issuer = rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx;
+                value = "0.1";
+            };
+            Destination = rhxwHhfMhySyYB5Wrq7ohSNBqBfAYanAAx;
+            Fee = 10;
+            Flags = 0;
+            SendMax =         {
+                currency = USD;
+                issuer = rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96;
+                value = "0.101";
+            };
+            Sequence = 49;
+            SigningPubKey = 0376BA4EAE729354BED97E26A03AEBA6FB9078BBBB1EAB590772734BCE42E82CD5;
+            TransactionType = Payment;
+            TxnSignature = 3045022100B53B8812B9C0AA770D6CC308F12042862A52631CF15D00BA96511BEEB798D11D02203F889F523402540EA15E37A8D7303B57DA58C194881E1EE522AFF864A3F86BB0;
+            date = 427872630;
+            hash = 84C4432B247C1E27F55180236993E86686361729A803C4AD998C5334B5898287;
+        };
+        */
+        
+        NSDictionary * transaction = [responseData objectForKey:@"transaction"];
+        NSString * toAccount = [transaction objectForKey:@"Destination"];
+        NSString * fromAccount = [transaction objectForKey:@"Account"];
+        NSString * currency;
+        NSNumber * value;
+        if ([toAccount isEqualToString:_account]) {
+            // Received transaction
+            id tmp = [transaction objectForKey:@"Amount"];
+            if ([tmp isKindOfClass:[NSDictionary class]]) {
+                NSDictionary * amount = (NSDictionary*)tmp;
+                // Received IOU
+                currency = [amount objectForKey:@"currency"];
+                value = [RPHelper safeNumberFromDictionary:amount withKey:@"value"];
+            }
+            else {
+                // Received XRP
+                NSNumber * drop = [RPHelper safeNumberFromDictionary:transaction withKey:@"Amount"];
+                value = [RPHelper dropsToRipples:drop];
+                
+                currency = GLOBAL_XRP_STRING;
+            }
+            
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: @"Received"
+                                  message: [NSString stringWithFormat:@"%@ %@ from %@",value.stringValue,currency,fromAccount]
+                                  delegate: nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        
+        
+        
+        
+        
         if (updatedXRP) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedBalance object:nil userInfo:nil];
         }
@@ -146,7 +211,7 @@
     NSMutableDictionary * balances = [NSMutableDictionary dictionary];
     if (_accountData) {
         NSNumber * balance = [NSNumber numberWithUnsignedLongLong:(_accountData.Balance.unsignedLongLongValue / XRP_FACTOR)];
-        [balances setObject:balance forKey:@"XRP"];
+        [balances setObject:balance forKey:GLOBAL_XRP_STRING];
     }
     for (RPAccountLine * line in _accountLines) {
         NSNumber * balance = [balances objectForKey:line.currency];

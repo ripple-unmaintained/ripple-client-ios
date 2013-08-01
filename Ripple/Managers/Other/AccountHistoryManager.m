@@ -50,7 +50,7 @@
                 }
                 else {
                     // XRP
-                    t.Currency = @"XRP";
+                    t.Currency = GLOBAL_XRP_STRING;
                     
                     NSString * ammountString = [tx objectForKey:@"Amount"];
                     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];

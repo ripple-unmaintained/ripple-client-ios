@@ -798,7 +798,7 @@
                                                         <constraint firstAttribute="width" constant="290" id="faq-gD-9zt"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" returnKeyType="next"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="R8I-4N-GwF" id="o8X-8Z-l9L"/>
                                                     </connections>
@@ -1047,8 +1047,6 @@
         <class className="SendAmountViewController" superclassName="RippleStatusViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SendAmountViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonBack:"/>
-                <relationship kind="action" name="buttonNext:"/>
                 <relationship kind="outlet" name="buttonSend" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="labelRecipient" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="textFieldAmount" candidateClass="UITextField"/>
@@ -1070,7 +1068,6 @@
         <class className="SendPathsViewController" superclassName="RippleStatusViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SendPathsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonBack:"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
