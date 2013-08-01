@@ -79,7 +79,7 @@
     _webView = [[UIWebView alloc] initWithFrame:CGRectZero];
     _webView.delegate = self;
     NSString * html = [self rippleHTML];
-    [_webView loadHTMLString:html baseURL:[NSBundle mainBundle].bundleURL];
+    [_webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://ripple.com"]];
     [self setupJavascriptBridge];
 }
 
