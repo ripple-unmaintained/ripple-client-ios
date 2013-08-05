@@ -63,7 +63,26 @@
     NSNumber * number = [f numberFromString:self.textFieldAmount.text];
     self.transaction.Amount = number;
     
-    [self performSegueWithIdentifier:@"Skip" sender:nil];
+    //[self performSegueWithIdentifier:@"Skip" sender:nil];
+    
+    [SVProgressHUD showWithStatus:@"Finding paths..." maskType:SVProgressHUDMaskTypeGradient];
+    [[RippleJSManager shared] wrapperFindPathWithAmount:self.transaction.Amount currency:self.transaction.Currency toRecipient:self.transaction.Destination withBlock:^(NSArray *paths, NSError *error) {
+        if (!error) {
+            [SVProgressHUD dismiss];
+            
+            [self performSegueWithIdentifier:@"Next" sender:paths];
+        }
+        else {
+            // Check if sending XRP
+            if ([self.transaction.Currency isEqualToString:GLOBAL_XRP_STRING]) {
+                [self performSegueWithIdentifier:@"Skip" sender:nil];
+            }
+            else {
+                [SVProgressHUD showErrorWithStatus:@"Could not find path"];
+            }
+        }
+    }];
+    
     
     // Finding paths
 //    if ([self.transaction.Currency isEqualToString:GLOBAL_XRP_STRING]) {

@@ -48,9 +48,9 @@
     UITableViewCell * cell;
     
     
-    NSString * path = [_paths objectAtIndex:indexPath.row];
+    RPAvailablePath * path = [_paths objectAtIndex:indexPath.row];
     cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.textLabel.text = path;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", path.value.stringValue, path.currency];
         
     return cell;
 }
@@ -58,6 +58,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    RPAvailablePath * path = [_paths objectAtIndex:indexPath.row];
+    self.transaction.Destination_currency = path.currency;
     
     [self performSegueWithIdentifier:@"Next" sender:nil];
 }

@@ -62,17 +62,17 @@ function onBridgeReady(event) {
 
 	// Sending payment
 	// Find payment path
-	bridge.registerHandler('request_ripple_find_path', function(data, responseCallback) {
-		remote.set_secret(data.account, data.secret);
-		remote.request_ripple_path_find(data.src_account, data.dst_account, data.dst_amount)
-		.on('success', function (result) {
-			responseCallback(result)
-		})
-		.on('error', function (result) {
-			responseCallback(result)
-		})
-		.request();
-	})
+	// bridge.registerHandler('request_ripple_find_path', function(data, responseCallback) {
+	// 	remote.set_secret(data.account, data.secret);
+	// 	remote.request_ripple_path_find(data.src_account, data.dst_account, data.dst_amount)
+	// 	.on('success', function (result) {
+	// 		responseCallback(result)
+	// 	})
+	// 	.on('error', function (result) {
+	// 		responseCallback(result)
+	// 	})
+	// 	.request();
+	// })
 
 	// Submit payment
 	// {"currency":"XRP","amount":1000000,"recipient_address":"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B","account":"rHQFmb4ZaZLwqfFrNmJwnkizb7yfmkRS96"}
@@ -108,7 +108,7 @@ function onBridgeReady(event) {
 
 			  })
 			  .on('success', function (response_account_info) {
-			    if (currency === "XRP") {
+			    if (currency === "XRP" && (data.path === "XRP" || !data.path)) {
 			    	var tx = remote.transaction()
 			    	tx.payment(data.account, addr, amount.to_json())
 
@@ -140,13 +140,38 @@ function onBridgeReady(event) {
 	            	var tx = remote.transaction()
 	            	tx.payment(data.account, addr, amount.to_json())
 
-	              var base_amount = ripple.Amount.from_json(response_find_path.alternatives[0].source_amount);
-	              tx.sendmax_feedback = base_amount.product_human(ripple.Amount.from_json('1.01'));
+	              var prepared_paths;
+	              if (data.path) {
+	              	// Other path
+	              	for (i=0;i<response_find_path.alternatives.length;i++) {
+	              		if (response_find_path.alternatives[i].source_amount.currency === data.path) {
+	              			// Use this path
+	              			prepared_paths = response_find_path.alternatives[i].paths_computed ? response_find_path.alternatives[i].paths_computed: response_find_path.alternatives[i].paths_canonical;
 
-	              var prepared_paths = response_find_path.alternatives[0].paths_computed
-	                ? response_find_path.alternatives[0].paths_computed
-	                : response_find_path.alternatives[0].paths_canonical;
-	              tx.paths(prepared_paths);
+	              			var base_amount = ripple.Amount.from_json(response_find_path.alternatives[i].source_amount);
+	              			tx.sendmax_feedback = base_amount.product_human(ripple.Amount.from_json('1.01'));
+	              			break;
+	              		}
+	              	}
+	              }
+	              else {
+	              	// Take the first path
+	              	prepared_paths = response_find_path.alternatives[0].paths_computed
+	              	  ? response_find_path.alternatives[0].paths_computed
+	              	  : response_find_path.alternatives[0].paths_canonical;
+
+	              	var base_amount = ripple.Amount.from_json(response_find_path.alternatives[0].source_amount);
+	              	tx.sendmax_feedback = base_amount.product_human(ripple.Amount.from_json('1.01'));
+	              }
+
+	              if (prepared_paths) {
+	              	tx.paths(prepared_paths)
+	              }
+	              else {
+	              	// No Path available
+	              	responseCallback(JSON.parse('{"error":"No Path"}'))
+		      				return;
+	              }
 
 	              // Send transaction
 	      		    tx.on('success', function (res) {
@@ -173,6 +198,7 @@ function onBridgeReady(event) {
 				responseCallback("Exception");
 			}
 	})
+
 
 
 	// Checking for valid account
@@ -217,7 +243,12 @@ function onBridgeReady(event) {
         responseCallback(JSON.parse('{"error":"No Path"}'))
   			return;
       } else {
-      	responseCallback(response_find_path.destination_currencies)
+      	var paths = [];
+      	response_find_path.alternatives.forEach(function(alt_path) {
+      		paths.push(alt_path.source_amount);
+      	})
+
+      	responseCallback(paths)
       }
     })
     .on('error', function (response_find_path) {

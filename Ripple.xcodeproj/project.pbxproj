@@ -99,6 +99,7 @@
 		2B58F83717A1F157009AEEEA /* RippleJSManager+SendTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83617A1F156009AEEEA /* RippleJSManager+SendTransaction.m */; };
 		2B58F83A17A1FAEA009AEEEA /* RippleJSManager+AccountOffers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83917A1FAE9009AEEEA /* RippleJSManager+AccountOffers.m */; };
 		2B58F83D17A1FD0C009AEEEA /* RippleJSManager+Ledger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F83C17A1FD0B009AEEEA /* RippleJSManager+Ledger.m */; };
+		2B66B04A17AF871400CC3523 /* RPAvailablePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B66B04917AF871400CC3523 /* RPAvailablePath.m */; };
 		2BE6DA9A17A72278008CAC64 /* SendCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */; };
 		2BE6DA9D17A748BA008CAC64 /* SendPathsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */; };
 		2BE8F63E17A9DB3700372FCB /* ripple-0.7.18-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8F63B17A9DB2C00372FCB /* ripple-0.7.18-min.js */; };
@@ -314,6 +315,8 @@
 		2B58F83917A1FAE9009AEEEA /* RippleJSManager+AccountOffers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+AccountOffers.m"; path = "Managers/WrapperCategory/RippleJSManager+AccountOffers.m"; sourceTree = "<group>"; };
 		2B58F83B17A1FD0B009AEEEA /* RippleJSManager+Ledger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+Ledger.h"; path = "Managers/WrapperCategory/RippleJSManager+Ledger.h"; sourceTree = "<group>"; };
 		2B58F83C17A1FD0B009AEEEA /* RippleJSManager+Ledger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+Ledger.m"; path = "Managers/WrapperCategory/RippleJSManager+Ledger.m"; sourceTree = "<group>"; };
+		2B66B04817AF871400CC3523 /* RPAvailablePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPAvailablePath.h; path = Objects/RPAvailablePath.h; sourceTree = "<group>"; };
+		2B66B04917AF871400CC3523 /* RPAvailablePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPAvailablePath.m; path = Objects/RPAvailablePath.m; sourceTree = "<group>"; };
 		2BE6DA9817A72278008CAC64 /* SendCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendCurrencyViewController.h; path = iPhoneViewControllers/SendCurrencyViewController.h; sourceTree = "<group>"; };
 		2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendCurrencyViewController.m; path = iPhoneViewControllers/SendCurrencyViewController.m; sourceTree = "<group>"; };
 		2BE6DA9B17A748BA008CAC64 /* SendPathsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendPathsViewController.h; path = iPhoneViewControllers/SendPathsViewController.h; sourceTree = "<group>"; };
@@ -598,6 +601,8 @@
 				2B58F789179F71EB009AEEEA /* RPNewTransaction.m */,
 				2B08037017A32E660095F199 /* RPTxHistory.h */,
 				2B08037117A32E660095F199 /* RPTxHistory.m */,
+				2B66B04817AF871400CC3523 /* RPAvailablePath.h */,
+				2B66B04917AF871400CC3523 /* RPAvailablePath.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -1028,6 +1033,7 @@
 				2BE6DA9A17A72278008CAC64 /* SendCurrencyViewController.m in Sources */,
 				2BE6DA9D17A748BA008CAC64 /* SendPathsViewController.m in Sources */,
 				2BE8F64217A9EF9100372FCB /* RPHelper.m in Sources */,
+				2B66B04A17AF871400CC3523 /* RPAvailablePath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -34,7 +34,7 @@
     self.labelStatus.text = @"Sending...";
     self.labelErrorReason.text = @"";
     
-    [[RippleJSManager shared] wrapperSendTransactionAmount:self.transaction.Amount currency:self.transaction.Currency toRecipient:self.transaction.Destination withBlock:^(NSError *error) {
+    [[RippleJSManager shared] wrapperSendTransactionAmount:self.transaction.Amount fromCurrency:self.transaction.Currency toRecipient:self.transaction.Destination toCurrency:self.transaction.Destination_currency withBlock:^(NSError *error) {
         if (error) {
             //[SVProgressHUD showErrorWithStatus:@"Could not send"];
             

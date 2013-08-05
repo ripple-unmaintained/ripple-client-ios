@@ -32,7 +32,7 @@
     return error;
 }
 
--(void)wrapperSendTransactionAmount:(NSNumber*)amount currency:(NSString*)currency toRecipient:(NSString*)recipient withBlock:(void(^)(NSError* error))block
+-(void)wrapperSendTransactionAmount:(NSNumber*)amount fromCurrency:(NSString*)currency toRecipient:(NSString*)recipient toCurrency:(NSString*)to_currency withBlock:(void(^)(NSError* error))block
 {
     /*
     {
@@ -82,12 +82,18 @@
         return;
     }
     
-    NSDictionary * params = @{@"account": _blobData.account_id,
+    NSMutableDictionary * params = [NSMutableDictionary dictionaryWithDictionary:
+                               @{@"account": _blobData.account_id,
                               @"recipient_address": recipient,
                               @"currency": currency,
                               @"amount": amount.stringValue,
                               @"secret": _blobData.master_seed
-                              };
+                               }];
+    
+    if (to_currency) {
+        // Add destination currency
+        [params setObject:to_currency forKey:@"path"];
+    }
     
     [_bridge callHandler:@"send_transaction" data:params responseCallback:^(id responseData) {
         NSLog(@"send_transaction response: %@", responseData);
@@ -146,9 +152,14 @@
     [_bridge callHandler:@"find_path_currencies" data:params responseCallback:^(id responseData) {
         NSLog(@"find_path_currencies response: %@", responseData);
         NSError * error = [self checkForErrorResponse:responseData];
-        NSArray * paths;
+        NSMutableArray * paths;
         if (!error) {
-            paths = responseData;
+            paths = [NSMutableArray array];
+            for (NSDictionary * path in responseData) {
+                RPAvailablePath * obj = [RPAvailablePath new];
+                [obj setDictionary:path];
+                [paths addObject:obj];
+            }
         }
         block(paths, error);
     }];

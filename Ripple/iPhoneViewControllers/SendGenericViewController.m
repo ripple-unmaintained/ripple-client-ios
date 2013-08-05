@@ -223,6 +223,12 @@
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     
     //self.labelTitle.text = [NSString stringWithFormat:@"Send %@", self.transaction.Currency];
+    
+    
+//#warning Testing purposes only
+//    [[RippleJSManager shared] wrapperSendTransactionAmount:[NSNumber numberWithInt:1] fromCurrency:@"USD" toRecipient:@"r4LADqzmqQUMhgSyBLTtPMG4pAzrMDx7Yj" toCurrency:@"USD" withBlock:^(NSError *error) {
+//        
+//    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated

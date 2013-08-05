@@ -42,30 +42,30 @@
 
 -(IBAction)buttonSend:(id)sender
 {
-    [self.textFieldAmount resignFirstResponder];
-    [self.textFieldRecipient resignFirstResponder];
-    
-    [SVProgressHUD showWithStatus:@"Sending..." maskType:SVProgressHUDMaskTypeGradient];
-    
-    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-    [f setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSNumber * number = [f numberFromString:self.textFieldAmount.text];
-    [[RippleJSManager shared] wrapperSendTransactionAmount:number currency:self.currency toRecipient:self.textFieldRecipient.text withBlock:^(NSError *error) {
-        [SVProgressHUD dismiss];
-        if (error) {
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle: @"Could not send"
-                                  message: error.localizedDescription
-                                  delegate: nil
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-            [alert show];
-        }
-        else {
-            // Success
-            [self done];
-        }
-    }];
+//    [self.textFieldAmount resignFirstResponder];
+//    [self.textFieldRecipient resignFirstResponder];
+//    
+//    [SVProgressHUD showWithStatus:@"Sending..." maskType:SVProgressHUDMaskTypeGradient];
+//    
+//    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+//    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+//    NSNumber * number = [f numberFromString:self.textFieldAmount.text];
+//    [[RippleJSManager shared] wrapperSendTransactionAmount:number currency:self.currency toRecipient:self.textFieldRecipient.text toCurrency:self. withBlock:^(NSError *error) {
+//        [SVProgressHUD dismiss];
+//        if (error) {
+//            UIAlertView *alert = [[UIAlertView alloc]
+//                                  initWithTitle: @"Could not send"
+//                                  message: error.localizedDescription
+//                                  delegate: nil
+//                                  cancelButtonTitle:@"OK"
+//                                  otherButtonTitles:nil];
+//            [alert show];
+//        }
+//        else {
+//            // Success
+//            [self done];
+//        }
+//    }];
     
 }
 -(IBAction)buttonCancel:(id)sender

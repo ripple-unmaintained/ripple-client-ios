@@ -24,6 +24,7 @@
 #import "RPTransaction.h"
 #import "RPTransactionSubscription.h"
 #import "RPTxHistory.h"
+#import "RPAvailablePath.h"
 
 #import "AccountBalanceManager.h"
 #import "AccountHistoryManager.h"
