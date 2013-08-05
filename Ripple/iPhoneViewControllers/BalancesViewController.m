@@ -25,6 +25,21 @@
 
 @implementation BalancesViewController
 
+-(IBAction)sendButton:(id)sender
+{
+    [self performSegueWithIdentifier:@"Send" sender:nil];
+}
+
+-(IBAction)receiveButton:(id)sender
+{
+    [self performSegueWithIdentifier:@"Receive" sender:nil];
+}
+
+-(IBAction)historyButton:(id)sender
+{
+    [self performSegueWithIdentifier:@"Tx" sender:nil];
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Send"]) {
@@ -48,28 +63,35 @@
 -(void)updateBalances
 {
     balances = [[RippleJSManager shared] rippleBalances];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
--(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+//-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    return @"Balances";
+//}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return 2;
+    UIView * v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 20)];
+    label.text = @"Balances";
+    label.textColor = [UIColor grayColor];
+    label.backgroundColor = [UIColor clearColor];
+    [v addSubview:label];
+    return v;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 3;
-    }
-    else {
-        return balances.count;
-    }
+    return balances.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell;
     
-    if (indexPath.section == 0) {
+    if (indexPath.section == 999999) {
+        // SHOULDN"T HAPPEN
         if (indexPath.row == 0) {
             // Receive cell
             //NSString *address = [[RippleJSManager shared] rippleWalletAddress];
@@ -117,20 +139,14 @@
 
 -(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
-        // Do not allow selection
-        return NO;
-    }
-    else {
-        return YES;
-    }
+    return NO;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 0) {
+    if (indexPath.section == 9999) {
         if (indexPath.row == 0) {
             // Receive
             [self performSegueWithIdentifier:@"Send" sender:nil];

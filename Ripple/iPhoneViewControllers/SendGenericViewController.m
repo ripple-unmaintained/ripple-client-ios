@@ -27,6 +27,11 @@
 
 @implementation SendGenericViewController
 
+-(IBAction)qrcodeButton:(id)sender
+{
+    [self startQRReader];
+}
+
 -(void)startQRReader
 {
     // ADD: present a barcode reader that scans from the camera feed
@@ -141,12 +146,12 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
+    if (section == 999) {
         return 2;
     }
     else {
@@ -158,7 +163,7 @@
     UITableViewCell * cell;
     
     
-    if (indexPath.section == 0) {
+    if (indexPath.section == 9999) {
         if (indexPath.row == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
             cell.textLabel.text = @"QR Code";
@@ -184,7 +189,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
-    if (indexPath.section == 0) {
+    if (indexPath.section == 999) {
         if (indexPath.row == 0) {
             // QR Code
             [self startQRReader];

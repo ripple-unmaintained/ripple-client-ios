@@ -349,7 +349,7 @@
                               };
 
     [_bridge callHandler:@"account_tx" data:params responseCallback:^(id responseData) {
-        NSLog(@"account_tx response: %@", responseData);
+        //NSLog(@"account_tx response: %@", responseData);
         [_accountHistory processAccountTx:responseData];
     }];
 }

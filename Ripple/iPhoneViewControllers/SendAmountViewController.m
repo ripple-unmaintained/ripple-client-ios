@@ -75,6 +75,7 @@
         else {
             // Check if sending XRP
             if ([self.transaction.Currency isEqualToString:GLOBAL_XRP_STRING]) {
+                [SVProgressHUD dismiss];
                 [self performSegueWithIdentifier:@"Skip" sender:nil];
             }
             else {
