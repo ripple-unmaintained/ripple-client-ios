@@ -78,6 +78,7 @@
     label.text = @"Balances";
     label.textColor = [UIColor grayColor];
     label.backgroundColor = [UIColor clearColor];
+    v.backgroundColor = self.view.backgroundColor;
     [v addSubview:label];
     return v;
 }
