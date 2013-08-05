@@ -106,8 +106,10 @@
 
 -(IBAction)buttonBack:(id)sender
 {
-    AppDelegate * appdelegate =  (AppDelegate*)[UIApplication sharedApplication].delegate;
-    [self.navigationController popToViewController:appdelegate.viewControllerBalance animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    //AppDelegate * appdelegate =  (AppDelegate*)[UIApplication sharedApplication].delegate;
+    //[self.navigationController popToViewController:appdelegate.viewControllerBalance animated:YES];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
