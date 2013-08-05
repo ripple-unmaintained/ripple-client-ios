@@ -12,6 +12,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+//    NSArray *familyNames = [[NSArray alloc] initWithArray:[UIFont familyNames]];
+//    
+//    NSArray *fontNames;
+//    NSInteger indFamily, indFont;
+//    for (indFamily=0; indFamily<[familyNames count]; ++indFamily)
+//    {
+//        NSLog(@"Family name: %@", [familyNames objectAtIndex:indFamily]);
+//        fontNames = [[NSArray alloc] initWithArray:
+//                     [UIFont fontNamesForFamilyName:
+//                      [familyNames objectAtIndex:indFamily]]];
+//        for (indFont=0; indFont<[fontNames count]; ++indFont)
+//        {
+//            NSLog(@"    Font name: %@", [fontNames objectAtIndex:indFont]);
+//        }
+//    }
+    
+    [[UILabel appearance] setFont:[UIFont fontWithName:@"OpenSans" size:17.0]];
+    [[UIButton appearance] setFont:[UIFont fontWithName:@"OpenSans" size:17.0]];
+    [[UITextField appearance] setFont:[UIFont fontWithName:@"OpenSans" size:17.0]];
+    
     // Override point for customization after application launch.
     return YES;
 }

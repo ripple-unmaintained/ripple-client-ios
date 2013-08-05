@@ -116,6 +116,16 @@
 		2B66B06A17AF971E00CC3523 /* signin_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B05A17AF971E00CC3523 /* signin_logo@2x.png */; };
 		2B66B06B17AF971E00CC3523 /* top_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B05B17AF971E00CC3523 /* top_logo.png */; };
 		2B66B06C17AF971E00CC3523 /* top_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B05C17AF971E00CC3523 /* top_logo@2x.png */; };
+		2B66B07B17AFA04B00CC3523 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07017AFA04B00CC3523 /* OpenSans-Bold.ttf */; };
+		2B66B07C17AFA04B00CC3523 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07117AFA04B00CC3523 /* OpenSans-BoldItalic.ttf */; };
+		2B66B07D17AFA04B00CC3523 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07217AFA04B00CC3523 /* OpenSans-ExtraBold.ttf */; };
+		2B66B07E17AFA04B00CC3523 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07317AFA04B00CC3523 /* OpenSans-ExtraBoldItalic.ttf */; };
+		2B66B07F17AFA04B00CC3523 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07417AFA04B00CC3523 /* OpenSans-Italic.ttf */; };
+		2B66B08017AFA04B00CC3523 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07517AFA04B00CC3523 /* OpenSans-Light.ttf */; };
+		2B66B08117AFA04B00CC3523 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07617AFA04B00CC3523 /* OpenSans-LightItalic.ttf */; };
+		2B66B08217AFA04B00CC3523 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07717AFA04B00CC3523 /* OpenSans-Regular.ttf */; };
+		2B66B08317AFA04B00CC3523 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07817AFA04B00CC3523 /* OpenSans-Semibold.ttf */; };
+		2B66B08417AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07917AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf */; };
 		2BE6DA9A17A72278008CAC64 /* SendCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */; };
 		2BE6DA9D17A748BA008CAC64 /* SendPathsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */; };
 		2BE8F63E17A9DB3700372FCB /* ripple-0.7.18-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BE8F63B17A9DB2C00372FCB /* ripple-0.7.18-min.js */; };
@@ -349,6 +359,16 @@
 		2B66B05A17AF971E00CC3523 /* signin_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signin_logo@2x.png"; sourceTree = "<group>"; };
 		2B66B05B17AF971E00CC3523 /* top_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_logo.png; sourceTree = "<group>"; };
 		2B66B05C17AF971E00CC3523 /* top_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo@2x.png"; sourceTree = "<group>"; };
+		2B66B07017AFA04B00CC3523 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		2B66B07117AFA04B00CC3523 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		2B66B07217AFA04B00CC3523 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		2B66B07317AFA04B00CC3523 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		2B66B07417AFA04B00CC3523 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		2B66B07517AFA04B00CC3523 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		2B66B07617AFA04B00CC3523 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		2B66B07717AFA04B00CC3523 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		2B66B07817AFA04B00CC3523 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		2B66B07917AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		2BE6DA9817A72278008CAC64 /* SendCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendCurrencyViewController.h; path = iPhoneViewControllers/SendCurrencyViewController.h; sourceTree = "<group>"; };
 		2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendCurrencyViewController.m; path = iPhoneViewControllers/SendCurrencyViewController.m; sourceTree = "<group>"; };
 		2BE6DA9B17A748BA008CAC64 /* SendPathsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendPathsViewController.h; path = iPhoneViewControllers/SendPathsViewController.h; sourceTree = "<group>"; };
@@ -468,6 +488,7 @@
 		2B5860B2179764A300200D0C = {
 			isa = PBXGroup;
 			children = (
+				2B66B06D17AFA04B00CC3523 /* Fonts */,
 				2B201D0A179D22AE00B52E90 /* Images */,
 				2B5861001797678C00200D0C /* Libraries */,
 				2B5860C4179764A300200D0C /* Ripple */,
@@ -873,6 +894,31 @@
 			path = "Design elements";
 			sourceTree = "<group>";
 		};
+		2B66B06D17AFA04B00CC3523 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2B66B06E17AFA04B00CC3523 /* open-sans */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2B66B06E17AFA04B00CC3523 /* open-sans */ = {
+			isa = PBXGroup;
+			children = (
+				2B66B07017AFA04B00CC3523 /* OpenSans-Bold.ttf */,
+				2B66B07117AFA04B00CC3523 /* OpenSans-BoldItalic.ttf */,
+				2B66B07217AFA04B00CC3523 /* OpenSans-ExtraBold.ttf */,
+				2B66B07317AFA04B00CC3523 /* OpenSans-ExtraBoldItalic.ttf */,
+				2B66B07417AFA04B00CC3523 /* OpenSans-Italic.ttf */,
+				2B66B07517AFA04B00CC3523 /* OpenSans-Light.ttf */,
+				2B66B07617AFA04B00CC3523 /* OpenSans-LightItalic.ttf */,
+				2B66B07717AFA04B00CC3523 /* OpenSans-Regular.ttf */,
+				2B66B07817AFA04B00CC3523 /* OpenSans-Semibold.ttf */,
+				2B66B07917AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf */,
+			);
+			path = "open-sans";
+			sourceTree = "<group>";
+		};
 		2BE8F63F17A9EF7D00372FCB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1011,6 +1057,16 @@
 				2B66B06A17AF971E00CC3523 /* signin_logo@2x.png in Resources */,
 				2B66B06B17AF971E00CC3523 /* top_logo.png in Resources */,
 				2B66B06C17AF971E00CC3523 /* top_logo@2x.png in Resources */,
+				2B66B07B17AFA04B00CC3523 /* OpenSans-Bold.ttf in Resources */,
+				2B66B07C17AFA04B00CC3523 /* OpenSans-BoldItalic.ttf in Resources */,
+				2B66B07D17AFA04B00CC3523 /* OpenSans-ExtraBold.ttf in Resources */,
+				2B66B07E17AFA04B00CC3523 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				2B66B07F17AFA04B00CC3523 /* OpenSans-Italic.ttf in Resources */,
+				2B66B08017AFA04B00CC3523 /* OpenSans-Light.ttf in Resources */,
+				2B66B08117AFA04B00CC3523 /* OpenSans-LightItalic.ttf in Resources */,
+				2B66B08217AFA04B00CC3523 /* OpenSans-Regular.ttf in Resources */,
+				2B66B08317AFA04B00CC3523 /* OpenSans-Semibold.ttf in Resources */,
+				2B66B08417AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
