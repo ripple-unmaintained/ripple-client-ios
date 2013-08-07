@@ -160,6 +160,13 @@
                 [obj setDictionary:path];
                 [paths addObject:obj];
             }
+            
+            if ([currency isEqualToString:GLOBAL_XRP_STRING]) {
+                RPAvailablePath * obj = [RPAvailablePath new];
+                obj.currency = GLOBAL_XRP_STRING;
+                obj.value = amount;
+                [paths addObject:obj];
+            }
         }
         block(paths, error);
     }];

@@ -19,6 +19,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView * tableView;
+@property (weak, nonatomic) IBOutlet UILabel     * labelFindingPaths;
 
 @end
 
@@ -74,6 +75,23 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.tableView.hidden = YES;
+    self.labelFindingPaths.text = @"Finding paths...";
+    self.labelFindingPaths.hidden = NO;
+    
+    [[RippleJSManager shared] wrapperFindPathWithAmount:self.transaction.Amount currency:self.transaction.Currency toRecipient:self.transaction.Destination withBlock:^(NSArray *paths, NSError *error) {
+        if (!error) {
+            self.tableView.hidden = NO;
+            _paths = paths;
+            self.labelFindingPaths.hidden = YES;
+            [self refreshTableView];
+        }
+        else {
+            self.labelFindingPaths.text = @"Could not find path";
+        }
+    }];
+    
     
     [self refreshTableView];
 }

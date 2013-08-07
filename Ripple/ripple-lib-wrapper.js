@@ -108,7 +108,7 @@ function onBridgeReady(event) {
 
 			  })
 			  .on('success', function (response_account_info) {
-			    if (currency === "XRP" && (data.path === "XRP" || !data.path)) {
+			    if (currency === "XRP" && (data.path === "XRP" || data.path === null)) {
 			    	var tx = remote.transaction()
 			    	tx.payment(data.account, addr, amount.to_json())
 
@@ -239,7 +239,7 @@ function onBridgeReady(event) {
                                             amount)
     // XXX Handle error response
     .on('success', function (response_find_path) {
-      if (!response_find_path.alternatives || !response_find_path.alternatives.length) {
+      if ((!response_find_path.alternatives || !response_find_path.alternatives.length) && currency !== "XRP") {
         responseCallback(JSON.parse('{"error":"No Path"}'))
   			return;
       } else {
