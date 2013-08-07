@@ -87,7 +87,8 @@ function onBridgeReady(event) {
 
 			remote.set_secret(data.account, data.secret);
 
-			var currency = data.currency.slice(0, 3).toUpperCase();
+			var currency = data.to_currency.slice(0, 3).toUpperCase();
+			var from_currency = data.from_currency.slice(0, 3).toUpperCase();
 			var amount = ripple.Amount.from_human(""+data.amount+" "+currency)
 			var addr = data.recipient_address
 
@@ -108,7 +109,7 @@ function onBridgeReady(event) {
 
 			  })
 			  .on('success', function (response_account_info) {
-			    if (currency === "XRP" && (data.path === "XRP" || data.path === null)) {
+			    if (currency === "XRP" && from_currency === "XRP") {
 			    	var tx = remote.transaction()
 			    	tx.payment(data.account, addr, amount.to_json())
 
@@ -141,28 +142,41 @@ function onBridgeReady(event) {
 	            	tx.payment(data.account, addr, amount.to_json())
 
 	              var prepared_paths;
-	              if (data.path) {
-	              	// Other path
-	              	for (i=0;i<response_find_path.alternatives.length;i++) {
-	              		if (response_find_path.alternatives[i].source_amount.currency === data.path) {
-	              			// Use this path
-	              			prepared_paths = response_find_path.alternatives[i].paths_computed ? response_find_path.alternatives[i].paths_computed: response_find_path.alternatives[i].paths_canonical;
 
-	              			var base_amount = ripple.Amount.from_json(response_find_path.alternatives[i].source_amount);
-	              			tx.sendmax_feedback = base_amount.product_human(ripple.Amount.from_json('1.01'));
-	              			break;
-	              		}
+	              // Find path
+	              for (i=0;i<response_find_path.alternatives.length;i++) {
+	              	if ((!isNaN(response_find_path.alternatives[i].source_amount) && from_currency === "XRP") ||
+	              		(response_find_path.alternatives[i].source_amount.currency === from_currency)) {
+	              		// Use this path
+	              		prepared_paths = response_find_path.alternatives[i].paths_computed ? response_find_path.alternatives[i].paths_computed: response_find_path.alternatives[i].paths_canonical;
+	              		var base_amount = ripple.Amount.from_json(response_find_path.alternatives[i].source_amount);
+	              		tx.send_max(base_amount.product_human(ripple.Amount.from_json('1.01')));
+	              		break;
 	              	}
 	              }
-	              else {
-	              	// Take the first path
-	              	prepared_paths = response_find_path.alternatives[0].paths_computed
-	              	  ? response_find_path.alternatives[0].paths_computed
-	              	  : response_find_path.alternatives[0].paths_canonical;
 
-	              	var base_amount = ripple.Amount.from_json(response_find_path.alternatives[0].source_amount);
-	              	tx.sendmax_feedback = base_amount.product_human(ripple.Amount.from_json('1.01'));
-	              }
+	              // if (data.path) {
+	              // 	// Other path
+	              // 	for (i=0;i<response_find_path.alternatives.length;i++) {
+	              // 		if (response_find_path.alternatives[i].source_amount.currency === data.path) {
+	              // 			// Use this path
+	              // 			prepared_paths = response_find_path.alternatives[i].paths_computed ? response_find_path.alternatives[i].paths_computed: response_find_path.alternatives[i].paths_canonical;
+
+	              // 			var base_amount = ripple.Amount.from_json(response_find_path.alternatives[i].source_amount);
+	              // 			tx.sendmax_feedback = base_amount.product_human(ripple.Amount.from_json('1.01'));
+	              // 			break;
+	              // 		}
+	              // 	}
+	              // }
+	              // else {
+	              // 	// Take the first path
+	              // 	prepared_paths = response_find_path.alternatives[0].paths_computed
+	              // 	  ? response_find_path.alternatives[0].paths_computed
+	              // 	  : response_find_path.alternatives[0].paths_canonical;
+
+	              // 	var base_amount = ripple.Amount.from_json(response_find_path.alternatives[0].source_amount);
+	              // 	tx.sendmax_feedback = base_amount.product_human(ripple.Amount.from_json('1.01'));
+	              // }
 
 	              if (prepared_paths) {
 	              	tx.paths(prepared_paths)

@@ -49,7 +49,7 @@
     UITableViewCell * cell;
     
     
-    RPAvailablePath * path = [_paths objectAtIndex:indexPath.row];
+    RPAmount * path = [_paths objectAtIndex:indexPath.row];
     cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", path.value.stringValue, path.currency];
         
@@ -60,8 +60,8 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    RPAvailablePath * path = [_paths objectAtIndex:indexPath.row];
-    self.transaction.Destination_currency = path.currency;
+    RPAmount * path = [_paths objectAtIndex:indexPath.row];
+    self.transaction.Currency = path.currency;
     
     [self performSegueWithIdentifier:@"Next" sender:nil];
 }
@@ -80,7 +80,7 @@
     self.labelFindingPaths.text = @"Finding paths...";
     self.labelFindingPaths.hidden = NO;
     
-    [[RippleJSManager shared] wrapperFindPathWithAmount:self.transaction.Amount currency:self.transaction.Currency toRecipient:self.transaction.Destination withBlock:^(NSArray *paths, NSError *error) {
+    [[RippleJSManager shared] wrapperFindPathWithAmount:self.transaction.Amount currency:self.transaction.Destination_currency toRecipient:self.transaction.Destination withBlock:^(NSArray *paths, NSError *error) {
         if (!error) {
             self.tableView.hidden = NO;
             _paths = paths;

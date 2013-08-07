@@ -32,7 +32,7 @@
     return error;
 }
 
--(void)wrapperSendTransactionAmount:(NSNumber*)amount fromCurrency:(NSString*)currency toRecipient:(NSString*)recipient toCurrency:(NSString*)to_currency withBlock:(void(^)(NSError* error))block
+-(void)wrapperSendTransactionAmount:(NSNumber*)amount fromCurrency:(NSString*)from_currency toRecipient:(NSString*)recipient toCurrency:(NSString*)to_currency withBlock:(void(^)(NSError* error))block
 {
     /*
     {
@@ -85,15 +85,11 @@
     NSMutableDictionary * params = [NSMutableDictionary dictionaryWithDictionary:
                                @{@"account": _blobData.account_id,
                               @"recipient_address": recipient,
-                              @"currency": currency,
+                              @"to_currency": to_currency,
+                              @"from_currency": from_currency,
                               @"amount": amount.stringValue,
                               @"secret": _blobData.master_seed
                                }];
-    
-    if (to_currency) {
-        // Add destination currency
-        [params setObject:to_currency forKey:@"path"];
-    }
     
     [_bridge callHandler:@"send_transaction" data:params responseCallback:^(id responseData) {
         NSLog(@"send_transaction response: %@", responseData);
@@ -156,13 +152,12 @@
         if (!error) {
             paths = [NSMutableArray array];
             for (NSDictionary * path in responseData) {
-                RPAvailablePath * obj = [RPAvailablePath new];
-                [obj setDictionary:path];
-                [paths addObject:obj];
+                RPAmount * amount = [[RPAmount alloc] initWithObject:path];
+                [paths addObject:amount];
             }
             
             if ([currency isEqualToString:GLOBAL_XRP_STRING]) {
-                RPAvailablePath * obj = [RPAvailablePath new];
+                RPAmount * obj = [RPAmount new];
                 obj.currency = GLOBAL_XRP_STRING;
                 obj.value = amount;
                 [paths addObject:obj];

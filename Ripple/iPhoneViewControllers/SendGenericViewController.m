@@ -230,7 +230,8 @@
     //self.labelTitle.text = [NSString stringWithFormat:@"Send %@", self.transaction.Currency];
     
 //#warning Testing purposes only
-//    [[RippleJSManager shared] wrapperSendTransactionAmount:[NSNumber numberWithInt:1] fromCurrency:@"USD" toRecipient:@"r4LADqzmqQUMhgSyBLTtPMG4pAzrMDx7Yj" toCurrency:@"USD" withBlock:^(NSError *error) {
+//    [[RippleJSManager shared] wrapperSendTransactionAmount:[NSNumber numberWithFloat:0.1f] fromCurrency:@"XRP" toRecipient:@"r9xzeBM1tQ75Rm3iGWzxaArt8eQsGqv52j" toCurrency:@"USD" withBlock:^(NSError *error) {
+//        NSLog(@"%@",error.localizedDescription);
 //        
 //    }];
 }

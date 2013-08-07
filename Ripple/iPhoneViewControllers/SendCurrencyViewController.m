@@ -29,7 +29,7 @@
     [textField resignFirstResponder];
     
     if (textField.text.length > 0) {
-        self.transaction.Currency = textField.text;
+        self.transaction.Destination_currency = textField.text;
         [self performSegueWithIdentifier:@"Next" sender:nil];
     }
     return YES;
@@ -87,7 +87,7 @@
     }
     else {
         NSString * key = [[balances allKeys] objectAtIndex:indexPath.row - 1];
-        self.transaction.Currency = key;
+        self.transaction.Destination_currency = key;
         [self performSegueWithIdentifier:@"Next" sender:nil];
     }
 }
