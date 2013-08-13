@@ -119,7 +119,7 @@
         
         NSNumberFormatter *formatter = [NSNumberFormatter new];
         [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
-        [formatter setMaximumFractionDigits:20];
+        [formatter setMaximumFractionDigits:2];
         
         //        if ([key isEqualToString:@"XRP"]) {
         //            NSString *address = [[RippleJSManager shared] rippleWalletAddress];

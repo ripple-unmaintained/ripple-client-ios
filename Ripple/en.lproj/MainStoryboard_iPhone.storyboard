@@ -108,9 +108,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3O-NO-yh9">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="Die-17-DTW"/>
+                                            <constraint firstAttribute="width" constant="80" id="ZCD-Cy-aha"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Ripple Website">
+                                        <state key="normal" title="Go here">
                                             <color key="titleColor" red="0.18431372939999999" green="0.44313728810000003" blue="0.59215688710000003" alpha="1" colorSpace="deviceRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -121,18 +122,25 @@
                                             <action selector="signupButton:" destination="08W-Ib-Uee" eventType="touchUpInside" id="oN0-k2-Pai"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Don't have a wallet?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B81-2B-KyO">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="hEn-26-yGM" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="user" id="2Ed-ac-sIv"/>
-                                    <constraint firstItem="z3O-NO-yh9" firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" type="default" id="3y3-Lt-wig"/>
-                                    <constraint firstItem="z3O-NO-yh9" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="default" id="4aY-Yx-bWj"/>
+                                    <constraint firstItem="B81-2B-KyO" firstAttribute="baseline" secondItem="z3O-NO-yh9" secondAttribute="baseline" type="default" id="3QR-NU-DS6"/>
+                                    <constraint firstItem="z3O-NO-yh9" firstAttribute="leading" secondItem="B81-2B-KyO" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="HPN-6w-f89"/>
                                     <constraint firstItem="pNE-VQ-cgT" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="user" id="Jn2-5q-YKC"/>
+                                    <constraint firstAttribute="bottom" secondItem="B81-2B-KyO" secondAttribute="bottom" constant="5" id="LQh-Ac-tdX"/>
                                     <constraint firstItem="pNE-VQ-cgT" firstAttribute="top" secondItem="hEn-26-yGM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="YnH-Fy-2Eo"/>
                                     <constraint firstAttribute="height" constant="103" type="user" id="d6l-pC-F33"/>
                                     <constraint firstItem="hEn-26-yGM" firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" type="default" id="dnC-8i-hRe"/>
+                                    <constraint firstItem="B81-2B-KyO" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="default" id="eUV-Oo-Eop"/>
                                     <constraint firstItem="pNE-VQ-cgT" firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" type="default" id="hJ3-3j-mCo"/>
                                     <constraint firstItem="hEn-26-yGM" firstAttribute="top" secondItem="ras-nV-YDw" secondAttribute="top" type="default" id="hsK-03-Rck"/>
+                                    <constraint firstAttribute="trailing" secondItem="z3O-NO-yh9" secondAttribute="trailing" constant="15" id="r4v-t8-XfJ"/>
                                     <constraint firstItem="z3O-NO-yh9" firstAttribute="bottom" secondItem="ras-nV-YDw" secondAttribute="bottom" type="default" id="uZg-Eh-kGi"/>
                                 </constraints>
                             </view>
