@@ -11,6 +11,7 @@
 #import "RPTransaction.h"
 #import "NSObject+KJSerializer.h"
 #import "RippleJSManager.h"
+#import "RPHelper.h"
 
 @implementation AccountHistoryManager
 
@@ -46,6 +47,7 @@
                     NSString * ammountString = [ammount objectForKey:@"value"];
                     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
                     [f setNumberStyle:NSNumberFormatterDecimalStyle];
+                    [f setMaximumFractionDigits:20];
                     t.Amount = [f numberFromString:ammountString];
                 }
                 else {
@@ -55,8 +57,9 @@
                     NSString * ammountString = [tx objectForKey:@"Amount"];
                     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
                     [f setNumberStyle:NSNumberFormatterDecimalStyle];
+                    [f setMaximumFractionDigits:20];
                     NSNumber * num = [f numberFromString:ammountString];
-                    t.Amount = [NSNumber numberWithUnsignedLongLong:(num.unsignedLongLongValue / XRP_FACTOR)];
+                    t.Amount = [RPHelper dropsToRipples:num];
                 }
                 
                 //RPTransaction * transaction = [RPTransaction new];

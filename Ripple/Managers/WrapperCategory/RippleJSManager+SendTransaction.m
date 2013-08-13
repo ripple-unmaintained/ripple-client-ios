@@ -82,12 +82,16 @@
         return;
     }
     
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+    [formatter setMaximumFractionDigits:20];
+    
     NSMutableDictionary * params = [NSMutableDictionary dictionaryWithDictionary:
                                @{@"account": _blobData.account_id,
                               @"recipient_address": recipient,
                               @"to_currency": to_currency,
                               @"from_currency": from_currency,
-                              @"amount": amount.stringValue,
+                              @"amount": [formatter stringFromNumber:amount],
                               @"secret": _blobData.master_seed
                                }];
     
@@ -138,10 +142,14 @@
     }
      */
     
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+    [formatter setMaximumFractionDigits:20];
+    
     NSDictionary * params = @{@"account": _blobData.account_id,
                               @"recipient_address": recipient,
                               @"currency": currency,
-                              @"amount": amount.stringValue,
+                              @"amount": [formatter stringFromNumber:amount],
                               @"secret": _blobData.master_seed
                               };
     

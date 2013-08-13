@@ -60,6 +60,7 @@
 {
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    [f setMaximumFractionDigits:20];
     NSNumber * number = [f numberFromString:self.textFieldAmount.text];
     self.transaction.Amount = number;
     

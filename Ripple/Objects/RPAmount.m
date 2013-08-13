@@ -31,6 +31,7 @@
         // Convert string to nsnumber
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        [f setMaximumFractionDigits:20];
         NSNumber * num = [f numberFromString:str];
         self.value = [RPHelper dropsToRipples:num];
     }

@@ -90,6 +90,7 @@ static const char * getPropertyType(objc_property_t property) {
                     if (!f) {
                         f = [[NSNumberFormatter alloc] init];
                         [f setNumberStyle:NSNumberFormatterDecimalStyle];
+                        [f setMaximumFractionDigits:20];
                     }
                     NSNumber * num = [f numberFromString:obj];
                     [self setValue:num forKey:(NSString *)key];

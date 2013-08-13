@@ -48,10 +48,13 @@
 {
     UITableViewCell * cell;
     
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+    [formatter setMaximumFractionDigits:20];
     
     RPAmount * path = [_paths objectAtIndex:indexPath.row];
     cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", path.value.stringValue, path.currency];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:path.value], path.currency];
         
     return cell;
 }

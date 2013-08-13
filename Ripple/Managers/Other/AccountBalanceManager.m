@@ -175,8 +175,12 @@
                 currency = GLOBAL_XRP_STRING;
             }
             
+            NSNumberFormatter *formatter = [NSNumberFormatter new];
+            [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+            [formatter setMaximumFractionDigits:20];
+            
             UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle: [NSString stringWithFormat:@"Received %@ %@ from",value.stringValue,currency]
+                                  initWithTitle: [NSString stringWithFormat:@"Received %@ %@ from", [formatter stringFromNumber:value],currency]
                                   message:fromAccount
                                   delegate: nil
                                   cancelButtonTitle:@"OK"
@@ -210,7 +214,7 @@
 {
     NSMutableDictionary * balances = [NSMutableDictionary dictionary];
     if (_accountData) {
-        NSNumber * balance = [NSNumber numberWithUnsignedLongLong:(_accountData.Balance.unsignedLongLongValue / XRP_FACTOR)];
+        NSNumber * balance = [RPHelper dropsToRipples:_accountData.Balance];
         [balances setObject:balance forKey:GLOBAL_XRP_STRING];
     }
     for (RPAccountLine * line in _accountLines) {

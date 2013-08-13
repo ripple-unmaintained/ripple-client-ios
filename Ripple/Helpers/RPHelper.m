@@ -18,6 +18,7 @@
         // Convert string to nsnumber
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        [f setMaximumFractionDigits:20];
         return [f numberFromString:str];
     }
     else {
@@ -39,12 +40,20 @@
 
 +(NSNumber*)dropsToRipples:(NSNumber*)drops
 {
-    return [NSNumber numberWithUnsignedLongLong:(drops.unsignedLongLongValue / XRP_FACTOR)];
+    NSDecimal decimal = [drops decimalValue];
+    NSDecimalNumber * dec = [NSDecimalNumber decimalNumberWithDecimal:decimal];\
+    NSDecimalNumber * xrpF = [NSDecimalNumber decimalNumberWithString:XRP_FACTOR];
+    NSDecimalNumber * result = [dec decimalNumberByDividingBy:xrpF];
+    return result;
 }
 
 +(NSNumber*)ripplesToDrops:(NSNumber*)ripples
 {
-    return [NSNumber numberWithUnsignedLongLong:(ripples.unsignedLongLongValue * XRP_FACTOR)];
+    NSDecimal decimal = [ripples decimalValue];
+    NSDecimalNumber * dec = [NSDecimalNumber decimalNumberWithDecimal:decimal];\
+    NSDecimalNumber * xrpF = [NSDecimalNumber decimalNumberWithString:XRP_FACTOR];
+    NSDecimalNumber * result = [dec decimalNumberByMultiplyingBy:xrpF];
+    return result;
 }
 
 @end
