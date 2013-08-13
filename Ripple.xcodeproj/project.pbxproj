@@ -125,6 +125,8 @@
 		2B66B08217AFA04B00CC3523 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07717AFA04B00CC3523 /* OpenSans-Regular.ttf */; };
 		2B66B08317AFA04B00CC3523 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07817AFA04B00CC3523 /* OpenSans-Semibold.ttf */; };
 		2B66B08417AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07917AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf */; };
+		2BBB7A6317BAE23F00CD4BEA /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7A6217BAE23F00CD4BEA /* 114.png */; };
+		2BBB7A6517BAE24300CD4BEA /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7A6417BAE24300CD4BEA /* 57.png */; };
 		2BC5330517B2DFD800DD8AF9 /* RPAmount.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5330417B2DFD800DD8AF9 /* RPAmount.m */; };
 		2BE6DA9A17A72278008CAC64 /* SendCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */; };
 		2BE6DA9D17A748BA008CAC64 /* SendPathsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */; };
@@ -367,6 +369,8 @@
 		2B66B07717AFA04B00CC3523 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		2B66B07817AFA04B00CC3523 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		2B66B07917AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		2BBB7A6217BAE23F00CD4BEA /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114.png; path = ../114.png; sourceTree = "<group>"; };
+		2BBB7A6417BAE24300CD4BEA /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57.png; path = ../57.png; sourceTree = "<group>"; };
 		2BC5330317B2DFD800DD8AF9 /* RPAmount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPAmount.h; path = Objects/RPAmount.h; sourceTree = "<group>"; };
 		2BC5330417B2DFD800DD8AF9 /* RPAmount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPAmount.m; path = Objects/RPAmount.m; sourceTree = "<group>"; };
 		2BE6DA9817A72278008CAC64 /* SendCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendCurrencyViewController.h; path = iPhoneViewControllers/SendCurrencyViewController.h; sourceTree = "<group>"; };
@@ -549,6 +553,8 @@
 		2B5860C5179764A300200D0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2BBB7A6417BAE24300CD4BEA /* 57.png */,
+				2BBB7A6217BAE23F00CD4BEA /* 114.png */,
 				2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */,
 				2B58F78B179F943D009AEEEA /* Ripple-Icon-57.png */,
 				2B5860C6179764A300200D0C /* Ripple-Info.plist */,
@@ -1067,6 +1073,8 @@
 				2B66B08217AFA04B00CC3523 /* OpenSans-Regular.ttf in Resources */,
 				2B66B08317AFA04B00CC3523 /* OpenSans-Semibold.ttf in Resources */,
 				2B66B08417AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf in Resources */,
+				2BBB7A6317BAE23F00CD4BEA /* 114.png in Resources */,
+				2BBB7A6517BAE24300CD4BEA /* 57.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
