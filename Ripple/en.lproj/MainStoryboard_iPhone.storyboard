@@ -105,16 +105,35 @@
                                             <outlet property="delegate" destination="08W-Ib-Uee" id="F5a-gw-iP4"/>
                                         </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3O-NO-yh9">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="Die-17-DTW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Ripple Website">
+                                            <color key="titleColor" red="0.18431372939999999" green="0.44313728810000003" blue="0.59215688710000003" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signupButton:" destination="08W-Ib-Uee" eventType="touchUpInside" id="oN0-k2-Pai"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="hEn-26-yGM" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="user" id="2Ed-ac-sIv"/>
+                                    <constraint firstItem="z3O-NO-yh9" firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" type="default" id="3y3-Lt-wig"/>
+                                    <constraint firstItem="z3O-NO-yh9" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="default" id="4aY-Yx-bWj"/>
                                     <constraint firstItem="pNE-VQ-cgT" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="user" id="Jn2-5q-YKC"/>
-                                    <constraint firstItem="pNE-VQ-cgT" firstAttribute="top" secondItem="hEn-26-yGM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="bLm-SI-7nK"/>
+                                    <constraint firstItem="pNE-VQ-cgT" firstAttribute="top" secondItem="hEn-26-yGM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="YnH-Fy-2Eo"/>
                                     <constraint firstAttribute="height" constant="103" type="user" id="d6l-pC-F33"/>
                                     <constraint firstItem="hEn-26-yGM" firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" type="default" id="dnC-8i-hRe"/>
                                     <constraint firstItem="pNE-VQ-cgT" firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" type="default" id="hJ3-3j-mCo"/>
                                     <constraint firstItem="hEn-26-yGM" firstAttribute="top" secondItem="ras-nV-YDw" secondAttribute="top" type="default" id="hsK-03-Rck"/>
+                                    <constraint firstItem="z3O-NO-yh9" firstAttribute="bottom" secondItem="ras-nV-YDw" secondAttribute="bottom" type="default" id="uZg-Eh-kGi"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -122,9 +141,9 @@
                         <constraints>
                             <constraint firstItem="ras-nV-YDw" firstAttribute="leading" secondItem="kag-go-mPW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="4cv-M3-aO2"/>
                             <constraint firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="7g9-hm-YTq"/>
-                            <constraint firstItem="smU-82-9fU" firstAttribute="top" secondItem="kag-go-mPW" secondAttribute="top" constant="99" id="Uv4-ux-dxD"/>
-                            <constraint firstItem="ras-nV-YDw" firstAttribute="top" secondItem="kag-go-mPW" secondAttribute="top" constant="167" id="dVA-x4-9xE"/>
+                            <constraint firstItem="smU-82-9fU" firstAttribute="top" secondItem="kag-go-mPW" secondAttribute="top" constant="69" id="cNz-LF-0I3"/>
                             <constraint firstItem="ras-nV-YDw" firstAttribute="centerX" secondItem="smU-82-9fU" secondAttribute="centerX" type="default" id="mBA-CE-JMt"/>
+                            <constraint firstItem="ras-nV-YDw" firstAttribute="top" secondItem="kag-go-mPW" secondAttribute="top" constant="137" id="rag-UO-gNa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NRF-tD-uaZ"/>
@@ -1118,6 +1137,87 @@
         <image name="signin_logo.png" width="140" height="40"/>
         <image name="top_logo.png" width="100" height="25"/>
     </resources>
+    <classes>
+        <class className="BalancesViewController" superclassName="RippleStatusViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BalancesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navLogout" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textFieldPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="textFieldUsername" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ReceiveViewController" superclassName="RippleStatusViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ReceiveViewController.h"/>
+        </class>
+        <class className="RippleStatusViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RippleStatusViewController.h"/>
+        </class>
+        <class className="SendAmountViewController" superclassName="RippleStatusViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SendAmountViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonSend" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="labelRecipient" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="textFieldAmount" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SendCurrencyViewController" superclassName="RippleStatusViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SendCurrencyViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SendGenericViewController" superclassName="RippleStatusViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SendGenericViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="labelTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SendPathsViewController" superclassName="RippleStatusViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SendPathsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="labelFindingPaths" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SendTransactionViewController" superclassName="RippleStatusViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SendTransactionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="textFieldAmount" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="textFieldRecipient" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SendWaitingViewController" superclassName="RippleStatusViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SendWaitingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonRetry" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="labelErrorReason" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelStatus" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TxViewController" superclassName="RippleStatusViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TxViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textViewLog" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

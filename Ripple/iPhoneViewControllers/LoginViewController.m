@@ -20,6 +20,11 @@
 
 @implementation LoginViewController
 
+-(IBAction)signupButton:(id)sender
+{
+    [[UIApplication sharedApplication] openURL: [NSURL URLWithString: @"https://ripple.com/client/#/register"]];
+}
+
 -(void)login
 {
     [SVProgressHUD showWithStatus:@"Logging in..." maskType:SVProgressHUDMaskTypeGradient];

@@ -25,6 +25,18 @@
     }
 }
 
++(NSDecimalNumber*)safeDecimalNumberFromDictionary:(NSDictionary*)dic withKey:(NSString*)key
+{
+    id tmp = [dic objectForKey:key];
+    if ([tmp isKindOfClass:[NSString class]]) {
+        NSString * str = (NSString*)tmp;
+        return [NSDecimalNumber decimalNumberWithString:str];
+    }
+    else {
+        return tmp;
+    }
+}
+
 +(NSNumber*)dropsToRipples:(NSNumber*)drops
 {
     return [NSNumber numberWithUnsignedLongLong:(drops.unsignedLongLongValue / XRP_FACTOR)];

@@ -11,6 +11,7 @@
 @interface RPHelper : NSObject
 
 +(NSNumber*)safeNumberFromDictionary:(NSDictionary*)dic withKey:(NSString*)key;
++(NSDecimalNumber*)safeDecimalNumberFromDictionary:(NSDictionary*)dic withKey:(NSString*)key;
 +(NSNumber*)dropsToRipples:(NSNumber*)drops;
 +(NSNumber*)ripplesToDrops:(NSNumber*)ripples;
 
