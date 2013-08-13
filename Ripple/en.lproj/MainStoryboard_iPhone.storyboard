@@ -108,7 +108,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3O-NO-yh9">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="Die-17-DTW"/>
-                                            <constraint firstAttribute="width" constant="80" id="ZCD-Cy-aha"/>
+                                            <constraint firstAttribute="width" constant="67" id="Hhf-ef-gKE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Go here">
@@ -123,6 +123,9 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Don't have a wallet?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B81-2B-KyO">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="177" id="Gqa-kU-XE6"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -131,17 +134,16 @@
                                 <constraints>
                                     <constraint firstItem="hEn-26-yGM" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="user" id="2Ed-ac-sIv"/>
                                     <constraint firstItem="B81-2B-KyO" firstAttribute="baseline" secondItem="z3O-NO-yh9" secondAttribute="baseline" type="default" id="3QR-NU-DS6"/>
-                                    <constraint firstItem="z3O-NO-yh9" firstAttribute="leading" secondItem="B81-2B-KyO" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="HPN-6w-f89"/>
+                                    <constraint firstItem="z3O-NO-yh9" firstAttribute="bottom" secondItem="ras-nV-YDw" secondAttribute="bottom" type="default" id="Eso-CM-eLt"/>
+                                    <constraint firstItem="B81-2B-KyO" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" constant="9" id="JJ7-jo-T4V"/>
                                     <constraint firstItem="pNE-VQ-cgT" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="user" id="Jn2-5q-YKC"/>
-                                    <constraint firstAttribute="bottom" secondItem="B81-2B-KyO" secondAttribute="bottom" constant="5" id="LQh-Ac-tdX"/>
                                     <constraint firstItem="pNE-VQ-cgT" firstAttribute="top" secondItem="hEn-26-yGM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="YnH-Fy-2Eo"/>
                                     <constraint firstAttribute="height" constant="103" type="user" id="d6l-pC-F33"/>
                                     <constraint firstItem="hEn-26-yGM" firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" type="default" id="dnC-8i-hRe"/>
-                                    <constraint firstItem="B81-2B-KyO" firstAttribute="leading" secondItem="ras-nV-YDw" secondAttribute="leading" type="default" id="eUV-Oo-Eop"/>
                                     <constraint firstItem="pNE-VQ-cgT" firstAttribute="trailing" secondItem="ras-nV-YDw" secondAttribute="trailing" type="default" id="hJ3-3j-mCo"/>
                                     <constraint firstItem="hEn-26-yGM" firstAttribute="top" secondItem="ras-nV-YDw" secondAttribute="top" type="default" id="hsK-03-Rck"/>
-                                    <constraint firstAttribute="trailing" secondItem="z3O-NO-yh9" secondAttribute="trailing" constant="15" id="r4v-t8-XfJ"/>
-                                    <constraint firstItem="z3O-NO-yh9" firstAttribute="bottom" secondItem="ras-nV-YDw" secondAttribute="bottom" type="default" id="uZg-Eh-kGi"/>
+                                    <constraint firstAttribute="trailing" secondItem="z3O-NO-yh9" secondAttribute="trailing" constant="25" id="krV-Jc-Njf"/>
+                                    <constraint firstAttribute="bottom" secondItem="B81-2B-KyO" secondAttribute="bottom" constant="4" id="nD7-qr-e9H"/>
                                 </constraints>
                             </view>
                         </subviews>
