@@ -122,12 +122,22 @@
 }
 
 
+-(NSString*)returnUsername:(NSArray*)array
+{
+    for (NSDictionary* dic in array) {
+        NSString * username = [dic objectForKey:@"acct"];
+        if (username && [username isKindOfClass:[NSString class]]) {
+            return username;
+        }
+    }
+    return nil;
+}
+
 -(void)checkForLogin
 {
     NSArray * accounts = [SSKeychain allAccounts];
-    if (accounts.count > 0) {
-        NSDictionary * account = [accounts objectAtIndex:0];
-        NSString * username = [account objectForKey:@"acct"];
+    NSString * username = [self returnUsername:accounts];
+    if (username) {
         NSString * password = [SSKeychain passwordForService:SSKEYCHAIN_SERVICE account:username];
         if (username && password && username.length > 0 && password.length > 0) {
             
@@ -150,12 +160,11 @@
 -(BOOL)isLoggedIn
 {
     NSArray * accounts = [SSKeychain allAccounts];
-    if (accounts.count > 0) {
+    NSString * username = [self returnUsername:accounts];
+    if (username) {
         return YES;
     }
-    else {
-        return NO;
-    }
+    return NO;
 }
 
 -(void)logout
@@ -169,6 +178,7 @@
         NSString * username = [dic objectForKey:@"acct"];
         NSError * error;
         [SSKeychain deletePasswordForService:SSKEYCHAIN_SERVICE account:username error:&error];
+        //NSLog(@"%@", error.localizedDescription);
         
     }
     
