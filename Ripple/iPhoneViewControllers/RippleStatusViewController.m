@@ -40,6 +40,10 @@
     }];
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 //-(void)connectedNoAnimation
 //{
 //    CGRect f = self.view.frame;
