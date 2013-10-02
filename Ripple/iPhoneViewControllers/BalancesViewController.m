@@ -129,6 +129,7 @@
         //        }
         //        else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        //NSLog(@"%@",amount.stringValue);
         cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:amount], key];
         //        }
     }
