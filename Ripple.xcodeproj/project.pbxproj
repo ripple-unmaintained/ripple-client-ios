@@ -37,7 +37,6 @@
 		2B5860D3179764A300200D0C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B5860D2179764A300200D0C /* Default@2x.png */; };
 		2B5860D5179764A300200D0C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B5860D4179764A300200D0C /* Default-568h@2x.png */; };
 		2B5860D8179764A300200D0C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B5860D6179764A300200D0C /* MainStoryboard_iPhone.storyboard */; };
-		2B5860DB179764A300200D0C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B5860D9179764A300200D0C /* MainStoryboard_iPad.storyboard */; };
 		2B5860DE179764A300200D0C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5860DD179764A300200D0C /* ViewController.m */; };
 		2B5860E6179764A300200D0C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5860E5179764A300200D0C /* SenTestingKit.framework */; };
 		2B5860E7179764A300200D0C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5860BE179764A300200D0C /* UIKit.framework */; };
@@ -215,7 +214,6 @@
 		2B5860D2179764A300200D0C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2B5860D4179764A300200D0C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2B5860D7179764A300200D0C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		2B5860DA179764A300200D0C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		2B5860DC179764A300200D0C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2B5860DD179764A300200D0C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2B5860E4179764A300200D0C /* RippleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RippleTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -542,7 +540,6 @@
 				2B5860CD179764A300200D0C /* AppDelegate.h */,
 				2B5860CE179764A300200D0C /* AppDelegate.m */,
 				2B5860D6179764A300200D0C /* MainStoryboard_iPhone.storyboard */,
-				2B5860D9179764A300200D0C /* MainStoryboard_iPad.storyboard */,
 				2B5860DC179764A300200D0C /* ViewController.h */,
 				2B5860DD179764A300200D0C /* ViewController.m */,
 				2B5860C5179764A300200D0C /* Supporting Files */,
@@ -1038,7 +1035,6 @@
 				2B5860D3179764A300200D0C /* Default@2x.png in Resources */,
 				2B5860D5179764A300200D0C /* Default-568h@2x.png in Resources */,
 				2B5860D8179764A300200D0C /* MainStoryboard_iPhone.storyboard in Resources */,
-				2B5860DB179764A300200D0C /* MainStoryboard_iPad.storyboard in Resources */,
 				2B5861051797678C00200D0C /* WebViewJavascriptBridge.js.txt in Resources */,
 				2B5861921799EA1E00200D0C /* README.md in Resources */,
 				2B201D0D179D22AE00B52E90 /* Splash.png in Resources */,
@@ -1221,14 +1217,6 @@
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		2B5860D9179764A300200D0C /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2B5860DA179764A300200D0C /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		2B5860EE179764A300200D0C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1306,6 +1294,7 @@
 				GCC_PREFIX_HEADER = "Ripple/Ripple-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/QR-Code-Encoder-for-Objective-C\"/**";
 				INFOPLIST_FILE = "Ripple/Ripple-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/ZBarSDK-armv7s\"",
@@ -1320,17 +1309,18 @@
 		2B5860F8179764A300200D0C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Kevin Johnson";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ZeroBlock, LLC (F5444KGG7E)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ripple/Ripple-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/QR-Code-Encoder-for-Objective-C\"/**";
 				INFOPLIST_FILE = "Ripple/Ripple-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/ZBarSDK-armv7s\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "539EB26D-EEE3-417D-865D-4E7DAAE3D33C";
+				PROVISIONING_PROFILE = "94085BB4-7087-4BC3-B4F7-FE61073B1E46";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
