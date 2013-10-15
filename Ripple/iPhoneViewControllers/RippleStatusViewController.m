@@ -21,6 +21,19 @@
 
 -(void)RippleJSManagerConnected
 {
+    showingDisconnected = NO;
+    
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+    {
+        [self prefersStatusBarHidden];
+        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+    }
+    else
+    {
+        // iOS 6
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
+    
     [UIView animateWithDuration:0.3 animations:^{
         CGRect f = self.view.frame;
         f.origin.y = 0.0f;
@@ -31,6 +44,19 @@
 }
 -(void)RippleJSManagerDisconnected
 {
+    showingDisconnected = YES;
+    
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+    {
+        [self prefersStatusBarHidden];
+        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+    }
+    else
+    {
+        // iOS 6
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    }
+    
     [UIView animateWithDuration:0.3 animations:^{
         CGRect f = self.view.frame;
         f.origin.y = 20.0f;
@@ -38,6 +64,16 @@
     } completion:^(BOOL finished) {
         
     }];
+}
+
+// Add this method
+- (BOOL)prefersStatusBarHidden {
+    if (showingDisconnected) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
 }
 
 //-(UIStatusBarStyle)preferredStatusBarStyle{
