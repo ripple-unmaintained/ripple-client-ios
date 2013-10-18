@@ -93,6 +93,7 @@ function onBridgeReady(event) {
 			var addr = data.recipient_address
 
 			amount.set_issuer(addr);
+                           
 
 			// Make sure recipient address is valid
 			remote.request_account_info(data.recipient_address)
@@ -113,18 +114,17 @@ function onBridgeReady(event) {
 			    	var tx = remote.transaction()
 			    	tx.payment(data.account, addr, amount.to_json())
 
-
 			    	// Sending XRP
 			    	tx.build_path(true);
-
+                  
 			    	// Send transaction
 				    tx.on('success', function (res) {
-		  	    	responseCallback(res)
-		  	    });
-		  	    tx.on('error', function (res) {
-		  	    	responseCallback(res)
-		  	    });
-		  	    tx.submit();
+                        responseCallback(res)
+                    });
+                    tx.on('error', function (res) {
+                        responseCallback(res)
+                    });
+                    tx.submit();
 			    } else {
 			    	// Calculate path
 			      remote.request_ripple_path_find(data.account,

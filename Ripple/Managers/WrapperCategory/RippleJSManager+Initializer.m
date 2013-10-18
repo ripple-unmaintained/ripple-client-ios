@@ -36,11 +36,11 @@
     path = nil;
     contents = nil;
     
-    path = [[NSBundle mainBundle] pathForResource:@"jsonrewriter" ofType:@"js"];
-    contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    //[html appendFormat:@"<script>%@</script>", contents];
-    path = nil;
-    contents = nil;
+//    path = [[NSBundle mainBundle] pathForResource:@"jsonrewriter" ofType:@"js"];
+//    contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+//    //[html appendFormat:@"<script>%@</script>", contents];
+//    path = nil;
+//    contents = nil;
     
     path = [[NSBundle mainBundle] pathForResource:@"sjcl" ofType:@"js"];
     contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
@@ -79,6 +79,7 @@
     _webView = [[UIWebView alloc] initWithFrame:CGRectZero];
     _webView.delegate = self;
     NSString * html = [self rippleHTML];
+    //NSLog(@"%@",html);
     [_webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://ripple.com"]];
     [self setupJavascriptBridge];
 }
