@@ -72,20 +72,20 @@
 //}
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 20.0f;
+    return 0.0f;
 }
-
--(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView * v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 20)];
-    label.text = @"Balances";
-    label.textColor = [UIColor grayColor];
-    label.backgroundColor = [UIColor clearColor];
-    v.backgroundColor = self.view.backgroundColor;
-    [v addSubview:label];
-    return v;
-}
+//
+//-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView * v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+//    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 20)];
+//    label.text = @"Balances";
+//    label.textColor = [UIColor grayColor];
+//    label.backgroundColor = [UIColor clearColor];
+//    v.backgroundColor = self.view.backgroundColor;
+//    [v addSubview:label];
+//    return v;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
