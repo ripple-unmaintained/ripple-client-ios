@@ -127,6 +127,7 @@
 		2BBB7A6317BAE23F00CD4BEA /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7A6217BAE23F00CD4BEA /* 114.png */; };
 		2BBB7A6517BAE24300CD4BEA /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7A6417BAE24300CD4BEA /* 57.png */; };
 		2BC5330517B2DFD800DD8AF9 /* RPAmount.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5330417B2DFD800DD8AF9 /* RPAmount.m */; };
+		2BCBBBC41821EA6B00962798 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BCBBBC31821EA6B00962798 /* Images.xcassets */; };
 		2BD2E3C21810B97F006A25A8 /* ripple-0.7.19-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BD2E3C01810B970006A25A8 /* ripple-0.7.19-min.js */; };
 		2BE6DA9A17A72278008CAC64 /* SendCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */; };
 		2BE6DA9D17A748BA008CAC64 /* SendPathsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */; };
@@ -371,6 +372,7 @@
 		2BBB7A6417BAE24300CD4BEA /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57.png; path = ../57.png; sourceTree = "<group>"; };
 		2BC5330317B2DFD800DD8AF9 /* RPAmount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPAmount.h; path = Objects/RPAmount.h; sourceTree = "<group>"; };
 		2BC5330417B2DFD800DD8AF9 /* RPAmount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPAmount.m; path = Objects/RPAmount.m; sourceTree = "<group>"; };
+		2BCBBBC31821EA6B00962798 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2BD2E3C01810B970006A25A8 /* ripple-0.7.19-min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ripple-0.7.19-min.js"; sourceTree = "<group>"; };
 		2BE6DA9817A72278008CAC64 /* SendCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendCurrencyViewController.h; path = iPhoneViewControllers/SendCurrencyViewController.h; sourceTree = "<group>"; };
 		2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendCurrencyViewController.m; path = iPhoneViewControllers/SendCurrencyViewController.m; sourceTree = "<group>"; };
@@ -542,6 +544,7 @@
 				2B5860D6179764A300200D0C /* MainStoryboard_iPhone.storyboard */,
 				2B5860DC179764A300200D0C /* ViewController.h */,
 				2B5860DD179764A300200D0C /* ViewController.m */,
+				2BCBBBC31821EA6B00962798 /* Images.xcassets */,
 				2B5860C5179764A300200D0C /* Supporting Files */,
 			);
 			path = Ripple;
@@ -1032,6 +1035,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BD2E3C21810B97F006A25A8 /* ripple-0.7.19-min.js in Resources */,
+				2BCBBBC41821EA6B00962798 /* Images.xcassets in Resources */,
 				2B58F81817A1D9D6009AEEEA /* jsonrewriter.js in Resources */,
 				2B5861961799EC7B00200D0C /* sjcl.js in Resources */,
 				2B58613917976D3400200D0C /* ripple-lib-wrapper.js in Resources */,
@@ -1294,6 +1298,8 @@
 		2B5860F7179764A300200D0C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1315,6 +1321,8 @@
 		2B5860F8179764A300200D0C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: OpenCoin Inc. (NW66U7LJRG)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OpenCoin Inc. (NW66U7LJRG)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
