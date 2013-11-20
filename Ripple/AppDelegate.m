@@ -7,11 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "RPGlobals.h"
+
+#define MIXPANEL_TOKEN @"27f807b416137d59b1802c7ebe6059b0"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
+    // Initialize the library with your
+    // Mixpanel project token, MIXPANEL_TOKEN
+    [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    
+    // Later, you can get your instance with
+    // Mixpanel *mixpanel = [Mixpanel sharedInstance];
     
 //    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
 //        
@@ -38,19 +49,14 @@
 //        }
 //    }
     
-    //[[UILabel appearance] setFont:[UIFont fontWithName:@"OpenSans" size:17.0]];
-    //[[UIButton appearance] setFont:[UIFont fontWithName:@"OpenSans" size:17.0]];
-    //[[UITextField appearance] setFont:[UIFont fontWithName:@"OpenSans" size:17.0]];
+    [[UILabel appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
+    [[UIButton appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
+    [[UITextField appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
     
     // Override point for customization after application launch.
     return YES;
 }
-							
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-}
+
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
@@ -58,15 +64,23 @@
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    self.startTime = [NSDate date];
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+    NSLog(@"%@ will resign active", self);
+    NSNumber *seconds = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceDate:self.startTime]];
+    [[Mixpanel sharedInstance] track:@"Session" properties:[NSDictionary dictionaryWithObject:seconds forKey:@"Length"]];
+}
+
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {

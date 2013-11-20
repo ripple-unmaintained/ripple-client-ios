@@ -15,4 +15,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (weak, nonatomic) UIViewController * viewControllerBalance;
 
+@property (strong, nonatomic, retain) NSDate *startTime;
+
 @end

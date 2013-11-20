@@ -95,48 +95,63 @@
 {
     UITableViewCell * cell;
     
-    if (indexPath.section == 999999) {
-        // SHOULDN"T HAPPEN
-        if (indexPath.row == 0) {
-            // Receive cell
-            //NSString *address = [[RippleJSManager shared] rippleWalletAddress];
-            cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-            cell.textLabel.text = @"Send";
-        }
-        else if (indexPath.row == 1) {
-            // Receive cell
-            //NSString *address = [[RippleJSManager shared] rippleWalletAddress];
-            cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-            cell.textLabel.text = @"Receive";
-        }
-        else {
-            // Transaction History
-            cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-            cell.textLabel.text = @"History";
-        }
-        
-    }
-    else {
-        // Currencies
-        NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
-        NSNumber * amount = [balances objectForKey:key];
-        
-        NSNumberFormatter *formatter = [NSNumberFormatter new];
-        [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
-        [formatter setMaximumFractionDigits:2];
-        
-        //        if ([key isEqualToString:@"XRP"]) {
-        //            NSString *address = [[RippleJSManager shared] rippleWalletAddress];
-        //            cell = [tableView dequeueReusableCellWithIdentifier:@"xrp"];
-        //            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:amount], key];
-        //            cell.detailTextLabel.text = address;
+//    if (indexPath.section == 999999) {
+//        // SHOULDN"T HAPPEN
+//        if (indexPath.row == 0) {
+//            // Receive cell
+//            //NSString *address = [[RippleJSManager shared] rippleWalletAddress];
+//            cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//            cell.textLabel.text = @"Send";
+//        }
+//        else if (indexPath.row == 1) {
+//            // Receive cell
+//            //NSString *address = [[RippleJSManager shared] rippleWalletAddress];
+//            cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//            cell.textLabel.text = @"Receive";
+//        }
+//        else {
+//            // Transaction History
+//            cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//            cell.textLabel.text = @"History";
+//        }
+//        
+//    }
+//    else {
+    // Currencies
+    NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
+    NSNumber * amount = [balances objectForKey:key];
+    
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+    [formatter setMaximumFractionDigits:2];
+    
+    //        if ([key isEqualToString:@"XRP"]) {
+    //            NSString *address = [[RippleJSManager shared] rippleWalletAddress];
+    //            cell = [tableView dequeueReusableCellWithIdentifier:@"xrp"];
+    //            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:amount], key];
+    //            cell.detailTextLabel.text = address;
+    //        }
+    //        else {
+    cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    //NSLog(@"%@",amount.stringValue);
+    
+    NSString * balance = [formatter stringFromNumber:amount];
+    NSDictionary *attributesBlack = @ {NSForegroundColorAttributeName : [UIColor blackColor]};
+    //NSDictionary *attributesGrey = @ {NSForegroundColorAttributeName : [UIColor grayColor], NSFontAttributeName : [UIFont fontWithName:GLOBAL_FONT_NAME size:10]};
+    NSDictionary *attributesGrey = @ {NSForegroundColorAttributeName : [UIColor grayColor]};
+    NSMutableAttributedString *subString = [[NSMutableAttributedString alloc] initWithString:balance attributes:attributesBlack];
+    NSAttributedString *space = [[NSAttributedString alloc] initWithString:@" "];
+    NSAttributedString *subString2 = [[NSAttributedString alloc] initWithString:key attributes:attributesGrey];
+    
+    [subString appendAttributedString:space];
+    [subString appendAttributedString:subString2];
+    
+    //cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", , key];
+    
+    
+    cell.textLabel.attributedText = subString;
         //        }
-        //        else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        //NSLog(@"%@",amount.stringValue);
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:amount], key];
-        //        }
-    }
+//    }
     
     
     
@@ -148,48 +163,48 @@
     return NO;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if (indexPath.section == 9999) {
-        if (indexPath.row == 0) {
-            // Receive
-            [self performSegueWithIdentifier:@"Send" sender:nil];
-        }
-        else if (indexPath.row == 1) {
-            // Receive
-            [self performSegueWithIdentifier:@"Receive" sender:nil];
-        }
-        else {
-            // Transaction History
-            [self performSegueWithIdentifier:@"Tx" sender:nil];
-            
-            
-//            NSString *address = [[RippleJSManager shared] rippleWalletAddress];
-//            if (address) {
-//                UIPasteboard *pb = [UIPasteboard generalPasteboard];
-//                [pb setString:address];
-//                
-//                UIAlertView *alert = [[UIAlertView alloc]
-//                                      initWithTitle: @"Copied to clipboard"
-//                                      message: address
-//                                      delegate: nil
-//                                      cancelButtonTitle:@"OK"
-//                                      otherButtonTitles:nil];
-//                [alert show];
-//            }
-        }
-    }
-    else {
-        //NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
-        //[self performSegueWithIdentifier:@"Send" sender:key];
-//        if ([key isEqualToString:@"XRP"]) {
-//            // Send XRP only
-//            [self performSegueWithIdentifier:@"Send" sender:key];
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    
+//    if (indexPath.section == 9999) {
+//        if (indexPath.row == 0) {
+//            // Receive
+//            [self performSegueWithIdentifier:@"Send" sender:nil];
 //        }
-    }
-}
+//        else if (indexPath.row == 1) {
+//            // Receive
+//            [self performSegueWithIdentifier:@"Receive" sender:nil];
+//        }
+//        else {
+//            // Transaction History
+//            [self performSegueWithIdentifier:@"Tx" sender:nil];
+//            
+//            
+////            NSString *address = [[RippleJSManager shared] rippleWalletAddress];
+////            if (address) {
+////                UIPasteboard *pb = [UIPasteboard generalPasteboard];
+////                [pb setString:address];
+////                
+////                UIAlertView *alert = [[UIAlertView alloc]
+////                                      initWithTitle: @"Copied to clipboard"
+////                                      message: address
+////                                      delegate: nil
+////                                      cancelButtonTitle:@"OK"
+////                                      otherButtonTitles:nil];
+////                [alert show];
+////            }
+//        }
+//    }
+//    else {
+//        //NSString * key = [[balances allKeys] objectAtIndex:indexPath.row];
+//        //[self performSegueWithIdentifier:@"Send" sender:key];
+////        if ([key isEqualToString:@"XRP"]) {
+////            // Send XRP only
+////            [self performSegueWithIdentifier:@"Send" sender:key];
+////        }
+//    }
+//}
 
 -(void)appEnteredForeground
 {

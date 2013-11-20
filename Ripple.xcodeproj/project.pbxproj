@@ -129,9 +129,32 @@
 		2BC5330517B2DFD800DD8AF9 /* RPAmount.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5330417B2DFD800DD8AF9 /* RPAmount.m */; };
 		2BCBBBC41821EA6B00962798 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BCBBBC31821EA6B00962798 /* Images.xcassets */; };
 		2BD2E3C21810B97F006A25A8 /* ripple-0.7.19-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BD2E3C01810B970006A25A8 /* ripple-0.7.19-min.js */; };
+		2BD93E5F183C35FF00FDEFEF /* bar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E46183C35FE00FDEFEF /* bar1.png */; };
+		2BD93E60183C35FF00FDEFEF /* bar1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E47183C35FE00FDEFEF /* bar1@2x.png */; };
+		2BD93E61183C35FF00FDEFEF /* bar2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E48183C35FE00FDEFEF /* bar2.png */; };
+		2BD93E62183C35FF00FDEFEF /* bar2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E49183C35FE00FDEFEF /* bar2@2x.png */; };
+		2BD93E63183C35FF00FDEFEF /* bar3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E4A183C35FE00FDEFEF /* bar3.png */; };
+		2BD93E64183C35FF00FDEFEF /* bar3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E4B183C35FE00FDEFEF /* bar3@2x.png */; };
+		2BD93E65183C35FF00FDEFEF /* bar4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E4C183C35FE00FDEFEF /* bar4.png */; };
+		2BD93E66183C35FF00FDEFEF /* bar4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E4D183C35FE00FDEFEF /* bar4@2x.png */; };
+		2BD93E67183C35FF00FDEFEF /* head_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E4E183C35FE00FDEFEF /* head_logo.png */; };
+		2BD93E68183C35FF00FDEFEF /* head_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E4F183C35FE00FDEFEF /* head_logo@2x.png */; };
+		2BD93E69183C35FF00FDEFEF /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E50183C35FE00FDEFEF /* history.png */; };
+		2BD93E6A183C35FF00FDEFEF /* history@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E51183C35FE00FDEFEF /* history@2x.png */; };
+		2BD93E6B183C35FF00FDEFEF /* qmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E52183C35FE00FDEFEF /* qmark.png */; };
+		2BD93E6C183C35FF00FDEFEF /* qmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E53183C35FE00FDEFEF /* qmark@2x.png */; };
+		2BD93E6D183C35FF00FDEFEF /* qr.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E54183C35FF00FDEFEF /* qr.png */; };
+		2BD93E6E183C35FF00FDEFEF /* qr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E55183C35FF00FDEFEF /* qr@2x.png */; };
+		2BD93E6F183C35FF00FDEFEF /* receive.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E56183C35FF00FDEFEF /* receive.png */; };
+		2BD93E70183C35FF00FDEFEF /* receive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E57183C35FF00FDEFEF /* receive@2x.png */; };
+		2BD93E71183C35FF00FDEFEF /* send.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E58183C35FF00FDEFEF /* send.png */; };
+		2BD93E72183C35FF00FDEFEF /* send@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E59183C35FF00FDEFEF /* send@2x.png */; };
+		2BD93E76183C35FF00FDEFEF /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E5D183C35FF00FDEFEF /* user.png */; };
+		2BD93E77183C35FF00FDEFEF /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E5E183C35FF00FDEFEF /* user@2x.png */; };
 		2BE6DA9A17A72278008CAC64 /* SendCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */; };
 		2BE6DA9D17A748BA008CAC64 /* SendPathsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */; };
 		2BE8F64217A9EF9100372FCB /* RPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE8F64117A9EF9100372FCB /* RPHelper.m */; };
+		5F80C6029787439F93B86B14 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A183AA93EAB4C46A12D8CE1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +189,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07507FA98EC04EEEAD01EA5C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		2B08036A17A321510095F199 /* AccountBalanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountBalanceManager.h; path = Managers/Other/AccountBalanceManager.h; sourceTree = "<group>"; };
 		2B08036B17A321510095F199 /* AccountBalanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountBalanceManager.m; path = Managers/Other/AccountBalanceManager.m; sourceTree = "<group>"; };
 		2B08036D17A32DE70095F199 /* AccountHistoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountHistoryManager.h; path = Managers/Other/AccountHistoryManager.h; sourceTree = "<group>"; };
@@ -374,12 +398,35 @@
 		2BC5330417B2DFD800DD8AF9 /* RPAmount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPAmount.m; path = Objects/RPAmount.m; sourceTree = "<group>"; };
 		2BCBBBC31821EA6B00962798 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2BD2E3C01810B970006A25A8 /* ripple-0.7.19-min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ripple-0.7.19-min.js"; sourceTree = "<group>"; };
+		2BD93E46183C35FE00FDEFEF /* bar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar1.png; sourceTree = "<group>"; };
+		2BD93E47183C35FE00FDEFEF /* bar1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar1@2x.png"; sourceTree = "<group>"; };
+		2BD93E48183C35FE00FDEFEF /* bar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar2.png; sourceTree = "<group>"; };
+		2BD93E49183C35FE00FDEFEF /* bar2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar2@2x.png"; sourceTree = "<group>"; };
+		2BD93E4A183C35FE00FDEFEF /* bar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar3.png; sourceTree = "<group>"; };
+		2BD93E4B183C35FE00FDEFEF /* bar3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar3@2x.png"; sourceTree = "<group>"; };
+		2BD93E4C183C35FE00FDEFEF /* bar4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar4.png; sourceTree = "<group>"; };
+		2BD93E4D183C35FE00FDEFEF /* bar4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar4@2x.png"; sourceTree = "<group>"; };
+		2BD93E4E183C35FE00FDEFEF /* head_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_logo.png; sourceTree = "<group>"; };
+		2BD93E4F183C35FE00FDEFEF /* head_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head_logo@2x.png"; sourceTree = "<group>"; };
+		2BD93E50183C35FE00FDEFEF /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
+		2BD93E51183C35FE00FDEFEF /* history@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history@2x.png"; sourceTree = "<group>"; };
+		2BD93E52183C35FE00FDEFEF /* qmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qmark.png; sourceTree = "<group>"; };
+		2BD93E53183C35FE00FDEFEF /* qmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qmark@2x.png"; sourceTree = "<group>"; };
+		2BD93E54183C35FF00FDEFEF /* qr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr.png; sourceTree = "<group>"; };
+		2BD93E55183C35FF00FDEFEF /* qr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr@2x.png"; sourceTree = "<group>"; };
+		2BD93E56183C35FF00FDEFEF /* receive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = receive.png; sourceTree = "<group>"; };
+		2BD93E57183C35FF00FDEFEF /* receive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "receive@2x.png"; sourceTree = "<group>"; };
+		2BD93E58183C35FF00FDEFEF /* send.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = send.png; sourceTree = "<group>"; };
+		2BD93E59183C35FF00FDEFEF /* send@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send@2x.png"; sourceTree = "<group>"; };
+		2BD93E5D183C35FF00FDEFEF /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		2BD93E5E183C35FF00FDEFEF /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
 		2BE6DA9817A72278008CAC64 /* SendCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendCurrencyViewController.h; path = iPhoneViewControllers/SendCurrencyViewController.h; sourceTree = "<group>"; };
 		2BE6DA9917A72278008CAC64 /* SendCurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendCurrencyViewController.m; path = iPhoneViewControllers/SendCurrencyViewController.m; sourceTree = "<group>"; };
 		2BE6DA9B17A748BA008CAC64 /* SendPathsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendPathsViewController.h; path = iPhoneViewControllers/SendPathsViewController.h; sourceTree = "<group>"; };
 		2BE6DA9C17A748BA008CAC64 /* SendPathsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendPathsViewController.m; path = iPhoneViewControllers/SendPathsViewController.m; sourceTree = "<group>"; };
 		2BE8F64017A9EF9100372FCB /* RPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPHelper.h; path = Helpers/RPHelper.h; sourceTree = "<group>"; };
 		2BE8F64117A9EF9100372FCB /* RPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPHelper.m; path = Helpers/RPHelper.m; sourceTree = "<group>"; };
+		3A183AA93EAB4C46A12D8CE1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,6 +447,7 @@
 				2B5860C1179764A300200D0C /* Foundation.framework in Frameworks */,
 				2B5860C3179764A300200D0C /* CoreGraphics.framework in Frameworks */,
 				2B58F80117A07D6F009AEEEA /* libzbar.a in Frameworks */,
+				5F80C6029787439F93B86B14 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +478,7 @@
 		2B201D0A179D22AE00B52E90 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2BD93E45183C35FE00FDEFEF /* Elements */,
 				2B66B04C17AF971E00CC3523 /* Design elements */,
 				2B201D0B179D22AE00B52E90 /* Splash.png */,
 				2B201D0C179D22AE00B52E90 /* Splash@2x.png */,
@@ -499,6 +548,7 @@
 				2B5860EB179764A300200D0C /* RippleTests */,
 				2B5860BD179764A300200D0C /* Frameworks */,
 				2B5860BC179764A300200D0C /* Products */,
+				07507FA98EC04EEEAD01EA5C /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -526,6 +576,7 @@
 				2B5860C0179764A300200D0C /* Foundation.framework */,
 				2B5860C2179764A300200D0C /* CoreGraphics.framework */,
 				2B5860E5179764A300200D0C /* SenTestingKit.framework */,
+				3A183AA93EAB4C46A12D8CE1 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -925,6 +976,35 @@
 			path = "open-sans";
 			sourceTree = "<group>";
 		};
+		2BD93E45183C35FE00FDEFEF /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				2BD93E46183C35FE00FDEFEF /* bar1.png */,
+				2BD93E47183C35FE00FDEFEF /* bar1@2x.png */,
+				2BD93E48183C35FE00FDEFEF /* bar2.png */,
+				2BD93E49183C35FE00FDEFEF /* bar2@2x.png */,
+				2BD93E4A183C35FE00FDEFEF /* bar3.png */,
+				2BD93E4B183C35FE00FDEFEF /* bar3@2x.png */,
+				2BD93E4C183C35FE00FDEFEF /* bar4.png */,
+				2BD93E4D183C35FE00FDEFEF /* bar4@2x.png */,
+				2BD93E4E183C35FE00FDEFEF /* head_logo.png */,
+				2BD93E4F183C35FE00FDEFEF /* head_logo@2x.png */,
+				2BD93E50183C35FE00FDEFEF /* history.png */,
+				2BD93E51183C35FE00FDEFEF /* history@2x.png */,
+				2BD93E52183C35FE00FDEFEF /* qmark.png */,
+				2BD93E53183C35FE00FDEFEF /* qmark@2x.png */,
+				2BD93E54183C35FF00FDEFEF /* qr.png */,
+				2BD93E55183C35FF00FDEFEF /* qr@2x.png */,
+				2BD93E56183C35FF00FDEFEF /* receive.png */,
+				2BD93E57183C35FF00FDEFEF /* receive@2x.png */,
+				2BD93E58183C35FF00FDEFEF /* send.png */,
+				2BD93E59183C35FF00FDEFEF /* send@2x.png */,
+				2BD93E5D183C35FF00FDEFEF /* user.png */,
+				2BD93E5E183C35FF00FDEFEF /* user@2x.png */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		2BE8F63F17A9EF7D00372FCB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -941,9 +1021,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2B5860F6179764A300200D0C /* Build configuration list for PBXNativeTarget "Ripple" */;
 			buildPhases = (
+				53BE332B92FD41A7BC64EF1A /* Check Pods Manifest.lock */,
 				2B5860B7179764A300200D0C /* Sources */,
 				2B5860B8179764A300200D0C /* Frameworks */,
 				2B5860B9179764A300200D0C /* Resources */,
+				D08996B6A61A4323BC92B5C3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1034,46 +1116,68 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BD93E64183C35FF00FDEFEF /* bar3@2x.png in Resources */,
 				2BD2E3C21810B97F006A25A8 /* ripple-0.7.19-min.js in Resources */,
+				2BD93E6B183C35FF00FDEFEF /* qmark.png in Resources */,
 				2BCBBBC41821EA6B00962798 /* Images.xcassets in Resources */,
 				2B58F81817A1D9D6009AEEEA /* jsonrewriter.js in Resources */,
 				2B5861961799EC7B00200D0C /* sjcl.js in Resources */,
 				2B58613917976D3400200D0C /* ripple-lib-wrapper.js in Resources */,
 				2B5860C9179764A300200D0C /* InfoPlist.strings in Resources */,
+				2BD93E68183C35FF00FDEFEF /* head_logo@2x.png in Resources */,
 				2B5860D1179764A300200D0C /* Default.png in Resources */,
 				2B5860D3179764A300200D0C /* Default@2x.png in Resources */,
+				2BD93E6E183C35FF00FDEFEF /* qr@2x.png in Resources */,
 				2B5860D5179764A300200D0C /* Default-568h@2x.png in Resources */,
+				2BD93E6A183C35FF00FDEFEF /* history@2x.png in Resources */,
+				2BD93E70183C35FF00FDEFEF /* receive@2x.png in Resources */,
+				2BD93E62183C35FF00FDEFEF /* bar2@2x.png in Resources */,
 				2B5860D8179764A300200D0C /* MainStoryboard_iPhone.storyboard in Resources */,
+				2BD93E65183C35FF00FDEFEF /* bar4.png in Resources */,
 				2B5861051797678C00200D0C /* WebViewJavascriptBridge.js.txt in Resources */,
 				2B5861921799EA1E00200D0C /* README.md in Resources */,
 				2B201D0D179D22AE00B52E90 /* Splash.png in Resources */,
 				2B201D0E179D22AE00B52E90 /* Splash@2x.png in Resources */,
+				2BD93E69183C35FF00FDEFEF /* history.png in Resources */,
+				2BD93E60183C35FF00FDEFEF /* bar1@2x.png in Resources */,
 				2B201D19179D25C300B52E90 /* SVProgressHUD.bundle in Resources */,
+				2BD93E66183C35FF00FDEFEF /* bar4@2x.png in Resources */,
 				2B201DC2179D27C400B52E90 /* SSKeychain.strings in Resources */,
 				2B58F78C179F943D009AEEEA /* Ripple-Icon-57.png in Resources */,
 				2B58F78E179F9444009AEEEA /* Ripple-Icon-114.png in Resources */,
 				2B66B05D17AF971E00CC3523 /* arrow.png in Resources */,
 				2B66B05E17AF971E00CC3523 /* arrow@2x.png in Resources */,
+				2BD93E71183C35FF00FDEFEF /* send.png in Resources */,
 				2B66B05F17AF971E00CC3523 /* btn_send_down.png in Resources */,
 				2B66B06017AF971E00CC3523 /* btn_send_down@2x.png in Resources */,
 				2B66B06117AF971E00CC3523 /* btn_send_up.png in Resources */,
+				2BD93E6D183C35FF00FDEFEF /* qr.png in Resources */,
 				2B66B06217AF971E00CC3523 /* btn_send_up@2x.png in Resources */,
+				2BD93E6C183C35FF00FDEFEF /* qmark@2x.png in Resources */,
 				2B66B06317AF971E00CC3523 /* btn_white_down.png in Resources */,
 				2B66B06417AF971E00CC3523 /* btn_white_down@2x.png in Resources */,
 				2B66B06517AF971E00CC3523 /* btn_white_up.png in Resources */,
 				2B66B06617AF971E00CC3523 /* btn_white_up@2x.png in Resources */,
+				2BD93E6F183C35FF00FDEFEF /* receive.png in Resources */,
+				2BD93E5F183C35FF00FDEFEF /* bar1.png in Resources */,
+				2BD93E76183C35FF00FDEFEF /* user.png in Resources */,
 				2B66B06717AF971E00CC3523 /* send_amt.png in Resources */,
+				2BD93E77183C35FF00FDEFEF /* user@2x.png in Resources */,
 				2B66B06817AF971E00CC3523 /* send_amt@2x.png in Resources */,
 				2B66B06917AF971E00CC3523 /* signin_logo.png in Resources */,
 				2B66B06A17AF971E00CC3523 /* signin_logo@2x.png in Resources */,
 				2B66B06B17AF971E00CC3523 /* top_logo.png in Resources */,
 				2B66B06C17AF971E00CC3523 /* top_logo@2x.png in Resources */,
 				2B66B07B17AFA04B00CC3523 /* OpenSans-Bold.ttf in Resources */,
+				2BD93E63183C35FF00FDEFEF /* bar3.png in Resources */,
 				2B66B07C17AFA04B00CC3523 /* OpenSans-BoldItalic.ttf in Resources */,
 				2B66B07D17AFA04B00CC3523 /* OpenSans-ExtraBold.ttf in Resources */,
+				2BD93E72183C35FF00FDEFEF /* send@2x.png in Resources */,
 				2B66B07E17AFA04B00CC3523 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				2B66B07F17AFA04B00CC3523 /* OpenSans-Italic.ttf in Resources */,
+				2BD93E61183C35FF00FDEFEF /* bar2.png in Resources */,
 				2B66B08017AFA04B00CC3523 /* OpenSans-Light.ttf in Resources */,
+				2BD93E67183C35FF00FDEFEF /* head_logo.png in Resources */,
 				2B66B08117AFA04B00CC3523 /* OpenSans-LightItalic.ttf in Resources */,
 				2B66B08217AFA04B00CC3523 /* OpenSans-Regular.ttf in Resources */,
 				2B66B08317AFA04B00CC3523 /* OpenSans-Semibold.ttf in Resources */,
@@ -1106,6 +1210,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		53BE332B92FD41A7BC64EF1A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D08996B6A61A4323BC92B5C3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1297,6 +1431,7 @@
 		};
 		2B5860F7179764A300200D0C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07507FA98EC04EEEAD01EA5C /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1312,7 +1447,7 @@
 					"\"$(SRCROOT)/Libraries/ZBarSDK-armv7s\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ACFE9972-BF50-4B93-9606-9FDF40E28362";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1320,11 +1455,12 @@
 		};
 		2B5860F8179764A300200D0C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07507FA98EC04EEEAD01EA5C /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: OpenCoin Inc. (NW66U7LJRG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OpenCoin Inc. (NW66U7LJRG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ripple/Ripple-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Libraries/QR-Code-Encoder-for-Objective-C\"/**";
@@ -1335,7 +1471,7 @@
 					"\"$(SRCROOT)/Libraries/ZBarSDK-armv7s\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ACFE9972-BF50-4B93-9606-9FDF40E28362";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

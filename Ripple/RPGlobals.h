@@ -5,3 +5,8 @@
 
 #define GLOBAL_XRP_STRING @"XRP"
 #define XRP_FACTOR @"1000000.0"
+
+#define MIXPANEL_TOKEN @"27f807b416137d59b1802c7ebe6059b0"
+
+
+#define GLOBAL_FONT_NAME @"OpenSans"
