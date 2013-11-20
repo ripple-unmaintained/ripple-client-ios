@@ -49,8 +49,8 @@
 //        }
 //    }
     
-    [[UILabel appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
-    [[UIButton appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
+    //[[UILabel appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
+    //[[UIButton appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
     [[UITextField appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
     
     // Override point for customization after application launch.

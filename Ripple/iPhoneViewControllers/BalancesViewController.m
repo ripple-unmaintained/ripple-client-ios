@@ -136,9 +136,9 @@
     //NSLog(@"%@",amount.stringValue);
     
     NSString * balance = [formatter stringFromNumber:amount];
-    NSDictionary *attributesBlack = @ {NSForegroundColorAttributeName : [UIColor blackColor]};
-    //NSDictionary *attributesGrey = @ {NSForegroundColorAttributeName : [UIColor grayColor], NSFontAttributeName : [UIFont fontWithName:GLOBAL_FONT_NAME size:10]};
-    NSDictionary *attributesGrey = @ {NSForegroundColorAttributeName : [UIColor grayColor]};
+    NSDictionary *attributesBlack = @ {NSForegroundColorAttributeName : [UIColor blackColor], NSFontAttributeName : [UIFont fontWithName:GLOBAL_FONT_NAME size:17]};
+    NSDictionary *attributesGrey = @ {NSForegroundColorAttributeName : [UIColor grayColor], NSFontAttributeName : [UIFont fontWithName:GLOBAL_FONT_NAME size:10]};
+    //NSDictionary *attributesGrey = @ {NSForegroundColorAttributeName : [UIColor grayColor]};
     NSMutableAttributedString *subString = [[NSMutableAttributedString alloc] initWithString:balance attributes:attributesBlack];
     NSAttributedString *space = [[NSAttributedString alloc] initWithString:@" "];
     NSAttributedString *subString2 = [[NSAttributedString alloc] initWithString:key attributes:attributesGrey];
