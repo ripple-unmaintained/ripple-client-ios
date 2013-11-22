@@ -11,8 +11,8 @@
 
 #define GLOBAL_FONT_NAME @"OpenSans"
 
-#define APPLE_MESSAGE_TITLE @"Sorry"
-#define APPLE_MESSAGE_MESG  @"Apple does not allow us to send XRP on iOS"
+#define APPLE_MESSAGE_TITLE nil
+#define APPLE_MESSAGE_MESG  @"You can't send XRP in this app. Please visit the Ripple web client to send XRP."
 
 // Required for the Apple App Store
 #define GLOBAL_RESTRICT_DIGITAL_CURRENCIES       YES

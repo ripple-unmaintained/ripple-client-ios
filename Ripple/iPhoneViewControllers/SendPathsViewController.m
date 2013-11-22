@@ -14,7 +14,7 @@
 #import "RippleJSManager+SendTransaction.h"
 #import "SVProgressHUD.h"
 
-@interface SendPathsViewController () <UITableViewDataSource, UITableViewDelegate> {
+@interface SendPathsViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate> {
     NSArray * _paths;
 }
 
@@ -24,6 +24,15 @@
 @end
 
 @implementation SendPathsViewController
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+{
+    if (buttonIndex == 0) {
+        // Open web client
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://ripple.com/client"]];
+    }
+}
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -68,9 +77,9 @@
     if (GLOBAL_RESTRICT_DIGITAL_CURRENCIES && [path.currency isEqualToString:GLOBAL_XRP_STRING]) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:APPLE_MESSAGE_TITLE
                                                          message:APPLE_MESSAGE_MESG
-                                                        delegate:nil
+                                                        delegate:self
                                                cancelButtonTitle:nil
-                                               otherButtonTitles:@"OK", nil];
+                                               otherButtonTitles:@"Web Client", @"OK", nil];
         [alert show];
         
     }
