@@ -64,9 +64,20 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     RPAmount * path = [_paths objectAtIndex:indexPath.row];
-    self.transaction.Currency = path.currency;
     
-    [self performSegueWithIdentifier:@"Next" sender:nil];
+    if ([path.currency isEqualToString:GLOBAL_XRP_STRING]) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:APPLE_MESSAGE_TITLE
+                                                         message:APPLE_MESSAGE_MESG
+                                                        delegate:nil
+                                               cancelButtonTitle:nil
+                                               otherButtonTitles:@"OK", nil];
+        [alert show];
+        
+    }
+    else {
+        self.transaction.Currency = path.currency;
+        [self performSegueWithIdentifier:@"Next" sender:nil];
+    }
 }
 
 -(void)refreshTableView

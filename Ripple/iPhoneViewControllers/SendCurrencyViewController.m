@@ -87,8 +87,21 @@
     }
     else {
         NSString * key = [[balances allKeys] objectAtIndex:indexPath.row - 1];
-        self.transaction.Destination_currency = key;
-        [self performSegueWithIdentifier:@"Next" sender:nil];
+        
+        // Required Apple change
+        if ([key isEqualToString:GLOBAL_XRP_STRING]) {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:APPLE_MESSAGE_TITLE
+                                                            message:APPLE_MESSAGE_MESG
+                                                            delegate:nil
+                                                    cancelButtonTitle:nil
+                                                    otherButtonTitles:@"OK", nil];
+            [alert show];
+            
+        }
+        else {
+            self.transaction.Destination_currency = key;
+            [self performSegueWithIdentifier:@"Next" sender:nil];
+        }
     }
 }
 
