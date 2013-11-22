@@ -24,13 +24,32 @@
 
 @implementation SendCurrencyViewController
 
+-(void)validateCurrency:(NSString*)currency
+{
+    currency = [currency uppercaseString];
+    
+    // Required Apple change
+    if ([currency isEqualToString:GLOBAL_XRP_STRING]) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:APPLE_MESSAGE_TITLE
+                                                         message:APPLE_MESSAGE_MESG
+                                                        delegate:nil
+                                               cancelButtonTitle:nil
+                                               otherButtonTitles:@"OK", nil];
+        [alert show];
+        
+    }
+    else {
+        self.transaction.Destination_currency = currency;
+        [self performSegueWithIdentifier:@"Next" sender:nil];
+    }
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     
     if (textField.text.length > 0) {
-        self.transaction.Destination_currency = textField.text;
-        [self performSegueWithIdentifier:@"Next" sender:nil];
+        [self validateCurrency:textField.text];
     }
     return YES;
 }
@@ -88,20 +107,7 @@
     else {
         NSString * key = [[balances allKeys] objectAtIndex:indexPath.row - 1];
         
-        // Required Apple change
-        if ([key isEqualToString:GLOBAL_XRP_STRING]) {
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:APPLE_MESSAGE_TITLE
-                                                            message:APPLE_MESSAGE_MESG
-                                                            delegate:nil
-                                                    cancelButtonTitle:nil
-                                                    otherButtonTitles:@"OK", nil];
-            [alert show];
-            
-        }
-        else {
-            self.transaction.Destination_currency = key;
-            [self performSegueWithIdentifier:@"Next" sender:nil];
-        }
+        [self validateCurrency:key];
     }
 }
 
