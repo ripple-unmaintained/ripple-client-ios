@@ -11,8 +11,6 @@
 		2B08036F17A32DE70095F199 /* AccountHistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B08036E17A32DE70095F199 /* AccountHistoryManager.m */; };
 		2B08037217A32E660095F199 /* RPTxHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B08037117A32E660095F199 /* RPTxHistory.m */; };
 		2B08037517A335AE0095F199 /* TxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B08037417A335AE0095F199 /* TxViewController.m */; };
-		2B201D0D179D22AE00B52E90 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D0B179D22AE00B52E90 /* Splash.png */; };
-		2B201D0E179D22AE00B52E90 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D0C179D22AE00B52E90 /* Splash@2x.png */; };
 		2B201D12179D236F00B52E90 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201D11179D236F00B52E90 /* LoginViewController.m */; };
 		2B201D19179D25C300B52E90 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D15179D25C300B52E90 /* SVProgressHUD.bundle */; };
 		2B201D1A179D25C300B52E90 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201D17179D25C300B52E90 /* SVProgressHUD.m */; };
@@ -76,8 +74,6 @@
 		2B58F784179F68F0009AEEEA /* SendGenericViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F783179F68F0009AEEEA /* SendGenericViewController.m */; };
 		2B58F787179F70A5009AEEEA /* SendAmountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F786179F70A5009AEEEA /* SendAmountViewController.m */; };
 		2B58F78A179F71EC009AEEEA /* RPNewTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F789179F71EB009AEEEA /* RPNewTransaction.m */; };
-		2B58F78C179F943D009AEEEA /* Ripple-Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B58F78B179F943D009AEEEA /* Ripple-Icon-57.png */; };
-		2B58F78E179F9444009AEEEA /* Ripple-Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */; };
 		2B58F7C2179F9D2F009AEEEA /* ReceiveViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F7C1179F9D2F009AEEEA /* ReceiveViewController.mm */; };
 		2B58F7D7179F9E35009AEEEA /* libqrencoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F7D2179F9DF9009AEEEA /* libqrencoder.a */; };
 		2B58F80117A07D6F009AEEEA /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F7FB17A07D6F009AEEEA /* libzbar.a */; };
@@ -124,6 +120,9 @@
 		2B66B08217AFA04B00CC3523 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07717AFA04B00CC3523 /* OpenSans-Regular.ttf */; };
 		2B66B08317AFA04B00CC3523 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07817AFA04B00CC3523 /* OpenSans-Semibold.ttf */; };
 		2B66B08417AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07917AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf */; };
+		2BA3229618400B0B0026838A /* AppIcon29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3229318400B0B0026838A /* AppIcon29x29@2x.png */; };
+		2BA3229718400B0B0026838A /* AppIcon40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3229418400B0B0026838A /* AppIcon40x40@2x.png */; };
+		2BA3229818400B0B0026838A /* AppIcon60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3229518400B0B0026838A /* AppIcon60x60@2x.png */; };
 		2BBB7A6317BAE23F00CD4BEA /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7A6217BAE23F00CD4BEA /* 114.png */; };
 		2BBB7A6517BAE24300CD4BEA /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7A6417BAE24300CD4BEA /* 57.png */; };
 		2BC5330517B2DFD800DD8AF9 /* RPAmount.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5330417B2DFD800DD8AF9 /* RPAmount.m */; };
@@ -198,8 +197,6 @@
 		2B08037117A32E660095F199 /* RPTxHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPTxHistory.m; path = Objects/RPTxHistory.m; sourceTree = "<group>"; };
 		2B08037317A335AE0095F199 /* TxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TxViewController.h; path = iPhoneViewControllers/TxViewController.h; sourceTree = "<group>"; };
 		2B08037417A335AE0095F199 /* TxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TxViewController.m; path = iPhoneViewControllers/TxViewController.m; sourceTree = "<group>"; };
-		2B201D0B179D22AE00B52E90 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
-		2B201D0C179D22AE00B52E90 /* Splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Splash@2x.png"; sourceTree = "<group>"; };
 		2B201D10179D236F00B52E90 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = iPhoneViewControllers/LoginViewController.h; sourceTree = "<group>"; };
 		2B201D11179D236F00B52E90 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = iPhoneViewControllers/LoginViewController.m; sourceTree = "<group>"; };
 		2B201D14179D25C300B52E90 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -311,8 +308,6 @@
 		2B58F786179F70A5009AEEEA /* SendAmountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendAmountViewController.m; path = iPhoneViewControllers/SendAmountViewController.m; sourceTree = "<group>"; };
 		2B58F788179F71EB009AEEEA /* RPNewTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPNewTransaction.h; path = Objects/RPNewTransaction.h; sourceTree = "<group>"; };
 		2B58F789179F71EB009AEEEA /* RPNewTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPNewTransaction.m; path = Objects/RPNewTransaction.m; sourceTree = "<group>"; };
-		2B58F78B179F943D009AEEEA /* Ripple-Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ripple-Icon-57.png"; sourceTree = SOURCE_ROOT; };
-		2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ripple-Icon-114.png"; sourceTree = SOURCE_ROOT; };
 		2B58F7C0179F9D2F009AEEEA /* ReceiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReceiveViewController.h; path = iPhoneViewControllers/ReceiveViewController.h; sourceTree = "<group>"; };
 		2B58F7C1179F9D2F009AEEEA /* ReceiveViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ReceiveViewController.mm; path = iPhoneViewControllers/ReceiveViewController.mm; sourceTree = "<group>"; };
 		2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QRCodeEncoderObjectiveCAtGithub.xcodeproj; path = "QR-Code-Encoder-for-Objective-C/QRCodeEncoderObjectiveCAtGithub.xcodeproj"; sourceTree = "<group>"; };
@@ -392,6 +387,9 @@
 		2B66B07717AFA04B00CC3523 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		2B66B07817AFA04B00CC3523 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		2B66B07917AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		2BA3229318400B0B0026838A /* AppIcon29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29@2x.png"; sourceTree = "<group>"; };
+		2BA3229418400B0B0026838A /* AppIcon40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon40x40@2x.png"; sourceTree = "<group>"; };
+		2BA3229518400B0B0026838A /* AppIcon60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon60x60@2x.png"; sourceTree = "<group>"; };
 		2BBB7A6217BAE23F00CD4BEA /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114.png; path = ../114.png; sourceTree = "<group>"; };
 		2BBB7A6417BAE24300CD4BEA /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57.png; path = ../57.png; sourceTree = "<group>"; };
 		2BC5330317B2DFD800DD8AF9 /* RPAmount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPAmount.h; path = Objects/RPAmount.h; sourceTree = "<group>"; };
@@ -480,8 +478,6 @@
 			children = (
 				2BD93E45183C35FE00FDEFEF /* Elements */,
 				2B66B04C17AF971E00CC3523 /* Design elements */,
-				2B201D0B179D22AE00B52E90 /* Splash.png */,
-				2B201D0C179D22AE00B52E90 /* Splash@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -604,10 +600,11 @@
 		2B5860C5179764A300200D0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2BA3229318400B0B0026838A /* AppIcon29x29@2x.png */,
+				2BA3229418400B0B0026838A /* AppIcon40x40@2x.png */,
+				2BA3229518400B0B0026838A /* AppIcon60x60@2x.png */,
 				2BBB7A6417BAE24300CD4BEA /* 57.png */,
 				2BBB7A6217BAE23F00CD4BEA /* 114.png */,
-				2B58F78D179F9444009AEEEA /* Ripple-Icon-114.png */,
-				2B58F78B179F943D009AEEEA /* Ripple-Icon-57.png */,
 				2B5860C6179764A300200D0C /* Ripple-Info.plist */,
 				2B5860C7179764A300200D0C /* InfoPlist.strings */,
 				2B5860CA179764A300200D0C /* main.m */,
@@ -1128,6 +1125,7 @@
 				2B5860D1179764A300200D0C /* Default.png in Resources */,
 				2B5860D3179764A300200D0C /* Default@2x.png in Resources */,
 				2BD93E6E183C35FF00FDEFEF /* qr@2x.png in Resources */,
+				2BA3229718400B0B0026838A /* AppIcon40x40@2x.png in Resources */,
 				2B5860D5179764A300200D0C /* Default-568h@2x.png in Resources */,
 				2BD93E6A183C35FF00FDEFEF /* history@2x.png in Resources */,
 				2BD93E70183C35FF00FDEFEF /* receive@2x.png in Resources */,
@@ -1136,15 +1134,11 @@
 				2BD93E65183C35FF00FDEFEF /* bar4.png in Resources */,
 				2B5861051797678C00200D0C /* WebViewJavascriptBridge.js.txt in Resources */,
 				2B5861921799EA1E00200D0C /* README.md in Resources */,
-				2B201D0D179D22AE00B52E90 /* Splash.png in Resources */,
-				2B201D0E179D22AE00B52E90 /* Splash@2x.png in Resources */,
 				2BD93E69183C35FF00FDEFEF /* history.png in Resources */,
 				2BD93E60183C35FF00FDEFEF /* bar1@2x.png in Resources */,
 				2B201D19179D25C300B52E90 /* SVProgressHUD.bundle in Resources */,
 				2BD93E66183C35FF00FDEFEF /* bar4@2x.png in Resources */,
 				2B201DC2179D27C400B52E90 /* SSKeychain.strings in Resources */,
-				2B58F78C179F943D009AEEEA /* Ripple-Icon-57.png in Resources */,
-				2B58F78E179F9444009AEEEA /* Ripple-Icon-114.png in Resources */,
 				2B66B05D17AF971E00CC3523 /* arrow.png in Resources */,
 				2B66B05E17AF971E00CC3523 /* arrow@2x.png in Resources */,
 				2BD93E71183C35FF00FDEFEF /* send.png in Resources */,
@@ -1180,7 +1174,9 @@
 				2BD93E67183C35FF00FDEFEF /* head_logo.png in Resources */,
 				2B66B08117AFA04B00CC3523 /* OpenSans-LightItalic.ttf in Resources */,
 				2B66B08217AFA04B00CC3523 /* OpenSans-Regular.ttf in Resources */,
+				2BA3229818400B0B0026838A /* AppIcon60x60@2x.png in Resources */,
 				2B66B08317AFA04B00CC3523 /* OpenSans-Semibold.ttf in Resources */,
+				2BA3229618400B0B0026838A /* AppIcon29x29@2x.png in Resources */,
 				2B66B08417AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				2BBB7A6317BAE23F00CD4BEA /* 114.png in Resources */,
 				2BBB7A6517BAE24300CD4BEA /* 57.png in Resources */,
@@ -1433,7 +1429,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 07507FA98EC04EEEAD01EA5C /* Pods.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1457,7 +1453,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 07507FA98EC04EEEAD01EA5C /* Pods.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
