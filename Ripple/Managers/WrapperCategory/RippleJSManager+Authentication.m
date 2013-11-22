@@ -35,7 +35,7 @@
     NSString * path = [NSString stringWithFormat:@"/%@", afterHash];
     
     [[RPVaultClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (responseObject && ![responseObject isKindOfClass:[NSNull class]]) {
+        if (responseObject && ![responseObject isKindOfClass:[NSNull class]] && ((NSData*)responseObject).length > 0) {
             // Login correct
             NSString * response = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSString * decodedResponse = [response base64DecodedString];
