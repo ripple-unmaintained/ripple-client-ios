@@ -65,7 +65,7 @@
     
     RPAmount * path = [_paths objectAtIndex:indexPath.row];
     
-    if ([path.currency isEqualToString:GLOBAL_XRP_STRING]) {
+    if (GLOBAL_RESTRICT_DIGITAL_CURRENCIES && [path.currency isEqualToString:GLOBAL_XRP_STRING]) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:APPLE_MESSAGE_TITLE
                                                          message:APPLE_MESSAGE_MESG
                                                         delegate:nil
