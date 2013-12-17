@@ -16,5 +16,6 @@
 @property (weak, nonatomic) UIViewController * viewControllerBalance;
 
 @property (strong, nonatomic, retain) NSDate *startTime;
+@property (strong, nonatomic) NSString * deviceToken;
 
 @end

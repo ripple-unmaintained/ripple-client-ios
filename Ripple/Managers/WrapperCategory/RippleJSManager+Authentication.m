@@ -9,8 +9,8 @@
 #import "RippleJSManager+Authentication.h"
 #import "NSString+Hashes.h"
 #import "SSKeychain.h"
-#import "RPVaultClient.h"
 #import "Base64.h"
+#import "../../../Pods/AFNetworking/AFNetworking/AFNetworking.h"
 
 @implementation RippleJSManager (Authentication)
 
@@ -32,9 +32,11 @@
     NSString * beforeHash = [NSString stringWithFormat:@"%@%@",username,password];
     NSString * afterHash = [beforeHash sha256];
     
-    NSString * path = [NSString stringWithFormat:@"/%@", afterHash];
+    NSString * path = [NSString stringWithFormat:@"%@/%@", GLOBAL_BLOB_VAULT, afterHash];
     
-    [[RPVaultClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (responseObject && ![responseObject isKindOfClass:[NSNull class]] && ((NSData*)responseObject).length > 0) {
             // Login correct
             NSString * response = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];

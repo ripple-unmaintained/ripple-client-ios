@@ -53,6 +53,12 @@
     //[[UIButton appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
     [[UITextField appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
     
+    
+    
+    
+    // Let the device know we want to receive push notifications
+	//[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -85,6 +91,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+    if (deviceToken && deviceToken.description && [deviceToken.description isKindOfClass:[NSString class]]) {
+        self.deviceToken = [deviceToken description];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:deviceToken.description forKey:@"push_device"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        NSLog(@"My token is: %@", self.deviceToken);
+    }
+}
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+	NSLog(@"Failed to get token, error: %@", error);
 }
 
 @end
