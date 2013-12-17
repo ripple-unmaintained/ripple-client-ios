@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "RPGlobals.h"
 #import "PushNotificationManager.h"
+#import "RippleJSManager.h"
 
 #define MIXPANEL_TOKEN @"27f807b416137d59b1802c7ebe6059b0"
 
@@ -50,6 +51,9 @@
 //        }
 //    }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoggedIn) name:kNotificationUserLoggedIn object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoggedOut) name:kNotificationUserLoggedOut object:nil];
+    
     self.pushNotificationManager = [PushNotificationManager new];
     //[self.pushNotificationManager registerPushNotifications];
     
@@ -90,6 +94,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void)userLoggedIn
+{
+    [self.pushNotificationManager registerPushNotifications:YES];
+}
+
+-(void)userLoggedOut
+{
+    [self.pushNotificationManager registerPushNotifications:NO];
 }
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken

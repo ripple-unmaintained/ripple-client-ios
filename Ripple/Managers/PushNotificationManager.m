@@ -27,36 +27,37 @@
     return types & UIRemoteNotificationTypeAlert;
 }
 
--(void)userLoggedOut
-{
-    // Tell server to stop notifications
-    if (_deviceToken) {
-        NSDictionary *parameters = @{
-                                     @"device": _deviceToken,
-                                     @"on":@NO
-                                     };
-        [self uploadParameters:parameters];
-    }
-}
 
 - (id)init
 {
     self = [super init];
     if (self) {
         _deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"push_device"];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoggedOut) name:kNotificationUserLoggedOut object:nil];
     }
     return self;
 }
 
--(void)registerPushNotifications
+-(void)registerPushNotifications:(BOOL)enabled
 {
     // TODO: finish
 #if !TARGET_IPHONE_SIMULATOR
     
-    // Let the device know we want to receive push notifications
-	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    if (enabled) {
+        // Let the device know we want to receive push notifications
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+    else {
+        // Disable
+        // Tell server to stop notifications
+        if (_deviceToken && GLOBAL_PUSH_NOTIFICATION_URL) {
+            NSDictionary *parameters = @{
+                                         @"device": _deviceToken,
+                                         @"on":@NO
+                                         };
+            [self uploadParameters:parameters];
+        }
+    }
+    
 #endif
 }
 

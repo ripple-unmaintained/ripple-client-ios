@@ -11,7 +11,7 @@
 @interface PushNotificationManager : NSObject
 
 -(BOOL)isNotificationsEnabled;
--(void)registerPushNotifications;
+-(void)registerPushNotifications:(BOOL)enabled;
 -(void)receivedDeviceToken:(NSData*)deviceToken;
 -(void)receivedRemoteNotification:(NSDictionary*)userInfo;
 
