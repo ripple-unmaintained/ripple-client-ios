@@ -64,7 +64,8 @@
 
 -(void)setupJavascriptBridge
 {
-    [WebViewJavascriptBridge enableLogging];
+    // DEBUG PURPOSES ONLY
+    //[WebViewJavascriptBridge enableLogging];
     
     _bridge = [WebViewJavascriptBridge bridgeForWebView:_webView webViewDelegate:self handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"ObjC received message from JS: %@", data);

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class BalancesViewController;
+@class BalancesViewController, PushNotificationManager;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -16,6 +16,6 @@
 @property (weak, nonatomic) UIViewController * viewControllerBalance;
 
 @property (strong, nonatomic, retain) NSDate *startTime;
-@property (strong, nonatomic) NSString * deviceToken;
+@property (strong, nonatomic) PushNotificationManager * pushNotificationManager;
 
 @end

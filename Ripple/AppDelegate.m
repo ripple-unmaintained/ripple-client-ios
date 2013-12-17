@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "RPGlobals.h"
+#import "PushNotificationManager.h"
 
 #define MIXPANEL_TOKEN @"27f807b416137d59b1802c7ebe6059b0"
 
@@ -49,15 +50,13 @@
 //        }
 //    }
     
+    self.pushNotificationManager = [PushNotificationManager new];
+    //[self.pushNotificationManager registerPushNotifications];
+    
     //[[UILabel appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
     //[[UIButton appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
     [[UITextField appearance] setFont:[UIFont fontWithName:GLOBAL_FONT_NAME size:17.0]];
     
-    
-    
-    
-    // Let the device know we want to receive push notifications
-	//[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
     // Override point for customization after application launch.
     return YES;
@@ -95,19 +94,19 @@
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
-    if (deviceToken && deviceToken.description && [deviceToken.description isKindOfClass:[NSString class]]) {
-        self.deviceToken = [deviceToken description];
-        
-        [[NSUserDefaults standardUserDefaults] setObject:deviceToken.description forKey:@"push_device"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        NSLog(@"My token is: %@", self.deviceToken);
-    }
+    [self.pushNotificationManager receivedDeviceToken:deviceToken];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
 	NSLog(@"Failed to get token, error: %@", error);
+}
+
+/**
+ * Remote Notification Received while application was open.
+ */
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [self.pushNotificationManager receivedRemoteNotification:userInfo];
 }
 
 @end
