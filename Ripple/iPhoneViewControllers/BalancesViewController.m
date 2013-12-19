@@ -13,8 +13,9 @@
 #import "SendGenericViewController.h"
 #import "RPNewTransaction.h"
 #import "AppDelegate.h"
+#import <MessageUI/MessageUI.h>
 
-@interface BalancesViewController () <UITableViewDataSource, UITableViewDelegate> {
+@interface BalancesViewController () <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
     NSDictionary * balances;
 }
 
@@ -24,6 +25,111 @@
 @end
 
 @implementation BalancesViewController
+
+-(void)rateApp
+{
+    // Rate App
+    NSString * url = [NSString stringWithFormat: @"http://itunes.apple.com/gb/app/appName/id%@?mt=8", ITUNES_APP_ID];
+    [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
+    
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+	switch (result)
+	{
+		case MFMailComposeResultSent: {
+			UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle: @"Thank You!"
+                                  message: nil
+                                  delegate: nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+            [alert show];
+        }
+			break;
+		case MFMailComposeResultSaved:
+			//[self sendDidFinish];
+			break;
+		case MFMailComposeResultCancelled:
+			//[self sendDidCancel];
+			break;
+		case MFMailComposeResultFailed:
+			//[self sendDidFailWithError:nil];
+			break;
+	}
+}
+
+-(void)sendFeedback
+{
+    if (![MFMailComposeViewController canSendMail]) {
+        // TODO: Cannot send email
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Email is not configured on this device"
+                              message: [NSString stringWithFormat:@"Please send an email to %@", FEEDBACK_EMAIL]
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    
+	MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+	if (!mailController) {
+		// e.g. no mail account registered (will show alert)
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Email is not configured on this device"
+                              message: [NSString stringWithFormat:@"Please send an email to %@", FEEDBACK_EMAIL]
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+		return;
+	}
+	
+	mailController.mailComposeDelegate = self;
+	
+	
+    //NSString* body = @"Feedback";
+    //[mailController setMessageBody:body isHTML:NO];
+	[mailController setSubject:[NSString stringWithFormat:@"%@ %@ Feedback",
+                                [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
+                                [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+                                ]];
+    [mailController setToRecipients:[NSArray arrayWithObject:FEEDBACK_EMAIL]];
+    
+    [self presentViewController:mailController animated:YES completion:nil];
+}
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    switch (popup.tag) {
+        case 1: {
+            switch (buttonIndex) {
+                case 0:
+                    // Logout
+                    [self logout];
+                    break;
+                case 1:
+                    // Send feedback
+                    [self sendFeedback];
+                    break;
+                case 2:
+                    // Rate app
+                    [self rateApp];
+                    break;
+                default:
+                    break;
+            }
+            break;
+        }
+        default:
+            break;
+    }
+}
 
 -(IBAction)sendButton:(id)sender
 {
@@ -55,6 +161,16 @@
 
 
 -(IBAction)buttonLogout:(id)sender
+{
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Account Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Logout" otherButtonTitles:
+                            @"Send feedback",
+                            @"Rate this App",
+                            nil];
+    popup.tag = 1;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+-(void)logout
 {
     [[RippleJSManager shared] logout];
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -233,6 +349,10 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBalances) name:kNotificationUpdatedBalance object:nil];
     
+    NSString * username = [[RippleJSManager shared] username];
+    if (username) {
+        [self.navLogout setTitle:username forState:UIControlStateNormal];
+    }
 }
 
 - (void)didReceiveMemoryWarning

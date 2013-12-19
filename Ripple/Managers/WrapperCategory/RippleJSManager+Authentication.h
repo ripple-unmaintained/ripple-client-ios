@@ -17,5 +17,6 @@
 -(void)checkForLogin;
 
 -(NSString*)account_id;
+-(NSString*)username;
 
 @end

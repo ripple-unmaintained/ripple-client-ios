@@ -140,7 +140,7 @@
     
     CGRect f = CGRectMake(0, -20, 320, 20);
     labelStatus = [[UILabel alloc] initWithFrame:f];
-    labelStatus.text = @"Reconnecting...";
+    labelStatus.text = @"Offline";
     [labelStatus setTextAlignment:NSTextAlignmentCenter];
     labelStatus.textColor = [UIColor whiteColor];
     labelStatus.backgroundColor = [UIColor blackColor];

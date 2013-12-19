@@ -19,3 +19,6 @@
 
 #define GLOBAL_PUSH_NOTIFICATION_URL nil
 //#define GLOBAL_PUSH_NOTIFICATION_URL @"http://example.com/push.json"
+
+#define FEEDBACK_EMAIL   @"ios-support@ripple.com"
+#define ITUNES_APP_ID    @"694391487"

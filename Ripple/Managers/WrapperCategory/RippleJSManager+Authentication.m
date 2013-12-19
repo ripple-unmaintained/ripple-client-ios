@@ -16,10 +16,16 @@
 
 #define SSKEYCHAIN_SERVICE      @"ripple"
 #define USERDEFAULTS_RIPPLE_KEY @"RippleKey"
+#define USERDEFAULTS_RIPPLE_USERNAME @"RippleUsername"
 
 -(NSString*)account_id
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULTS_RIPPLE_KEY];
+}
+
+-(NSString*)username
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULTS_RIPPLE_USERNAME];
 }
 
 -(void)login:(NSString*)username andPassword:(NSString*)password withBlock:(void(^)(NSError* error))block
@@ -68,6 +74,7 @@
                     
                     // Save ripple address
                     [[NSUserDefaults standardUserDefaults] setObject:_blobData.account_id forKey:USERDEFAULTS_RIPPLE_KEY];
+                    [[NSUserDefaults standardUserDefaults] setObject:username forKey:USERDEFAULTS_RIPPLE_USERNAME];
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     
                     [self wrapperSetAccount:_blobData.account_id];
@@ -185,6 +192,7 @@
     }
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERDEFAULTS_RIPPLE_KEY];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERDEFAULTS_RIPPLE_USERNAME];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserLoggedOut object:nil userInfo:nil];
