@@ -216,7 +216,7 @@
 		2B201DDF179E497C00B52E90 /* RPTransactionSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPTransactionSubscription.m; path = Objects/RPTransactionSubscription.m; sourceTree = "<group>"; };
 		2B372C59185FEF8A009A43EF /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PushNotificationManager.h; path = Managers/PushNotificationManager.h; sourceTree = "<group>"; };
 		2B372C5A185FEF8A009A43EF /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PushNotificationManager.m; path = Managers/PushNotificationManager.m; sourceTree = "<group>"; };
-		2B5860BB179764A300200D0C /* Ripple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ripple.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B5860BB179764A300200D0C /* Ripple Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ripple Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5860BE179764A300200D0C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2B5860C0179764A300200D0C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2B5860C2179764A300200D0C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -526,7 +526,7 @@
 		2B5860BC179764A300200D0C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2B5860BB179764A300200D0C /* Ripple.app */,
+				2B5860BB179764A300200D0C /* Ripple Client.app */,
 				2B5860E4179764A300200D0C /* RippleTests.octest */,
 			);
 			name = Products;
@@ -972,7 +972,7 @@
 			);
 			name = Ripple;
 			productName = Ripple;
-			productReference = 2B5860BB179764A300200D0C /* Ripple.app */;
+			productReference = 2B5860BB179764A300200D0C /* Ripple Client.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2B5860E3179764A300200D0C /* RippleTests */ = {
@@ -1374,7 +1374,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/ZBarSDK-armv7s\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Ripple Client";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -1398,7 +1398,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/ZBarSDK-armv7s\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Ripple Client";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
