@@ -1,14 +1,23 @@
-# xcode noise
-build/*
-*.perspective
-*.perspectivev3
-*.pbxuser
-*.xcworkspace
-*.mode1
-*.mode2v3
-*.mode1v3
-xcuserdata
-Snapshots
- 
-# osx noise
+# OS X
 .DS_Store
+
+# Xcode
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+profile
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+
+# CocoaPods
+Pods
