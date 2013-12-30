@@ -84,7 +84,7 @@
     
     //NSLog(@"%@", userInfo);
     
-    NSString * message = [userInfo objectForKey:@"alert"];
+    NSString * message = [aps objectForKey:@"alert"];
     
     //NSString * title = [aps objectForKey:@"alert"];
     
