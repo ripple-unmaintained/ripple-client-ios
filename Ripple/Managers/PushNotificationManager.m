@@ -49,13 +49,7 @@
     else {
         // Disable
         // Tell server to stop notifications
-        if (_deviceToken && GLOBAL_PUSH_NOTIFICATION_URL) {
-            NSDictionary *parameters = @{
-                                         @"device": _deviceToken,
-                                         @"on":@NO
-                                         };
-            [self uploadParameters:parameters];
-        }
+        
     }
     
 #endif
@@ -65,6 +59,11 @@
 {
     if (deviceToken && deviceToken.description && [deviceToken.description isKindOfClass:[NSString class]]) {
         _deviceToken = [deviceToken description];
+        
+        // Remove formatting
+        _deviceToken = [_deviceToken stringByReplacingOccurrencesOfString:@"<" withString:@""];
+        _deviceToken = [_deviceToken stringByReplacingOccurrencesOfString:@">" withString:@""];
+        _deviceToken = [_deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
         
         [[NSUserDefaults standardUserDefaults] setObject:deviceToken.description forKey:@"push_device"];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -114,29 +113,36 @@
 
 -(void)uploadDeviceToken
 {
+    [self enablePushNotifications:YES];
+}
+
+-(void)enablePushNotifications:(BOOL)enable
+{
     NSString * wallet = [[RippleJSManager shared] rippleWalletAddress];
-    
-    if (_deviceToken && wallet && GLOBAL_PUSH_NOTIFICATION_URL) {
+    if (_deviceToken && wallet) {
         NSDictionary *parameters = @{
-                                     @"device": _deviceToken,
-                                     @"wallet": wallet,
-                                     @"on":@YES
+                                     @"udid": _deviceToken,
+                                     @"ripple_address": wallet
                                      };
-        [self uploadParameters:parameters];
+        
+        NSString * url;
+        if (enable) {
+            url = GLOBAL_PUSH_NOTIFICATION_ENABLE;
+        }
+        else {
+            url = GLOBAL_PUSH_NOTIFICATION_DISABLE;
+        }
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"JSON: %@", responseObject);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
     }
     else {
         NSLog(@"%@: No device token, wallet address or push notification set",self);
     }
-}
-
--(void)uploadParameters:(NSDictionary*)parameters
-{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager POST:GLOBAL_PUSH_NOTIFICATION_URL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
 }
 
 @end

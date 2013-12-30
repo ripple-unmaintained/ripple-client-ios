@@ -17,8 +17,9 @@
 // Required for the Apple App Store
 #define GLOBAL_RESTRICT_DIGITAL_CURRENCIES       YES
 
-#define GLOBAL_PUSH_NOTIFICATION_URL nil
-//#define GLOBAL_PUSH_NOTIFICATION_URL @"http://example.com/push.json"
+//#define GLOBAL_PUSH_NOTIFICATION_URL nil
+#define GLOBAL_PUSH_NOTIFICATION_ENABLE  @"http://notifier.ripplecharts.com/subscriptions/apn/create"
+#define GLOBAL_PUSH_NOTIFICATION_DISABLE @"http://notifier.ripplecharts.com/subscriptions/apn/delete"
 
 #define FEEDBACK_EMAIL   @"ios-support@ripple.com"
 #define ITUNES_APP_ID    @"694391487"
