@@ -82,7 +82,9 @@
         return;
     }
     
-    NSString * message = [userInfo objectForKey:@"msg"];
+    //NSLog(@"%@", userInfo);
+    
+    NSString * message = [userInfo objectForKey:@"alert"];
     
     //NSString * title = [aps objectForKey:@"alert"];
     
@@ -126,12 +128,12 @@
                                      };
         
         NSString * url;
-        if (enable) {
-            url = GLOBAL_PUSH_NOTIFICATION_ENABLE;
-        }
-        else {
-            url = GLOBAL_PUSH_NOTIFICATION_DISABLE;
-        }
+        
+#if defined(DEBUG)
+        url = enable ? GLOBAL_PUSH_NOTIFICATION_DEV_ENABLE: GLOBAL_PUSH_NOTIFICATION_DEV_DISABLE;
+#else
+        url = enable ? GLOBAL_PUSH_NOTIFICATION_PROD_ENABLE: GLOBAL_PUSH_NOTIFICATION_PROD_DISABLE;
+#endif
         
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
