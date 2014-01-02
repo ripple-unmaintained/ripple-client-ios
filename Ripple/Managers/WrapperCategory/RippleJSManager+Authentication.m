@@ -10,7 +10,6 @@
 #import "NSString+Hashes.h"
 #import "SSKeychain.h"
 #import "Base64.h"
-#import "../../../Pods/AFNetworking/AFNetworking/AFNetworking.h"
 
 @implementation RippleJSManager (Authentication)
 
@@ -28,23 +27,51 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:USERDEFAULTS_RIPPLE_USERNAME];
 }
 
+-(void)customTimeout:(NSTimer*)timer
+{
+    [_operationManager.operationQueue cancelAllOperations];
+    
+    if (_isAttemptingLogin) {
+        // Try again
+        NSString * username = [timer.userInfo objectForKey:@"username"];
+        NSString * password = [timer.userInfo objectForKey:@"password"];
+        id block = [timer.userInfo objectForKey:@"block"];
+        [self login:username andPassword:password withBlock:block];
+    }
+}
+
+-(void)cancelTimeout
+{
+    // Cancel timeout
+    [_networkTimeout invalidate];
+    _networkTimeout = nil;
+}
+
 -(void)login:(NSString*)username andPassword:(NSString*)password withBlock:(void(^)(NSError* error))block
 {
+    NSLog(@"%@: Atempting to log in as: %@", self, username);
+    _isAttemptingLogin = YES;
+    
     // Normalize
     username = [username lowercaseString];
-    
-    [SSKeychain setPassword:password forService:SSKEYCHAIN_SERVICE account:username];
     
     NSString * beforeHash = [NSString stringWithFormat:@"%@%@",username,password];
     NSString * afterHash = [beforeHash sha256];
     
     NSString * path = [NSString stringWithFormat:@"%@/%@", GLOBAL_BLOB_VAULT, afterHash];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [_operationManager.operationQueue cancelAllOperations];
+    
+    _operationManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [_operationManager GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self cancelTimeout];
+        
         if (responseObject && ![responseObject isKindOfClass:[NSNull class]] && ((NSData*)responseObject).length > 0) {
             // Login correct
+            
+            // Save password
+            [SSKeychain setPassword:password forService:SSKEYCHAIN_SERVICE account:username];
+            
             NSString * response = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSString * decodedResponse = [response base64DecodedString];
             NSLog(@"%@: login success", self.class.description);
@@ -114,10 +141,24 @@
             block(error);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self cancelTimeout];
         NSLog(@"%@: login failed: %@",self.class.description, error.localizedDescription);
-        [self logout];
+        
+        if (_isAttemptingLogin) {
+            // Keep trying
+            [self login:username andPassword:password withBlock:block];
+        }
+        
+        //[self logout];
         block(error);
     }];
+    
+    // Set custom timeout
+    [self cancelTimeout];
+    NSDictionary * userinfo = @{@"username": username,
+                                @"password": password,
+                                @"block": block};
+    _networkTimeout = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(customTimeout:) userInfo:userinfo repeats:NO];
 }
 
 -(void)wrapperSetAccount:(NSString*)account
@@ -179,8 +220,12 @@
 -(void)logout
 {
     _isLoggedIn = NO;
+    _isAttemptingLogin = NO;
     _blobData = nil;
     [_accountBalance clearBalances];
+    
+    [self cancelTimeout];
+    [_operationManager.operationQueue cancelAllOperations];
     
     NSArray * accounts = [SSKeychain allAccounts];
     for (NSDictionary * dic in accounts) {

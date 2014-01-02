@@ -29,6 +29,8 @@
 #import "AccountBalanceManager.h"
 #import "AccountHistoryManager.h"
 
+#import "../../../Pods/AFNetworking/AFNetworking/AFNetworking.h"
+
 #define MAX_TRANSACTIONS 12
 
 
@@ -54,12 +56,16 @@
     
     BOOL _isConnected;
     BOOL _isLoggedIn;
+    BOOL _isAttemptingLogin;
     
     RPBlobData       * _blobData;
     NSMutableArray   * _contacts;
     
     AccountBalanceManager * _accountBalance;
     AccountHistoryManager * _accountHistory;
+    
+    AFHTTPRequestOperationManager * _operationManager;
+    NSTimer * _networkTimeout;
 }
 
 +(RippleJSManager*)shared;

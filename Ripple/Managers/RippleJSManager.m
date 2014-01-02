@@ -119,6 +119,7 @@
     if (self) {
         _isConnected = NO;
         _isLoggedIn = NO;
+        _isAttemptingLogin = NO;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rippleNetworkConnected) name:kNotificationRippleConnected object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rippleNetworkDisconnected) name:kNotificationRippleDisconnected object:nil];
@@ -131,6 +132,8 @@
         [self wrapperInitialize];
         [self wrapperRegisterBridgeHandlersNetworkStatus];
         [self wrapperRegisterHandlerTransactionCallback];
+        
+        _operationManager = [AFHTTPRequestOperationManager manager];
         
         [self connect];
         
