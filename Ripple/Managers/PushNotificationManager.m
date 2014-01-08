@@ -10,10 +10,11 @@
 #import "RPGlobals.h"
 #import "../../Pods/AFNetworking/AFNetworking/AFNetworking.h"
 
-#import "RippleJSManager.h"
+//#import "RippleJSManager.h"
 
 @interface PushNotificationManager () {
     NSString * _deviceToken;
+    NSString * _wallet;
 }
 
 @end
@@ -37,19 +38,21 @@
     return self;
 }
 
--(void)registerPushNotifications:(BOOL)enabled
+-(void)registerPushNotifications:(BOOL)enabled withWallet:(NSString*)wallet
 {
-    // TODO: finish
+    
 #if !TARGET_IPHONE_SIMULATOR
     
     if (enabled) {
+        _wallet = wallet;
         // Let the device know we want to receive push notifications
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     }
     else {
         // Disable
+        _wallet = nil;
         // Tell server to stop notifications
-        
+        [self pushNotificationEnable:NO withWallet:wallet];
     }
     
 #endif
@@ -65,12 +68,12 @@
         _deviceToken = [_deviceToken stringByReplacingOccurrencesOfString:@">" withString:@""];
         _deviceToken = [_deviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
         
-        [[NSUserDefaults standardUserDefaults] setObject:deviceToken.description forKey:@"push_device"];
+        [[NSUserDefaults standardUserDefaults] setObject:_deviceToken forKey:@"push_device"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         NSLog(@"My token is: %@", _deviceToken);
         
-        [self uploadDeviceToken];
+        [self pushNotificationEnable:YES withWallet:_wallet];
     }
 }
 
@@ -113,14 +116,8 @@
 #endif
 }
 
--(void)uploadDeviceToken
+-(void)pushNotificationEnable:(BOOL)enable withWallet:(NSString*)wallet
 {
-    [self enablePushNotifications:YES];
-}
-
--(void)enablePushNotifications:(BOOL)enable
-{
-    NSString * wallet = [[RippleJSManager shared] rippleWalletAddress];
     if (_deviceToken && wallet) {
         NSDictionary *parameters = @{
                                      @"udid": _deviceToken,
@@ -130,16 +127,20 @@
         NSString * url;
         
 #if defined(DEBUG)
+#warning ENABLE FOR DEBUG MODE
         url = enable ? GLOBAL_PUSH_NOTIFICATION_DEV_ENABLE: GLOBAL_PUSH_NOTIFICATION_DEV_DISABLE;
+        //url = enable ? GLOBAL_PUSH_NOTIFICATION_PROD_ENABLE: GLOBAL_PUSH_NOTIFICATION_PROD_DISABLE;
 #else
         url = enable ? GLOBAL_PUSH_NOTIFICATION_PROD_ENABLE: GLOBAL_PUSH_NOTIFICATION_PROD_DISABLE;
 #endif
         
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"JSON: %@", responseObject);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
+            //NSLog(@"Response: %@", operation.responseData);
         }];
     }
     else {

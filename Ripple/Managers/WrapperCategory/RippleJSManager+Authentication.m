@@ -47,6 +47,11 @@
     _networkTimeout = nil;
 }
 
+-(void)delayedLogin:(NSArray*)login
+{
+    [self login:login[0] andPassword:login[1] withBlock:login[2]];
+}
+
 -(void)login:(NSString*)username andPassword:(NSString*)password withBlock:(void(^)(NSError* error))block
 {
     NSLog(@"%@: Atempting to log in as: %@", self, username);
@@ -97,10 +102,12 @@
                         [_contacts  addObject:contact];
                     }
                     
+                    NSString * wallet = _blobData.account_id;
+                    
                     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdatedContacts object:nil userInfo:nil];
                     
                     // Save ripple address
-                    [[NSUserDefaults standardUserDefaults] setObject:_blobData.account_id forKey:USERDEFAULTS_RIPPLE_KEY];
+                    [[NSUserDefaults standardUserDefaults] setObject:wallet forKey:USERDEFAULTS_RIPPLE_KEY];
                     [[NSUserDefaults standardUserDefaults] setObject:username forKey:USERDEFAULTS_RIPPLE_USERNAME];
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     
@@ -109,7 +116,7 @@
                     
                     block(nil);
                     
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserLoggedIn object:nil userInfo:nil];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserLoggedIn object:nil userInfo:wallet];
                     /*
                      Example blob
                      {
@@ -146,7 +153,9 @@
         
         if (_isAttemptingLogin) {
             // Keep trying
-            [self login:username andPassword:password withBlock:block];
+            //[self login:username andPassword:password withBlock:block];
+            // After delay
+            [self performSelector:@selector(delayedLogin:) withObject:@[username,password,block] afterDelay:1.0];
         }
         
         //[self logout];
@@ -236,11 +245,13 @@
         
     }
     
+    NSString * wallet = [self rippleWalletAddress];
+    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERDEFAULTS_RIPPLE_KEY];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USERDEFAULTS_RIPPLE_USERNAME];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserLoggedOut object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserLoggedOut object:nil userInfo:(NSDictionary*)wallet];
 }
 
 @end

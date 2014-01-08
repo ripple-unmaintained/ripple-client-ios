@@ -52,7 +52,7 @@
 //    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoggedIn) name:kNotificationUserLoggedIn object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoggedOut) name:kNotificationUserLoggedOut object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoggedOut:) name:kNotificationUserLoggedOut object:nil];
     
     self.pushNotificationManager = [PushNotificationManager new];
     //[self.pushNotificationManager registerPushNotifications];
@@ -104,12 +104,14 @@
 
 -(void)userLoggedIn
 {
-    [self.pushNotificationManager registerPushNotifications:YES];
+    NSString * wallet = [[RippleJSManager shared] rippleWalletAddress];
+    [self.pushNotificationManager registerPushNotifications:YES withWallet:wallet];
 }
 
--(void)userLoggedOut
+-(void)userLoggedOut:(NSNotification *)notification
 {
-    [self.pushNotificationManager registerPushNotifications:NO];
+    NSString * wallet = (NSString*)[notification userInfo];
+    [self.pushNotificationManager registerPushNotifications:NO withWallet:wallet];
 }
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
