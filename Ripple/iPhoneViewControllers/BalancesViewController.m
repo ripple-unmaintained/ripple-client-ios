@@ -152,8 +152,8 @@
         SendGenericViewController * view = [segue destinationViewController];
         
         RPNewTransaction * t = [RPNewTransaction new];
-        t.Date = [NSDate date];
-        t.Currency = sender;
+        t.date = [NSDate date];
+        t.to_currency = sender;
         
         view.transaction = t;
     }

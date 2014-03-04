@@ -22,6 +22,7 @@
 #import "RPBlobData.h"
 #import "RPContact.h"
 #import "RPTransaction.h"
+#import "RPNewTransaction.h"
 #import "RPTransactionSubscription.h"
 #import "RPTxHistory.h"
 #import "RPAmount.h"

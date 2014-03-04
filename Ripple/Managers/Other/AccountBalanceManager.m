@@ -169,7 +169,7 @@
             }
             else {
                 // Received XRP
-                NSNumber * drop = [RPHelper safeNumberFromDictionary:transaction withKey:@"Amount"];
+                NSDecimalNumber * drop = [RPHelper safeDecimalNumberFromDictionary:transaction withKey:@"Amount"];
                 value = [RPHelper dropsToRipples:drop];
                 
                 currency = GLOBAL_XRP_STRING;
@@ -214,7 +214,7 @@
 {
     NSMutableDictionary * balances = [NSMutableDictionary dictionary];
     if (_accountData) {
-        NSNumber * balance = [RPHelper dropsToRipples:_accountData.Balance];
+        NSDecimalNumber * balance = [RPHelper dropsToRipples:_accountData.Balance];
         [balances setObject:balance forKey:GLOBAL_XRP_STRING];
     }
     for (RPAccountLine * line in _accountLines) {

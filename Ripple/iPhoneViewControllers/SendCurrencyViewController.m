@@ -47,7 +47,7 @@
         
     }
     else {
-        self.transaction.Destination_currency = currency;
+        self.transaction.to_currency = currency;
         [self performSegueWithIdentifier:@"Next" sender:nil];
     }
 }

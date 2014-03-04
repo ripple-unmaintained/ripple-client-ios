@@ -19,5 +19,9 @@ DerivedData
 *.hmap
 *.ipa
 
+*.xcworkspace
+
 # CocoaPods
 Pods
+
+PushNotifications

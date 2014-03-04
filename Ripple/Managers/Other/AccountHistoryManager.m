@@ -45,20 +45,14 @@
                     t.Currency = [ammount objectForKey:@"currency"];
                     
                     NSString * ammountString = [ammount objectForKey:@"value"];
-                    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-                    [f setNumberStyle:NSNumberFormatterDecimalStyle];
-                    [f setMaximumFractionDigits:20];
-                    t.Amount = [f numberFromString:ammountString];
+                    t.Amount = [NSDecimalNumber decimalNumberWithString:ammountString];
                 }
                 else {
                     // XRP
                     t.Currency = GLOBAL_XRP_STRING;
                     
                     NSString * ammountString = [tx objectForKey:@"Amount"];
-                    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-                    [f setNumberStyle:NSNumberFormatterDecimalStyle];
-                    [f setMaximumFractionDigits:20];
-                    NSNumber * num = [f numberFromString:ammountString];
+                    NSDecimalNumber * num = [NSDecimalNumber decimalNumberWithString:ammountString];
                     t.Amount = [RPHelper dropsToRipples:num];
                 }
                 

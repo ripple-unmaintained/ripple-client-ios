@@ -111,7 +111,6 @@
                     [[NSUserDefaults standardUserDefaults] setObject:username forKey:USERDEFAULTS_RIPPLE_USERNAME];
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     
-                    [self wrapperSetAccount:_blobData.account_id];
                     _isLoggedIn = YES;
                     
                     block(nil);
@@ -170,16 +169,6 @@
     _networkTimeout = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(customTimeout:) userInfo:userinfo repeats:NO];
 }
 
--(void)wrapperSetAccount:(NSString*)account
-{
-    // Set account in wrapper
-    NSDictionary * data = @{@"account": account};
-    [_bridge callHandler:@"set_account" data:data responseCallback:^(id responseData) {
-        NSLog(@"set_account response: %@", responseData);
-        assert([responseData isEqualToString:account]);
-    }];
-}
-
 
 -(NSString*)returnUsername:(NSArray*)array
 {
@@ -200,17 +189,9 @@
         NSString * password = [SSKeychain passwordForService:SSKEYCHAIN_SERVICE account:username];
         if (username && password && username.length > 0 && password.length > 0) {
             
-            NSString *account_id = [self account_id];
-            if (account_id) {
-                [self wrapperSetAccount:account_id];
-            }
-            
-            
             [self login:username andPassword:password withBlock:^(NSError *error) {
                 
             }];
-            
-            
         }
     }
 }

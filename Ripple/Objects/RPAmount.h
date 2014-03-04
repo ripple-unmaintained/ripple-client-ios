@@ -10,11 +10,15 @@
 
 @interface RPAmount : NSObject
 
-@property (strong, nonatomic) NSString * currency;
-@property (strong, nonatomic) NSString * issuer;
-@property (strong, nonatomic) NSNumber * value;
+//@property (strong, nonatomic) NSString * to_currency;
+//@property (strong, nonatomic) NSString * to_address;
+//@property (strong, nonatomic) NSDecimalNumber * to_amount;
 
-//-(NSDictionary*)toDictionary;
+@property (strong, nonatomic) NSString * from_currency;
+@property (strong, nonatomic) NSDecimalNumber * from_amount;
+
+@property (strong, nonatomic) NSDictionary * path;
+
 -(id)initWithObject:(id)object;
 
 @end

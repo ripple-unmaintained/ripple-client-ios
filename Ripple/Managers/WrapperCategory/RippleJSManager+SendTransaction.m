@@ -32,7 +32,7 @@
     return error;
 }
 
--(void)wrapperSendTransactionAmount:(NSNumber*)amount fromCurrency:(NSString*)from_currency toRecipient:(NSString*)recipient toCurrency:(NSString*)to_currency withBlock:(void(^)(NSError* error))block
+-(void)wrapperSendTransactionAmount:(RPNewTransaction*)transaction withBlock:(void(^)(NSError* error))block
 {
     /*
     {
@@ -76,7 +76,7 @@
     
      */
     
-    if (!amount || !recipient || !_blobData) {
+    if (!transaction || !transaction.to_address || !_blobData) {
         NSError * error = [NSError errorWithDomain:@"send_transaction" code:1 userInfo:@{NSLocalizedDescriptionKey: @"Invalid amount"}];
         block(error);
         return;
@@ -88,12 +88,15 @@
     
     NSMutableDictionary * params = [NSMutableDictionary dictionaryWithDictionary:
                                @{@"account": _blobData.account_id,
-                              @"recipient_address": recipient,
-                              @"to_currency": to_currency,
-                              @"from_currency": from_currency,
-                              @"amount": [formatter stringFromNumber:amount],
+                              @"to_address": transaction.to_address,
+                              @"to_currency": transaction.to_currency,
+                              @"to_amount": [transaction.to_amount stringValue], // [formatter stringFromNumber:transaction.to_amount],
+                              @"from_currency": transaction.from_currency,
                               @"secret": _blobData.master_seed
                                }];
+    
+    // Add path
+    transaction.path ? [params setObject:transaction.path forKey:@"path"]: nil;
     
     [_bridge callHandler:@"send_transaction" data:params responseCallback:^(id responseData) {
         NSLog(@"send_transaction response: %@", responseData);
@@ -103,7 +106,7 @@
 }
 
 
--(void)wrapperFindPathWithAmount:(NSNumber*)amount currency:(NSString*)currency toRecipient:(NSString*)recipient withBlock:(void(^)(NSArray * paths, NSError* error))block
+-(void)wrapperFindPathWithAmount:(NSDecimalNumber*)amount currency:(NSString*)currency toRecipient:(NSString*)recipient withBlock:(void(^)(NSArray * paths, NSError* error))block
 {
     /*
     {
@@ -141,15 +144,15 @@
         "ledger_current_index" = 1365182;
     }
      */
-    
-    NSNumberFormatter *formatter = [NSNumberFormatter new];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
-    [formatter setMaximumFractionDigits:20];
-    
+//    
+//    NSNumberFormatter *formatter = [NSNumberFormatter new];
+//    [formatter setNumberStyle:NSNumberFormatterDecimalStyle]; // this line is important!
+//    [formatter setMaximumFractionDigits:20];
+//    
     NSDictionary * params = @{@"account": _blobData.account_id,
                               @"recipient_address": recipient,
                               @"currency": currency,
-                              @"amount": [formatter stringFromNumber:amount],
+                              @"amount": [amount stringValue],
                               @"secret": _blobData.master_seed
                               };
     
@@ -160,14 +163,14 @@
         if (!error) {
             paths = [NSMutableArray array];
             for (NSDictionary * path in responseData) {
-                RPAmount * amount = [[RPAmount alloc] initWithObject:path];
-                [paths addObject:amount];
+                RPAmount * obj = [[RPAmount alloc] initWithObject:path];
+                [paths addObject:obj];
             }
             
             if ([currency isEqualToString:GLOBAL_XRP_STRING]) {
                 RPAmount * obj = [RPAmount new];
-                obj.currency = GLOBAL_XRP_STRING;
-                obj.value = amount;
+                obj.from_currency = GLOBAL_XRP_STRING;
+                obj.from_amount = amount;
                 [paths addObject:obj];
             }
         }

@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) NSString * ToAccount;
 @property (strong, nonatomic) NSString * FromAccount;
-@property (strong, nonatomic) NSNumber * Amount;
+@property (strong, nonatomic) NSDecimalNumber * Amount;
 @property (strong, nonatomic) NSString * Currency;
 
 -(BOOL)isValid;

@@ -58,11 +58,7 @@
 
 -(IBAction)buttonNext:(id)sender
 {
-    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-    [f setNumberStyle:NSNumberFormatterDecimalStyle];
-    [f setMaximumFractionDigits:20];
-    NSNumber * number = [f numberFromString:self.textFieldAmount.text];
-    self.transaction.Amount = number;
+    self.transaction.to_amount = [NSDecimalNumber decimalNumberWithString:self.textFieldAmount.text];
     
     [self performSegueWithIdentifier:@"Next" sender:nil];
     
@@ -131,11 +127,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    if (self.transaction.Destination_name) {
-        self.labelRecipient.text = [NSString stringWithFormat:@"To %@", self.transaction.Destination_name];
+    if (self.transaction.to_name) {
+        self.labelRecipient.text = [NSString stringWithFormat:@"To %@", self.transaction.to_name];
     }
-    else if (self.transaction.Destination) {
-        self.labelRecipient.text = [NSString stringWithFormat:@"To Address: %@", self.transaction.Destination];
+    else if (self.transaction.to_address) {
+        self.labelRecipient.text = [NSString stringWithFormat:@"To Address: %@", self.transaction.to_address];
     }
     else {
         self.labelRecipient.text = @"Unkown destination";

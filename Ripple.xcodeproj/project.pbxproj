@@ -74,7 +74,6 @@
 		2B58F80D17A08207009AEEEA /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B58F80C17A08206009AEEEA /* CoreVideo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2B58F81017A0D013009AEEEA /* SendWaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F80F17A0D013009AEEEA /* SendWaitingViewController.m */; };
 		2B58F81317A0D108009AEEEA /* RippleStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F81217A0D108009AEEEA /* RippleStatusViewController.m */; };
-		2B58F81817A1D9D6009AEEEA /* jsonrewriter.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B58F81617A1D996009AEEEA /* jsonrewriter.js */; };
 		2B58F81F17A1E6A8009AEEEA /* RippleJSManager+Initializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F81E17A1E6A8009AEEEA /* RippleJSManager+Initializer.m */; };
 		2B58F82217A1E879009AEEEA /* RippleJSManager+AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F82117A1E879009AEEEA /* RippleJSManager+AccountInfo.m */; };
 		2B58F82517A1EA6D009AEEEA /* RippleJSManager+AccountLines.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58F82417A1EA6D009AEEEA /* RippleJSManager+AccountLines.m */; };
@@ -111,6 +110,7 @@
 		2B66B08217AFA04B00CC3523 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07717AFA04B00CC3523 /* OpenSans-Regular.ttf */; };
 		2B66B08317AFA04B00CC3523 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07817AFA04B00CC3523 /* OpenSans-Semibold.ttf */; };
 		2B66B08417AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07917AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf */; };
+		2B7B1F2C18C50EA000C84755 /* ripple-0.7.34-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B7B1F2718C50E5D00C84755 /* ripple-0.7.34-min.js */; };
 		2BA3229618400B0B0026838A /* AppIcon29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3229318400B0B0026838A /* AppIcon29x29@2x.png */; };
 		2BA3229718400B0B0026838A /* AppIcon40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3229418400B0B0026838A /* AppIcon40x40@2x.png */; };
 		2BA3229818400B0B0026838A /* AppIcon60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3229518400B0B0026838A /* AppIcon60x60@2x.png */; };
@@ -118,7 +118,6 @@
 		2BBB7A6517BAE24300CD4BEA /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BBB7A6417BAE24300CD4BEA /* 57.png */; };
 		2BC5330517B2DFD800DD8AF9 /* RPAmount.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5330417B2DFD800DD8AF9 /* RPAmount.m */; };
 		2BCBBBC41821EA6B00962798 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BCBBBC31821EA6B00962798 /* Images.xcassets */; };
-		2BD2E3C21810B97F006A25A8 /* ripple-0.7.19-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 2BD2E3C01810B970006A25A8 /* ripple-0.7.19-min.js */; };
 		2BD38B601862732B001902F8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD38B5F1862732B001902F8 /* MessageUI.framework */; };
 		2BD93E5F183C35FF00FDEFEF /* bar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E46183C35FE00FDEFEF /* bar1.png */; };
 		2BD93E60183C35FF00FDEFEF /* bar1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD93E47183C35FE00FDEFEF /* bar1@2x.png */; };
@@ -313,7 +312,6 @@
 		2B58F80F17A0D013009AEEEA /* SendWaitingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendWaitingViewController.m; path = iPhoneViewControllers/SendWaitingViewController.m; sourceTree = "<group>"; };
 		2B58F81117A0D108009AEEEA /* RippleStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RippleStatusViewController.h; path = iPhoneViewControllers/RippleStatusViewController.h; sourceTree = "<group>"; };
 		2B58F81217A0D108009AEEEA /* RippleStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RippleStatusViewController.m; path = iPhoneViewControllers/RippleStatusViewController.m; sourceTree = "<group>"; };
-		2B58F81617A1D996009AEEEA /* jsonrewriter.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jsonrewriter.js; sourceTree = "<group>"; };
 		2B58F81D17A1E6A8009AEEEA /* RippleJSManager+Initializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+Initializer.h"; path = "Managers/WrapperCategory/RippleJSManager+Initializer.h"; sourceTree = "<group>"; };
 		2B58F81E17A1E6A8009AEEEA /* RippleJSManager+Initializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RippleJSManager+Initializer.m"; path = "Managers/WrapperCategory/RippleJSManager+Initializer.m"; sourceTree = "<group>"; };
 		2B58F82017A1E879009AEEEA /* RippleJSManager+AccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RippleJSManager+AccountInfo.h"; path = "Managers/WrapperCategory/RippleJSManager+AccountInfo.h"; sourceTree = "<group>"; };
@@ -360,6 +358,7 @@
 		2B66B07717AFA04B00CC3523 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		2B66B07817AFA04B00CC3523 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		2B66B07917AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		2B7B1F2718C50E5D00C84755 /* ripple-0.7.34-min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ripple-0.7.34-min.js"; sourceTree = "<group>"; };
 		2BA3229318400B0B0026838A /* AppIcon29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29@2x.png"; sourceTree = "<group>"; };
 		2BA3229418400B0B0026838A /* AppIcon40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon40x40@2x.png"; sourceTree = "<group>"; };
 		2BA3229518400B0B0026838A /* AppIcon60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon60x60@2x.png"; sourceTree = "<group>"; };
@@ -368,7 +367,6 @@
 		2BC5330317B2DFD800DD8AF9 /* RPAmount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPAmount.h; path = Objects/RPAmount.h; sourceTree = "<group>"; };
 		2BC5330417B2DFD800DD8AF9 /* RPAmount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RPAmount.m; path = Objects/RPAmount.m; sourceTree = "<group>"; };
 		2BCBBBC31821EA6B00962798 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2BD2E3C01810B970006A25A8 /* ripple-0.7.19-min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ripple-0.7.19-min.js"; sourceTree = "<group>"; };
 		2BD38B5F1862732B001902F8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		2BD93E46183C35FE00FDEFEF /* bar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar1.png; sourceTree = "<group>"; };
 		2BD93E47183C35FE00FDEFEF /* bar1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar1@2x.png"; sourceTree = "<group>"; };
@@ -627,7 +625,7 @@
 		2B5861001797678C00200D0C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				2B58F81517A1D996009AEEEA /* ripple-client */,
+				2B7B1F2318C50E5D00C84755 /* ripple-lib */,
 				2B58F7E317A07D6F009AEEEA /* ZBarSDK-armv7s */,
 				2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */,
 				2B201DBB179D27C400B52E90 /* SSKeychain */,
@@ -638,7 +636,6 @@
 				2B5861751798AE3300200D0C /* NSDataConversion */,
 				2B58614E1798AB0800200D0C /* NSString-Hashes-master */,
 				2B5861421797813000200D0C /* KJObjectSerialize */,
-				2B58613A17976DE700200D0C /* ripple-lib-demo */,
 				2B5861011797678C00200D0C /* WebViewJavascriptBridge */,
 			);
 			path = Libraries;
@@ -652,14 +649,6 @@
 				2B5861041797678C00200D0C /* WebViewJavascriptBridge.m */,
 			);
 			path = WebViewJavascriptBridge;
-			sourceTree = "<group>";
-		};
-		2B58613A17976DE700200D0C /* ripple-lib-demo */ = {
-			isa = PBXGroup;
-			children = (
-				2BD2E3C01810B970006A25A8 /* ripple-0.7.19-min.js */,
-			);
-			path = "ripple-lib-demo";
 			sourceTree = "<group>";
 		};
 		2B58613E1797804400200D0C /* Objects */ = {
@@ -831,14 +820,6 @@
 			name = Global;
 			sourceTree = "<group>";
 		};
-		2B58F81517A1D996009AEEEA /* ripple-client */ = {
-			isa = PBXGroup;
-			children = (
-				2B58F81617A1D996009AEEEA /* jsonrewriter.js */,
-			);
-			path = "ripple-client";
-			sourceTree = "<group>";
-		};
 		2B58F81C17A1E61F009AEEEA /* WrapperCategories */ = {
 			isa = PBXGroup;
 			children = (
@@ -912,6 +893,14 @@
 				2B66B07917AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf */,
 			);
 			path = "open-sans";
+			sourceTree = "<group>";
+		};
+		2B7B1F2318C50E5D00C84755 /* ripple-lib */ = {
+			isa = PBXGroup;
+			children = (
+				2B7B1F2718C50E5D00C84755 /* ripple-0.7.34-min.js */,
+			);
+			path = "ripple-lib";
 			sourceTree = "<group>";
 		};
 		2BD93E45183C35FE00FDEFEF /* Elements */ = {
@@ -1054,11 +1043,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B7B1F2C18C50EA000C84755 /* ripple-0.7.34-min.js in Resources */,
 				2BD93E64183C35FF00FDEFEF /* bar3@2x.png in Resources */,
-				2BD2E3C21810B97F006A25A8 /* ripple-0.7.19-min.js in Resources */,
 				2BD93E6B183C35FF00FDEFEF /* qmark.png in Resources */,
 				2BCBBBC41821EA6B00962798 /* Images.xcassets in Resources */,
-				2B58F81817A1D9D6009AEEEA /* jsonrewriter.js in Resources */,
 				2B5861961799EC7B00200D0C /* sjcl.js in Resources */,
 				2B58613917976D3400200D0C /* ripple-lib-wrapper.js in Resources */,
 				2B5860C9179764A300200D0C /* InfoPlist.strings in Resources */,
@@ -1375,7 +1363,7 @@
 					"\"$(SRCROOT)/Libraries/ZBarSDK-armv7s\"",
 				);
 				PRODUCT_NAME = "Ripple Client";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "C0DBF338-E6C9-4463-BB94-0385304F3215";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1399,7 +1387,7 @@
 					"\"$(SRCROOT)/Libraries/ZBarSDK-armv7s\"",
 				);
 				PRODUCT_NAME = "Ripple Client";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7A2B6752-D9DD-43A5-8F13-94C7150297A5";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

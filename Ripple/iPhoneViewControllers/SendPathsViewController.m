@@ -63,7 +63,7 @@
     
     RPAmount * path = [_paths objectAtIndex:indexPath.row];
     cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:path.value], path.currency];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:path.from_amount], path.from_currency];
         
     return cell;
 }
@@ -74,7 +74,7 @@
     
     RPAmount * path = [_paths objectAtIndex:indexPath.row];
     
-    if (GLOBAL_RESTRICT_DIGITAL_CURRENCIES && [path.currency isEqualToString:GLOBAL_XRP_STRING]) {
+    if (GLOBAL_RESTRICT_DIGITAL_CURRENCIES && [path.from_currency isEqualToString:GLOBAL_XRP_STRING]) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:APPLE_MESSAGE_TITLE
                                                          message:APPLE_MESSAGE_MESG
                                                         delegate:self
@@ -84,7 +84,8 @@
         
     }
     else {
-        self.transaction.Currency = path.currency;
+        self.transaction.from_currency = path.from_currency;
+        self.transaction.path = path.path;
         [self performSegueWithIdentifier:@"Next" sender:nil];
     }
 }
@@ -103,7 +104,7 @@
     self.labelFindingPaths.text = @"Finding paths...";
     self.labelFindingPaths.hidden = NO;
     
-    [[RippleJSManager shared] wrapperFindPathWithAmount:self.transaction.Amount currency:self.transaction.Destination_currency toRecipient:self.transaction.Destination withBlock:^(NSArray *paths, NSError *error) {
+    [[RippleJSManager shared] wrapperFindPathWithAmount:self.transaction.to_amount currency:self.transaction.to_currency toRecipient:self.transaction.to_address withBlock:^(NSArray *paths, NSError *error) {
         if (!error) {
             self.tableView.hidden = NO;
             _paths = paths;

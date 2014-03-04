@@ -122,8 +122,8 @@
     [[RippleJSManager shared] wrapperIsValidAccount:account withBlock:^(NSError *error) {
         if (!error) {
             [SVProgressHUD dismiss];
-            self.transaction.Destination = account;
-            self.transaction.Destination_name = nil;
+            self.transaction.to_address = account;
+            self.transaction.to_name = nil;
             
             [self performSegueWithIdentifier:@"Next" sender:nil];
         }
@@ -200,8 +200,8 @@
     }
     else {
         RPContact * contact = [contacts objectAtIndex:indexPath.row];
-        self.transaction.Destination = contact.address;
-        self.transaction.Destination_name = contact.name;
+        self.transaction.to_address = contact.address;
+        self.transaction.to_name = contact.name;
         [self performSegueWithIdentifier:@"Next" sender:nil];
     }
     

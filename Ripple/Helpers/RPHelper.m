@@ -38,7 +38,7 @@
     }
 }
 
-+(NSNumber*)dropsToRipples:(NSNumber*)drops
++(NSDecimalNumber*)dropsToRipples:(NSDecimalNumber*)drops
 {
     NSDecimal decimal = [drops decimalValue];
     NSDecimalNumber * dec = [NSDecimalNumber decimalNumberWithDecimal:decimal];\
@@ -47,7 +47,7 @@
     return result;
 }
 
-+(NSNumber*)ripplesToDrops:(NSNumber*)ripples
++(NSDecimalNumber*)ripplesToDrops:(NSDecimalNumber*)ripples
 {
     NSDecimal decimal = [ripples decimalValue];
     NSDecimalNumber * dec = [NSDecimalNumber decimalNumberWithDecimal:decimal];\

@@ -36,12 +36,6 @@
     path = nil;
     contents = nil;
     
-//    path = [[NSBundle mainBundle] pathForResource:@"jsonrewriter" ofType:@"js"];
-//    contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-//    //[html appendFormat:@"<script>%@</script>", contents];
-//    path = nil;
-//    contents = nil;
-    
     path = [[NSBundle mainBundle] pathForResource:@"sjcl" ofType:@"js"];
     contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     [html appendFormat:@"<script>%@</script>", contents];
@@ -64,8 +58,10 @@
 
 -(void)setupJavascriptBridge
 {
-    // DEBUG PURPOSES ONLY
-    //[WebViewJavascriptBridge enableLogging];
+#if defined(DEBUG)
+        // DEBUG PURPOSES ONLY
+        [WebViewJavascriptBridge enableLogging];
+#endif
     
     _bridge = [WebViewJavascriptBridge bridgeForWebView:_webView webViewDelegate:self handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"ObjC received message from JS: %@", data);

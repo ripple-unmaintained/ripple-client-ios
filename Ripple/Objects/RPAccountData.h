@@ -11,7 +11,7 @@
 @interface RPAccountData : NSObject
 
 @property (strong, nonatomic) NSString * Account;
-@property (strong, nonatomic) NSNumber * Balance;
+@property (strong, nonatomic) NSDecimalNumber * Balance;
 @property (strong, nonatomic) NSString * LedgerEntryType;
 @property (strong, nonatomic) NSString * PreviousTxnID;
 @property (strong, nonatomic) NSString * PreviousTxnLgrSeq;

@@ -19,22 +19,26 @@
 -(id)initWithObject:(id)object
 {
     self = [self init];
-    if ([object isKindOfClass:[NSDictionary class]]) {
-        // IOU Amount
-        [self setDictionary:object];
+    NSLog(@"RPAmount: %@", object);
+    
+    //NSLog(@"RPAmount: %@", object);
+    NSDictionary * dic = (NSDictionary *)object;
+    // IOU Amount
+    id source_amount = [dic valueForKey:@"source_amount"];
+    
+    if ([source_amount isKindOfClass:[NSString class]]) {
+        // XRP
+        self.from_currency = GLOBAL_XRP_STRING;
+        NSDecimalNumber * num = [NSDecimalNumber decimalNumberWithString:source_amount];
+        self.from_amount = [RPHelper dropsToRipples:num];
     }
-    else if ([object isKindOfClass:[NSString class]]) {
-        // XRP Amount
-        self.currency = GLOBAL_XRP_STRING;
-        
-        NSString * str = (NSString*)object;
-        // Convert string to nsnumber
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        [f setMaximumFractionDigits:20];
-        NSNumber * num = [f numberFromString:str];
-        self.value = [RPHelper dropsToRipples:num];
+    else if ([source_amount isKindOfClass:[NSDictionary class]]) {
+        // IOU
+        self.from_currency = [source_amount valueForKey:@"currency"];
+        self.from_amount = [RPHelper safeDecimalNumberFromDictionary:source_amount withKey:@"value"];
     }
+    
+    self.path = object;
     return self;
 }
 
