@@ -12,8 +12,6 @@
 		2B08037217A32E660095F199 /* RPTxHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B08037117A32E660095F199 /* RPTxHistory.m */; };
 		2B08037517A335AE0095F199 /* TxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B08037417A335AE0095F199 /* TxViewController.m */; };
 		2B201D12179D236F00B52E90 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201D11179D236F00B52E90 /* LoginViewController.m */; };
-		2B201D19179D25C300B52E90 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B201D15179D25C300B52E90 /* SVProgressHUD.bundle */; };
-		2B201D1A179D25C300B52E90 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201D17179D25C300B52E90 /* SVProgressHUD.m */; };
 		2B201D1C179D265A00B52E90 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B201D1B179D265A00B52E90 /* QuartzCore.framework */; };
 		2B201DC2179D27C400B52E90 /* SSKeychain.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2B201DBC179D27C400B52E90 /* SSKeychain.strings */; };
 		2B201DC3179D27C400B52E90 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B201DBF179D27C400B52E90 /* SSKeychain.m */; };
@@ -110,6 +108,8 @@
 		2B66B08217AFA04B00CC3523 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07717AFA04B00CC3523 /* OpenSans-Regular.ttf */; };
 		2B66B08317AFA04B00CC3523 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07817AFA04B00CC3523 /* OpenSans-Semibold.ttf */; };
 		2B66B08417AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B66B07917AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf */; };
+		2B6A8AB018E221C700E39EED /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B6A8AAD18E221C700E39EED /* SVProgressHUD.bundle */; };
+		2B6A8AB118E221C700E39EED /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6A8AAF18E221C700E39EED /* SVProgressHUD.m */; };
 		2B7B1F2C18C50EA000C84755 /* ripple-0.7.34-min.js in Resources */ = {isa = PBXBuildFile; fileRef = 2B7B1F2718C50E5D00C84755 /* ripple-0.7.34-min.js */; };
 		2BA3229618400B0B0026838A /* AppIcon29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3229318400B0B0026838A /* AppIcon29x29@2x.png */; };
 		2BA3229718400B0B0026838A /* AppIcon40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3229418400B0B0026838A /* AppIcon40x40@2x.png */; };
@@ -190,10 +190,6 @@
 		2B08037417A335AE0095F199 /* TxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TxViewController.m; path = iPhoneViewControllers/TxViewController.m; sourceTree = "<group>"; };
 		2B201D10179D236F00B52E90 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = iPhoneViewControllers/LoginViewController.h; sourceTree = "<group>"; };
 		2B201D11179D236F00B52E90 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = iPhoneViewControllers/LoginViewController.m; sourceTree = "<group>"; };
-		2B201D14179D25C300B52E90 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		2B201D15179D25C300B52E90 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		2B201D16179D25C300B52E90 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		2B201D17179D25C300B52E90 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		2B201D1B179D265A00B52E90 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2B201DBD179D27C400B52E90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
 		2B201DBE179D27C400B52E90 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
@@ -358,6 +354,10 @@
 		2B66B07717AFA04B00CC3523 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		2B66B07817AFA04B00CC3523 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		2B66B07917AFA04B00CC3523 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		2B6A8AAC18E221C700E39EED /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		2B6A8AAD18E221C700E39EED /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		2B6A8AAE18E221C700E39EED /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		2B6A8AAF18E221C700E39EED /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		2B7B1F2718C50E5D00C84755 /* ripple-0.7.34-min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ripple-0.7.34-min.js"; sourceTree = "<group>"; };
 		2BA3229318400B0B0026838A /* AppIcon29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29@2x.png"; sourceTree = "<group>"; };
 		2BA3229418400B0B0026838A /* AppIcon40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon40x40@2x.png"; sourceTree = "<group>"; };
@@ -481,17 +481,6 @@
 				2B08037417A335AE0095F199 /* TxViewController.m */,
 			);
 			name = iPhone;
-			sourceTree = "<group>";
-		};
-		2B201D13179D25C300B52E90 /* SVProgressHUD-master */ = {
-			isa = PBXGroup;
-			children = (
-				2B201D14179D25C300B52E90 /* .gitignore */,
-				2B201D15179D25C300B52E90 /* SVProgressHUD.bundle */,
-				2B201D16179D25C300B52E90 /* SVProgressHUD.h */,
-				2B201D17179D25C300B52E90 /* SVProgressHUD.m */,
-			);
-			path = "SVProgressHUD-master";
 			sourceTree = "<group>";
 		};
 		2B201DBB179D27C400B52E90 /* SSKeychain */ = {
@@ -625,11 +614,11 @@
 		2B5861001797678C00200D0C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2B6A8AAB18E221C700E39EED /* SVProgressHUD */,
 				2B7B1F2318C50E5D00C84755 /* ripple-lib */,
 				2B58F7E317A07D6F009AEEEA /* ZBarSDK-armv7s */,
 				2B58F7CC179F9DF8009AEEEA /* QRCodeEncoderObjectiveCAtGithub.xcodeproj */,
 				2B201DBB179D27C400B52E90 /* SSKeychain */,
-				2B201D13179D25C300B52E90 /* SVProgressHUD-master */,
 				2B5861931799EC6F00200D0C /* SJCL */,
 				2B5861801799EA1E00200D0C /* AESCrypt-ObjC-master */,
 				2B58617C1799E5DC00200D0C /* Base64 */,
@@ -895,6 +884,17 @@
 			path = "open-sans";
 			sourceTree = "<group>";
 		};
+		2B6A8AAB18E221C700E39EED /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				2B6A8AAC18E221C700E39EED /* SVProgressHUD-Prefix.pch */,
+				2B6A8AAD18E221C700E39EED /* SVProgressHUD.bundle */,
+				2B6A8AAE18E221C700E39EED /* SVProgressHUD.h */,
+				2B6A8AAF18E221C700E39EED /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		2B7B1F2318C50E5D00C84755 /* ripple-lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -1065,7 +1065,6 @@
 				2B5861921799EA1E00200D0C /* README.md in Resources */,
 				2BD93E69183C35FF00FDEFEF /* history.png in Resources */,
 				2BD93E60183C35FF00FDEFEF /* bar1@2x.png in Resources */,
-				2B201D19179D25C300B52E90 /* SVProgressHUD.bundle in Resources */,
 				2BD93E66183C35FF00FDEFEF /* bar4@2x.png in Resources */,
 				2B201DC2179D27C400B52E90 /* SSKeychain.strings in Resources */,
 				2B66B05D17AF971E00CC3523 /* arrow.png in Resources */,
@@ -1087,6 +1086,7 @@
 				2B66B06717AF971E00CC3523 /* send_amt.png in Resources */,
 				2BD93E77183C35FF00FDEFEF /* user@2x.png in Resources */,
 				2B66B06817AF971E00CC3523 /* send_amt@2x.png in Resources */,
+				2B6A8AB018E221C700E39EED /* SVProgressHUD.bundle in Resources */,
 				2B66B06917AF971E00CC3523 /* signin_logo.png in Resources */,
 				2B66B06A17AF971E00CC3523 /* signin_logo@2x.png in Resources */,
 				2B66B06B17AF971E00CC3523 /* top_logo.png in Resources */,
@@ -1182,6 +1182,7 @@
 				2B5861451797813000200D0C /* NSObject+KJSerializer.m in Sources */,
 				2B5861481797879700200D0C /* RPLedgerClosed.m in Sources */,
 				2B58614D1797B83400200D0C /* RPError.m in Sources */,
+				2B6A8AB118E221C700E39EED /* SVProgressHUD.m in Sources */,
 				2B5861511798AB0800200D0C /* NSString+Hashes.m in Sources */,
 				2B5861781798AE3300200D0C /* NSData+Conversion.m in Sources */,
 				2B58617F1799E5DC00200D0C /* Base64.m in Sources */,
@@ -1191,7 +1192,6 @@
 				2B5861911799EA1E00200D0C /* NSString+Base64.m in Sources */,
 				2B586199179A0A8500200D0C /* RPAccountLine.m in Sources */,
 				2B201D12179D236F00B52E90 /* LoginViewController.m in Sources */,
-				2B201D1A179D25C300B52E90 /* SVProgressHUD.m in Sources */,
 				2B201DC3179D27C400B52E90 /* SSKeychain.m in Sources */,
 				2B201DC4179D27C400B52E90 /* SSKeychainQuery.m in Sources */,
 				2B201DC9179D2B9F00B52E90 /* BalancesViewController.m in Sources */,
@@ -1365,6 +1365,7 @@
 				PRODUCT_NAME = "Ripple Client";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1389,6 +1390,7 @@
 				PRODUCT_NAME = "Ripple Client";
 				PROVISIONING_PROFILE = "7A2B6752-D9DD-43A5-8F13-94C7150297A5";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
