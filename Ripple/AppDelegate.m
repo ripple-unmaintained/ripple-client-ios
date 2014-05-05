@@ -11,7 +11,7 @@
 #import "PushNotificationManager.h"
 #import "RippleJSManager.h"
 
-#define MIXPANEL_TOKEN @"27f807b416137d59b1802c7ebe6059b0"
+//#define MIXPANEL_TOKEN @"27f807b416137d59b1802c7ebe6059b0"
 
 @implementation AppDelegate
 
@@ -21,7 +21,7 @@
     
     // Initialize the library with your
     // Mixpanel project token, MIXPANEL_TOKEN
-    [Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
+    //[Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN];
     
     // Later, you can get your instance with
     // Mixpanel *mixpanel = [Mixpanel sharedInstance];
@@ -84,8 +84,8 @@
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     NSLog(@"%@ will resign active", self);
-    NSNumber *seconds = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceDate:self.startTime]];
-    [[Mixpanel sharedInstance] track:@"Session" properties:[NSDictionary dictionaryWithObject:seconds forKey:@"Length"]];
+    //NSNumber *seconds = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceDate:self.startTime]];
+    //[[Mixpanel sharedInstance] track:@"Session" properties:[NSDictionary dictionaryWithObject:seconds forKey:@"Length"]];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
