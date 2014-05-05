@@ -150,12 +150,12 @@
         [self cancelTimeout];
         NSLog(@"%@: login failed: %@",self.class.description, error.localizedDescription);
         
-        if (_isAttemptingLogin) {
-            // Keep trying
-            //[self login:username andPassword:password withBlock:block];
-            // After delay
-            [self performSelector:@selector(delayedLogin:) withObject:@[username,password,block] afterDelay:1.0];
-        }
+//        if (_isAttemptingLogin) {
+//            // Keep trying
+//            //[self login:username andPassword:password withBlock:block];
+//            // After delay
+//            [self performSelector:@selector(delayedLogin:) withObject:@[username,password,block] afterDelay:1.0];
+//        }
         
         //[self logout];
         block(error);

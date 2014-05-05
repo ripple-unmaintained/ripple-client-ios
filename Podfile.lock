@@ -27,4 +27,4 @@ SPEC CHECKSUMS:
   AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
   Mixpanel: 488d700d4f769a351bb61afc7d4cabbdeef506e1
 
-COCOAPODS: 0.28.0
+COCOAPODS: 0.32.1
