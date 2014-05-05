@@ -11,7 +11,7 @@
 #import "RippleJSManager+Authentication.h"
 #import "SVProgressHUD.h"
 
-@interface LoginViewController () <UITextFieldDelegate>
+@interface LoginViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField * textFieldUsername;
 @property (weak, nonatomic) IBOutlet UITextField * textFieldPassword;
@@ -19,6 +19,16 @@
 @end
 
 @implementation LoginViewController
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == alertView.cancelButtonIndex) {
+        // Cancel
+    }
+    else {
+        // Retry
+        [self login];
+    }
+}
 
 -(IBAction)signupButton:(id)sender
 {
@@ -40,9 +50,9 @@
             UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: @"Could not login"
                                   message: error.localizedDescription
-                                  delegate: nil
+                                  delegate: self
                                   cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
+                                  otherButtonTitles:@"Retry", nil];
             [alert show];
         }
     }];
