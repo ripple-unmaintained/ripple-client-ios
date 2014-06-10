@@ -77,10 +77,6 @@
             NSString * decodedResponse = [response base64DecodedString];
             
             if (decodedResponse) {
-                // Save password
-                [SSKeychain setPassword:password forService:SSKEYCHAIN_SERVICE account:username];
-                
-                NSLog(@"%@: login success", self.class.description);
                 
                 NSString * key = [NSString stringWithFormat:@"%d|%@%@",username.length, username,password];
                 //NSLog(@"%@: key: %@", self.class.description, key);
@@ -89,6 +85,10 @@
                 [_bridge callHandler:@"sjcl_decrypt" data:@{@"key": key,@"decrypt": decodedResponse} responseCallback:^(id responseData) {
                     if (responseData && ![responseData isKindOfClass:[NSNull class]]) {
                         // Success
+                        // Save password
+                        [SSKeychain setPassword:password forService:SSKEYCHAIN_SERVICE account:username];
+                        
+                        NSLog(@"%@: login success", self.class.description);
                         NSLog(@"New Blob: %@", responseData);
                         RPBlobData * blob = [RPBlobData new];
                         [blob setDictionary:responseData];
