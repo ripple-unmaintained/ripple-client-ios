@@ -143,7 +143,7 @@
             else {
                 // Failed
                 NSLog(@"decrypt_blob failed response");
-                NSError * error = [NSError errorWithDomain:@"login" code:1 userInfo:@{NSLocalizedDescriptionKey: @"Invalid username or password"}];
+                NSError * error = [NSError errorWithDomain:@"login" code:1 userInfo:@{NSLocalizedDescriptionKey: @"Sorry. This app is currently incompatible with the new Ripple Trade blob"}];
                 [self logout];
                 block(error);
             }
